@@ -9,4 +9,4 @@ This repo contains various Reaper configs, located in the [`configs`](./configs/
         └── REAPER
 ```
 
-Any given config can be made active by symlinking its `REAPER` directory to the appropriate location, depending on your OS.
+Any given config can be made active by symlinking its `REAPER` directory to the appropriate location, depending on your OS. If you'd like, you can use my [`ReaConfig`](https://github.com/rewgs/reaconfig) tool to help you do just that (in addition to all sorts of other tasks related to Reaper config management).
