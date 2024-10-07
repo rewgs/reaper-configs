@@ -1,0 +1,27 @@
+C10017 "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Grab Bag"
+F 12.wav 52800044 0 1614030467 0
+D s 22000 n 2 l 10:00.000 i 16
+F 28.wav 105830444 0 1614030476 0
+D s 44100 n 2 l 9:59.945 i 16
+F album_second_half.wav 242643500 0 1614055852 0
+D s 44100 n 2 l 22:55.529 i 16
+F "Ariana Grande vs. SampleRNN_ using a neural network to generate random vocals. (192kbit_AAC).m4a" 4521403 0 1614191697 0
+D s 44100 n 2 l 4:44.816
+F "First ML Test.mp3" 2541120 0 1614030508 0
+D s 48000 n 2 l 1:03.504 i 320k
+F ganified.wav 2459948 0 1614030500 0
+D s 41000 n 1 l 0:29.998 i 16
+F koan2.mp3 12596161 0 1619495056 0
+D s 44100 n 2 l 10:30.100 i 160k
+F koan3.mp3 14555345 0 1619495045 0
+D s 44100 n 2 l 12:08.138 i 160k
+F "Opus Load Horror Riffing_1.wav" 29503064 0 1628286022 0
+D y 2021-08-06 s 48000 n 2 r 6:17.153
+D l 1:16.828 i 32
+F "Opus Load Horror Riffing_2.wav" 40300120 0 1628286165 0
+D y 2021-08-06 s 48000 n 2 r 6:19.382
+D l 1:44.946 i 32
+F target_1.3.wav 2459948 0 1614030519 0
+D s 41000 n 1 l 0:29.998 i 16
+F target_14.3.wav 2459948 0 1614030532 0
+D s 41000 n 1 l 0:29.998 i 16

@@ -1,0 +1,71 @@
+---------------------------------------------------------------------------------------------------
+  Regions&Markers from Items - Changelog (What's new)     
+---------------------------------------------------------------------------------------------------
+
+* v0.97 (2017-03-29)
+  # fix: duplicated markers when run once without UI [p=1824881] @bFooz
+
+* v0.96 (2016-07-07)
+  + Added an action to manually update all the regions once without opening the UI or being minimized in the background.
+  
+* v0.95 (2016-06-26)
+  #fix: dock/undock button
+
+* v0.94 (2016-05-19)
+  + Initial release (compatible with HeDaScripts Manager)
+	
+* v0.93 (2016-04-07)
+  + Muted items do not create markers
+  + Dock/Undock button
+  + >=5.17 window position support
+	
+* v0.92 (2016-01-17)
+  + Always_minimized variable to avoid window
+	
+* v0.91 (2015-09-13)
+  # get names from take name if it is not an empty item. 
+	
+* v0.9 (2015-07-21)
+  # Bugfix, finding sws-autocoloricon.ini when installed as non portable. 
+  # specify to require SWS 2.7.1 minimum.
+	
+* v0.8 (2015-04-14)
+  + Option: Auto Color items in track with SWS auto Region color settings.
+	
+* v0.7 (2015-04-12)
+  + REAPER 5 version only. Lua language.
+  + Multiple opened projects support. Automatically refreshes track list for each project.
+  + TrackGUID support to make possible to move tracks or insert tracks before, while script running.
+  # new improved UI with options panel. 
+	
+* v0.6b (2015-03-08)
+  # UI clickable tracks bug. now it works.
+	
+* v0.6 (2015-03-05)
+  + UI clickable tracks 
+	
+* v0.5 (2015-02-21)
+  + Time_Interval to lower CPU consumption when update regions in realtime. Thanks to spk77
+  + ToggleToolbar state support (REAPER 5)
+  # Background version now is the default version to be used
+	
+* v0.4 (2015-02-19)
+  + option to enable/disable compatibility with SWS auto color
+  + option to enable/disable realtime updating regions/markers
+  + option to scan for suffix in tracks only once for improving realtime performance
+ 
+* v0.3 (2015-02-18)
+  + Realtime updating regions/markers manipulating items, moving resizing, deleting, copying...
+  + Regions support. Track's suffix "Regions x"
+  # Now it doesn't use selection actions for better performance in realtime manipulation of items.
+	
+* v0.2 (2015-02-17)
+  + grouped under one single script with UI and for both show or hide markers using mute buttons
+  + Specify marker tracks adding the suffix "Markers %d" where %d is the number of marker initial id in the set 
+  # support for items without notes 
+ 
+* v0.1 (2015-02-15)
+  + Create and Delete markers from items positions in the track
+  + Markers named with item's notes.
+  + Marker color from item's displayed color 
+  

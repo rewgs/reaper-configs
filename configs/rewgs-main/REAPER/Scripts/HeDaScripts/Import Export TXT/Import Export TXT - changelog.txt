@@ -1,0 +1,13 @@
+---------------------------------------------------
+  Import Export TXT - Changelog (What's new)     
+---------------------------------------------------
+
+* v0.3 (2018-05-19)
+  + HeDa_Import TXT to Text Items: optional fixed length parameter for each imported Text Item
+
+* v0.2 (2015-03-07)
+  + if there is a time selection it fits the import length to time selection
+ 
+* v0.1 (2015-02-25)
+  + Initial version
+  + configurable time length per character and separator lines

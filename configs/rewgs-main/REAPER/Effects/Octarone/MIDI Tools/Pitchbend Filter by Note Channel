@@ -1,0 +1,44 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Filter by Note Channel
+in_pin:none
+out_pin:none
+
+
+
+@init
+// 0-15:  the last pitchbend value for this channel, even if it was filtered out (we store it here)
+// 16-31: the last pitchbend value for this channel that was sent (so if it was filtered out, it won't change this)
+// mask: the channel mask for the current offset of pitchbends -- that is, at the current offset, which pitchbend channels happened
+memset(0, 8192, 32);
+mask = 0;
+
+
+
+@block
+midirecv(o,a,b) ? (
+ l = o;
+ while(
+  c = a & $xF; a -= c;
+  a===$xE0 ? (
+   c[0] = b;
+   mask |= 1<<c;
+  ) : (
+   midisend(o, a+c, b);
+   a===$x90 ? (
+    ch = c;  ch2 = 1<<c;
+    mask |= ch2;
+   );
+  );
+
+  (d = midirecv(o,a,b))===0 || l < o ? (
+   (mask & ch2) && (c=ch[0]) !== (mask=ch+16)[0] ? (
+    mask[0] = c;
+    midisend(l, ch + $xE0, c);
+   );
+   l = o;  mask = 0;
+  );
+
+  d
+ );
+);

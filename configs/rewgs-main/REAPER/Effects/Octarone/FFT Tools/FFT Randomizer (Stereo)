@@ -1,0 +1,943 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: FFT Randomizer (Stereo)
+in_pin:Left Input
+in_pin:Right Input
+out_pin:Left Output
+out_pin:Right Output
+options:want_all_kb
+slider1:1<0,3,1{4096,8192,16384}>FFT size
+slider2:0<-90,90,0.0000001>Gain (dB)
+slider3:25<25,1000,0.0000001>MIDI Force Change (ms)
+slider4:0<0,6,1{Layer 1,Layer 2,Layer 3,Layer 4,Layer 5,Layer 6,Layer 7}>Edit Layer
+slider5:0<0,90,0.0000001>Magnitude Range (dB)
+slider6:0<-15,15,0.0000001>Magnitude Contrast
+slider7:0.00001<0.00001,30,0.0000001>Magnitude Speed (Hz)
+slider8:135.9277857<50,200,0.0000001>Magnitude Speed Modulation Rate (%)
+slider9:0<-360,360,0.00001>Phase Range (Degrees)
+slider10:0<-15,15,0.0000001>Phase Contrast
+slider11:0.00001<0.00001,15,0.0000001>Phase Speed (Hz)
+slider12:135.9277857<50,200,0.0000001>Phase Speed Modulation Rate (%)
+
+
+@init
+ext_noinit = 1;
+ext_nodenorm = 1;
+o_srate = srate;
+editlayer = slider4;
+
+// pointers (some are defined in @slider or never accessed directly, which is why they are commented out)
+/*
+  curblock   = 0;
+  lastblock1 = 32768;
+  lastblock2 = 65536;
+  lastblock3 = 98304;
+  window = 131072;    // 1/2 fftsize +1 in size  (the +1 is important, holds the 'middle')
+*/
+mbuf = 139265;        // each buf has 514 elements: 512 points, +1 extra at beginning, +1 hidden at the end (duplicated) to ease calculations
+/*
+  pbuf  = mbuf + 514;
+*/
+
+
+// base user var pointers (data needs to be stored)
+mamt = mbuf + 514*2;
+mcontrast = mamt + 7;
+mspd = mcontrast + 7;
+mspdmod = mspd + 7;
+/*
+  pamt = mspdmod + 7;
+  pcontrast = pamt + 7;
+  pspd = pcontrast + 7;
+  pspdmod = pspd + 7;
+*/
+
+// extra user var pointers and data (from GUI)
+mamt_eq = mspdmod + 7*5;
+/*
+  pamt_eq = mamt_eq + 1023;
+*/
+meq = mamt_eq + 1023*2;
+/*
+  peq = meq+513;
+*/
+// NOTE: don't change the order of meq followed by mtime, unless you modify code also when we apply the EQ
+
+
+// non-user internal vars, keep track of time for each layer, and speed acceleration/variation interpolation variables (it's only linear interpolation though)
+// NOTE: I took advantage of the fact there's 4 arrays for each edit type (magnitude, phase), which *MATCHES* the base user vars above (again 4 arrays per type!!).
+//       If this is modified you will HAVE to modify the code after the fft function, make another var instead of just 'k' or using 'mtime' to access mamt etc...
+mtime = meq + 513*2;  // IMPORTANT: mtime is also mamt + 3128   (7*8 + 1023*2 + 513*2)
+maccel = mtime + 7;
+maccel_slope = maccel + 7;
+maccel_t = maccel_slope + 7;
+/*
+  ptime = maccel_t + 7;
+  paccel = ptime + 7;
+  paccel_slope = paccel + 7;
+  paccel_t = paccel_slope + 7;
+*/
+
+// some cached internal vars related to speed and current FFT size, to speed up the realtime computation...
+cache_istep = maccel_t + 7*5;  // 7*2 elements
+
+/*
+   These are put differently, all 3 of them for each layer (instead of one full layer first then the next)
+   m:
+     Layer 1:
+       cache_step, cache_spdmod_step, cache_ispdmod_step   [the last one is the inverse of spdmod_step basically]
+     Layer 2:
+       cache_step, cache_spdmod_step, cache_ispdmod_step
+     ...
+   p:
+     ...
+   ...
+
+   NOTE: We can access them via Lbufs below, since it 'moves' at the same rate (3 for each layer) and in same order. If it's Lbufs[-42] or similar, then it's accessing cache above.
+
+cache_step = cache_istep + 7*2;
+*/
+
+
+// array of pointers to layer time buffers, used this way so they can be rotated/shifted without memcpy; each layer has 3 pointers to the 3 time buffers for it
+Lbufs = cache_istep + 56;  // 7*2 + 2*7*3
+
+i = 0; t = Lbufs + 42;
+loop(2,
+ j = 9;
+ loop(7,
+  loop(3,
+   Lbufs[i] = t;
+   i += 1; t += j;
+  );
+  j += j-1;
+ );
+);
+
+// midi event list array: used since we parse them in @block but there may be more than 1 per block
+midi_base = Lbufs + 42 + 1023*3*2;
+fft_till_midi = -1;
+
+
+// set non-zero defaults if @serialize signal doesn't exist (i.e init of new instanced effect)
+fftsize === 0 ? (
+  i = 7;
+  loop(2,
+   loop(7, mamt[i] = 1; mamt[i+7] = 0.00001; mamt[i+14] = 1.3592778570863051786; i += 1);
+   i += 21;
+  );
+  memset(mamt_eq, 1, 1023*2);
+);
+fftsize=0;  // reset it back to 0, to trigger change in @slider, but ALSO when it is imported to be 0 again so it works for whoever imports (since the imported @init gets called *before* anything else)
+
+// GUI stuff
+gui_graph===0 ? (smooth_width = 0.1; smooth_amt = 1.9825561641518815546);
+
+// fill up the time buffers for all layers and all types
+function init_timebufs()
+(
+  k = 0; j = 0; y = mamt_eq;
+  loop(2,
+   q = 8;
+   loop(7,
+    c = mcontrast[k];  t = mamt[k];
+    loop(3,
+     p = Lbufs[j];
+
+     k > 7 && t < 0 ? (                       // see if phase mode AND the phase amount is negative, so it is incremental mode (this works fine because sin and cos are periodic!!)
+      x = (rand(1)*(q+0.9999847412109375))|0; // assign the start to a random point (then fill both backward and forward from that point)
+      rand(1) > 0.5 ? (t = -t);               // randomly select the direction with stronger probability: that is, going towards this direction is stronger than against it (see a and b below)
+
+      a = rand(1)*0.3690938549812533 + 1;     // the strength is also random!
+      b = 2-a;
+
+      v = rand(2);  w = (v > 1 ? (1 - (2-v)^c) : (v^c - 1)) * t;
+      p[x] = w * y[x];  u = w;
+
+      i = x;
+      loop(x,
+       i -= 1;
+       v = rand(2);  w += (v > 1 ? (a - (2-v)^c) : (v^c - b)) * t;
+       p[i] = w * y[i];
+      );
+
+      i = 0;
+      loop(q-x,
+       i += 1;
+       v = rand(2);  u += (v > 1 ? ((2-v)^c - a) : (b - v^c)) * t;  // reverse sign (so it doesn't look abrupt)
+       p[i] = u * y[i];
+      );
+
+     ) : (      // nope, normal phase mode here (or magnitude)
+      i = 0;
+      loop(q+1,
+       v = rand(2);
+
+       // some sort of 'logistic' curve for contrast, even though it's not... it's better since it uses conditional
+       p[i] = (t * y[i]) * (v > 1 ? (1 - (2-v)^c) : (v^c - 1));
+       i += 1;
+      );
+     );
+     j += 1;
+    );
+    y += q+1;
+    q *= 2;
+    k += 1;
+   );
+   k += 21;      // IMPORTANT NOTE: point to next 'type' (i.e pamt); works with just 1 variable because both user-stored vars and cached ones have SAME NUMBER OF ARRAYS per type!!!
+  );
+);
+
+// recompute internal vars from sliders and other cached vars to be safe
+function recache()
+(
+  // if edit mode changed, need to update sliders... (for description on each, look below when we convert *from* sliders and update variables)
+  t = mamt + slider4;
+
+  editlayer !== slider4 ? (
+    editlayer = slider4;
+
+    slider5 = t[0] * 17.371779276130073106;
+    slider9 = t[28]* (t[28] > 0 ? 57.295779513082320876798 : 114.5915590261646418);
+
+    slider6 = t[7] < 1 ? (1-1/t[7]) : (t[7]-1);
+    slider10= t[35]< 1 ? (1-1/t[35]): (t[35]-1);
+
+    slider7 = t[14];
+    slider11= t[42];
+
+    slider8 = t[21]*100;
+    slider12= t[49]*100;
+
+  ) : (
+
+    // it wasn't Edit Mode that changed, convert the sliders for the current Edit Mode to internal variables
+
+    // Amounts in dB and Degrees: how deep it can boost/attenuate and phase shift; convert here
+    t[0] = slider5 * 0.05756462732485114;
+    t[28]= slider9 * (slider9 > 0 ? 0.017453292519943295769 : 0.008726646259971648);
+
+    // The steepness of the curve (computed from slider's linearity)
+    t[7] = slider6 < 0 ? (1/(1-slider6)) : (slider6+1);
+    t[35]= slider10< 0 ? (1/(1-slider10)): (slider10+1);
+
+    // The speed at which this layer moves in time to next values
+    t[14] = slider7;
+    t[42] = slider11;
+
+    // The rate at which the speed's modulation is changed, as a percentage of the speed
+    t[21] = slider8*0.01;
+    t[49] = slider12*0.01;
+  );
+
+  i = Lbufs-42; k = mspd;
+  t = (qfftsize/srate) * 0.5;      // half of the time a FFT 'processing' with our stuff takes: fftsize/4 cause of 4x overlap
+
+  loop(2,
+   loop(7,
+    i[0] = (j = k[0] * t);         // cache_step/2
+    cache_istep[0] = 0.5 / j;
+
+    i[1] = (j = min(j * k[7], 1)); // cache_spdmod_step (k[7] is mspdmod)
+    i[2] = 1 / j;                  // cache_ispdmod_step
+    cache_istep += 1;
+    i += 3;
+    k += 1;
+   );
+   k += 21;
+  );
+  cache_istep -= 14;
+);
+
+
+
+@serialize
+// read/write the variables that are not stored in sliders (depending on Edit Mode), i.e not visible on UI
+// mamt hardcoded pointer to prevent weird (possible?) bugs with @init being called after?
+// also we need to 'refill' the time buffers and the cached vars after we load, sometimes @slider is never called after @serialize
+t = 140293;
+
+// set defaults if no preset available and set signal for @init
+file_avail(0) >= 0 ? (
+  fftsize===0 ? fftsize = -1;
+  i = 7;
+  loop(2,
+   loop(7, t[i] = 1; t[i+7] = 0.00001; t[i+14] = 1.3592778570863051786; i += 1);
+   i += 21;
+  );
+  memset(t+7*8, 1, 1023*2);  // mamt_eq
+);
+
+slider4 > 0 ? (file_mem(0, t, slider4); t += slider4 );
+t += 1;  loop(7, file_mem(0, t, 6); t += 7; );
+slider4 < 6 ? (file_mem(0, t, 6-slider4); t += 6-slider4 );
+
+file_mem(0, t, (1023+513)*2);
+fftsize > 0 && file_avail(0) >= 0 ? ( init_timebufs(); recache(); y = hfftsize );
+
+
+
+@slider
+o_srate !== srate ? ( o_srate = srate; fftsize = 0 );
+
+i = 1<<(slider1+12);
+pdc_bot_ch = 0;
+pdc_top_ch = 2;
+pdc_delay  = i;  // need to put this here due to bug instead of inside the condition below
+
+fftsize !== i ? (
+  fftsize=i;
+  hfftsize=fftsize*0.5;
+  qfftsize=fftsize*0.25;
+  ihfftsize=1/hfftsize;
+  iqfftsize=ihfftsize*2;
+
+  curblock = 0;
+  lastblock1 = 32768 + hfftsize;  // skip first quarter due to 4x Overlap (hfftsize due to stereo), then swap
+  lastblock2 = 65536 + fftsize;
+  lastblock3 = 98304 + fftsize+hfftsize;
+  window = 131072;
+  midi_len = 0;
+
+  i=0;  j=$pi*ihfftsize;  k=j*2;
+  loop(hfftsize,
+    window[i]=cos(i*k)*0.08 - cos(i*j)*0.5 + 0.42;  // Blackman Window
+    i+=1;
+  );
+  window[i] = 1;  // important
+  window_mirror = window + i;
+
+  mirror = fftsize*2 - 2;
+
+  // handle the supported samplerates here
+  srate >= 88200 ? (
+    step = ihfftsize * 1024;       // fftsize/2: only do half the spectrum for higher samplerates
+    steps = (hfftsize/1024 - 2)|0; // -2 because of incremental sin/cos optimization for phase rotation (first 2 iterations are special; take a look at the FFT code below)
+    samplerate_empty = fftsize - 2;
+    samplerate_adjust = hfftsize + 2;
+    samplerate_gui = srate*0.25;
+  ) : (
+    step = ihfftsize * 512;
+    steps = (hfftsize/512 - 2)|0;
+    samplerate_empty = 0;
+    samplerate_adjust = fftsize + 2;
+    samplerate_gui = srate*0.5;
+  );
+  step_q = sqr(step);
+
+  // reset the internal vars to zeros and init time buffers
+  memset(mtime, 0, 7*8);
+  init_timebufs();
+  y = hfftsize;  // we use 'y' to signal end position in buffer, so reset it
+);
+
+// normalization for 4x overlap for Blackman Window with Gain included -> (1/1.68) / fftsize
+normalization = ihfftsize * exp(slider2*0.1151292546497023) * 0.297619047619047619;
+
+// convert from ms to actual fft blocks it spans (with 4x overlap)
+midi_force_time = slider3*0.001*srate * iqfftsize;
+
+recache();
+
+
+
+@sample
+
+curblock >= y ? (
+  // realign & swap buffers (note: the buffer pointers are already pointing hfftsize past their base)
+  y=lastblock3;
+  lastblock3=lastblock2;
+  lastblock2=lastblock1;
+  lastblock1=curblock;
+  curblock=y - fftsize*2;
+
+  fft(curblock, fftsize);
+  fft_permute(curblock, fftsize);
+
+  /*
+     Check for MIDI signal and stuff... for info on this look below (out of this MIDI thing, which was added later)
+  */
+  midi_len > 0 ? (
+    fft_till_midi >= 0 ? (
+      fft_till_midi < 1 ? (
+        midi_len = fft_till_midi + midi_force_time*(rand(1)*0.031060037526 + 0.84469981236995) + 1;  // +/- 15%;  +1 to compensate for the -= 1 below
+
+        // Modify the speed modulation (acceleration) for all layers/types such that the 't' goes to almost +1 compared to now in midi_len time!! (that is, new time buffer with same weights)
+        // We make the speed actually have a quadratic shape, but the result should be the same; this means the closer it gets to midi_len the faster it gets etc (up to twice normal acceleration).
+        x = 0.62322880647674973 / (midi_len-1);
+        y = 1 / midi_len;
+        loop(2,
+         loop(7,
+          t = x * cache_istep[0];
+          maccel[0] = t;
+          maccel[7] = t * y;    // maccel_slope
+          maccel[14]=-midi_len; // maccel_t: -len should be enough to not be bothered by the code creating new interpolation point
+
+          maccel += 1; cache_istep += 1;
+         );
+         maccel += 21;  // for phase
+        );
+        maccel -= 56; cache_istep -= 14;  // restore
+
+        (midi_ptr += 1) < midi_end ? (fft_till_midi = midi_ptr[0]);
+      );
+      fft_till_midi -= 1;
+    );
+
+    (midi_len -= 1) < 1 ? (
+      midi_len <= 0 ? (
+        Lbufs -= 41;  // cache_spdmod_step
+
+        // Generate new random speed modulation value and slope (i.e back to normal)
+        loop(2,
+         loop(7,
+          t = rand(1)*0.693938318382530274;
+          p = rand(1)*0.693938318382530274 - t;
+          q = rand(1)*0.647260804462535513;
+
+          maccel[0] = t + p*q + 0.704964114761144905;
+          maccel[7] = p * Lbufs[0]; // maccel_slope
+          maccel[14]= q;            // maccel_t
+
+          maccel += 1; Lbufs += 3;
+         );
+         maccel += 21;  // for phase
+        );
+        maccel -= 56; Lbufs -= 1; // restore
+        fft_till_midi >= 0 ? ( midi_len = 9007199254740992 );  // set high enough value to not be bothered while looking for next fft_till_midi
+      ) : (
+        // Reduce the acceleration depending on midi_len's fractional value
+        t = 1-midi_len;
+        loop(2,
+         loop(7,
+          maccel[0] = maccel[0]*midi_len + t;
+          maccel += 1;
+         );
+         maccel += 21;
+        );
+        maccel -= 56;
+      );
+    );
+  );
+
+
+
+  /*
+     Loop through all the layers now: use moving average between linear interpolations of the random data points, but include -1 and last (end) point (because moving average needs them).
+     Moving average is a quadratic interpolation, as seen below. Note that first we loop through the 3 time buffers for each layer: we interpolate between buf1 and buf2, but need buf0 for moving average.
+     buf2 is the 'future' or next point, buf1 is the previous one, we are somewhere between buf1 and buf2... and buf0 is the buffer *before* buf1, needed for quadratic interpolation.
+     If we need to get the next time buffer for this layer (depending on its speed and current position), we simply discard buf0, and shift the other buffers (buf1 becomes the new buf0, buf2 becomes buf1) and generate new data.
+     We use the array of pointers for these buffers to avoid memcpy, so by rotating we just change the pointers themselves. Once generating the new buffer, we use the user data: contrast, amount, randomness etc.
+
+     Lastly, each layer time buffer is separate because of the different speeds, but the resulting buffer we calculate here is just one: all layers share it. It's just that we update it in-place. First we start with smallest
+     layer, and only change the 4 points for it. Then as we adjust the next layer, we also interpolate from the previous layer in this "result buffer". This in-place edit is much better and doesn't require extra temp buffers.
+  */
+  loop(2,   // types (magnitude, phase)
+   x=64; k=8;
+   mbuf[0] = 0; mbuf[1] = 0; mbuf[129] = 0; mbuf[257] = 0; mbuf[385] = 0;
+
+   loop(7, // layers
+     Lbuf0 = Lbufs[0]; Lbuf1 = Lbufs[1]; Lbuf2 = Lbufs[2];
+
+     q = mtime[0];
+     p = q - min(Lbufs[-42] * maccel[0], 0.5) + 0.5;  // (1-cache_step)/2 + q
+     y = (p - q*0.5 - 0.5)*q;
+
+     u = mbuf[0]; a = mbuf[1];
+     v = u*1.25 - a*0.25;
+     w = (a - u) * 0.5;
+
+     a = Lbuf0[0];  b = Lbuf1[0];  c = b - a;
+     mbuf[0] = v + p*c + y*(Lbuf2[0] - b - c) + a;
+     v += w;
+
+     j=x*2; mbuf += 1; i = mbuf+j;
+     Lbuf0 += 1; Lbuf1 += 1; Lbuf2 += 1;
+
+     loop(k/2,
+      t = (u + i[0])*0.25;
+      u = mbuf[0]; t -= u*0.5;
+
+      loop(2,
+       a = Lbuf0[0];  b = Lbuf1[0];  c = b - a;
+       mbuf[0] = v + p*c + y*(Lbuf2[0] - b - c) + a;
+       v += w;  w += t;
+
+       Lbuf0 += 1; Lbuf1 += 1; Lbuf2 += 1;
+       mbuf += x;
+      );
+      i += j;
+     );
+
+     // check if over the current steps in time, then shift time buffers (discard oldest) and generate new random buffer for this layer
+     q += (q-p)*2 + 1;  i = k+1;
+     q >= 1 ? (
+       // only let fractional part 'carry' to next one, so it's not a static multiplier of the FFT process/block time... more natural
+       q -= 1; Lbuf0 -= i;
+       Lbufs[0] = Lbuf1-i; Lbufs[1] = Lbuf2-i; Lbufs[2] = Lbuf0;  // Lbuf0 will be the 'new' one (was discarded) so no memcpy's
+
+       t = mtime[-3128];  c = mtime[-3121];  // t = mamt (or pamt); c = mcontrast (or pcontrast); explained in @init why it works and is faster
+       p = mamt_eq;
+
+       t < 0 ? (                                 // see if phase mode & incremental mode (it's out of loop for performance)
+         j = (rand(1)*(k+0.9999847412109375))|0; // we don't check for phase (e.g: if mamt > mcontrast) cause mag shouldn't be negative... more info @slider
+         rand(1) > 0.5 ? (t = -t);
+
+         a = rand(1)*0.3690938549812533 + 1;
+         Lbuf0 += j;  p += j;
+
+         v = rand(2);  w = (v > 1 ? (1 - (2-v)^c) : (v^c - 1)) * t;
+         Lbuf0[0] = w * p[0];
+         u = w;  b = 2-a;
+
+         loop(j,
+           Lbuf0 -= 1;  p -= 1;
+           v = rand(2);  w += (v > 1 ? (a - (2-v)^c) : (v^c - b)) * t;
+           Lbuf0[0] = w * p[0];
+         );
+         Lbuf0 += j;
+         loop(k-j,
+           Lbuf0 += 1;  p += 1;
+           v = rand(2);  u += (v > 1 ? ((2-v)^c - a) : (b - v^c)) * t;
+           Lbuf0[0] = u * p[0];
+         );
+
+       ) : (
+         loop(i,
+           v = rand(2);
+           Lbuf0[0] = (t * p[0]) * (v > 1 ? (1 - (2-v)^c) : (v^c - 1));
+           Lbuf0 += 1;  p += 1;
+         );
+       );
+     );
+     mtime[0] = q;
+
+     q = maccel_t[0] + Lbufs[-41];  // cache_spdmod_step
+     q >= 1 ? (
+       q -= 1;
+       t = maccel[0] + maccel_slope[0]*(1 - q*Lbufs[-40]);  // cache_ispdmod_step: linear interpolate the left-overs too
+
+       p = rand(1)*0.693938318382530274 + 0.704964114761144905 - t;
+
+       maccel[0] = t + p*q;
+       maccel_slope[0] = p * Lbufs[-41];  // cache_spdmod_step
+     ) : (
+       maccel[0] += maccel_slope[0];
+     );
+     maccel_t[0] = q;
+
+
+     Lbufs += 3;  // point to next triplet of buffer pointers
+     mbuf -= 513;  mamt_eq += i;
+     x *= 0.5; k *= 2;
+     mtime+=1; maccel+=1; maccel_t+=1; maccel_slope+=1;
+   );
+   mtime+=21; maccel+=21; maccel_t+=21; maccel_slope+=21;  // for phase
+   mbuf += 514;
+  );
+  mtime-=56; maccel-=56; maccel_t-=56; maccel_slope-=56;   // restore for the second buffers
+  Lbufs -= 42;  mamt_eq -= 2046;
+
+  // now go backwards and apply the EQs (put here, improves caching), then advance/restore for second buffers
+  // mtime is after peq and meq, so use it here (important in this order!)... also, add the 'extra' point past the end as a copy of the last
+  loop(2, mbuf -= 2; mtime -= 1; mbuf[1] = (mbuf[0] += mtime[0]); loop(512, mbuf -= 1; mtime -= 1;  mbuf[0] += mtime[0]));
+  mtime += 1026;
+
+
+  /*
+     The 2 buffers are completed now (magnitude & phase). Go through them with moving average smoothing again to alter the actual FFT block data.
+     We can simply put the magnitude multiplication together with normalization and in the sin/cos terms required for the phase.
+     The phase change is simply a 2D rotation for the vector composed of a 'cos' component (x) and a 'sin' component (y).
+
+     Note that we could calculate the cos/sin components at each iteration, but that's slow like this (i=sin, j=cos):
+
+       j = exp(v) * normalization;  i = sin(p)*j;  j *= cos(p);  v += w; w += t; p += q; q += u;
+
+     Instead, considering that 'p' is incremented quadratically, we can recursively calculate the sin/cos from previous sin/cos from previous values (two levels deep)...
+     Same thing with exp (for magnitude), except it makes the code actually cleaner! (instead of adding, we multiply, and only apply normalization once at start)
+
+     But first, prepare the moving average interpolators for each of the 2 buffers... interleave some things with array reads for performance...
+  */
+  x = mbuf[0]; y = mbuf[1];
+  w = (y - x) * step;
+  v = exp((y + x)*0.5 - w*1.5) * normalization;
+  curblock[0] *= v;  // DC offset
+  curblock[1] *= v;
+
+  // phases (since we quadratically increase sin/cos steps): first the linear step, then the second step on top of it (i.e use the incrementally computed sin/cos of the first step for the second's step)
+  x = mbuf[514]; y = mbuf[515];
+  w = exp(w);  t = 1;
+  q = (y - x) * step;
+  y += x - q;  y *= 0.5;
+
+  p = sin(q); q = cos(q);
+  i = sin(y); j = cos(y);
+  // i = sin, j = cos, c = old_sin, k = old_cos
+
+  // Prepare mirrored buffer also   (curblock and Lbuf0 will point to positive freq components, Lbuf1 & Lbuf2 to negative freqs...)
+  Lbuf1 = curblock+mirror;
+  curblock += 2;
+
+  // Seems the following order of calculating the steps is by far the fastest
+  loop(512,
+   v *= w; w *= t;
+   u = (mbuf[514] + mbuf[516] - mbuf[515]*2) * step_q;
+   t = exp((mbuf[0] + mbuf[2] - mbuf[1]*2) * step_q);
+
+   // Handle first 2 steps specially outside the loop due to the sin/cos incremental optimization...
+   Lbuf0 = curblock+1; Lbuf2 = Lbuf1+1;
+
+   // For some reason, it's best to put the sin/cos steps' calculations here, one after another (no parallelism?), perhaps because arrays are incredibly slow?
+   // (n is temp sin which is used in 2nd iteration calc only, then the loop only uses u, the cos of the steps)
+   x = curblock[0]; y = Lbuf0[0];
+   a = LBuf1[0]; b = Lbuf2[0];
+   rx = j * v; ry = i * v;
+   n = sin(u); u = cos(u);
+
+   // Rotate
+   curblock[0] = x*rx + y*ry;
+   Lbuf0[0]    = y*rx - x*ry;
+   Lbuf1[0]    = a*rx - b*ry;
+   Lbuf2[0]    = b*rx + a*ry;
+
+   curblock += 2;  Lbuf1 -= 2;
+
+   // 2nd special iteration: Same thing now, interleave the sin/cos incremental calculations with the stupid array reads... seems to be quite significantly faster (10% or more, wtf)
+   Lbuf0 = curblock+1; Lbuf2 = Lbuf1+1;
+
+   x = curblock[0]; y = Lbuf0[0];
+   v *= w; w *= t;
+   c = p;  k = q;
+   p = u*p + n*q;
+   q = u*q - n*c;
+   n = i;
+   a = LBuf1[0]; b = Lbuf2[0];
+   i = i*q + p*j;
+   j = j*q - p*n;
+   rx = j * v; ry = i * v;
+
+   curblock[0] = x*rx + y*ry;
+   Lbuf0[0]    = y*rx - x*ry;
+   Lbuf1[0]    = a*rx - b*ry;
+   Lbuf2[0]    = b*rx + a*ry;
+
+   curblock += 2;  Lbuf1 -= 2;  u *= 2;
+
+   // Normal iterations now, use a loop
+   loop(steps,
+    Lbuf0 = curblock+1; Lbuf2 = Lbuf1+1;
+
+    x = curblock[0]; y = Lbuf0[0]; v *= w; w *= t;
+    a = c; c = p; p = p*u - a;
+    a = k; k = q; q = q*u - a;
+    a = i; i = i*q  + p*j;  j = j*q - p*a;
+    rx = j * v; ry = i * v;
+    a = LBuf1[0]; b = Lbuf2[0];
+
+    curblock[0] = x*rx + y*ry;
+    Lbuf0[0]    = y*rx - x*ry;
+    Lbuf1[0]    = a*rx - b*ry;
+    Lbuf2[0]    = b*rx + a*ry;
+
+    curblock += 2;  Lbuf1 -= 2;
+   );
+   mbuf += 1;
+
+   // Advance the sin/cos one last time for next loop, since we have the previous 2 values with same step for p & q
+   a = c; c = p; p = p*u - a;
+   a = k; k = q; q = q*u - a;
+   a = i; i = i*q  + p*j;  j = j*q - p*a;
+  );
+  mbuf -= 512;  // restore
+
+  memset(curblock, 0, samplerate_empty);
+  curblock -= samplerate_adjust;
+
+  fft_ipermute(curblock, fftsize);
+  ifft(curblock, fftsize);
+
+  y = curblock + hfftsize;
+  window -= qfftsize;
+  window_mirror += qfftsize;
+);
+
+
+
+a = window[0]; b = window[qfftsize];
+c = window_mirror[0]; k = window_mirror[-qfftsize];
+x = spl0;
+
+spl0 = curblock[0] + lastblock1[0] + lastblock2[0] + lastblock3[0];
+
+curblock[0] = a*x;
+lastblock1[0] = b*x;
+lastblock2[0] = c*x;
+lastblock3[0] = k*x;
+
+curblock += 1; lastblock1 += 1; lastblock2 += 1; lastblock3 += 1;  x = spl1;
+spl1 = curblock[0] + lastblock1[0] + lastblock2[0] + lastblock3[0];
+
+curblock[0] = a*x;
+lastblock1[0] = b*x;
+lastblock2[0] = c*x;
+lastblock3[0] = k*x;
+
+window += 1; window_mirror -= 1;
+curblock += 1; lastblock1 += 1; lastblock2 += 1; lastblock3 += 1;
+
+
+
+/*
+   Process MIDI events here etc
+*/
+@block
+midi_end = midi_base;
+
+t = (curblock-y)*ihfftsize + 1;    // skip the 'current' FFT we are filling now (note: curblock-y is <= 0, and twice as large due to stereo, hence why half instead of quarter fftsize)
+i = -1;
+while (midirecv(x,a,b))
+(
+ /*
+    Calculate number of FFTs until the MIDI event and the 'part' of where the event is within the FFT that contains it (as a fraction); x*iqfftsize due to 4x overlap
+    Program Change: Switch fast to new random spectrum no matter the speed or where we were (useful e.g before triggering some sound)
+ */
+ a===$xC0 ? (
+  (j = x*iqfftsize + t) >= (i+1) ? (midi_end[0] = j-i; i = j; midi_end += 1);  // insert the distance to previous inserted event only if it's >= 1 FFT
+ );
+);
+
+midi_end > midi_base ? (
+ midi_base[0] -= 1;              // fix the first inserted element, since it's +1 in distance due to i being init to -1 (so it passes the check, always)
+ midi_ptr = midi_base;
+ fft_till_midi>=0 ? (            // if an event from a previous block is set for next FFT, we need to include it...
+  midi_base[0]>=1 ? midi_ptr-=1; // if our new first element is NOT on the same FFT as the previous block's event, then "include" it by making midi_ptr point before it (so it's the 'next' one), otherwise skip it!
+ ) : (
+  fft_till_midi = midi_base[0];  // no previous block event pending, so init it to our new first element
+ );
+ midi_len = 9007199254740992;    // huge value to not interfere when looking for fft_till_midi (this improves performance when no events)
+);
+
+
+
+/*
+   Process GUI stuff here (extra from sliders: EQ Amounts etc); NOTE: some variables that are not needed at a given time (i.e colors) are reused
+   NOTE: gfx_getchar is needed so that mouse_cap includes the modifiers *WHILE NO* mouse click is pressed... but we use it anyway to detect special keys
+*/
+@gfx 640 480
+mouse_x = min(max(mouse_x/gfx_w, 0), 1);
+mouse_y = min(max(1 - mouse_y/gfx_h, 0), 1);
+
+while((gt = gfx_getchar()) >= 1) (
+  gt === $' ' ? (
+    gui_edit ? (
+      smooth_width = min(abs(mouse_x - gx), 1)*2;
+      smooth_amt = mouse_y*3.93901053127937328 + 0.0130508985121949146;
+      gui_edit = 0;
+    ) : (
+      gx = mouse_x;
+      gui_edit = 1;
+    );
+  );
+  gt === 27 ? (gui_edit = 0);  // ESC
+  gt === 9  ? (gui_graph = (gui_graph < meq)*meq); // Tab
+);
+
+// right click (puts either 0 or 2 in gui_mode!); cache it in gp for now
+mouse_cap != last_mouse ? (gui_mode ~= (gp = mouse_cap & (last_mouse&2~2)));
+
+// Select which graph to display/change (based on Layer and Magnitude/Phase mode and previous view)
+// There is no += 1 at end even though each layer has +1 extra element (the -1 element); but of course the last element indexed is size-1, hence no +1
+gui_graph >= meq ? (
+  gui_size = 512;
+  gui_graph = meq + gui_mode*256.5;
+) : (
+  gui_size = 1<<(slider4+3);
+  gui_graph = meq - 2054 + gui_size + slider4 + gui_mode*511.5;  // mamt_eq - 8  (reason it's hardcoded via meq: the processing thread modifies it to traverse)
+);
+
+
+// Draw the rectangle background for smoothing, if shift is pressed OR if we're into the edit mode that changes it
+gfx_g = 0.1640625; gfx_r = gfx_b = 0;  gui_mode ? (gfx_r = 0.171875; gfx_g = 0.0859375);
+gui_edit ? (
+  gfx_x = gx*gfx_w - (gfx_y = min(abs(mouse_x - gx), 1)*gfx_w); gfx_y *= 2;
+  gfx_rect(gfx_x, 0, gfx_y, gfx_h);
+
+  // Draw the edges of the rectangle and the amount number
+  gfx_r = 0.25; gfx_g = 0.75; gfx_b = 0.336;  gui_mode ? (gfx_r = 0.8125; gfx_g = 0.594; gfx_b = 0.3642);
+
+  gt = (gfx_x -= 1) + gfx_y;
+  gfx_line(gfx_x, gfx_h, gfx_x, 0, 0);  gfx_line(gt, gfx_h, gt, 0, 0);
+
+  gy = #;  sprintf(gy, "%d", mouse_y*100 + 0.5);  gfx_measurestr(gy, last_mouse, gfx_y);
+  gfx_x = (mouse_x < gx) ? (gfx_x - last_mouse - 4) : (gt + 8);
+  gfx_y = max((1-mouse_y)*gfx_h - gfx_y, 0);
+  gfx_drawstr(gy);
+
+  // Draw the Amount meter for visual feedback, if editing it (last_mouse = width)
+  gfx_x = gfx_w*0.97;  last_mouse = gfx_w*0.025;
+  gfx_y = gfx_h*0.95;  gy = gfx_h*0.05;  gt = gfx_h*0.04;
+  loop(ceil(mouse_y*20),
+    gfx_rect(gfx_x, gfx_y, last_mouse, gt);
+    gfx_y -= gy;
+  );
+
+) : (
+  mouse_cap & 8 ? (
+    mouse_wheel ? (smooth_width = min(max(smooth_width + mouse_wheel*0.000333333333333333333, 0), 2));
+
+    gfx_x = mouse_x*gfx_w - (gfx_y = smooth_width*gfx_w)*0.5;
+    gfx_rect(gfx_x, 0, gfx_y, gfx_h);
+  ) : (
+    mouse_wheel ? (smooth_amt = min(max(smooth_amt + mouse_wheel*0.00180537982683637942, 0.0130508985121949146), 3.9520614297915682));
+  );
+
+
+  // See if user changes (with click) the respective graph we're in and change it; but interpolate if user holds click and moves mouse (else we get spiky output)
+  // also ALT key disables it (this is if user wants to get focus on the window without modifying anything)
+  (mouse_cap & 17) === 1  &&  gp===0 ? (
+    // Set min/max values for the graph
+    ga = 0; gb = 1;
+    gui_graph >= meq ? (
+      ga = -4.83542869528749594; gb = 0;
+      gui_mode ? (gb = $pi; ga = -gb);
+    );
+
+    // See if SHIFT is held, to do crude smoothing instead
+    mouse_cap & 8 ?
+    ( /*
+         This is kinda messy as hell... basically we divide the smooth_width rectangle area into 5 values, they are linearly interpolated if not exactly integer offset...
+         That's where the crux of the mess comes from, this linear interpolation based on the fraction in the index (e.g 3.5 is halfway between index 3 and 4 values)
+         Then, we find a quadratic polynomial such that the endpoints fall exactly on the rectangle's endpoints, but the middle is some sort of average with sine weights
+         for the other 2 values (since we divided it into 5), with the middle one having the most weight/impact here. The derived formula is kinda like this:
+
+         v = x1;  u = (x5 - v)*S;  w = (v*8 - x3*A - (x2+x4)*B)*S;  <-- v is gt in code, rest are just temps (x1...x5 are the five linear interpolated points we divided into)
+         t = (u*4 + w)*S;          w = (t - w)*0.5 - u;             <-- t is gfx_x, w is gfx_y, and S is the step size (1/gx) in the code...
+
+         A and B are constants for the sine weights, times 8: A = 8/(sin(pi/4)*2+1); B = A*sin(pi/4)
+
+         Temporary vars for the gfx colors/pos are used, gfx_x/y being important since will contain the incremental values in the quadratic smooth. Others are temps.
+         last_mouse used as cache value as well, since it gets re-assigned later anyway...
+         Note that in the actual code, the first 'w' is halved (hence why the A and B constants are halved as well)
+      */
+      gy = mouse_x * gui_size;
+
+      // Point 2
+      last_mouse = smooth_width*gui_size*0.25;
+
+      gfx_x = max(gy - last_mouse, 0);  gfx_y = gfx_x|0;  gfx_g = gui_graph[gfx_y];
+      gfx_y = gfx_g + (gui_graph[min(gfx_y+1, gui_size)] - gfx_g)*(gfx_x-gfx_y);
+
+      // Point 4
+      gfx_x = min(gy + last_mouse, gui_size);  gfx_b = gfx_x|0;  gfx_g = gui_graph[gfx_b];
+      gfx_y = (gfx_y + gfx_g + (gui_graph[min(gfx_b+1, gui_size)] - gfx_g)*(gfx_x-gfx_b))*1.1715728752538099;
+
+      // Point 1
+      gfx_x = max(gy - (last_mouse*=2), 0);
+
+      gp = (gfx_x+0.5)|0;  // set the start pointer index now since we already calculated the above
+      gfx_r = gp - gfx_x;  // this is how much we should adjust initial value, depending on rounding fraction
+
+      gt = gfx_x|0;  gfx_g = gui_graph[gt];
+      gt = gfx_g + (gui_graph[min(gt+1, gui_size)] - gfx_g)*(gfx_x-gt);
+
+      // Point 5
+      gfx_x = min(gy + last_mouse, gui_size);
+
+      gx = ((gfx_x+0.5)|0) - gp;  // this is how many iterations in the loop...
+
+      gfx_b = gfx_x|0;  gfx_g = gui_graph[gfx_b];
+      gfx_b = gfx_g + (gui_graph[min(gfx_b+1, gui_size)] - gfx_g)*(gfx_x-gfx_b) - gt;
+
+      // Point 3  (gfx_g will be 1/gx temp)
+      last_mouse = gy|0;  gfx_g = gui_graph[last_mouse];
+      gfx_y = (gt*4 - gfx_y - (gfx_g + (gui_graph[min(last_mouse+1, gui_size)] - gfx_g)*(gy-last_mouse))*1.6568542494923802 + gfx_b) * (gfx_g = 1/gx);
+
+
+      // we calculate gfx_x and gfx_y, but also halfway need to adjust gt & gfx_y due to fraction @ rounding (see above)... meh, ugly mess again
+      gfx_x = (gfx_b*gfx_g + gfx_y) * gfx_g*2;
+
+      gt += (gfx_x*gfx_r*0.5 - gfx_y)*gfx_r;  // this adjusts!! (gfx_r = fraction)
+      gfx_y = (sqr(gfx_r) + 0.5)*gfx_x - gfx_y;
+
+
+      // gah finally done with the stupid polynomial... set pointer properly and smooth... but small amount, since we do it gradually in time
+      gp += gui_graph;
+
+      // curve for time smoothing: in the number of seconds specified, the fade to the smoothed curve goes to 95% (log(0.05)); more time than that, and it approaches 100%
+      gfx_r = exp((last_time - time_precise()) * smooth_amt);
+
+      loop(gx,
+        gp[0] = min(max(gt + (gp[0] - gt)*gfx_r, ga), gb);
+        gp += 1;  gt += gfx_y;  gfx_y += gfx_x;
+      );
+
+
+    // Here it's plain click, modify the graph
+    ) : (
+      gp = (mouse_x * gui_size + 0.5)|0;  last_time = gb-ga;   // last_time = range
+      gfx_r = (gx - mouse_x)*gui_size * (last_mouse & 1);      // only interpolate if last mouse was click too
+      gfx_x = sign(gfx_r);  gfx_r = (abs(gfx_r) + 0.5)|0;
+
+      gfx_r ? ( gfx_y = ((gy - mouse_y)*last_time) / gfx_r );
+      gfx_g = mouse_y*last_time + ga;
+
+      gp += gui_graph;  gfx_b = last_time/gfx_h;
+      loop(gfx_r+1,
+        gp[0] = min(max(gfx_g + (rand(1)-0.5)*gfx_b, ga), gb); // add some quantization randomness (if user doesn't have enough precision)
+        gp += gfx_x;  gfx_g += gfx_y;
+      );
+    );
+    gx = mouse_x;
+    gy = mouse_y;
+  );
+);
+
+
+// Draw the info
+gfx_x = gfx_w*0.02;
+gfx_y = gfx_h*0.02;
+gui_mode ? (gfx_r = 1; gfx_g = 0.9225; gfx_b = 0.75025; gfx_drawstr("Phase ")) : (gfx_g = 1; gfx_r = gfx_b = 0.667; gfx_drawstr("Magnitude "));
+gui_graph<meq ? gfx_printf("Range Amount (Layer %d)", slider4+1) : gfx_drawstr("Equalizer");
+
+gt = 1 / gui_size;
+gp = #; gui_graph<meq ? sprintf(gp, "%d%%", mouse_y*100) : (gui_mode ? sprintf(gp, "%d deg", mouse_y*360 - 180) : sprintf(gp, "%d dB", mouse_y*42 - 42));
+sprintf(gp, "%s | %5d Hz |%3d", gp, (mouse_x+(gt*0.5))*samplerate_gui*(mouse_x<gt ? mouse_x*gui_size : 1), (smooth_amt+0.00664415414420195195)*25.387086225311624);
+gfx_x = gfx_w*0.96 - (gfx_measurestr(gp, gfx_x, gfx_y); gfx_x);
+gfx_y = gfx_h*0.98 - gfx_y;
+gfx_drawstr(gp);
+
+
+// Draw the Graph of the layer and mode we're currently in
+gfx_g = 1; gfx_r = gfx_b = 0;  gui_mode ? (gfx_r = 1; gfx_g = 0.75; gfx_b = 0.3046875);
+gfx_x = 0; gt *= gfx_w;
+
+gui_graph < meq ? (
+  gfx_y = (1-gui_graph[0])*gfx_h;
+
+  loop(gui_size,
+    gui_graph += 1;
+    gfx_lineto(gfx_x+gt, (1-gui_graph[0])*gfx_h, 1);
+  );
+) : (
+  gui_mode ? (
+    last_mouse = gfx_h*0.15915494309189533577;
+    gfx_y = ($pi - gui_graph[0])*last_mouse;
+
+    loop(gui_size,
+      gui_graph += 1;
+      gfx_lineto(gfx_x+gt, ($pi - gui_graph[0])*last_mouse, 1);
+    );
+  ) : (
+    last_mouse = gfx_h*-0.2068068961444056322;
+    gfx_y = gui_graph[0]*last_mouse;
+
+    loop(gui_size,
+      gui_graph += 1;
+      gfx_lineto(gfx_x+gt, gui_graph[0]*last_mouse, 1);
+    );
+  );
+);
+
+last_mouse = mouse_cap;
+last_time = time_precise();
+mouse_wheel = gp = 0;

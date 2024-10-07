@@ -1,0 +1,4262 @@
+<REAPER_PROJECT 0.1 "6.34-beta/macOS-arm64" 1628640123
+  RIPPLE 0
+  GROUPOVERRIDE 0 0 0
+  AUTOXFADE 3
+  ENVATTACH 0
+  POOLEDENVATTACH 0
+  MIXERUIFLAGS 11 49
+  PEAKGAIN 1.9487171002726
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 3592.589 0 0
+  MAXPROJLEN 0 600
+  GRID 3198 8 1 8 1 0 0 0
+  TIMEMODE 5 0 5 24 2 -1 -1
+  VIDEO_CONFIG 0 0 256
+  PANMODE 6
+  CURSOR 8.55777736544573
+  ZOOM 1.11568265752338 0 0
+  VZOOMEX 0 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 23.976024 100 40 1000 300 0 0 1 0 0
+  MIDIEDITOR 36864 0 0
+  LOOP 0
+  LOOPGRAN 0 4
+  RECORD_PATH "media" ""
+  <RECORD_CFG
+    ZXZhdyAAAA==
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE "/Volumes/GoogleDrive/Shared drives/LA SWITCH Shared Drive/LS GD Watch Folder"
+  RENDER_PATTERN "LS_1m$regionnumber_$region_$year-$month-$day_Rough Cut July 08 JK_$starttc_FullMix"
+  RENDER_FMT 0 2 0
+  RENDER_1X 0
+  RENDER_RANGE 3 0 0 18 1000
+  RENDER_RESAMPLE 9 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 8
+  RENDER_DITHER 0
+  RENDER_NORMALIZE 7 0.944061
+  TIMELOCKMODE 0
+  TEMPOENVLOCKMODE 0
+  ITEMMIX 0
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 96000 1 0
+  <RENDER_CFG
+    RlZBWAAAAAAAAAAAAAgAAAAAAACAAAAAgAcAADgEAAAK179BAQAAAF8AAAA=
+  >
+  LOCK 3
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    FREQ 800 1600 1
+    BEATLEN 4
+    SAMPLES "" ""
+    PATTERN 2863311530 2863311529
+  >
+  GLOBAL_AUTO -1
+  TEMPO 120 4 4
+  PLAYRATE 1 0 0.25 4
+  SELECTION 1048.89457017522 1051.2734841025444
+  SELECTION2 1048.89457017522 1051.2734841025444
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 0 0 0 0 0 0 0 0 0
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 4 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_FX 1
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {A3E55A5B-3488-8B41-AB45-B211B3F18732}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {B6EBAE99-E080-1A4C-8F0F-EAA8D9418354}
+    ACT 0 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  MARKER 1 0 "general, everything is from his perspective so music should be as interior as possible and subjective" 0 0 1 B {8E1921E1-913E-8348-BC49-BC6B25960816}
+  MARKER 1 13.59989583333341 Opening 5 0 1 B {22AB7ADD-AD5F-B541-B945-559FA3D8DAE3}
+  MARKER 1 243.53638683776154 "" 5 0 1 B
+  MARKER 2 33.36533333333178 "mystery we dont really know what is going on. Tense. " 0 0 1 B {3986A160-B22E-D34A-9D6C-8FB0C283E755}
+  MARKER 3 73.09143611090111 "keep in contact with SFX about who does what. I will generally lead the charge" 0 0 1 B {4B23B0B7-DCBA-4047-AD99-7E0262C996BD}
+  MARKER 4 74.60266666666058 "vinegaroon sound is more impressionistic than literal" 0 0 1 B {26A8C6E4-C474-504A-8B2E-D8A66F77EEFF}
+  MARKER 5 81.00926263611721 "whole film is impressionistic version of how this guy is hearing the world. Sound is less literal and more like what is going on in his head" 0 0 1 B {5CA2A67F-C561-8644-AF5D-9812B92E4EE0}
+  MARKER 6 120.15277083332815 "all drone no propulsion. anti action film, opposite of what you expect" 0 0 1 B {BFFA3C59-DBD0-F541-ABFB-CECE260193BD}
+  MARKER 7 129.42210416666759 "little button after the shot" 0 0 1 B {C64BA9B9-D981-364C-B8E8-DD8C5B28D941}
+  MARKER 8 141.4862429462967 "this little was can happen at the title card not on his face" 0 0 1 B {9A05C043-1203-B44A-A1A7-49C49D8427FE}
+  MARKER 9 174.56193750003789 "possibly less music and more ambient sound of typeing and office come through. feels a little too emotional. likes the instrumentation " 0 0 1 B {AF87C6F5-C5D5-074D-824C-275D738E8F4E}
+  MARKER 10 220.00690515746993 "shift here. flashback in different time space" 0 0 1 B {B738FF23-2F85-2D47-A639-FCB3333A8F1E}
+  MARKER 11 236.85714500334552 "brother theme/sound/fabriacted sound" 0 0 1 B {043B7262-210D-BE43-B05C-442B484EC8C3}
+  MARKER 2 296.03275447225178 "Bus Travel" 5 0 1 B {C4AA3DFB-2C9D-1940-A771-43C04929B29C}
+  MARKER 2 482.0426666666221 "" 5 0 1 B
+  MARKER 12 303.39595116119477 "music creeps in as reality becomes less so " 0 0 1 B {A98BF1D1-C241-C045-B12E-40EF9CC852A5}
+  MARKER 13 332.00381250011634 "musical fading or blurring" 0 0 1 B {C249B347-0A01-894D-949B-E524B415DCF6}
+  MARKER 14 346.22473947468899 "they like this cue as is and i own it" 0 0 1 B {9ECABBB9-530C-DB44-BB98-BE32C43C93F1}
+  MARKER 15 364.10972063884338 "temp is from blue ruin lets look into" 0 0 1 B {F48E374F-7672-CD4C-B089-3D8F8BC098E6}
+  MARKER 16 415.983791204196 "how does music function here in relation to tilt shifted cinematography" 0 0 1 B {8D5C3F88-7C3E-6B4D-B6EF-47DD3A891DC4}
+  MARKER 17 441.15928083024176 "a bit of a souring of hope here" 0 0 1 B {D8285336-B515-4B4F-A10B-AB5D3FD29484}
+  MARKER 18 459.64222077376661 "no music or if final SFX could start audio reactive thing" 0 0 1 B {583B6626-C6F2-5D43-AA78-5033EC7DC047}
+  MARKER 3 599.22526627083005 "Out of Time" 5 0 1 B {EE3E2BAA-3D31-114C-AD6E-A77F55CF01D7}
+  MARKER 3 665.90935416680691 "" 5 0 1 B
+  MARKER 19 626.47762500001818 "brother theme" 0 0 1 B {C355B3FF-3AA9-4A4E-A08E-8364FAA5F169}
+  MARKER 20 634.48335912554978 horrory 0 0 1 B {F5E5F10E-5E4B-F148-B061-2AE27FEE56E5}
+  MARKER 21 641.10003044771145 "distortion and disintegration" 0 0 1 B {8FE18636-5262-7C49-9D83-720EF7BC4AC8}
+  MARKER 68 644.46606258123597 "" 0 0 1 B {3A96988E-A13F-FC48-967D-865DAE99BFF0}
+  MARKER 69 655.8678688440084 "" 0 0 1 B {C97D83AD-0CD5-EE46-A050-3478D0E87887}
+  MARKER 4 976.96850645103427 "Tractor Pull " 5 0 1 B {EDD7A85B-7729-3341-A5A4-3F87BD09F38A}
+  MARKER 4 1117.8919512737702 "" 5 0 1 B
+  MARKER 22 979.12659902106088 "maybe start earlier " 0 0 1 B {71D9584A-FDB9-B741-A45A-C1EA25E9A651}
+  MARKER 23 1006.0666666666863 "modular crazy cfc cue? " 0 0 1 B {E065DEB0-051C-A54E-BFCD-0C0E498D1332}
+  MARKER 24 1025.180294465428 "maybe some propulsion" 0 0 1 B {4572F04E-7784-0244-AAEE-62DBFCABD668}
+  MARKER 25 1097.1599999993507 "audio reaction here similar to porch" 0 0 1 B {4B8D4669-1AD9-6241-B68D-68DA791F84D2}
+  MARKER 5 1185.5808750007764 "Blue Chip Doc" 5 0 1 B {9ACB62AB-4256-B148-B23D-086DBBB71D65}
+  MARKER 5 1214.11650000081 "" 5 0 1 B
+  MARKER 26 1205.9930624999888 "brother motif" 0 0 1 B {C7CB8574-821B-9240-8FB7-3970BA534602}
+  MARKER 27 1306.6315000296906 "gilded lily" 0 0 1 B {AD295531-C3B8-8945-AAEB-97973F985E0D}
+  MARKER 6 1569.7569166679125 Tea 5 0 1 B {C427895A-3B7F-5447-B6FE-4312343F1571}
+  MARKER 6 1600.6816458346159 "" 5 0 1 B
+  MARKER 28 1579.8597291665471 "maybe start a bit earlier" 0 0 1 B {E51562C1-C166-DB41-94AF-11C53D7E2A49}
+  MARKER 29 1592.1651354532132 'brother theme?! gunfire? Sound particles increasing "musical gunfire"' 0 0 1 B {67C60BE0-BC28-7C48-8B69-FC5B0E76ED3C}
+  MARKER 30 1594.8267987499203 "first moment of madness theme" 0 0 1 B {C0C8CC4F-B716-1541-88E5-49D3BADD564D}
+  MARKER 7 1739.6438958347869 "Rear View" 5 0 1 B {A5B7986A-E04B-2949-AD3A-A87F29E79F55}
+  MARKER 7 1762.9522926827806 "" 5 0 1 B
+  MARKER 31 1758.0438958331592 "callback to vinageroon sound, maybe comes from rain" 0 0 1 B {BC59E12E-481A-B74C-A9F0-CB190F7C16A6}
+  MARKER 8 2245.483333335405 "Coleman Lamp" 5 0 1 B {8210E462-20A7-944A-9A55-D3D0B6586D96}
+  MARKER 8 2350.1995000021984 "" 5 0 1 B
+  MARKER 32 2276.1606666663765 "opening credits similarity" 0 0 1 B {61DE97A5-9EE1-D641-9FB8-6BF90A5BC072}
+  MARKER 33 2283.8833333329703 "combo of opening credits and when dad and son first meet. there is hope a little bit" 0 0 1 B {7A9BA8E6-2F0E-EC40-B906-8076B3A59041}
+  MARKER 34 2349.9953333323465 "maybe a quick audio reaction button" 0 0 1 B {51606180-DF13-E64C-A07B-031463E7E75B}
+  MARKER 9 2521.6856458357424 "A Scanner" 5 0 1 B {535B3D0D-C4ED-4446-B63A-7F199391F517}
+  MARKER 9 2570.3555439450993 "" 5 0 1 B
+  MARKER 35 2564.2605737906961 "keep energy a little longer" 0 0 1 B {5CFCDE6D-2E74-EE4A-8083-B54480540893}
+  MARKER 36 2570.3555439450993 "can have some crossover into needle drop. check key and get final needle drop" 0 0 1 B {33BCFA09-79BF-6840-B278-4A625D79B78B}
+  MARKER 37 2571.529020525903 "relative minor" 0 0 1 B {36D8EB63-E540-254E-B8DE-A88355BE498D}
+  MARKER 10 2600.6198646086623 "Shooting the Buck" 5 0 1 B {D02C27DB-3CC1-334B-8281-B8C25D606010}
+  MARKER 10 2718.3827649828718 "" 5 0 1 B
+  MARKER 38 2606.6775624999277 "audio reactive maybe? " 0 0 1 B {6FDFEA1B-7DE3-DF4E-959A-B6F46DC7B4CB}
+  MARKER 39 2675.7613232346812 "a little more heavyhanded throughout" 0 0 1 B {ED4C0ABF-05EA-CC46-860C-93A9B1AE0FE7}
+  MARKER 40 2710.1871395298717 "pulsing heart audio reaction with a rit" 0 0 1 B {028A3592-69C3-4D42-9AE6-B74177DCD72F}
+  MARKER 41 2716.6409638797822 "hard out ish" 0 0 1 B {B7654021-199F-1948-9761-FCF15BF72F44}
+  MARKER 42 3300.5075207797163 "what if this was semi real" 0 0 1 B {AEC93737-7F10-8D43-AB6B-D97ACAE3BA92}
+  MARKER 43 3376.2336874993275 "thumping of music becomes more? room tone goes away? possible dub mix thing" 0 0 1 B {F5047B46-7834-8145-80E0-4E3B28B3784C}
+  MARKER 11 3465.5657133412992 "Handing Over the Heart" 5 0 1 B {910A3ADD-3592-3742-928B-5D805A9AB010}
+  MARKER 11 3502.8732083369405 "" 5 0 1 B
+  MARKER 44 3465.5657133412992 "music comes in when she leaves" 0 0 1 B {40C858F1-BD72-FC49-A9D5-4DEBBF7FD135}
+  MARKER 45 3492.7465397333826 "temp cue for madness is great" 0 0 1 B {13D2936E-632E-CF43-B897-22E48483A8BE}
+  MARKER 46 3498.0046561739177 tongues 0 0 1 B {6F00A140-B98D-184B-85C7-67F3F707E292}
+  MARKER 47 3500.5421144140605 "how should end or really disturbing here?" 0 0 1 B {28CD6611-0B02-254A-A346-BC8E8624E9B0}
+  MARKER 12 3502.8732083369405 Crashing 5 0 1 B {B196968D-7C3D-E74A-BF66-B5D6FFF56293}
+  MARKER 12 3619.8440000037499 "" 5 0 1 B
+  MARKER 48 3532.7373358044329 "end of swell on arial" 0 0 1 B {AC14F23B-37F6-8E42-93FF-BA04D69C4091}
+  MARKER 49 3552.3069407074468 "bit of rhytm" 0 0 1 B {9427E130-AE7F-EE44-8B8D-82CF271532E6}
+  MARKER 50 3579.4008124999555 "maybe some chord changes in here" 0 0 1 B {D90D90F7-7AFD-FD4F-8761-4623430AF73B}
+  MARKER 51 3618.2680357087938 "could be hard cut or soften under car driving away" 0 0 1 B {50876BEE-F062-D240-8248-8525215EBCFA}
+  MARKER 13 4009.0035497210615 "Sniper Practice" 5 0 1 B {E5329FA1-E94E-E049-A26F-DB14FBA47996}
+  MARKER 13 4152.6073784320561 "" 5 0 1 B
+  MARKER 52 4035.9099374996317 "non reality vignette" 0 0 1 B {5DDF9D5F-2091-3F46-AE36-F83FDE62E5E2}
+  MARKER 53 4058.5126041660851 "sympathetic a bit" 0 0 1 B {990E1F46-793B-8343-A2DB-358F29A58A6C}
+  MARKER 54 4215.906750849419 "metaphor with vingegaroon" 0 0 1 B {4B0FA81A-726E-8341-A1CA-E8A01E7CAF3C}
+  MARKER 14 4236.4512484826846 "Take the Shot" 5 0 1 B {5E625D74-38FA-6B49-90C3-9AD99420CAE6}
+  MARKER 14 4336.3708541687311 "" 5 0 1 B
+  MARKER 55 4284.0147291683243 "callback to deer trees but blurry" 0 0 1 B {67ADA5C2-9E80-2145-A7E5-BE7E93CA42CF}
+  MARKER 56 4300.5910825251613 "chopping preceeds picture maybe even foley too and audio reactivity" 0 0 1 B {F8AFEBB7-27D3-6F4D-ABD2-2A44752DA769}
+  MARKER 57 4311.2256903228636 "audio reactivty metaphor" 0 0 1 B {B0098239-D474-4649-ABAD-89934B442080}
+  MARKER 15 4374.5478541683615 "Hunting Again" 5 0 1 B {3CDE369F-134A-9540-BA07-BC054C8362A0}
+  MARKER 15 4454.009458334287 "" 5 0 1 B
+  MARKER 58 4381.0052440962827 "this whole thing is a mix of reality and non, how can we from a SFX standpoint" 0 0 1 B {CBF75CAD-928E-0B44-841A-F0E6D43A1324}
+  MARKER 59 4384.8331301510962 "ice forming sounds maybe can represent mind breaking? sound particles? " 0 0 1 B {7E77B2A9-89F4-3644-A868-23C47E1DD42C}
+  MARKER 60 4387.3160832677322 "granular stuff that is non real for room tone? " 0 0 1 B {91ED8BFD-A95B-CD41-AD7D-C3A31F867A92}
+  MARKER 61 4398.9031978120329 "instead of music throughout we have big changes of sound or something" 0 0 1 B {F25E2747-793C-ED42-8360-184E17C09945}
+  MARKER 62 4424.5603800172712 "music for sure in here and feeling like music" 0 0 1 B {ADD65D96-D38C-A54D-ACF9-50F5BFC92C5A}
+  MARKER 16 4705.3553749985731 "Last Sheriff" 5 0 1 B {4FE7D6ED-C6D6-054D-BE8B-4F7CDECC19DE}
+  MARKER 16 4794.2402708310765 "" 5 0 1 B
+  MARKER 63 4754.0167083349506 "brother theme" 0 0 1 B {920BDDFE-035C-9646-A2DF-A94480B0F366}
+  MARKER 64 4757.9207083350802 "father theme? " 0 0 1 B {A2CFB7B6-FD3D-FA4A-A64D-23EB74CB7385}
+  MARKER 65 4783.192312500335 "pulsing a bit coffee motif" 0 0 1 B {6D8D4A90-0EF2-264C-BB4D-CB7A368153F4}
+  MARKER 66 4832.3414923961864 "music starts as title card fades or after" 0 0 1 B {39EB87E6-EBB4-A74F-AC5A-E13B453E9092}
+  MARKER 17 4832.5116332838843 Fin 13 0 1 B {D41B9FBE-63A9-B345-8D12-F082441AA5D8}
+  MARKER 17 4972.6343333333325 "" 13 0 1 B
+  MARKER 67 4857.7317083349344 "wants this to be from score" 0 0 1 B {D51AD426-C407-CE4D-B8BB-801D894B1E13}
+  <PROJBAY
+  >
+  <TRACK {54A06489-38B9-4447-A8CD-C479DAAD0E90}
+    NAME "Tempo Map"
+    PEAKCOL 33554431
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {54A06489-38B9-4447-A8CD-C479DAAD0E90}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 720 4 720 436
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 5293
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0 0 5 0 0 0
+      FADEOUT 5 0 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {6ADA042E-5444-CB4E-9158-7904F1D8042E}
+      IID 1068
+      NAME "Tempo Mapping - Tempo Mapping La Switch_Rough_Cut_ July 08_JK.mid"
+      VOLPAN 1 0 1 -1
+      SOFFS 0 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {06974490-19DE-114C-AA46-34F2A94A2F05}
+      <SOURCE MIDI
+        HASDATA 1 480 QN
+        CCINTERP 32
+        POOLEDEVTS {27228F57-CD97-1446-A3FB-B5DD27141E4D}
+        <X 0 0 0 0 3 "Tempo Mapping"
+          /wNUZW1wbyBNYXBwaW5n
+        >
+        <X 0 0 0 0 4 "Tempo Mapping"
+          /wRUZW1wbyBNYXBwaW5n
+        >
+        <X 0 0
+          /1kCAAA=
+        >
+        <X 0 0 0 0 6 "Scene - Start of Movie"
+          /wZTY2VuZSAtIFN0YXJ0IG9mIE1vdmll
+        >
+        E 0 90 3c 50
+        <X 480 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 160 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 561 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1681 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 962 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 960 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 962 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 960 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 962 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2802 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4164 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5125 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1803 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3363 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4604 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1482 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 37277 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7889 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9569 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7767 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11452 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2122 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3844 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8568 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11572 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6407 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5085 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9009 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3083 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3765 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3763 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7127 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4926 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4004 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1281 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2042 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1081 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2202 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6206 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5686 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7007 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6526 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7609 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15055 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 17337 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7607 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4364 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5126 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 36916 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7168 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10850 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9410 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6607 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4965 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2322 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5807 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 31791 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10050 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9930 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13093 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 21381 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 21502 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 39519 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 600 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 521 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6286 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5446 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3925 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2722 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4525 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3283 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5165 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8048 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10691 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 52893 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 16536 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9851 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12692 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5365 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4164 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5566 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3323 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13694 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10130 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2803 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5005 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6526 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2724 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11651 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2122 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7447 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 30591 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15896 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 63343 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 43243 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6207 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3083 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4444 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4805 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3884 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2883 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 18378 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3363 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4325 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4364 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5846 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4885 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1841 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2523 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11131 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10971 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2162 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2002 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1962 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3083 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5485 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2844 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1721 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1601 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8008 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9130 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 21061 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5765 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15937 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6966 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8608 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2724 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8248 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7207 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4164 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12572 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6086 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 281 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 320 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3243 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 481 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2202 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3283 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6006 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4485 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2282 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 22623 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 37797 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 24746 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1921 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1281 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2804 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1841 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2122 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1883 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3043 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6126 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12372 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3443 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1481 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5886 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2723 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3243 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4645 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7928 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4484 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6086 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4886 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7727 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3884 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6686 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12654 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13453 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7687 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 16337 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15015 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5565 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11211 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2203 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1681 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2563 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11211 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7688 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 22943 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8969 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1801 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4565 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 28588 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11011 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1882 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5165 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6286 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4165 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3403 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4685 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4925 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3403 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5165 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3564 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4124 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2883 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6686 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2203 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4685 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4644 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6046 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7929 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8368 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6927 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1922 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 16736 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2002 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2563 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7167 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10651 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2642 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1161 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1563 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8848 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8328 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3163 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11132 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3083 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2122 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5166 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1641 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6928 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6886 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8008 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5285 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5967 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6966 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4806 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3723 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10650 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9450 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4124 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 14214 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2964 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11771 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3243 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 21903 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 23783 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 45285 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3804 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7407 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3805 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 14374 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3323 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11692 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6566 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5486 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5445 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4124 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3123 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4325 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3643 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10491 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6566 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10812 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3483 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3323 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6567 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6727 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8008 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2442 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11652 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 14814 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7609 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3603 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3563 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2964 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7487 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7167 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2282 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3404 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1721 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2603 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3764 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2642 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5967 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 91491 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6206 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 23103 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9129 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 18659 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11371 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6046 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11612 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11571 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 44766 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5565 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15215 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11612 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6166 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5245 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3724 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3163 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1481 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 161 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1601 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2082 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4365 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3484 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 30270 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9249 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8048 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5926 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3603 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4044 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8208 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3845 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5645 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5366 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4564 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2804 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7967 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2803 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6727 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10330 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7568 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15055 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2122 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3884 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2202 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5005 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4044 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1041 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2082 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11011 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5205 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2763 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1322 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2082 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1641 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4686 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3123 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1481 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2563 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7367 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2202 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3804 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4484 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1041 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1121 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1523 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3123 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2242 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4004 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2042 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3043 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1601 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2162 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7087 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5526 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5806 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10490 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4565 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8849 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11091 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2723 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6206 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2643 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2442 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7608 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7287 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10530 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 23785 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6006 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8608 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3243 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4485 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 25906 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10090 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 22142 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2042 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7607 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6367 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 37798 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7607 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5927 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4924 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11171 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10130 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 52813 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8248 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6607 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2642 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10691 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 25385 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 23424 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 20140 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 19419 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2122 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10531 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4244 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4645 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4564 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 681 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 440 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 521 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 440 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 360 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1921 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1282 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3203 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 440 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 721 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2402 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1442 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1922 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1842 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1962 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2322 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7648 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13933 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8730 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13893 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3844 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13013 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3003 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1001 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2082 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3323 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15496 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12693 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5005 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5125 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7928 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8408 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 841 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 440 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 601 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1081 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6527 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11411 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11612 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15375 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6927 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8288 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2643 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 34194 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13093 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2242 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1521 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3244 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7047 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13293 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15095 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8488 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5245 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4044 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9731 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7767 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4765 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4885 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2842 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2363 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9089 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5646 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12172 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15255 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10771 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5165 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8088 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4444 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4325 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6526 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3003 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7769 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8248 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2602 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4645 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11091 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8969 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5885 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3725 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4844 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11371 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5647 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5005 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3403 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2802 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12012 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3965 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4884 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3764 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7768 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6648 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5685 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7367 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 13413 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 19901 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 14894 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10010 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5807 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6286 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 20940 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8569 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3003 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2803 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3003 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1121 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2883 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1361 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10611 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12412 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12292 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10692 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 30710 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2682 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2443 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3283 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3724 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3884 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3844 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2882 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3964 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5325 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5085 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4125 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10330 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7888 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7407 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8849 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11171 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1883 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6046 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3443 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 520 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1281 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2002 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1162 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 720 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1402 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1281 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1281 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1883 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4084 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6086 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 12452 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6126 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4285 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4804 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4004 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1843 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2562 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 10330 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11371 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 21943 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 17417 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6206 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5365 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5406 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9729 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4485 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 32073 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9649 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 33153 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 39600 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5485 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4485 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4524 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4165 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5365 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2923 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4004 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 8568 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 15937 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 7287 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5445 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3965 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5725 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6526 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 16417 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 22462 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11051 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3805 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5805 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1882 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5885 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4765 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11531 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 3204 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 14334 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6446 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 5687 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 6566 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2923 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 9289 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 4204 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 11452 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 41081 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 136176 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1561 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1322 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 1761 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 2243 0 0 0 6 "Scene - ##"
+          /wZTY2VuZSAtICMj
+        >
+        <X 40 0 0 0 6 "Scene - End of Movie"
+          /wZTY2VuZSAtIEVuZCBvZiBNb3ZpZQ==
+        >
+        <X 167108 0 0 0 6 "Scene - End of Movie"
+          /wZTY2VuZSAtIEVuZCBvZiBNb3ZpZQ==
+        >
+        E 140402 80 3c 40
+        E 1 b0 7b 00
+        CCINTERP 32
+        CHASE_CC_TAKEOFFS 1
+        GUID {2857299F-856C-B443-9ADC-934B638D4D6F}
+        IGNTEMPO 0 120 4 4
+        SRCCOLOR 1
+        VELLANE -1 60 0
+        VELLANE -2 133 60
+      >
+    >
+  >
+  <TRACK {B32A2B44-3751-CC4F-AE48-BDA69EA1BE1E}
+    NAME "FILM ASSETS"
+    PEAKCOL 31869355
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {B32A2B44-3751-CC4F-AE48-BDA69EA1BE1E}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {BD611C77-7272-4845-89D8-0BE712E78748}
+    NAME Video
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 0.0000001273943 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {BD611C77-7272-4845-89D8-0BE712E78748}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4972.6343333333334
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {51E3B41E-ADEE-2948-A1B8-DF0EA0F724CC}
+      IID 2
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FCF50C01-DE96-3F4E-AC21-B7C7433FDB12}
+      <SOURCE VIDEO
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Footage/La Switch_Rough_Cut_ July 08_JK.mp4"
+      >
+    >
+  >
+  <TRACK {46335D16-89E3-7146-9EF7-3CD8279D4CC6}
+    NAME "Video [chan 1]"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {46335D16-89E3-7146-9EF7-3CD8279D4CC6}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {DA70BF15-27FE-0647-B8B5-A0DA744034F3}
+    NAME "Video [chan 2]"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {DA70BF15-27FE-0647-B8B5-A0DA744034F3}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {56A68383-6E6C-4E41-9FF5-1BF4012337DF}
+    NAME Dialogue
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    WIDTH 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {56A68383-6E6C-4E41-9FF5-1BF4012337DF}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 4972.6343333333334
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {547AB944-8CBE-1D48-86A7-5D447A44D1FF}
+      IID 3
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 1]"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CEA5DB2B-97B3-4E43-A6C2-427F6EB45EC0}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 1].wav"
+      >
+    >
+  >
+  <TRACK {3E08F9A0-F849-2645-9A4B-A6C02C68F674}
+    NAME SFX
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {3E08F9A0-F849-2645-9A4B-A6C02C68F674}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 717.33193750020428
+      SNAPOFFS 1
+      LENGTH 24.2305416666951
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CC13303D-6802-8440-9368-0813EC690C1F}
+      IID 911
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 717.33193750020428
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {03628649-4CF1-BB46-834C-70458AC7BE18}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 779.08841666694639
+      SNAPOFFS 1
+      LENGTH 5.42143750000537
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F166D323-D58B-304B-8069-84AAD1154D74}
+      IID 915
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 779.08841666694639
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4453DD4A-8391-3844-8EF1-A737E95646B5}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2113.410291668577
+      SNAPOFFS 1
+      LENGTH 15.71541666668463
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {00E3E9CB-5EB8-674A-A967-709380E3D16F}
+      IID 927
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2113.410291668577
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {3B517807-6B19-3B43-B41B-AF03515030EE}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2849.5186041694765
+      SNAPOFFS 1
+      LENGTH 2.10000000000127
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {804544B3-AE34-DB46-99E5-E1A79E15CA24}
+      IID 939
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2849.5186041694765
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B29ABF47-9C56-5249-BD45-5150EE8359BC}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3181.8425625032146
+      SNAPOFFS 1
+      LENGTH 1.56456250000201
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.564563 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4EC0AC63-0479-124E-A748-691B0A5E0066}
+      IID 942
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3181.8425625032146
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {92A84A36-9781-834A-A815-DB82CB8EAF48}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3191.4742291698944
+      SNAPOFFS 1
+      LENGTH 2.10000000000127
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D99B608C-46D9-F644-9FBA-139C1FAA6DCD}
+      IID 944
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3191.4742291698944
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {698A0CBF-AB40-DD47-B010-5992DF0FACDD}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3627.09331250376
+      SNAPOFFS 1
+      LENGTH 2.13706250000132
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {8F05303D-D20D-624B-9631-23E160FB39E1}
+      IID 952
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3627.09331250376
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CAA7B87E-04DC-C946-9DB0-CB6EBD9AAD1A}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+  >
+  <TRACK {F895EB84-083B-034D-8F19-34FC9ABE2B61}
+    NAME Temp
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    WIDTH 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {F895EB84-083B-034D-8F19-34FC9ABE2B61}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 32 840 718 185
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+    >
+    <ITEM
+      POSITION 13.59989583333341
+      SNAPOFFS 1
+      LENGTH 227.47575811432603
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1.745809 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {75F9C2E7-90F0-C84F-A992-0A51F7BB6508}
+      IID 905
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 2.119681 -1
+      SOFFS 13.59989583333341
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {82FD841B-36D0-FE41-A24C-08952F49E595}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 299.12797686879799
+      SNAPOFFS 0
+      LENGTH 71.23858563116983
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 49.0331 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {F69750E5-541F-4341-A634-B3A692B88CB2}
+      IID 1037
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 2.119681 -1
+      SOFFS 299.12797686879799
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4F4E767B-C90E-2541-87B4-00C5E53669F5}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 396.99289583329801
+      SNAPOFFS 1
+      LENGTH 85.04977083332409
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {EAB262FF-FDB0-4B48-A7C4-872DAF993E3A}
+      IID 907
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 396.99289583329801
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {662D46B5-FC4D-D94F-B851-FC7F8FA80038}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 611.57629166674167
+      SNAPOFFS 1
+      LENGTH 54.33306250006524
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {4C5969F3-1100-2F42-8496-7FE44AD581BD}
+      IID 909
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 611.57629166674167
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {41E95179-7AC0-124B-8C9E-483115F830A5}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 990.03466666720419
+      SNAPOFFS 1
+      LENGTH 118.68295833347702
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7C5288B1-5AC1-DC48-AE79-C5BAE2E321E6}
+      IID 917
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 990.03466666720419
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {327423C2-667E-3E41-AED3-F4890356E027}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 1185.5808750007764
+      SNAPOFFS 1
+      LENGTH 28.53562500003363
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {786194E9-619F-1646-ABDF-0BEC0C087D11}
+      IID 919
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 1185.5808750007764
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CFC142A3-54AD-004F-9BC9-1DDD9CEE7833}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 1569.7569166679125
+      SNAPOFFS 1
+      LENGTH 30.9247291667034
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {6D679F47-1E31-804A-B010-6C596087616C}
+      IID 923
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 1569.7569166679125
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5F35D4E1-7F6B-0C42-B106-A8E8F77ECC95}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 1739.6438958347869
+      SNAPOFFS 1
+      LENGTH 23.30839684799367
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {A876D29D-89AA-D542-B03D-BA146760B52B}
+      IID 925
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 1739.6438958347869
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B5E92D40-CC3D-AA4F-A937-4A684B173F2E}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2245.483333335405
+      SNAPOFFS 1
+      LENGTH 104.71616666679347
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {FC1587F3-5CE0-1341-A8ED-D31C6CCE1B47}
+      IID 929
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2245.483333335405
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7EBBEE4F-AD0C-5F4D-A7D3-4F6BFA9A90A4}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2521.6856458357424
+      SNAPOFFS 1
+      LENGTH 48.66989810935662
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1514D7E2-A322-0546-85D6-6171D2449F19}
+      IID 935
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2521.6856458357424
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5001B948-2C70-D644-9A65-0A5D85F4D3F6}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2600.6198646086623
+      SNAPOFFS 0
+      LENGTH 62.95084853253547
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C0B48B2E-E1F5-8944-A21D-328AF70BEACF}
+      IID 1036
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2600.6198646086623
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {8EBC99A9-34FB-7741-BF33-97A39A64F283}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2663.5707131411978
+      SNAPOFFS 0
+      LENGTH 43.2451201947697
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 1.1 1 15.398111 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D2BE463D-7B21-FA4A-8833-64595D2872A8}
+      IID 1059
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2663.5707131411978
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {81107BB0-17A3-C04E-8C05-D9DA90B9A54C}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2691.4177220534689
+      SNAPOFFS 0
+      LENGTH 18.67447634899008
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 15.398111 5 1 0 0
+      FADEOUT 1.1 0.01 0.991449 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {64CF15B1-DF32-FD4E-87B5-0A4E4FA9E1FB}
+      IID 1060
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2663.5707131411978
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {20C75097-5A0B-6F49-A7B1-67749915BEDD}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2709.1007492031517
+      SNAPOFFS 0
+      LENGTH 7.11108391227162
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 0.991449 5 1 0 0
+      FADEOUT 5 6.119635 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E7961236-D0D1-BB4E-AE81-1D602DBB520D}
+      IID 1064
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 2.818383 0 1 -1
+      SOFFS 2677.1566342855781
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {45DAC96D-FED0-3B4C-B7A9-00460DEE821B}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3471.5817708369032
+      SNAPOFFS 1
+      LENGTH 26.54149247231589
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {35C76DE0-C90F-DF4E-A9D0-6A9A79469477}
+      IID 948
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3471.5817708369032
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FE1738F0-4085-DB4B-9129-0772DBAC6903}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3498.1232633092191
+      SNAPOFFS 0
+      LENGTH 2.41885110484145
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {6A54124C-B5B5-E24F-9924-E07D6BF65501}
+      IID 1068
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3496.5884610321673
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {9CFF68A9-A691-5549-8D77-BA588FA09E97}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3500.5421144140605
+      SNAPOFFS 0
+      LENGTH 1.19209391925597
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2418E629-35D8-5F4D-9E84-6D48C4D060D8}
+      IID 1070
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3499.0073121370087
+      PLAYRATE 1 1 12 -1 0 0.0025
+      CHANMODE 0
+      GUID {17679E62-E4E7-1F4B-9250-03ADBD8AC68B}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3501.7342083333165
+      SNAPOFFS 9.07547917030024
+      LENGTH 14.85892360177741
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 1.1 0.01 0.685285 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {00A6BD2D-420A-F744-9970-9102A0B32879}
+      IID 950
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3512.2636813601962
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D0EF613D-A4DA-8D42-85D0-199D6251A32C}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3515.9078468493108
+      SNAPOFFS 0
+      LENGTH 19.12639093904409
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 0.685285 5 1 0 0
+      FADEOUT 1.1 0.01 0.510423 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {37A91977-0E87-AC41-8A0E-14DCF59ECBF3}
+      IID 1072
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3515.9078468493108
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {0C303034-F763-D842-AFEE-57B7F0888B49}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3534.5238151252611
+      SNAPOFFS 0
+      LENGTH 33.51219992793312
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 0.510423 5 1 0 0
+      FADEOUT 1.1 5.971945 10.393429 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {47AE877D-BFB2-F447-8D32-B5D5C08BF8C0}
+      IID 1073
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3534.5238151252611
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {837F8102-C4E1-AA43-97DC-217C23084BED}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3557.6425862579677
+      SNAPOFFS 0
+      LENGTH 51.47556288446685
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 10.393429 5 1 0 0
+      FADEOUT 1.1 0.01 3.511294 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5345F9EA-376B-DB4B-A850-8FF4F92BBDFB}
+      IID 1074
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3557.6425862579677
+      PLAYRATE 1 1 -24 -1 0 0.0025
+      CHANMODE 0
+      GUID {B58817BB-5E02-0241-A922-1171D5D74961}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3605.6068556305336
+      SNAPOFFS 0
+      LENGTH 11.96206244517634
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 3.511294 5 1 0 0
+      FADEOUT 1.1 0.01 2.916294 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {96311542-8E22-AC49-88A0-4A8F94A9058C}
+      IID 1075
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3605.6068556305336
+      PLAYRATE 1 1 -12 -1 0 0.0025
+      CHANMODE 0
+      GUID {48C53284-30D7-D048-B71C-3B905D7FAD80}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3614.6526238458969
+      SNAPOFFS 0
+      LENGTH 3.5983307835595
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 2.916294 5 1 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {BA9489A9-6448-604A-A6E0-E09FADA187E5}
+      IID 1076
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 2.238721 0 1 -1
+      SOFFS 3612.4889216753909
+      PLAYRATE 1 1 -12 -1 0 0.0025
+      CHANMODE 0
+      GUID {FFEE5729-F724-A14E-882C-93421A04A936}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4009.0984791708934
+      SNAPOFFS 1
+      LENGTH 39.62200754830519
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 1.1 1 4.92132 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E18F9D46-252D-E94F-84F0-FCA954DAB802}
+      IID 956
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4009.0984791708934
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {67E37AAE-0C6E-E645-BC9D-9B65E4B374A6}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4043.7991666709349
+      SNAPOFFS 1
+      LENGTH 34.56824740193224
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0 4.92132 5 1 0 0
+      FADEOUT 1.1 0.01 7.431834 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9A40B63C-19C0-E647-ABD4-E1CAD54328CC}
+      IID 957
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4043.7991666709349
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7004BB1D-8BC7-3641-BF77-59D7FD87A0E4}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4070.9355797601597
+      SNAPOFFS 0
+      LENGTH 25.01293007034246
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 7.431834 5 1 0 0
+      FADEOUT 1.1 5.032854 8.229362 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {655EA459-F8A3-AA4D-927C-6AD245C8E998}
+      IID 1078
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4056.0593463542709
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EAF634A9-8B4D-2643-BC45-24DC7F38C30F}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4087.7191475562772
+      SNAPOFFS 0
+      LENGTH 25.01293007034246
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 8.229362 5 1 0 0
+      FADEOUT 1.1 5.032854 16.783568 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {57B59FEC-195B-7041-B6C3-57FD73B0CF7F}
+      IID 1079
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4056.0593463542709
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {DED4BB5F-021B-934E-B7DD-45199707E603}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4095.9485098305022
+      SNAPOFFS 0
+      LENGTH 25.01293007034246
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 16.783568 5 1 0 0
+      FADEOUT 1.1 5.032854 8.229362 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E393A29E-E7F2-DA47-ABF7-F0009881158C}
+      IID 1080
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4056.0593463542709
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C7981F93-7580-394F-8FF2-F878754758BE}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4112.7320776266197
+      SNAPOFFS 0
+      LENGTH 21.22309218089686
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 8.229362 5 1 0 0
+      FADEOUT 1.1 5.032854 6.929989 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5AC9CEF7-3909-ED43-A680-D683897185E7}
+      IID 1081
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4056.0593463542709
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {3905BC19-16FA-0943-BEA9-7B783208D3C0}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4127.0251805239577
+      SNAPOFFS 0
+      LENGTH 25.55299110476972
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 6.929989 5 1 0 0
+      FADEOUT 5 5.032854 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {7226174B-3873-4744-87D4-338BDF17BDBF}
+      IID 1082
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4056.0593463542709
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D0F0FF21-C013-A14E-A792-C5ECC9CA9CB8}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4237.163017578936
+      SNAPOFFS 0
+      LENGTH 68.0807058577202
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 6.763358 0 5 0 0 0
+      FADEOUT 1.1 0.01 1.329326 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {34EA4F05-5F0D-B747-A939-4E66A48AFF84}
+      IID 1083
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4237.163017578936
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E83AADC1-70DC-5F45-A361-57C49280CB7E}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4303.9143974619428
+      SNAPOFFS 0
+      LENGTH 32.45645670678823
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 1.329326 5 1 0 0
+      FADEOUT 5 5.477618 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9BEAE8CB-1BBA-B24E-BBA8-E70A48DBC904}
+      IID 1085
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4303.9143974619428
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {7BC25B0F-063D-CC48-B234-2169375A81A3}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4424.9328229847661
+      SNAPOFFS 0
+      LENGTH 29.07663534952098
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9D43BE3F-4CA3-4844-A307-968437F1C063}
+      IID 1086
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4424.9328229847661
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {3003E1BE-9D8D-7F4F-9ABE-2F0E3BCCAC62}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4705.3553749985731
+      SNAPOFFS 1
+      LENGTH 79.67155516529056
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 8.911966 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {75E824DA-E5D3-744D-955D-EBF7EA260FD3}
+      IID 963
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4705.3553749985731
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E8FC7E88-8E3B-1A47-B772-BD729ECFF153}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 4831.6386249973812
+      SNAPOFFS 1
+      LENGTH 140.99570833595135
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {715AE58B-92F1-3B4B-9938-77CAE069BF30}
+      IID 965
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 4831.6386249973812
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E00DE099-F5FC-2B41-B795-FDA6130457B3}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+  >
+  <TRACK {2E70438F-9985-4C45-9578-6B5ACA8459C5}
+    NAME "JK Music"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 1 1
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {2E70438F-9985-4C45-9578-6B5ACA8459C5}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 3500.5421144140605
+      SNAPOFFS 0
+      LENGTH 1.19209391925597
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 4 1.127279 0 4 0 1 1
+      FADEOUT 5 0 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {8C8C2DEA-600B-CD43-8AEA-775A2C8C19C3}
+      IID 1071
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 2.238721 0 1 -1
+      SOFFS 3499.0073121370087
+      PLAYRATE 1 1 12 -1 0 0.0025
+      CHANMODE 0
+      GUID {743A3EE8-BDED-B04B-895B-92B7CB5F2739}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+  >
+  <TRACK {3411E981-5EBA-E24C-91B7-11419AB8172A}
+    NAME "701 Bass-01"
+    PEAKCOL 33413923
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1.04209781592932 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 12
+    FX 1
+    TRACKID {3411E981-5EBA-E24C-91B7-11419AB8172A}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 35.96844215161325
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 1.1 0.01 0.01 5 1 0 0
+      MUTE 1 0
+      SEL 0
+      IGUID {DCA7E322-FEBA-A644-8E23-928644B3F6C6}
+      IID 35016
+      NAME "701 Bass-01.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 93.76415407995296
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {87FD446B-3573-B247-96E0-8A6C9C048B3C}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MUTEK 2021 Solar Plexus Stems Stemming/media/701 Bass-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 35.95844215161326
+      SNAPOFFS 0
+      LENGTH 105.00696417007443
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 0.01 5 1 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {FA680BD8-CC6C-994C-A563-CFE72FE8FA89}
+      IID 35017
+      NAME "701 Bass-01.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 75.99897135028689
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {962CD13F-3750-4044-97F2-6DCF9D5E8E4A}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MUTEK 2021 Solar Plexus Stems Stemming/media/701 Bass-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 785.00099999999861
+      SNAPOFFS 1
+      LENGTH 68.35306249999257
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C146A595-3F5A-5940-BBB9-4B2C0735C40F}
+      IID 34760
+      NAME "701 Bass-01.wav"
+      VOLPAN 1 0 6.466432 -1
+      SOFFS 89.0009999999986
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {2D01DF24-2759-8D4F-A35C-14DC954D6DAC}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MUTEK 2021 Solar Plexus Stems Stemming/media/701 Bass-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 857.000520833324
+      SNAPOFFS 1
+      LENGTH 3.36106249999975
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {3DF10ECC-BD2F-DC43-994D-2BF53DDDF2E4}
+      IID 34762
+      NAME "701 Bass-01.wav"
+      VOLPAN 1 0 6.466432 -1
+      SOFFS 161.00052083332403
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {37A26CE5-8DC8-9949-89B8-D89020677D35}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MUTEK 2021 Solar Plexus Stems Stemming/media/701 Bass-01.wav"
+      >
+    >
+    <ITEM
+      POSITION 892.33424999998681
+      SNAPOFFS 1
+      LENGTH 13.49818749999861
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5CC712FE-9341-6547-8BA4-448F7D415069}
+      IID 34764
+      NAME "701 Bass-01.wav"
+      VOLPAN 1 0 6.466432 -1
+      SOFFS 196.33424999998678
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D17D6DB3-472E-FB45-BBAA-55F8936B4923}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MUTEK 2021 Solar Plexus Stems Stemming/media/701 Bass-01.wav"
+      >
+    >
+  >
+  <TRACK {3FF703D5-16F1-5044-9705-92B8198BA98D}
+    NAME "Sine 03 Battle"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 -1 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {3FF703D5-16F1-5044-9705-92B8198BA98D}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 32 293 986 575
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <AU "AU: MTremolo (MeldaProduction)" "MeldaProduction: MTremolo" "" 1635085670 1296131383 1298492516
+        6QMAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAAAAcwMAADw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ij8+CjwhRE9D
+        VFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQi
+        Pgo8cGxpc3QgdmVyc2lvbj0iMS4wIj4KPGRpY3Q+Cgk8a2V5PmRhdGE8L2tleT4KCTxkYXRhPgoJZU5wZFVOOXZnakFRZnQ5ZjBaeXZVNkRBbEFRd21XT0ppV1pFeVBh
+        TWNrcXoycEsyR0xPL2ZqZU1lL0N0MSsvWDNaY3UKCXIyZkpMbWlzMENxRFlPWURRM1hRclZDbkRBWjNuQzVnbVQrbDI5cmdXVXR0MFRtQ0xKc1FHZGlreGQ1MXQ2ZHBI
+        R1l3CglEV2J6ZVJ6ekpIbnhlUUpzcFpVeldrcEtLRlN6bDlobVFCbEZLNXcybGZnaHlZTHo1eWpod0RhN3FwZkNPUnlCZ0d5RAoJTUg3ODVobUUwUnpZdHJsdTNqOWVw
+        VDU4MzJ4Q2N0Z2lzZXlLOHByZVlsdlJoSHBjVDJtaDZFdzNEcVVjVGtMVldzdDkKCVkvN1pJL1I1cnlKWmhIN2tRNTdlUEhtZWZvbldkZHM4cmZSZ0RzaEtnMGNoQ1J1
+        cjhzSExVKzlPOGU0aWFtNzl0dDRoCgk5ZWJSWUx1bVIxYWR0WGFkUW10Sk4vTjVCS3lxaTdMY0ZWVlJqL1ZjR2puUVNVRU1meXJ2c2YzODZSZGUwSXNoCgk8L2RhdGE+
+        Cgk8a2V5Pm1hbnVmYWN0dXJlcjwva2V5PgoJPGludGVnZXI+MTI5ODQ5MjUxNjwvaW50ZWdlcj4KCTxrZXk+bmFtZTwva2V5PgoJPHN0cmluZz5EZWZhdWx0PC9zdHJp
+        bmc+Cgk8a2V5PnN1YnR5cGU8L2tleT4KCTxpbnRlZ2VyPjEyOTYxMzEzODM8L2ludGVnZXI+Cgk8a2V5PnR5cGU8L2tleT4KCTxpbnRlZ2VyPjE2MzUwODU2NzA8L2lu
+        dGVnZXI+Cgk8a2V5PnZlcnNpb248L2tleT4KCTxpbnRlZ2VyPjk4MzA0MDwvaW50ZWdlcj4KPC9kaWN0Pgo8L3BsaXN0PgoBAAAAAAAAAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {D6B23624-5938-5C43-BA00-61E825BF1B18}
+      WAK 0 0
+      BYPASS 0 0 0
+      <AU "AU: MTremolo (MeldaProduction)" "MeldaProduction: MTremolo" "" 1635085670 1296131383 1298492516
+        6QMAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAdwMAADw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ij8+CjwhRE9D
+        VFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQi
+        Pgo8cGxpc3QgdmVyc2lvbj0iMS4wIj4KPGRpY3Q+Cgk8a2V5PmRhdGE8L2tleT4KCTxkYXRhPgoJZU5wZFVVdHZ3akFNdnU5WFJPRTYraTRyVWx1a3NVNUNvbHBGcSsx
+        Y3FLSFJRbHdsS1VMNzlmT0sySUZiN085aCswdTYKCXVwNGx1NEEyQWxYR2ZjZmpETlFCTzZGT0dSL3RjWjd3VmY2VWxvMkdNMG8wWUMxQmhzMkl6Tm1zZzhIMnQ2ZHVM
+        V1I4Cgk3anRKNU1leEZ5KzhnTnByVkZhamxEU2hVTzFlUXBkeG1sRjB3cUt1eFE5SmtpQjRqcFlCWjl0ZFBVaGhMVXlBVDdaKwoJR0QrMmc0eUgwUXRuWlh2ZHZuKzhT
+        ang4MzJ4Q2NpaUJXR1pOODlyQlFGZFRCVGl0cDFBb090Tk9SU1hIazFBTm90eTMKCStwODlRWi8zS0paSjZFVWV6OU9iWjVDblg2S3pmWm1uTlk3NkFLelNjQlNTc0Nr
+        cWo3dDU2dDRwN2wxRXlXM2VOanVnCgkzRndxVE44T3dPb3pvdTBWR0VNNnh3c1huTlZOVVZXN29pNmFLWjVMSzBjNnlZK2NSY0wvaE83akIrUlB2OWUvaTZjPQoJPC9k
+        YXRhPgoJPGtleT5tYW51ZmFjdHVyZXI8L2tleT4KCTxpbnRlZ2VyPjEyOTg0OTI1MTY8L2ludGVnZXI+Cgk8a2V5Pm5hbWU8L2tleT4KCTxzdHJpbmc+RGVmYXVsdDwv
+        c3RyaW5nPgoJPGtleT5zdWJ0eXBlPC9rZXk+Cgk8aW50ZWdlcj4xMjk2MTMxMzgzPC9pbnRlZ2VyPgoJPGtleT50eXBlPC9rZXk+Cgk8aW50ZWdlcj4xNjM1MDg1Njcw
+        PC9pbnRlZ2VyPgoJPGtleT52ZXJzaW9uPC9rZXk+Cgk8aW50ZWdlcj45ODMwNDA8L2ludGVnZXI+CjwvZGljdD4KPC9wbGlzdD4KAQAAAAAAAAAAAA==
+      >
+      FLOATPOS 0 0 0 0
+      FXID {61299192-8E39-624D-933A-43FFFDFD2E3F}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 153.09714583333334
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {94546C57-A7CD-A746-8A5C-F3E66A377EE1}
+      IID 34799
+      NAME "Sine 03 Battle.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS -19.31126034905081
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C29A4DED-96E1-8146-8904-830DACF3D455}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MTK 2021 Rough Sketch/From SP/Sine 03 Battle.wav"
+      >
+    >
+  >
+  <TRACK {0A5D7950-0D2A-7640-82C8-7C38CA9EFA7B}
+    NAME "Sine 03 Battle"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 0.42118287246328 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 -1 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {0A5D7950-0D2A-7640-82C8-7C38CA9EFA7B}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 32 293 986 575
+      SHOW 0
+      LASTSEL 1
+      DOCKED 0
+      BYPASS 0 0 0
+      <AU "AU: MTremolo (MeldaProduction)" "MeldaProduction: MTremolo" "" 1635085670 1296131383 1298492516
+        6QMAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAAAAcwMAADw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ij8+CjwhRE9D
+        VFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQi
+        Pgo8cGxpc3QgdmVyc2lvbj0iMS4wIj4KPGRpY3Q+Cgk8a2V5PmRhdGE8L2tleT4KCTxkYXRhPgoJZU5wZFVGMXZnakFVZmZkWE5QVjFTaW00WVFLWXpMSEVSREppeWZh
+        TWNwVm10U1Z0TVdhL2ZuY1k5K0JiYjgvWHZTZGQKCVhjK0tYTUE2YVhSR3d6bWpCUFRCdEZLZk1qcjQ0eXlocTN5U2xyV0ZzMUhHZ2ZjSU9USkZNaVhURm5yZjNaNjI4
+        WkRSCglXVGhQV0xpTUVzNFlmNlprYmJTM1JpbE1LSFN6VjlCbUZET0tWbnBqaGZ4QlNjTDVVN3prbEd4M29sZlNleGlCRUczRAoJYVBINHpUTWF4UytVbE0xMSsvN3hx
+        c3poKzJZVG9VTUp5SEpyekd0NkI2M0FDY3k0bmpaUzQ1bCtIQ28xbktTdWpWSDcKCXh2NnpSK2p6WHNVeWlWak1hSjdlUEhtZWZzbldkMldlQ2pQWUE1REt3bEVxeE1h
+        cUdBM3lOTGhUZ3JzSW05dThiWGFBCgl2UVU0dUs3cGdZaXpNYjdUNEJ6cTVvekhsSWk2cUtwZElZcDZyT2ZTcUFGUENoZjBUeFU4dHA5UGZnRkFyb3NMCgk8L2RhdGE+
+        Cgk8a2V5Pm1hbnVmYWN0dXJlcjwva2V5PgoJPGludGVnZXI+MTI5ODQ5MjUxNjwvaW50ZWdlcj4KCTxrZXk+bmFtZTwva2V5PgoJPHN0cmluZz5EZWZhdWx0PC9zdHJp
+        bmc+Cgk8a2V5PnN1YnR5cGU8L2tleT4KCTxpbnRlZ2VyPjEyOTYxMzEzODM8L2ludGVnZXI+Cgk8a2V5PnR5cGU8L2tleT4KCTxpbnRlZ2VyPjE2MzUwODU2NzA8L2lu
+        dGVnZXI+Cgk8a2V5PnZlcnNpb248L2tleT4KCTxpbnRlZ2VyPjk4MzA0MDwvaW50ZWdlcj4KPC9kaWN0Pgo8L3BsaXN0PgoBAAAAAAAAAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {AB7D6335-B69F-7640-B07F-144B82E78D39}
+      WAK 0 0
+      BYPASS 0 0 0
+      <AU "AU: MTremolo (MeldaProduction)" "MeldaProduction: MTremolo" "" 1635085670 1296131383 1298492516
+        6QMAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAdwMAADw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ij8+CjwhRE9D
+        VFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQi
+        Pgo8cGxpc3QgdmVyc2lvbj0iMS4wIj4KPGRpY3Q+Cgk8a2V5PmRhdGE8L2tleT4KCTxkYXRhPgoJZU5wZFVWdHJ3akFVZnQrdkNQRjE5ajZOMEZhWTYwQlFWbXpabnFz
+        OTJyQ1lVNUpVWkw5K1p4WDM0RnRPdmx2T2wzUjUKCVBTdDJBV01sNm95SFhzQVo2QU8yVXA4eVByampWUEJsL3BSdWF3Tm5WR2pCT1lJc214Q1pzMGtMdmV0dVI5TTR5
+        UGcwCgk5T1pDek9Na0VFRWtPRnVoZGdhVm9vUkNOM3NGYmNZcG8yaWxRMVBKSDVLSUtIcE9GaEZubTEzVksra2NqRUJJdG1IOAoJOG5nZFpUeE81cHh0bSt2bS9lTlY0
+        ZUg3WmhPVHd4YUlaVmVVMS9RVzJvb213UEY1R3FXbU5kMDRsR280U1YwanFuMWoKCS90a2o5SG12WWlIaUlBbDRudDQ4b3p6OWtxM3J0bmxhNFdBT3dFb0RSNmtJRzZz
+        S3VKK24vcDNpMzBYVTNQcHR2UVBxCgl6YWZCZGswUHJEb2p1azZEdGFUemduakdXVlVYWmJrcnFxSWU2N2swYXFDVndzU2JDZjRuOUI4L0lILzZCZkNqaTdrPQoJPC9k
+        YXRhPgoJPGtleT5tYW51ZmFjdHVyZXI8L2tleT4KCTxpbnRlZ2VyPjEyOTg0OTI1MTY8L2ludGVnZXI+Cgk8a2V5Pm5hbWU8L2tleT4KCTxzdHJpbmc+RGVmYXVsdDwv
+        c3RyaW5nPgoJPGtleT5zdWJ0eXBlPC9rZXk+Cgk8aW50ZWdlcj4xMjk2MTMxMzgzPC9pbnRlZ2VyPgoJPGtleT50eXBlPC9rZXk+Cgk8aW50ZWdlcj4xNjM1MDg1Njcw
+        PC9pbnRlZ2VyPgoJPGtleT52ZXJzaW9uPC9rZXk+Cgk8aW50ZWdlcj45ODMwNDA8L2ludGVnZXI+CjwvZGljdD4KPC9wbGlzdD4KAQAAAAAAAAAAAA==
+      >
+      FLOATPOS 0 0 0 0
+      FXID {BB8FBA7B-E5A2-CF4E-AB1D-CFF142412465}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 306.19429166666646
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1B433997-5483-7245-8E1C-732943B9FB77}
+      IID 34802
+      NAME "Sine 03 Battle.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 6.38253520011001
+      PLAYRATE 0.5 0 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {86CF1B4E-5950-9441-9069-D643EFF1FB9D}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MTK 2021 Rough Sketch/From SP/Sine 03 Battle.wav"
+      >
+    >
+  >
+  <TRACK {C32253C0-1131-AE40-B89D-0DA5DF24CF42}
+    NAME "Sine 03 Battle"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 0.95713983031174 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 -1 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {C32253C0-1131-AE40-B89D-0DA5DF24CF42}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 32 293 986 575
+      SHOW 0
+      LASTSEL 1
+      DOCKED 0
+      BYPASS 0 0 0
+      <AU "AU: MTremolo (MeldaProduction)" "MeldaProduction: MTremolo" "" 1635085670 1296131383 1298492516
+        6QMAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAAAAcwMAADw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ij8+CjwhRE9D
+        VFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQi
+        Pgo8cGxpc3QgdmVyc2lvbj0iMS4wIj4KPGRpY3Q+Cgk8a2V5PmRhdGE8L2tleT4KCTxkYXRhPgoJZU5wZFVOOXZnakFRZnQ5ZjBkVFhLVkJrUWdLWXpMSEVSRE1pWkh0
+        R09hVlo3WkcyR0xPL2ZqZU1lL0N0MSsvWDNaY3UKCXIyZkZMbUNzUkozeFlPWnpCdnFBcmRTbmpBL3VPSTM1TW45S3Q3V0JNeXEwNEJ4QmxrMkl6Tm1raGQ1MXQ2ZHBI
+        R1I4CglHc3dXaXlnU1NmTGlpNFN6RldwblVDbEtLSFN6VjlCbW5ES0tWam8wbGZ3aFNTekU4endSbkcxMlZhK2tjekFDQWRrRwoJWWZUNExUSWV6aGVjYlp2cjV2M2pW
+        ZUhoKzJZVGtzTVdpR1ZYbE5mMEZ0cUtKc0J4UFkxUzA1bHVIRW8xbktTdUVkVysKCU1mL3NFZnE4VjVIRW9ULzNlWjdlUEVXZWZzbldkZHM4clhBd0IyQ2xnYU5VaEkx
+        VitkekxVKzlPOGU0aWFtNzl0dDRCCgk5ZWJSWUx1bUIxYWRFVjJud1ZyU3pYd1JjMWJWUlZudWlxcW94M291alJyb3BDRGlmeXJ2c2YzODZSZGZuSXNsCgk8L2RhdGE+
+        Cgk8a2V5Pm1hbnVmYWN0dXJlcjwva2V5PgoJPGludGVnZXI+MTI5ODQ5MjUxNjwvaW50ZWdlcj4KCTxrZXk+bmFtZTwva2V5PgoJPHN0cmluZz5EZWZhdWx0PC9zdHJp
+        bmc+Cgk8a2V5PnN1YnR5cGU8L2tleT4KCTxpbnRlZ2VyPjEyOTYxMzEzODM8L2ludGVnZXI+Cgk8a2V5PnR5cGU8L2tleT4KCTxpbnRlZ2VyPjE2MzUwODU2NzA8L2lu
+        dGVnZXI+Cgk8a2V5PnZlcnNpb248L2tleT4KCTxpbnRlZ2VyPjk4MzA0MDwvaW50ZWdlcj4KPC9kaWN0Pgo8L3BsaXN0PgoBAAAAAAAAAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {5AB3D8A7-9214-FB41-8B2A-C3EBD1199ADD}
+      WAK 0 0
+      BYPASS 0 0 0
+      <AU "AU: MTremolo (MeldaProduction)" "MeldaProduction: MTremolo" "" 1635085670 1296131383 1298492516
+        6QMAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAAAdwMAADw/eG1sIHZlcnNpb249IjEuMCIgZW5jb2Rpbmc9IlVURi04Ij8+CjwhRE9D
+        VFlQRSBwbGlzdCBQVUJMSUMgIi0vL0FwcGxlLy9EVEQgUExJU1QgMS4wLy9FTiIgImh0dHA6Ly93d3cuYXBwbGUuY29tL0RURHMvUHJvcGVydHlMaXN0LTEuMC5kdGQi
+        Pgo8cGxpc3QgdmVyc2lvbj0iMS4wIj4KPGRpY3Q+Cgk8a2V5PmRhdGE8L2tleT4KCTxkYXRhPgoJZU5wZFVVdHZ3akFNdnZNcm9uQWRmVE9LMUJacHJKT1FxRmJSYWpz
+        WGFtaTBFRmRKaXRCKy9Vd1JPM0NML1Qxc2YwbFcKCTE3TmtGOUJHb0VxNTczaWNnVHBnSzlRcDVZTTl6bUsreWlaSlVXczRvMFFEMWhKazJKVEluRTFiNkcxM2YrckdR
+        c3BuCgl2ck40RGNKZ0hrZGVTTzAxS3F0UlNwcVFxMll2b1UwNXpjaGJZVkZYNHBja2NSQzhSTXVBcysydTZxV3dGa2JBSjFzLwoJbkQrM2c1U0gwWUt6b3JsdVB6N2ZK
+        QjUrN2pZaE9SUkFMTE9tZVUxdm9LMm9BaHpYVXlnVW5XbkhvcFREU2FnYVVlNGIKCS9jOGVvYTlIRk1zNDlDS1BaOG5kTThpU2I5SGFyc2lTQ2dkOUFGWnFPQXBKMkJp
+        Vng5MHNjUjhVOXlHaTVEYnZteDFRCgliaTRWcG10NllOVVowWFlLakNHZDQ5MFdyK3E4TEhkNWxkZGpQSmRHRG5TU0h6bXZNYjhKM2VjUHlDWi8zR3VMcHc9PQoJPC9k
+        YXRhPgoJPGtleT5tYW51ZmFjdHVyZXI8L2tleT4KCTxpbnRlZ2VyPjEyOTg0OTI1MTY8L2ludGVnZXI+Cgk8a2V5Pm5hbWU8L2tleT4KCTxzdHJpbmc+RGVmYXVsdDwv
+        c3RyaW5nPgoJPGtleT5zdWJ0eXBlPC9rZXk+Cgk8aW50ZWdlcj4xMjk2MTMxMzgzPC9pbnRlZ2VyPgoJPGtleT50eXBlPC9rZXk+Cgk8aW50ZWdlcj4xNjM1MDg1Njcw
+        PC9pbnRlZ2VyPgoJPGtleT52ZXJzaW9uPC9rZXk+Cgk8aW50ZWdlcj45ODMwNDA8L2ludGVnZXI+CjwvZGljdD4KPC9wbGlzdD4KAQAAAAAAAAAAAA==
+      >
+      FLOATPOS 0 0 0 0
+      FXID {98824008-04B7-6F41-A9CB-91A26D3C6C74}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 202.71977159469895
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 18.783676 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {9004F279-0C31-8D46-8273-D28DDB1180EF}
+      IID 34802
+      NAME "Sine 03 Battle.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 17.02009386696004
+      PLAYRATE 0.25 0 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {59E09A91-25AC-FB43-B912-41BDC82AE159}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/Mutek 2021 m1/MTK 2021 Rough Sketch/From SP/Sine 03 Battle.wav"
+      >
+    >
+  >
+  <TRACK {A2B55543-0144-1347-A18C-A43F70B2F8AC}
+    NAME "Thou Cloud_1 50"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 12
+    FX 1
+    TRACKID {A2B55543-0144-1347-A18C-A43F70B2F8AC}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+  >
+  <TRACK {A954ED17-482A-D54A-8E3B-38DC2AE65FE2}
+    NAME "ML Chopping 23-02-2021 00 master-001"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {A954ED17-482A-D54A-8E3B-38DC2AE65FE2}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 137.2599094627754
+      SNAPOFFS 0
+      LENGTH 64.43785416666667
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {2671BD9F-95B7-5645-9833-0C849C9C1A66}
+      IID 1056
+      NAME "ML Chopping 23-02-2021 00 master-001.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {835FC0EE-ACE8-DF45-8004-9E3932001966}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/ML Chopping 23-02-2021 00 master-001.wav"
+      >
+    >
+  >
+  <TRACK {D2749E7B-07D3-7745-B876-3860B3397217}
+    NAME "ML Chopping 23-02-2021 00 master"
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 2 -2
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {D2749E7B-07D3-7745-B876-3860B3397217}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 189.95791041723382
+      SNAPOFFS 0
+      LENGTH 58.04647916666666
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {924BE375-19EB-5948-8AEF-2A22C9BB0F5D}
+      IID 1057
+      NAME "ML Chopping 23-02-2021 00 master.wav"
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B043442C-5EE3-B942-BCFF-B28E88B6E9FD}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/ML Chopping 23-02-2021 00 master.wav"
+      >
+    >
+  >
+  <TRACK {405F521B-D1CE-CA44-90E4-EAD93C0C4CB6}
+    NAME "Needle Drops"
+    PEAKCOL 25347078
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1.13347180635429 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {405F521B-D1CE-CA44-90E4-EAD93C0C4CB6}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <VOLENV2
+      EGUID {174FE3DE-C64B-D941-B851-1C5C43EC53EF}
+      ACT 1 -1
+      VIS 0 1 1
+      LANEHEIGHT 0 0
+      ARM 1
+      DEFSHAPE 0 -1 -1
+      VOLTYPE 1
+      PT 0 1 0
+      PT 3369.13241271 1.04712855 0
+      PT 3378.20645208 2 0
+      PT 3378.22218723 1 0
+    >
+    <ITEM
+      POSITION 1304.8747291675888
+      SNAPOFFS 1
+      LENGTH 14.34802083334966
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1F1817AF-82D4-D544-A28E-E18A3D5E6B6A}
+      IID 921
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 1304.8747291675888
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CD1A767D-2AC1-2940-931A-8F96466E9262}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 1762.9422926827806
+      SNAPOFFS 0
+      LENGTH 93.5256448188145
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {0B2CEEDC-B180-E64C-91A0-36EA33202348}
+      IID 1034
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 1762.9422926827806
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B50D616A-A186-BE4B-AF68-F1D5D105F49D}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2409.5109791689388
+      SNAPOFFS 1
+      LENGTH 7.80083333334142
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {0B3A8BAB-8034-084B-AAAB-A1A745609F53}
+      IID 931
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2409.5109791689388
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {19BC2E30-80E8-BC4F-84A4-5986ABDE44FB}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2440.7393958356433
+      SNAPOFFS 1
+      LENGTH 58.91281250007114
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {44B2E426-948C-1548-8B1A-0E7E3CFC8E5A}
+      IID 933
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2440.7393958356433
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E6697BA6-25DA-2248-8B98-43E64E277F86}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2570.3455439450991
+      SNAPOFFS 0
+      LENGTH 30.28432066356323
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E45BB4FC-879A-FF47-94C7-A0D8DC01A05D}
+      IID 1035
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2570.3455439450991
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {226FD636-F4BF-704C-BA20-BFE845C42075}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2716.9118333359811
+      SNAPOFFS 1
+      LENGTH 14.18508333334921
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {01EF70FE-492C-7C41-A7E0-837C84662224}
+      IID 937
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2716.9118333359811
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {48581741-3D7F-A44D-A17C-2B27B6B9665B}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 2871.2769375028365
+      SNAPOFFS 1
+      LENGTH 310.56562500037808
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {94B2BAE4-899E-9B45-8D9D-DBB39D6335DF}
+      IID 941
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 2871.2769375028365
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {B5DABFA0-F446-134F-B101-CCDBE2C2F306}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3220.1624375032625
+      SNAPOFFS 1
+      LENGTH 154.75221087258751
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 1.1 0.01 14.393919 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {90D9F101-D82A-3144-ADD0-27A20A08C8F4}
+      IID 946
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3220.1624375032625
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {F7FBC831-C559-644E-8E6D-ECA17EFE417F}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3360.5207292766063
+      SNAPOFFS 0
+      LENGTH 17.64020723651993
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 14.393919 5 1 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {520BF250-7FF8-B147-948B-336794F1049A}
+      IID 1065
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 2.818383 0 1 -1
+      SOFFS 3360.5207292766063
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {A1C6DB6D-7F63-854F-8D0A-A56815B7AEE4}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3378.1609365131262
+      SNAPOFFS 0
+      LENGTH 15.50933432368083
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {E6308D30-97E3-3942-B487-FB80A5F565C4}
+      IID 1066
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3378.1609365131262
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5770F0A5-11DE-BC43-A3F5-AAB6469CD7AB}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+    <ITEM
+      POSITION 3634.3526250037689
+      SNAPOFFS 1
+      LENGTH 225.77229166694133
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 1 0 5 0 0 0
+      FADEOUT 5 1 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {5C76557C-2C75-4D41-A46F-1D9958E49F95}
+      IID 954
+      NAME "La Switch_Rough_Cut_ July 08_JK.mp4 [chan 2]"
+      VOLPAN 1 0 1 -1
+      SOFFS 3634.3526250037689
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {09CAD792-2DCB-D540-9C23-1A9682D5FE1C}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Spotting/media/La Switch_Rough_Cut_ July 08_JK [chan 2].wav"
+      >
+    >
+  >
+  <TRACK {90BE0F19-8B8D-A345-A2F0-CCB4C9D5EBF6}
+    NAME 28
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 -1 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {90BE0F19-8B8D-A345-A2F0-CCB4C9D5EBF6}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 537.14926303766811
+      SNAPOFFS 0
+      LENGTH 75.45590723151089
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D70CC800-5A64-494E-96A5-D854FBC32FAF}
+      IID 35037
+      NAME 28.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {360E0D54-11FE-ED4A-91E8-767CCF236265}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Grab Bag/28.wav"
+      >
+    >
+    <ITEM
+      POSITION 653.85746019511805
+      SNAPOFFS 0
+      LENGTH 395.04710998010194
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 1.1 0.01 0.01 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {CD613CDF-8E06-8D49-900B-469CAF2D4716}
+      IID 35047
+      NAME 28.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 116.70819715744994
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C931A297-54C9-D54A-BF35-D73F196FB4DB}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Grab Bag/28.wav"
+      >
+    >
+    <ITEM
+      POSITION 1048.89457017522
+      SNAPOFFS 0
+      LENGTH 2.37891392732445
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 0.01 5 1 0 0
+      FADEOUT 1.1 0.01 0.01 5 1 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {B842BBEA-45F7-AF4B-A1DC-B6848738B1EC}
+      IID 35069
+      NAME 28.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 511.74530713755189
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {1D7E5E5F-BFF3-7444-949B-547E35ED9494}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Grab Bag/28.wav"
+      >
+    >
+    <ITEM
+      POSITION 1051.2634841025445
+      SNAPOFFS 0.01
+      LENGTH 34.11539507704413
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1.1 0.01 0.01 5 1 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {C5E8791A-6951-464E-BB76-2106D0DEA79E}
+      IID 35070
+      NAME 28.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 514.11422106487635
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {D9F14CE9-B56F-3340-992C-8D9A3FB8B98B}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Grab Bag/28.wav"
+      >
+    >
+    <ITEM
+      POSITION 1085.8501231299097
+      SNAPOFFS 0
+      LENGTH 51.72596208937205
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 5 0.01 0 5 0 0 0
+      FADEOUT 5 0.01 0 5 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {1BD4BB1E-8926-F34C-B094-B13D0E9E4F56}
+      IID 35043
+      NAME 28.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 548.21961614192048
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {EC6CD1C8-16EE-0A4F-B451-8512BA987832}
+      <SOURCE WAVE
+        FILE "/Users/jonathankawchuk/Documents/Projects/In Progress/LA Switch M1/LS Grab Bag/28.wav"
+      >
+    >
+  >
+  <EXTENSIONS
+  >
+>

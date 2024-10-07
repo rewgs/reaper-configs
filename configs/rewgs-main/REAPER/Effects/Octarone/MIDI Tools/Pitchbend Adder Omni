@@ -1,0 +1,60 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Adder Omni
+in_pin:Pitchbend
+out_pin:none
+slider1:100<1,1000,0.00001>Message Frequency (Hz)
+
+
+
+@init
+// buf = 0;
+next = 0;
+bend = prev = 8192;
+a = 4294967296;
+
+
+
+@slider
+ticks = max((srate/slider1 + 0.5) |0, 1);
+
+
+
+@block
+p = 0;
+q = -1;
+while(midirecv(o,a,b,c))
+(
+  abs(a-231.5) < 8 ? (
+   o===q ? p -= 2;
+   p[0] = o;  p[1] = b + c*128;
+   p += 2;
+  ) : (
+   midisend(o, a, b, c);
+  );
+);
+p[0] = 2147483647;
+p = 0;
+
+o = 0; a = p[0]; p += 2;
+
+next -= samplesblock;
+b = min(a, next);
+
+
+
+@sample
+o >= b ? (
+  o >= a ? (
+   a = p[0]; bend = p[-1];
+   p += 2;
+  );
+
+  (b = min(max(bend+spl0*8192, 0), 16383)|0) !== prev ? (
+   prev = b; midisend(o, $xE0, b + (b & $x3F80));
+  );
+  next = o+ticks;
+  b = min(a, next);
+);
+
+o += 1;

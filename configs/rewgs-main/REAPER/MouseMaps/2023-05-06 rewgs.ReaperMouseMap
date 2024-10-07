@@ -1,0 +1,120 @@
+[MM_CTX_ARRANGE_MMOUSE]
+mm_0=0 m
+mm_1=0 m
+mm_2=0 m
+mm_4=0 m
+mm_5=0 m
+mm_6=0 m
+
+[MM_CTX_ARRANGE_MMOUSE_CLK]
+mm_0=0 m
+mm_2=0 m
+
+[MM_CTX_ARRANGE_RMOUSE]
+mm_0=0 m
+mm_1=0 m
+mm_2=0 m
+mm_4=0 m
+mm_5=0 m
+mm_6=0 m
+mm_7=0 m
+
+[MM_CTX_ITEM]
+mm_1=0 m
+mm_2=14 m
+mm_3=14 m
+mm_4=2 m
+mm_5=2 m
+mm_6=5 m
+mm_7=5 m
+mm_8=32 m
+mm_9=32 m
+mm_10=32 m
+mm_12=36 m
+
+[MM_CTX_ITEM_CLK]
+mm_0=3 m
+mm_1=0 m
+mm_4=0 m
+mm_5=0 m
+mm_6=0 m
+
+[MM_CTX_ITEMEDGE]
+mm_0=13 m
+mm_1=17 m
+mm_2=14 m
+mm_3=18 m
+mm_4=2 m
+mm_5=10 m
+mm_6=4 m
+mm_7=12 m
+
+[MM_CTX_ITEMLOWER_CLK]
+mm_3=42388 c
+
+[MM_CTX_MIDI_CCLANE]
+mm_0=9 m
+mm_1=11 m
+mm_2=0 m
+mm_3=11 m
+mm_4=6 m
+
+[MM_CTX_MIDI_CCLANE_DBLCLK]
+mm_0=0 m
+mm_1=0 m
+mm_4=2 m
+
+[MM_CTX_MIDI_NOTE]
+mm_1=17 m
+mm_2=2 m
+mm_4=7 m
+mm_5=9 m
+mm_6=8 m
+mm_7=10 m
+
+[MM_CTX_MIDI_NOTE_CLK]
+mm_0=1 m
+mm_4=2 m
+
+[MM_CTX_MIDI_PIANOROLL]
+mm_0=7 m
+mm_1=9 m
+mm_3=2 m
+mm_4=1 m
+mm_5=19 m
+mm_6=2 m
+mm_7=18 m
+
+[MM_CTX_MIDI_PIANOROLL_CLK]
+mm_0=3 m
+mm_2=3 m
+mm_4=4 m
+mm_5=8 m
+mm_6=5 m
+mm_7=9 m
+
+[MM_CTX_RULER]
+mm_0=5 m
+mm_3=8 m
+mm_4=9 m
+mm_5=12 m
+mm_6=9 m
+mm_7=12 m
+
+[MM_CTX_TRACK]
+mm_0=9 m
+mm_1=13 m
+mm_2=0 m
+mm_3=13 m
+mm_4=5 m
+mm_6=6 m
+mm_7=0 m
+
+[MM_CTX_TRACK_CLK]
+mm_0=3 m
+mm_1=0 m
+mm_2=0 m
+mm_3=0 m
+mm_4=0 m
+mm_6=0 m
+

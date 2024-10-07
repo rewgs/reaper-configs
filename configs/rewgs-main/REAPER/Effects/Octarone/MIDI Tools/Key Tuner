@@ -1,0 +1,390 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Key Tuner
+in_pin:none
+out_pin:none
+options:want_all_kb
+
+
+@init
+// string slot 0: hold the list of active note-on input events and their converted note values, so they can be used when a note-off happens (even if a root change happens meanwhile).
+// for performance/simplicity reasons each entry is made up of two bytes: the converted note, and the channel it is in (the latter takes up a full byte also).
+// because the channel is in the most-significant byte of this 2-byte value (second byte), we use it with a value of 16 (out of range) to signal that there is no note-on for this note.
+// also initialize the actual string (not just the slot pointer) to that invalid value (0x100) for each 2-byte value (but do it in 4-byte values for speed) etc
+//
+note_on_list = 0;  strcpy(0, "");  loop(64, str_setchar(0, -0.25, $x10001000, 'iu'));
+
+// string slot 1: holds the list of notes at a specific offset; needed because we need to first see if any other special events happen at that offset...
+// the format of this list is 2-byte per note on:  first byte is made up of the input note #, second byte is velocity
+//
+notes_list = 1;
+
+// string slot 2: holds the list of MIDI key roots (byte 0) and number of notes in the scale for each 'scale' (byte 1) (i.e 2 bytes each scale)
+// the first two bytes in the entire string, however, represent something else: Pitchbend Range and cnt_max-1 (max amount of channels to go through)
+// thus strlen(2)/2-1 gives number of scales, even elements give the MIDI key root for the scale, odd ones give number of notes in the scale
+// scales_str = 2;
+
+// string slot 3: a cached list of 2-byte offsets to each scale's location (this is to quickly switch to another scale without having to loop through all prior to it)
+scale_list = 3;
+
+
+// pointers
+
+// lastchannel_bend = 0;  // specifies the last total pitch bend of each channel; this is pointer to zero always, for performance below (never used directly)
+notebend = 16;    // the pitchbend of the current/last note under the specific channel (depending on scale)
+// cnt_list = 32; // the linked list of channel orders for 'cnt'
+// note_detune = 48;  // 128 elements (1 for each note): the extra detuning for the NEXT note of given value; this only applies once! when the note uses it, it is reset to 0; it allows temp per-note detuning without changing scale...
+// scales = 176;   // the scale data for every scale, each scale starts with key_tuning for that scale, followed by the scale notes (depends how many notes it has)
+
+
+/*
+   Initialize defaults if a new instance
+*/
+strlen(2) === 0 ? (
+  frac_to_bend = 4096;
+  cnt_max = 16;
+
+  key = -1;
+  key_tuning = -540;
+  scale_notes = 1;
+  iscale_notes= 1;
+  scale_repeat = 12;  // 12 semitones
+  midi_root = key;  scale_root = key_tuning;
+
+  strcpy(2, "\x02\x0F\x30\x01");  // pitchbend_range = 2, cnt_max = 16, key = 48, scale_notes = 1
+
+  // scale_list has 1 entry, points at "scales" (176!) -- strcpy isn't used because it can't handle NULL chars...
+  strcpy(scale_list, ""); str_setchar(scale_list, -0.25, 176, 'su');
+
+  scale = 176;
+  scale[0] = 48;
+  scale[1] = scale_repeat;
+
+  gpos_max = 6;
+);
+
+
+/*
+   Initialize cnt_list; this is basically a linked list, each entry has a single value: the next index. The index itself defines the actual channel, with the index
+   simply pointing to the next channel in the list. Here, we simply initialize it to channels in increasing order, but absolute pointer values (for performance), means +32
+   As notes get used on and off, the order will change: the priority is to use ALL the channels available, before using channels that were already used. However,
+   notes that were off first, will be used first after no more channels are available. Notes that barely got off will be last, this prioritization helps with 'tails'.
+
+   When a note goes off, its channel gets appended to the end of the available channels as an available channel in the list. The more complicated logic is when we run
+   out of available channels and start using some that are already used: in this case as soon as a note off happens, it gets put immediately to be used as next channel.
+   After all, free channel is always better. Due to not keeping count of how many notes were used on same channel, there will be issues when this happens, so don't do it!
+*/
+cnt_last = 32;  loop(cnt_max-1, cnt_last[0] = cnt_last+=1);  cnt_last[0] = 32;  cnt = 32;
+
+/*
+   Initialize input pitchbend to 'zero' which is 8192
+*/
+lastbend = bend = 8192;
+
+
+
+@serialize
+// if writing, convert frac_to_bend to pitchbend_range and store it along with cnt_max (2nd byte) at start of string slot 2
+// note that pitchbend_range equal to zero means a 0.5 range, though (zero makes no sense and gives division by zero anyway)
+file_avail(0) < 0 ? str_setchar(2, 0, 8192/frac_to_bend + 0.25 + (cnt_max-1)*256 + vst_detune_mode, 'su');
+
+// read/write the pitchbend_range, cnt_max-1, and the scale keys & number of notes list string into slot 2 (hardcoded due @init maybe called later); always init with first scale
+file_string(0, 2);
+
+// now grab the data for the actual scales (hardcoded slots for same reason...)
+i = 176;  n = 3;
+loop(strlen(2)/2-1,
+  a = str_getchar(2, n, 'cu') + 1;  // scale_notes + key_tuning (first element)
+  file_mem(0, i, a);
+  i += a;  n += 2;
+);
+
+// init with first scale (if reading)
+file_avail(0) >= 0 ?
+(
+  cnt_max = (vst_detune_mode = str_getchar(2, 0, 'su')) >> 8;
+  frac_to_bend = (vst_detune_mode -= cnt_max*256) & $~7;  vst_detune_mode -= frac_to_bend;
+  frac_to_bend = frac_to_bend ? 8192/frac_to_bend : 16384;  cnt_max += 1;
+
+  // scale_notes is simply the number of notes in the scale
+  scale_notes = str_getchar(2, 3, 'cu');  iscale_notes = 1/scale_notes;
+
+  // scale is simply a pointer to the current scale-1 (note the -1, it's important); that's why it actually points to the key_tuning!
+  scale = 176;
+
+  // scale_repeat is the number of semitones w/ fraction that one 'octave' in the scale represents (after which it repeats)
+  // in other words, it's the last note in the scale... this is why scale is -1, so indexing like following can work (performance thing)
+  scale_repeat = scale[scale_notes];
+
+  // the user's input key is the MIDI key number that triggers the key_tuning tone
+  // key_tuning is the precise tuning (semitones w/ fractions) for that MIDI key, the rest of the scale is relative to this
+  //
+  // note that both key and key_tuning get adjusted internally such that they are < 0, but NOT in the file
+  // this is done for performance reasons (as |0 breaks at negative diff, unlike floor which is much slower)
+  // of course it must sound the same: for every scale_notes key gets moved down, key_tuning gets adjusted by scale_repeat down
+  //
+  key = str_getchar(2, 2, 'cu');  key_tuning = (key*iscale_notes + 1)|0;  // temps
+
+  key -= key_tuning*scale_notes;
+  key_tuning = 176[0] - key_tuning*scale_repeat;  // the [0] gets the key_tuning from the memory
+
+  // set the roots the same as the keys, default root should be same as the key
+  midi_root = key;  scale_root = key_tuning;
+
+  // fill the cached scale_list indices to each scale, for quick access
+  strcpy(scale_list, ""); str_setchar(scale_list, -0.25, 176, 'su');  // first entry
+
+  i = 176;  n = 3;
+  loop(strlen(2)/2 - 2,
+    i += str_getchar(2, n, 'cu') + 1;
+    str_setchar(3, -0.25, i, 'su');
+    n += 2;
+  );
+
+  // for GUI...
+  gpos_max = str_getchar(scale_list, strlen(2)-4, 'su') + str_getchar(2, strlen(2)-1, 'cu') + strlen(2)*2.5 - 181;
+);
+
+
+
+@block
+// use the following seemingly redundant construct since EEL is so limited and has no break/continue/goto, we basically need 1 more half iteration for lastoffset at end...
+midirecv(o,a,b,c) ? (
+ lastoffset = o;
+ while(
+  a > $x9F ? (      // Non-Notes
+   n = a & $xF0;
+   n===$xE0 ? (     // Pitchbend (convert from raw Pitchbend to 0...16383 and save it)
+    bend = b + c*128;
+   ) : (
+    a===$xAF ? (    // Note After-Touch on channel 16 (which means per-note microtuning); apply it to the note_detune list after conversion
+     // the 'pressure' is 0...127 value, but there is no zero detuning available (pointless) at 64, so 0-63 are negative, 64-127 are positive detunes, with 0 and 127 being -50 and +50 cents respectively
+     b[48] += c+(c>63)-64;
+    ) : (
+     n!==$xC0 ? (   // Not a Program Change, so pass through
+      midisend(o, a, b, c);
+     ) : (
+      /*
+         Program Change here: Change the Scale to the scale specified+1 (clamp it to existing values though); i.e PC 0 changes to [Scale 1]
+      */
+      b = min(b*2, strlen(2)-4);
+      scale_notes = (key = str_getchar(2, b+2, 'su')) >> 8;  key &= $~8;
+      scale = str_getchar(scale_list, b, 'su');
+
+      iscale_notes = 1/scale_notes;
+      scale_repeat = scale[scale_notes];
+
+      key_tuning = (key*iscale_notes + 1)|0;
+      key -= key_tuning*scale_notes;
+      key_tuning = scale[0] - key_tuning*scale_repeat;
+
+      midi_root = key;  scale_root = key_tuning;
+     );
+    );
+   );
+  ) : (
+   a < $x90 ? (  // Note Off and not on channel 16 (send depending what's on the note_on_list at this input note)
+    a!==$x8F ? ( // Pretty messy, we must alter the cnt_list, either put channels after cnt_last (available channels), or beginning (if no more available)
+     b *= 2;
+     (a = str_getchar(note_on_list, b, 'su')) < $x1000 ? (
+      str_setchar(note_on_list, b, $x1000, 'su');  // mark as closed
+      b=a>>8;  (a &= $~8)<128 ? midisend(o, b + $x80, a, c);
+
+      b += 32;   // convert from channel to absolute index of cnt_list
+      cnt_last > 0 ? (
+       b!==cnt && b!==cnt_last ? (  // prevents stupid bug...
+        c = cnt_last[0];
+        b!==c ? (
+         a = c;  while((o = c[0]) !== b) (c = o);  // scan until we find the element that points to the one we freed (to move it after cnt_last)
+
+         (o = b[0]) !== c ? c[0] = o;
+         cnt_last[0] = b;
+         b[0] = a;
+        );
+        cnt_last = b;
+       );
+      ) : (
+       b!==cnt ? (
+        a = cnt_max-2;
+        c = cnt;  while((o = c[0]) !== b) (c = o; a -= 1);  // scan since we need to 'move' it to beginning
+
+        c[0] = b[0];
+        b[0] = cnt;
+
+        loop(a, c = c[0]); // travel down the remaining path until last element
+        c[0] = b;          // make last element point to our new first
+        cnt = b;
+       );
+       cnt_last = b;
+      );
+     );
+    );
+
+   ) : (         // Note On, store it for this offset by appending to the list (unless channel 16, which is root change)
+    a!==$x9F ? (str_setchar(notes_list, -0.25, b + c*256, 'su'))
+    : (
+     // Recalculate the < 0 'roots' based on the root change by adjusting from the keys (which are < 0)
+     midi_root = b-key;  midi_root -= (midi_root*iscale_notes - 0.00390625 |0)*scale_notes;
+
+     scale_root = key_tuning + scale[midi_root];
+     (midi_root += key) >= 0 ? (
+       scale_root -= scale_repeat;
+       midi_root -= scale_notes;  // always keep it < 0
+     );
+    );
+   );
+  );
+
+  // next event; if no more, make sure o is high enough to process lastoffset last time
+  // if we're past lastoffset, loop through the list of notes (if any) and adjust based on gathered info
+  (m = midirecv(o,a,b,c))===0  ||  lastoffset < o ? (
+   i = -2;
+   loop(strlen(notes_list)/2,
+    v = str_getchar(notes_list, (i += 2), 'su');
+    n = v & $~8;  v -= n;
+
+    // get the converted note's value (with fraction for detuning!), relative to the scale's value at midi_root; but -1 if it falls *exactly* on multiple of root
+    x = (y = n-midi_root)*iscale_notes - 0.00390625 |0;
+    y = scale_root + x*scale_repeat + scale[y - x*scale_notes];
+
+    // add the note specific detune, if any, and some randomness due to limited precision in it (only fine 'quantization' randomness); also reset the detuning for this note since we used it
+    (t=n[48]) ? (y += (rand(1)+t-0.5)/128; n[48] = 0);
+
+    // close old note if it had same input value, then put the new note value in the note on list
+    ch = cnt-32;  n *= 2;
+    (x = str_getchar(note_on_list, n, 'su')) < $x1000 ? (
+     ch = x>>8;
+     midisend(lastoffset, ch + $x80, x - ch*256);
+    );
+
+    // round the converted note and see if it is valid (0-127); x = MIDI note #, y = fraction (bend)
+    x = (y+0.5)|0;
+    abs(x-63.5) < 64 ?
+    (
+     y -= x;
+     vst_detune_mode ? (
+      t = (y*100+50.5 |0);  // round properly negative cents, but also keep them in 0...100 range (instead of -50...50) for the CC
+      y -= (t - 50)/100;    // get the precision pitchbend
+
+      midisend(lastoffset, ch + $xB0, 119, t);  // send the detune as CC #119
+     );
+     y *= frac_to_bend;
+     notebend[ch] = y;
+
+     // put the new note value in the note on list
+     str_setchar(note_on_list, n, x + ch*256, 'su');
+
+     // see if old total pitchbend for this channel is different (ch[0] is lastchannel_bend[ch], since it is 0 for performance...)
+     (y += bend)  !==  ch[0] ? (
+       ch[0] = y;  y = min(max(y, 0), 16383);
+       midisend(lastoffset, ch + $xE0, y + (y & $x3F80));  // send Pitchbend
+     );
+
+     midisend(lastoffset, ch + $x90, x+v);  // send the Note
+    ) : (
+     str_setchar(note_on_list, n, ch*256 + 128, 'su');  // invalid note
+    );
+
+    // next channel in the list (cnt_last = 0 means next channel is unavailable...)
+    ch===cnt-32 ? (
+     cnt===cnt_last ? cnt_last = 0;
+     cnt = cnt[0];
+    );
+   );
+   strcpy(notes_list, "");
+
+   // see if user applied normal Pitchbend
+   bend !== lastbend ? (
+    lastbend = bend;  i = 0;  // i = lastchannel_bend (which is 0 for performance)
+
+    loop(cnt_max,
+     (n = notebend[0]+bend) !== i[0] ? (
+      i[0] = n;  n = min(max(n, 0), 16383);
+      midisend(lastoffset, i + $xE0, n + (n & $x3F80));  // send Pitchbend
+     );
+     notebend += 1;  i += 1;
+    );
+    notebend = 16;
+   );
+
+   lastoffset = o;
+  );
+
+  m  // loop if more events
+ );
+);
+
+
+
+
+// gfx section: I avoid using many variables etc, so I use unused mouse variables, don't care about gui code clarity
+@gfx
+(mouse_cap &= 12) ? (
+ gb = (8192/frac_to_bend + 0.25) |0;
+ (mouse_cap > 4 ? gb : cnt_max) += mouse_wheel/120;
+ while((ga = gfx_getchar()) >= 1) (
+  ga === 'up' ? (mouse_cap > 4 ? gb += 1 : cnt_max += 1);
+  ga === 'down' ? (mouse_cap > 4 ? gb -= 1 : cnt_max -= 1);
+  ga === 'pgdn' ? (mouse_cap > 4 ? gb -= 10 : cnt_max -= 4);
+  ga === 'pgup' ? (mouse_cap > 4 ? gb += 10 : cnt_max += 4);
+  ga === ' ' ? vst_detune_mode ~= 128;
+ );
+ gb = min(max(gb, 0), 127);  gb===0 ? gb = 0.5;
+ frac_to_bend = 8192/gb;  cnt_max = min(max(cnt_max, 1), 16);
+ cnt_last = 32;  loop(cnt_max-1, cnt_last[0] = cnt_last+=1);  cnt_last[0] = 32;  cnt = 32;
+) : (
+ gpos -= mouse_wheel*0.0291666666666666667;
+ while((ga = gfx_getchar()) >= 1) (
+  ga === 'up' ? gpos -= 0.5;
+  ga === 'down' ? gpos += 0.5;
+  ga === 'pgdn' ? gpos += 20;
+  ga === 'pgup' ? gpos -= 20;
+  ga === ' ' ? gmode ~= 1;
+ );
+ gpos = min(max(gpos, 0), gpos_max);
+);
+gfx_clear = $~24;
+gfx_r = gfx_g = gfx_b = 0;
+gfx_y = gfx_texth*(1.75 - gpos);
+
+mouse_cap = 2;
+while(gfx_y <= gfx_h  &&  mouse_cap < strlen(2))
+(
+  mouse_y = ((ga = (gb = str_getchar(2, mouse_cap, 'su')) >> 8) + 6)*gfx_texth;
+  gfx_y > -mouse_y ?
+  (
+   mouse_wheel = str_getchar(scale_list, mouse_cap-2, 'su');
+   gfx_x = 0;  mouse_x = #;  sprintf(mouse_x, "%.8f", gmode ? mouse_wheel[0] : exp(mouse_wheel[0]*0.05776226504666210912)*8.1757989156437073337);  mouse_y = -1;  // A4(69) = 440Hz
+   while (str_getchar(mouse_x, mouse_y)===$'0') (mouse_y -= 1);
+   strncpy(mouse_x, mouse_x, strlen(mouse_x)+mouse_y+(str_getchar(mouse_x, mouse_y)!==$'.'));
+   gmode===0 ? strcat(mouse_x, "Hz");
+
+   gfx_y += gfx_texth;
+   gfx_y >=0 ? (gfx_x = 0;  gfx_setfont(1, "Arial", 16, 'b');  gfx_printf("    [Scale %d]", mouse_cap/2));  gfx_setfont(1, "Arial", 16);  gfx_y += gfx_texth;
+   gfx_y < 0 ? (gfx_y += gfx_texth) : (gfx_x = 0;  gfx_printf("    Key: %d\n    Key Tuning: %s", gb&$~8, mouse_x));  gfx_y += gfx_texth;
+   gfx_y < 0 ? (gfx_y += gfx_texth) : (gfx_x = 0;  gfx_printf("    Number of Notes: %d\n    Notes:", ga));  gfx_y += gfx_texth;
+
+   loop(ga,
+    mouse_wheel += 1;
+    gfx_y >= 0 ? (
+     gfx_x = 0;  ga = #;  sprintf(ga, "%.8f", mouse_wheel[0] * 100);  gb = -1;
+     while (str_getchar(ga, gb)===$'0') (gb -= 1);
+     strncpy(ga, ga, strlen(ga)+gb+(str_getchar(ga, gb)!==$'.'));
+     gfx_printf("        %s", ga);
+    );
+    gfx_y += gfx_texth;
+   );
+  ) : (
+   gfx_y += mouse_y;
+  );
+  mouse_cap += 2;
+);
+
+gfx_x = 0;  gfx_y = gfx_texth*0.25;  gfx_r = gfx_g = gfx_b = 1;  gfx_rect(0, 0, gfx_w, gfx_texth*1.75);
+gfx_r = gfx_g = gfx_b = 0;  gfx_setfont(1, "Arial", 16, 'b');
+
+gfx_drawstr("    Pitchbend Range: ");  frac_to_bend===16384 ? gfx_drawstr("1/2") : gfx_printf("%d", 8192/frac_to_bend + 0.5);  gfx_printf("        [ %d Channels ]", cnt_max);
+vst_detune_mode ? gfx_drawstr("        ( VST Detune Mode )");
+gfx_y += gfx_texth*1.5;  gfx_line(0, gfx_y, gfx_w, gfx_y, 0);
+
+mouse_wheel = 0;

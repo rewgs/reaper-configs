@@ -1,0 +1,36 @@
+﻿---------------------------------------------------------------------------------------
+  Item Timecode - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0rc1 (2017-09-15)
+  + added dock/undock in the menu
+  + added Show name in the menu
+  + added Set Text Color in the menu
+  + added Set Background Color in the menu
+  
+* v1.0pre8 (2017-09-09)
+  + Right click for time format modes: Project default, time, measures.beats + time, measures.beats, seconds, samples, h:m:s:f
+
+* v1.0pre7 (2017-09-09)
+  + With script in focus, press N key to toggle on/off display of take name or region name
+  + Any other key press if window is in focus will terminate the script.
+
+* v1.0pre6 (2017-09-09)
+  + Support for Project start setting different than 0:00
+  + Added item active take name
+
+* v1.0pre5 (2017-09-07)
+  + Added different configurable key to close script for Region timecode. "closekeychar2" = 26169.0 (F9 by default)
+  
+* v1.0pre4 (2017-09-07)
+  + Click to prompt to move edit cursor to specific timecode
+  
+* v1.0pre3 (2017-09-07)
+  + Region Timecode script
+
+* v1.0pre2 (2017-09-06)
+  + Esc key to close script while script window is focused 
+  + Added configurable key to close script with script window in focus. "closekeychar" = 26168.0 (F8 by default)
+
+* v1.0pre1 (2017-09-06)
+  + Initial version

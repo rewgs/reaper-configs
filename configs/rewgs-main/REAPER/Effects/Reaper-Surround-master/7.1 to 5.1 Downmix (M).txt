@@ -1,0 +1,25 @@
+desc:7.1 to 5.1 Downmix
+
+slider1:0<-100,100,1>Side Depth (+ve is front)
+slider2:100<0,100,10>Rear Width
+
+import surroundlib3.txt
+
+@init
+
+@slider
+R_width_coeff=slider2/100;
+
+ELL_Side_Depth=(slider1+100 )/ 200;
+
+@sample 
+
+//Rear width
+rear_width(R_width_coeff);
+
+//ELL side depth
+ELL_Side_Depth_71_to_51(ELL_Side_Depth);
+
+spl6=0;
+spl7=0;
+

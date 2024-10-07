@@ -1,0 +1,38 @@
+---------------------------------------------------
+  Import Export Subtitles - Changelog (What's new)     
+---------------------------------------------------
+
+ * v1.1 (2016-06-01)
+	+ Export: Ignore text items with empty note, or a space as separator notes(Notes Reader gaps)
+	
+ * v1.0 (2015-03-06), by X-Raym
+ 	+ Export: Multitrack export support -> every selected track can would be exported
+	+ Export: Selected items on non selected track will also be exported
+	+ Export: If no track selected, selected items notes can be exported anyway
+	+ Export: Better track and item selection restoration
+	
+ * v0.5 (2015-03-05), by X-Raym
+ 	# Export: default name is track name - thanks to spk77 for split at comma
+ 	# Export: default folder is project folder
+ 	# Export: if empty fields, back to default values
+	
+ * v0.4 (2015-03-05), by X-Raym
+	# Export: contextual os-based separator
+	+ Export: negative first (selected) item pos fix (consider first (selected) item start as time = 0 if cursor pos is after)
+	+ Export: no item selected => export all items on first selected track as subtitles
+	+ Export: item selected => export only selected items as subtitles
+	
+ * v0.3 (2015-03-04), by X-Raym
+	+ Export: default folder based on OS
+	+ Export: user area
+	
+ * v0.2 (2015-02-28)
+	+ Export: initial cursor position offset
+	+ Import: multiline support
+	+ Import: clean refresh
+	+ Import: position items relative to start cursor position.
+	+ Import: undo block for entire operation
+	
+ * v0.1 (2015-02-27)
+	+ Export: initial version
+	+ Import: initial version

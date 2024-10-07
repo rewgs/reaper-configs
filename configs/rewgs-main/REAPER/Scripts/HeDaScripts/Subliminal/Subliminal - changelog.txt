@@ -1,0 +1,11 @@
+﻿---------------------------------------------------------------------------------------
+ Subliminal - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0pre1 (2020-04-04)
+  + Initial release. Displays messages at time intervals to reprogramm your mind while using REAPER
+  + Default messages file: Anti-Coronavirus.msg (to customize messages, copy the file to the "Subliminal settings" folder and load it from options)
+  + Spanish messages file: Anti-Coronavirus_ES.msg (to customize messages, copy the file to the "Subliminal settings" folder and load it from options)
+  + Settings action to set time intervals, window mode, and load different set of messages file.
+  + Font size factor setting: from 0.0 to 1.0 (1.0 = fit to window size), 
+

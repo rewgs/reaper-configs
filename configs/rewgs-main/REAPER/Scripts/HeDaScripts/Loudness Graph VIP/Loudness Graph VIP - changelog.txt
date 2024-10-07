@@ -1,0 +1,350 @@
+-----------------------------------------------------------------------------------------------
+  Loudness Graph - Changelog (What's new)     
+-----------------------------------------------------------------------------------------------
+  
+* v2.0rc13 (2016-12-06)
+  # fix: make sure to use post fader sends. [&postcount=295]
+  + button to toggle Automatic Reset (AR) on play cursor change
+  
+* v2.0rc12 (2016-07-21)
+  # fix: Analyzing time selection: Loudness Range number in dpmeter II
+  # fix: Analyzing time selection: Programme Loudness IL number in dpmeter II
+  # fix: Get SWS/BR data: crash if no SWS loudness data is found.
+
+* v2.0rc11 (2016-07-20)
+  + Import Graphs from SWS/BR Loudness analysis (Only for tracks without FX, envelopes and fader at 0.0)
+  + Setting: Choose which reference lines to show on the graph area. (Master or Tracks)
+  # fix: anticipative processing causing graphs to be shifted.
+  # fix: small fix in CTRL+click to select multiple meters/tracks.
+  # fix: remove message alerting that PREMASTER track not found.
+  
+* v2.0rc10 (2016-07-16)
+  + Setting: Use PREMASTER track
+  # fix: remember latest docker used even if closed when not docked.
+
+* v2.0rc9 (2016-07-11)
+  + Setting to change Maximum level display value in Settings (for LUFS mode)
+  + Setting IL reference level in Settings (default -23)
+  + Setting to change reference levels independently for master track.
+  + Button to change scale display to standard EBU modes: LUFS, EBU+9, EBU+18 (the minimum loudness display affects LUFS mode only)
+  + Button to auto update regions/markers at overs continuously.
+  + global option: dpmeter_reset_on_cursor_change = true   resets all dpMeters if you change playback cursor position.
+  + Settings: mouse wheel to scroll in settings page.
+  # Settings: Show/Hide IL (on selected tracks)
+  + Settings: Show/Hide ML lines
+  # fix: adjusted the time parameters for rewinding when changing playback cursor 
+  # Improved grid to always match to reference IL line. minimum grid separation = 1 LU, not 3 LU as before.
+  # fix: don't reset dpmeters when activating EBU graph when it was on a RMS or LP graph.
+  # fix: don't reset dpmeters when start playing.
+  # fix: reset dpmeters only once at play position 0.0 
+  # fix: overs line on master and filled graph mode was not being indicated in red. 
+  # fix: click show/hide master track graph not working with meter scroll
+  # fix: meters width not correctly being changed with +/- buttons sometimes.
+  # fix: better interpolation and precision for the analyze track and display number under mouse on graph (right click on a meter function)
+  # fix: regions/markers at overs, use the master offset display value.
+  # fix: round to 0 decimals for meter width in settings.
+  # optimization in all buttons. Should be a bit faster.
+  
+* v2.0rc8 (2016-07-07)
+  + Setting to change Minimum level display value in Settings (for LUFS mode)
+
+* v2.0rc7 (2016-06-26)
+  # automatic update tracks with old dpMeter version to dpMeterII
+  # fix: remember vertical zoom (minimum loudness value)
+  # fix: panning in graph without lock to arrange starts to zoom while panning.
+  
+* v2.0rc6 (2016-06-21)
+  + dpMeterII 1.1.8 or later compatibility
+  # use of dpMeterII internal preset. No more manual "Loudness" preset creation needed.
+  # playcursor_set_mode: set to 0 to set play cursor at the exact time where clicked on graph
+  # fix: manual reset all button when bypass_EBUR128_when_RMS was broken
+  # fix: middle mouse drag at beginning of project to pan and with lock to arrange on
+  # various small fixes
+
+* v2.0rc5 (2016-05-08)
+  # improved precision of lock zoom to arrange
+  # fix graph RMS under -60dB
+  # fix: crash setting reference
+  # fix: unbypass dpmeters when returning to EBU mode from Pan modes.
+  
+* v2.0rc4 (2016-04-27)
+  # IMPORTANT: dpMeter 1.4.3 or later needed
+  + option to bypass_EBUR128_when_RMS to save CPU in RMS modes (bypass_EBUR128_when_RMS)
+  # compatibility fixes to work with HeDa_Track Inspector
+  # information to configure dpMeter if needed displayed in script console instead of messagebox window.
+  # fix: Do not steal focus
+
+* v2.0rc3 (2016-03-29)
+  # + - buttons to change meter width adds/removes one entire meter.
+  # fix: allow other dpMeter instances. Also to use Track Inspector at the same time.
+  # fix: could not select last mater if master track was not analyzed
+  # some small fixes
+  
+* v2.0rc2 (2016-03-11)
+  + RMS meters & graph 
+  + Right click in RMS button to change RMS Window for all meters
+  # Changing meters area width define number of visible meters, not meter width.
+  + Buttons to adjust meter width by 1 pixel and with mouse wheel over them.
+  + Support for thin meters (width <32 pixels)
+  + Support for saving window position (if REAPER 5.20+)
+  # automatic detection of x64 or x32 platform. Always use HeDa_Loudness Graph.lua in your actions list now. 
+  # If playing, stop when adding or removing tracks and resume
+  # Solo in graph in right click menu works for multiple selected tracks.
+  # fix: selected graphs correctly for meters out of scroll visible area.
+  
+* v2.0rc1 (2016-03-01)
+  + Zoom panning meters option
+  + Copy to Reference also for panning graphs [suggested by X-Raym]
+  # fix: small glitches in panning graphs [detected by X-Raym]
+  # fix: detect new projects without tracks or no template [detected by X-Raym]
+  
+* v2.0pre6 (2016-02-29)
+  + Panning Loudness meters. Optional meters indicating Panning+Loudness.
+  + Limit number of tracks displayed. (up/down arrow keys when script is in focus)
+  + Scroll Tracks (Left Right arrow keys, or mousewheel over track icons for page scroll)
+  + Copy to Reference to clone track graph to reference line. Right click "Clear All" to clear reference line. 
+  + fps display indicating you should display less tracks, or you zoomed out a lot, or you should 
+    use lines only mode without antialiasing if using filled mode or buy a new CPU.
+  + Global option: Selected tracks always filled in graph
+  # fix: detect if SWS is not installed and warn the user instead of doing nothing.
+  # Selected tracks background in meters tinted with track's color.
+  # Select track in Meters: scrolls into view also in MCP
+  # Try to maintain width of graph area when adding or removing tracks.
+  # Can remove tracks from arrange too without creating fatal error.
+  # Click on single selected meter deselects it.
+  # REAPER 5.16 required to display more than 32 track's icons
+  # Master graph line always on top of other lines
+  # Don't add master track plugins at initialization if not needed.
+  # fix: sometimes some track icons not showing.
+
+* v2.0pre5 (2016-02-17)
+  + Preserves the order of tracks when added. (global option)
+  + Selected tracks background highlight
+  # CTRL click on meter selects/deselects track(s) and can select multiple tracks now)
+  + CTRL drag to select/deselect multiple tracks in one click 
+  + SHIFT click on meter to select contiguous tracks from first selected to second selected
+  # MMB and MW on meter now can modify fader of all selected tracks relatively, not only one under mouse.
+  + MW on meter: shifts ML/SL/IL graph(s) too by an "approximate value"
+  + MMB on meter: shifts ML/SL/IL graph(s) too by an "approximate value"
+  # ALT click now to toggle solo track (it was CTRL click previously)
+  + ALT drag to toggle solo multiple tracks in one click
+  # ALT click in Show/Hide graph buttons to solo in graph
+  + IL numbers in meters are now track's reset buttons too
+  + Right click menu on meter icon
+  + Add/Remove children tracks of a folder track
+  # fix: crash sometimes removing tracks
+
+* v2.0pre4 (2016-02-13)
+  # fix: bad argument #1 to 'GetTrackUIVolPan' [X-Raym p=1637083&postcount=233]
+  # fix: don't create the hidden folder track as child track [X-Raym p=1637083&postcount=233]
+  
+* v2.0pre3 (2016-02-12)
+  # fix: don't fill non soloed tracks [X-Raym p=1635939&postcount=227]
+  # fix: meters opacity for non soloed tracks
+
+* v2.0pre2 (2016-02-11)
+  + Not closing script while rendering. message or nothing (configurable global option)
+  # fix: Save projects settings when switching tabs too. It was saving only the graph data 
+  # potential fix: avoid REAPER freeze in splash screen loading project sometimes if the script is running
+  # fix: script crash sometimes when switching tabs and the script is running
+  # fix: script crash when switching tabs to unnamed project
+  # fix: script crash when open new project and script is running 
+  # fix: script crash when closing project and script is running 
+  # reset all meters when switching to another project
+  # fix: script crash removing track in some circumstances [X-Raym p=1635495&postcount=212]
+  # fix: track focus with master on and off. [X-Raym p=1635495&postcount=212]
+  # fix: avoid graph draw over menu [X-Raym p=1635495&postcount=212]
+  # fix: avoid adding tracks already added. [X-Raym p=1635495&postcount=212]
+
+* v2.0pre1 (2016-02-10)
+  + New tracks management engine. Automatic creation of post fader send to a hidden bus track
+  + Avoid clearing graph when inserting, removing, refreshing the list of tracks
+  # The order of meters can be manually changed by reordering the hidden bus tracks and clicking the refresh tracks button
+  # New ".loudnessgraph" file format. v1.1 ".loudness" is incompatible with this version. You can safely delete them.
+  + Global Options file to edit and change options that are not saved on each project.
+  + Automatic detection of track's(name, color, icon) changes
+  + Automatic reset option if play cursor at 0.0 seconds.
+  + Thick line for the track under mouse in meters area
+  + Thick line for the track selected for analysis(right click meter)
+  + Mouse wheel over meters to adjust track's fader volume
+  + SHIFT + Mouse wheel over meters to adjust meters opacity.
+  + Zoom All button. Zooms from =START to =END markers
+  + Zoom lock to arrange button toggle
+  + Full Screen button. (top right corner) only primary monitor and width and height configurable in options.lua
+  + ML lines in meters shown in SL and IL modes too
+  + Configurable meter width. Drag the separator line between meters and graph to resize too.
+  + Configurable grid line step
+  + ML/SL overs level display as red line in graph (if overs is activated)
+  + Click in left grid numbers to change ML/SL overs level.
+  + IL number values on meters options. Show on all meters, show on meter under mouse. master always displayed.
+  + Middle mouse button click on meter change track's fader volume to approximately match IL to value under mouse when clicked
+  + Right click [G1] [G2] [G3] buttons to add the suffix to selected tracks
+  + Button [M] to quickly show only master.
+  + Right click [M] to change master display offset (if needed) 2 default. 0 to disable.
+  + Tooltips (can be disabled in global options file)(click on tooltip area to enable disable too)
+  # Improved online documentation
+  # Dock/undock button. (moved to top right corner as icon button next to full screen button)
+  # Don't update master graph if any track is in solo. If desired, it can be changed in options.lua file
+  # Don't update graph while rendering. It was causing graph glitches
+  # Automatic reset if play cursor at 0.0 seconds
+  # fix: not updating track's icons properly
+  # fix: clicking on region (left to zoom, right click to clear graph)
+  # fix: save default settings if never saved before.
+  # fix: more small bugs 
+
+* v1.1pre3 (2015-12-21)
+  # another fix for projects with .rpp extension (lowercase). Thank you X-Raym
+  
+* v1.1pre2 (2015-12-21)
+  # fix in path for data file and it is now created in the project folder
+  
+* v1.1pre1 (2015-12-21)
+  + Save/Load graph to file
+  + Automatic save to file when closing script or switching to another project tab
+  + Right mouse button drag in graph to clear selected area
+  + Right click on region to clear graph in region.
+  # left mouse drag to define time selection: now you can drag to the left too.
+
+* v1.0RC4 (2015-12-12) 
+  # Toolbar icons fix in OSX.
+
+* v1.0RC3 (2015-12-01) 
+  # compatibility with dpMeter v1.4
+  
+* v1.0RC2 (2015-09-29) 
+  # fix wrong gfx.mode for track icons
+  # OSX color using ColorToNative functions should work now. try #2
+  
+* v1.0RC (2015-09-26) 
+  # REAPER 5.02 needed for API color changes (osx/windows compatibility)
+  + Display Track Icons option
+  + Option to specify width of meters for each group. G1 G2 and G3
+  # bugfix: "Save as default" options works now. 
+  # bugfix: crash sometimes when no tracks are still added for analysis
+  # bugfix: crash in regions display button.
+  # remembers undocked window width and height
+  # Display track's name also when mouse is over the number trackid
+  # various small fixes
+  # click on over regions to fix volume may be implemented better in future versions.
+  + Help page: added link to online documentation
+  + xtrooder added to list of sponsors
+  + Daryl Pierce added to list of sponsors
+  
+* v1.0pre18 (2015-07-14) 
+  + added x32 version
+  # time selection is restored after first pass when clicking region to adjust over.
+  
+* v1.0pre17 (2015-07-13) 
+  # bug fix better hiding master graph
+  # bug fix refresh button cleared master graph
+  # bug fix crash clicking show/hide regions.  
+  
+* v1.0pre16 (2015-07-06) 
+  + Customizable Master color in Options
+  + Button to refresh track's names and colors 
+  # moved ML/SL/IL button and a bit bigger.
+  + Create markers or regions at overs (master track overs)
+  + Experimental: Click on Region to analyze and adjust selected envelope.
+  + musicbynumbers added to list of sponsors
+
+* v1.0pre15 (2015-06-22)
+  + Regions/Markers Display on graph, various display modes. 
+  + enable display or Regions only, Markers only, or both.
+  + Button in options to save current settings as default ones
+  + Display IL in all meters, with line and text at the level.
+  # graph mode (ML SL or IL) saved in project
+  # format of calculated values of time selection.
+  # Options reloaded after project switch
+  # Theme was not begin saved.
+  # light theme changes and default to match with REAPER 5 default theme.
+  # UI tweaks
+  
+* v1.0pre14 (2015-06-15)
+  + Switching modes ML SL IL without clearing the graph
+  + Button [-] to remove selected track(s), same as adding [+] 
+  # bugfix: no crash on deleting tracks. but clears graph for now
+  # bugfix: master track option was not being saved
+  + Option to always display Programme Loudness(IL) in master meter
+  + Click Master IL label to reset master track only.
+  + adjust fill graph opacity in options, or in graph with SHIFT+mousewheel
+  # filled graph by default, with lines on top of the fills
+  # Anti-aliased lines
+  # Custom overs are for ML and SL, IL overs fixed at -22.5
+
+* v1.0pre13 (2015-06-11)
+  + Master Track support. Master track line a bit wider. 
+  + 3 Type Groups by track's suffix. Set suffix in options. Groups Display different meter widths.
+  + G1 G2 G3 buttons to switch to groups visibility in graph.
+  + CTRL click on track id: solo display in graph clicked track
+  # Better fill graph mode
+  # Better detection of project change while script is open.
+  # Some optimizations in the graph loop code
+  # Fix graph going in reverse sometimes after docking
+
+* v1.0pre12 (2015-06-07)
+  + Hide/Show Meters button
+  # multiple tabs, switch project without crashing, reloads tracks and clears graph
+  # fix zoom to time selection if there is not one defined, graph going backwards fix
+  # some toolbar icons test
+  # try fix font issues for mac
+  # avoid middle mouse button scrolling before time 0
+  # fix hide track in graph buttons
+
+* v1.0pre11 (2015-06-05)
+  + Dark, Medium, Light themes  
+  # UI cosmetics
+  # bugfix initial time range for graph
+
+* v1.0pre10 (2015-06-04)
+  + MaxML and MaxSL, TP, LRA for time selection
+
+* v1.0pre9 (2015-06-02)
+  + Options page
+  + Help page 
+  + Changelog page
+  
+* v1.0pre8 (2015-06-01)
+  + About page
+  + Add more than one track at the same time
+  + Added Priscilla Hernandez and Soli Deo Gloria to list of sponsors
+  
+* v1.0pre7 (2015-05-27)
+  # works with updated dpMeter v1.1 with more parameters outputs
+  
+* v1.0pre6 (2015-05-26)
+  + Calculate IL of Time selection of selected track for analysis (right click on meter or on graph)
+  + Esc key removes Time selection
+  # Better zooming to where mouse cursor is
+  
+* v1.0pre5 (2015-05-25)
+  + drag on graph to define time selection
+  + option to Automatic Reset and analysis of time selection
+  + always display a second row of text with IL value meters 
+  + subliminal messages
+  # several bugs fixed
+
+* v1.0pre4 (2015-05-23)
+  + Button to add analysis plugin with the preset "Loudness" in selected track, and update list of meters
+  + Remove track analysis (ALT + click on meter)   
+  + AutoScroll page option
+  + 9 presets of tracks visibility in graph  (click to load presets, right click to save)
+
+* v1.0pre3 (2015-05-22)
+  + Pan and zoom graph, middle mouse button drag to pan, mouse wheel to zoom horizontal, CTRL mousewheel to zoom vertical
+  + Left mouse drag to select time
+  + Clear graph and reset analysis buttons
+  + Overs red indicator.
+  # several fixes in graph display 
+  
+* v1.0pre2 (2015-05-21)
+  + added history loudness graph
+  + click on graph to change play cursor position
+  + right click on graph to activate and cycle display values on mouse cursor
+  + ability to hide/show individual tracks in the graph (SHIFT+click on meter)
+  + toggle solo tracks dims not soloed tracks (CTRL+click on meter)
+
+* v1.0pre1 (2015-05-05)
+  + support Loudness ML, SL and IL meters
+  + Gets meter color from Track color.
+  + It is possible to select which tracks to be included.
+  + Resizable, dockable, will remember dock position

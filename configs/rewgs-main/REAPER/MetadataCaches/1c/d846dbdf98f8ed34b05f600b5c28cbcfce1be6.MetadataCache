@@ -1,0 +1,171 @@
+C10018 "/Users/jonathankawchuk/Documents/Projects/In Progress/BMIR 2023 Sketches/The Quickening/media"
+F "Braz Swirl Battle_2.wav" 2930882 0 1675450888 0
+D s 48000 n 2 l 0:10.176 i 24
+F "FX Vio_1-glued.wav" 631982 0 1675387348 0
+D y 2023-02-02 s 96000 n 1 r 0:02.181
+D l 0:02.191 i 24
+F "FX Vio_1-glued_nmf_167538735425121.wav" 2525024 0 1675387355 0
+D s 96000 n 3 l 0:02.191 i 32
+F "FX Vio_1_nmf_167539000331971 [chan 1].wav" 3205816 0 1675390015 0
+D y 2023-02-02 s 44100 n 1 r 3:19.071
+D l 0:18.169 i 32
+F "FX Vio_1_nmf_167539000331971 [chan 2].wav" 3205816 0 1675390015 0
+D y 2023-02-02 s 44100 n 1 r 3:19.071
+D l 0:18.169 i 32
+F "FX Vio_1_nmf_167539000331971 [chan 3].wav" 3205816 0 1675390015 0
+D y 2023-02-02 s 44100 n 1 r 3:19.071
+D l 0:18.169 i 32
+F "FX Vio_1_nmf_167539000331971 [chan 4].wav" 3205816 0 1675390015 0
+D y 2023-02-02 s 44100 n 1 r 3:19.071
+D l 0:18.169 i 32
+F "Hannah Epperson Song_16_Dax Autotune_2023-01-24_23-36_001.wav" 22421652 0 1674628672 0
+D y 2023-01-24 s 96000 n 1 l 0:58.387
+D i 32
+F "Hannah Recording Dax_01_2023-01-24_23-16_001 copy 001.wav" 110829016 0 1675322108 0
+D s 96000 n 1 l 4:48.617 i 32
+F "Hannah Recording Dax_02_2023-01-24_23-21_002 copy 001.wav" 31047128 0 1675322138 0
+D s 96000 n 1 l 1:20.851 i 32
+F "rytm ideas_1_nmf_167540969373571 [chan 1].wav" 14941692 0 1675409758 0
+D y 2023-02-02 s 44100 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571 [chan 5].wav" 14941692 0 1675409758 0
+D y 2023-02-02 s 44100 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571 [chan 6].wav" 14941692 0 1675409758 0
+D y 2023-02-02 s 44100 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571-glued-01.wav" 32525260 0 1675409906 0
+D y 2023-02-02 s 96000 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571-glued-02.wav" 32525260 0 1675409937 0
+D y 2023-02-02 s 96000 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571-glued-03.wav" 32525260 0 1675409969 0
+D y 2023-02-02 s 96000 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571-glued-04.wav" 32525260 0 1675410078 0
+D y 2023-02-02 s 96000 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "rytm ideas_1_nmf_167540969373571-glued.wav" 32525260 0 1675409874 0
+D y 2023-02-02 s 96000 n 1 r 1:57.359
+D l 1:24.699 i 32
+F "Swirl Battle humm humm.wav" 3576374 0 1675389336 0
+D s 96000 n 2 l 0:06.208 i 24
+F "the quickening (w_ reference perc)-glued.wav" 3770916 0 1674626483 0
+D y 2023-01-24 s 96000 n 2 r 0:07.090
+D l 0:09.818 i 16
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 10].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 11].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 12].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 1].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 2].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 3].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 4].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 5].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 6].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 7].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 8].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491 [chan 9].wav" 3770924 0 1674626507 0
+D y 2023-01-24 s 96000 n 1 r 0:07.636
+D l 0:09.818 i 32
+F "the quickening (w_ reference perc)-glued_nmf_167462648579491.wav" 45242204 0 1674626500 0
+D s 96000 n 12 l 0:09.818 i 32
+F "The Quickening_1_freeze.wav" 30745320 0 1675408768 0
+D y 2023-02-02 s 96000 n 2 r 1:49.300
+D l 0:40.032 i 32
+F "The Quickening_1_freeze_MixPre-003_Ambix-006.wav" 16178712 0 1675408614 0
+D y 2023-02-02 s 96000 n 2 r 1:07.505
+D l 0:21.065 i 32
+F "The Quickening_1_freeze_rytm ideas_1.wav" 88443992 0 1675449260 0
+D y 2023-02-03 s 96000 n 2 r 0:02.181
+D l 1:55.160 i 32
+F "Thou Cloud_1 50 [chan 10].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 11].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 12].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 1].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 2].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 3].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 4].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 5].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 6].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 7].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 8].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Thou Cloud_1 50 [chan 9].wav" 5685112 0 1675388208 0
+D y 2023-02-02 s 96000 n 1 r 1:46.363
+D l 0:19.737 i 24
+F "Violin A_1-glued_nmf_167538776017681 [chan 1].wav" 5865472 0 1675387782 0
+D y 2023-02-02 s 96000 n 1 r 0:52.373
+D l 0:15.272 i 32
+F "Violin A_1-glued_nmf_167538776017681 [chan 2].wav" 5865472 0 1675387782 0
+D y 2023-02-02 s 96000 n 1 r 0:52.373
+D l 0:15.272 i 32
+F "Violin A_1-glued_nmf_167538776017681 [chan 3].wav" 5865472 0 1675387782 0
+D y 2023-02-02 s 96000 n 1 r 0:52.373
+D l 0:15.272 i 32
+F "Violin B_1-glued.wav" 15552736 0 1675387890 0
+D y 2023-02-02 s 96000 n 1 r 1:04.363
+D l 0:54.000 i 24
+F "Violin B_1-glued_nmf_167538789376131.wav" 41472044 0 1675387942 0
+D s 96000 n 2 l 0:54.000 i 32
+F "Violin B_1_nmf_167538945792631 [chan 1].wav" 8264084 0 1675390068 0
+D y 2023-02-02 s 44100 n 1 r 3:16.825
+D l 0:46.844 i 32
+F "Violin B_1_nmf_167538945792631 [chan 2].wav" 8264084 0 1675390068 0
+D y 2023-02-02 s 44100 n 1 r 3:16.825
+D l 0:46.844 i 32
+F "Vox in Vio_1_nmf_167538951648541 [chan 1].wav" 9596460 0 1675389551 0
+D y 2023-02-02 s 44100 n 1 r 3:07.785
+D l 0:54.397 i 32
+F "Vox in Vio_1_nmf_167538951648541 [chan 2].wav" 9596460 0 1675389551 0
+D y 2023-02-02 s 44100 n 1 r 3:07.785
+D l 0:54.397 i 32
+F "Vox in Vio_1_nmf_167538951648541 [chan 3].wav" 9596460 0 1675389551 0
+D y 2023-02-02 s 44100 n 1 r 3:07.785
+D l 0:54.397 i 32
+F "Vox in Vio_1_nmf_167538951648541 [chan 4].wav" 9596460 0 1675389551 0
+D y 2023-02-02 s 44100 n 1 r 3:07.785
+D l 0:54.397 i 32

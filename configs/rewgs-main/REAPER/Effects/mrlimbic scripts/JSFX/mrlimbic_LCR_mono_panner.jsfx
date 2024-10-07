@@ -1,0 +1,100 @@
+desc: LCR Panner - Simple Mono [mrlimbic]
+//tags: Surround LCR pan panner 3.1 5.1
+//author: mrlimbic
+version: 1.4
+
+slider1:0<-100,100,0.1>Left/Centre/Right
+slider2:100<-100,100,0.1>Rear/Front
+slider3:-96<-96,0,0.1>LFE
+slider4:-96<-96,0,0.1>Rear Upmix
+
+in_pin:L
+in_pin:R
+
+out_pin:L
+out_pin:R
+out_pin:C
+out_pin:LFE
+out_pin:Ls
+out_pin:Rs
+
+// db to linear
+// db > -96.0 ? Math.pow(10.0, (0.05 * db)) : 0.0;
+
+@init
+// Globals, functions and psuedo classes
+PI = 3.141592653589793;
+SMOOTH_CHANGE = 0.0001; // gain change allowed per sample
+
+function dbToLinear(db) (
+  db > -96.0 ? pow(10.0, (0.05 * db)) : 0.0;
+);
+// Simple interoplator that smooths slider value across sample block
+// This should be replaced later with a sample accurate interpolator
+function interp_init(index) (
+  this.slider_index = index;
+  this.last_value = slider(this.slider_index);
+);
+
+function interp_slider() (
+  this.next_value = slider(this.slider_index);
+);
+
+function interp_block() global(samplesblock) (
+  this.delta = (this.next_value - this.last_value) / samplesblock;
+);
+
+function interp_sample() (
+  value = this.last_value;
+  this.last_value += this.delta;
+  value;
+);
+
+i1.interp_init(1);
+i2.interp_init(2);
+i3.interp_init(3);
+i4.interp_init(4);
+
+@slider
+i1.interp_slider();
+i2.interp_slider();
+i3.interp_slider();
+i4.interp_slider();
+
+@block
+i1.interp_block();
+i2.interp_block();
+i3.interp_block();
+i4.interp_block();
+
+@sample
+pan = -i1.interp_sample() / 100.0;
+distC = abs(pan);  // distance from centre
+angleC = distC * PI / 2.0; // why is angle always zero when distance isn't?
+angleS = ((pan + 1.0) / 2.0) * PI / 2.0; // angle for side/rear speakers
+gainFR = sin(((i2.interp_sample() / 100.0) + 1.0) * PI / 4.0); // Front/rear balance (rear is 1.0 - gainFR)
+
+gainC = cos(angleC); // Gain centre
+gainS = sin(angleC); // Gain front side
+gainL = pan < 0 ? gainS : 0.0; // eliminate right channel if panner is on left side
+gainR = pan < 0 ? 0.0 : gainS; // eliminate left channel if panner is on right side
+gainLFE = dbToLinear(i3.interp_sample()); // Gain LFE
+gainRear = dbToLinear(i4.interp_sample()); // Gain side/rear upmix
+gainLs = cos(angleS) * gainRear; // Gain left side/rear
+gainRs = sin(angleS) * gainRear; // Gain right side/rear
+
+// Adjust gains based on front/rear positioning
+gainLs = gainLs + ((1.0 - gainFR) * (gainL + (gainC / 2.0)));
+gainRs = gainRs + ((1.0 - gainFR) * (gainR + (gainC / 2.0)));
+gainC *= gainFR;
+gainL *= gainFR;
+gainR *= gainFR;
+
+in = (spl0 + spl1) / 2.0; // input sample value as mono
+
+spl0 = in * gainL;
+spl1 = in * gainR; // eliminate left channel if panner is on right side
+spl2 = in * gainC; // Centre gain
+spl3 = in * gainLFE;
+spl4 = in * gainLs; // Rear left
+spl5 = in * gainRs; // Rear right

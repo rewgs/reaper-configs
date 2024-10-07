@@ -1,0 +1,718 @@
+/*
+Copyright (C) 2009, Jeff BEDAGUE aka Jeffos
+All rights reserved.
+License: GPL - http://www.gnu.org/licenses/gpl.html
+
+S&M - Multichannel VU meter v0.8b
+THIS IS A BETA VERSION
+
+This is a multi-channel vu meter (up to 64 channels). It simply allows checking peaks, volumes and if there's some signal on which channel.
+It automatically adapts itself to the room you give it in the GUI (streching) and to the related track channels.
+- Click on peaks to clear them (the "master" one clears all peaks)
+- Click anywhere else to switch between the GUI modes:
+  * Vertical meters / fixed size
+  * Vertical meters / auto. fit to size
+  * Horizontal meters / fixed size
+  * Horizontal meters / auto. fit to size
+- Top slider & text field: with "auto. fit to size" modes, channel numbers can't always be displayed, use this to highlight the channel you
+  want to monitor..
+
+Important note about the code: 
+No, sir, I don't code like a pig! I vonlutary didn't use arrays but 64 vars instead (!) not to eat all the CPU with many channels!
+
+*/
+
+desc: S&M - Multichannel VU meter
+slider3:45<25,1000,1>-sample time (ms)
+slider4:0<0,64,1>Highlight channel (0 = disabled)
+slider5:0<0,3,1{Horizontal meters - fixed height,Horizontal meters - fit to height,Vertical meters - fixed width,Vertical meters - fit to width}>-GUI mode
+
+@init
+ext_noinit=1.0;
+MAX_CH=64;
+sc=6/log(2);
+dbMin = 60; //JFB 305.885547;
+dbRulerStep = 6;
+CLIC_TRES=200*srate/1000;  //JFB hidden!!
+
+bufCh=0;
+bufPeak=MAX_CH; // i.e. after bufCh
+bufValue=MAX_CH*2;
+coordinatelist=MAX_CH*3;   //JFB
+
+memset(bufCh, dbMin*-1, MAX_CH);
+memset(bufPeak, dbMin*-1, MAX_CH);
+memset(bufValue, dbMin*-1, MAX_CH);
+
+
+uiTop=1;
+uiLeft=1;
+uiCharWidth=10;
+uiRightMargin=45;
+uiWidthRatio=75;
+
+@slider
+sampletime=slider3*srate/1000;  //JFB hidden!!
+slider4=min(MAX_CH, min(num_ch, slider4))|0;
+
+@block
+bscnt>sampletime ?
+(
+    bufCh[0] = bufCh0;
+    bufCh[1] = bufCh1;
+    num_ch > 2 ?
+    (
+      bufCh[2] = bufCh2;
+      bufCh[3] = bufCh3;
+      num_ch > 4 ?
+      (
+        bufCh[4] = bufCh4;
+        bufCh[5] = bufCh5;
+        num_ch > 6 ?
+        (
+          bufCh[6] = bufCh6;
+          bufCh[7] = bufCh7;
+          num_ch > 8 ?
+          (
+            bufCh[8] = bufCh8;
+            bufCh[9] = bufCh9;
+            num_ch > 10 ?
+            (
+              bufCh[10] = bufCh10;
+              bufCh[11] = bufCh11;
+              num_ch > 12 ?
+              (
+                bufCh[12] = bufCh12;
+                bufCh[13] = bufCh13;
+                num_ch > 14 ?
+                (
+                  bufCh[14] = bufCh14;
+                  bufCh[15] = bufCh15;
+                  num_ch > 16 ?
+                  (
+                    bufCh[16] = bufCh16;
+                    bufCh[17] = bufCh17;
+                    bufCh[18] = bufCh18;
+                    bufCh[19] = bufCh19;
+                    num_ch > 20 ?
+                    (
+                      bufCh[20] = bufCh20;
+                      bufCh[21] = bufCh21;
+                      bufCh[22] = bufCh22;
+                      bufCh[23] = bufCh23;
+                      num_ch > 24 ?
+                      (
+                        bufCh[24] = bufCh24;
+                        bufCh[25] = bufCh25;
+                        bufCh[26] = bufCh26;
+                        bufCh[27] = bufCh27;
+                        num_ch > 28 ?
+                        (
+                          bufCh[28] = bufCh28;
+                          bufCh[29] = bufCh29;
+                          bufCh[30] = bufCh30;
+                          bufCh[31] = bufCh31;
+                          num_ch > 32 ?
+                          (
+                            bufCh[32] = bufCh32;
+                            bufCh[33] = bufCh33;
+                            bufCh[34] = bufCh34;
+                            bufCh[35] = bufCh35;
+                            bufCh[36] = bufCh36;
+                            bufCh[37] = bufCh37;
+                            bufCh[38] = bufCh38;
+                            bufCh[39] = bufCh39;
+                            num_ch > 40 ?
+                            (
+                              bufCh[40] = bufCh40;
+                              bufCh[41] = bufCh41;
+                              bufCh[42] = bufCh42;
+                              bufCh[43] = bufCh43;
+                              bufCh[44] = bufCh44;
+                              bufCh[45] = bufCh45;
+                              bufCh[46] = bufCh46;
+                              bufCh[47] = bufCh47;
+                              num_ch > 48 ?
+                              (
+                                bufCh[48] = bufCh48;
+                                bufCh[49] = bufCh49;
+                                bufCh[50] = bufCh50;
+                                bufCh[51] = bufCh51;
+                                bufCh[52] = bufCh52;
+                                bufCh[53] = bufCh53;
+                                bufCh[54] = bufCh54;
+                                bufCh[55] = bufCh55;
+                                num_ch > 56 ?
+                                (
+                                  bufCh[56] = bufCh56;
+                                  bufCh[57] = bufCh57;
+                                  bufCh[58] = bufCh58;
+                                  bufCh[59] = bufCh59;
+                                  bufCh[60] = bufCh60;
+                                  bufCh[61] = bufCh61;
+                                  bufCh[62] = bufCh62;
+                                  bufCh[63] = bufCh63;
+                                );
+                              );
+                            );
+                          );
+                        );
+                      );
+                    );
+                  );
+                );
+              );
+            );
+          );
+        );
+      );
+    );
+    
+
+    j=0;
+    while
+    (
+      bufValue[j] = log(bufCh[j])*sc;
+      bufPeak[j] = max(bufPeak[j], bufValue[j]);
+//JFB      bufCh[j] = 0;
+      j+=1;
+      j < num_ch;
+    );
+    bscnt=0;
+
+    bufCh0 = 0;
+    bufCh1 = 0;
+    num_ch > 2 ?
+    (
+      bufCh2 = 0;
+      bufCh3 = 0;
+      num_ch > 4 ?
+      (
+        bufCh4 = 0;
+        bufCh5 = 0;
+        num_ch > 6 ?
+        (
+          bufCh6 = 0;
+          bufCh7 = 0;
+          num_ch > 8 ?
+          (
+            bufCh8 = 0;
+            bufCh9 = 0;
+            num_ch > 10 ?
+            (
+              bufCh10 = 0;
+              bufCh11 = 0;
+              num_ch > 12 ?
+              (
+                bufCh12 = 0;
+                bufCh13 = 0;
+                num_ch > 14 ?
+                (
+                  bufCh14 = 0;
+                  bufCh15 = 0;
+                  num_ch > 16 ?
+                  (
+                    bufCh16 = 0;
+                    bufCh17 = 0;
+                    bufCh18 = 0;
+                    bufCh19 = 0;
+                    num_ch > 20 ?
+                    (
+                      bufCh20 = 0;
+                      bufCh21 = 0;
+                      bufCh22 = 0;
+                      bufCh23 = 0;
+                      num_ch > 24 ?
+                      (
+                        bufCh24 = 0;
+                        bufCh25 = 0;
+                        bufCh26 = 0;
+                        bufCh27 = 0;
+                        num_ch > 28 ?
+                        (
+                          bufCh28 = 0;
+                          bufCh29 = 0;
+                          bufCh30 = 0;
+                          bufCh31 = 0;
+                          num_ch > 32 ?
+                          (
+                            bufCh32 = 0;
+                            bufCh33 = 0;
+                            bufCh34 = 0;
+                            bufCh35 = 0;
+                            bufCh36 = 0;
+                            bufCh37 = 0;
+                            bufCh38 = 0;
+                            bufCh39 = 0;
+                            num_ch > 40 ?
+                            (
+                              bufCh40 = 0;
+                              bufCh41 = 0;
+                              bufCh42 = 0;
+                              bufCh43 = 0;
+                              bufCh44 = 0;
+                              bufCh45 = 0;
+                              bufCh46 = 0;
+                              bufCh47 = 0;
+                              num_ch > 48 ?
+                              (
+                                bufCh48 = 0;
+                                bufCh49 = 0;
+                                bufCh50 = 0;
+                                bufCh51 = 0;
+                                bufCh52 = 0;
+                                bufCh53 = 0;
+                                bufCh54 = 0;
+                                bufCh55 = 0;
+                                num_ch > 56 ?
+                                (
+                                  bufCh56 = 0;
+                                  bufCh57 = 0;
+                                  bufCh58 = 0;
+                                  bufCh59 = 0;
+                                  bufCh60 = 0;
+                                  bufCh61 = 0;
+                                  bufCh62 = 0;
+                                  bufCh63 = 0;
+                                );
+                              );
+                            );
+                          );
+                        );
+                      );
+                    );
+                  );
+                );
+              );
+            );
+          );
+        );
+      );
+    );
+
+);
+bscnt += samplesblock;
+cpt += samplesblock; //JFB for clic only!
+
+@sample
+bufCh0 = max(bufCh0,abs(spl0));
+bufCh1 = max(bufCh1,abs(spl1));
+num_ch > 2 ?
+(
+  bufCh2 = max(bufCh2,abs(spl2));
+  bufCh3 = max(bufCh3,abs(spl3));
+  num_ch > 4 ?
+  (
+    bufCh4 = max(bufCh4,abs(spl4));
+    bufCh5 = max(bufCh5,abs(spl5));
+    num_ch > 6 ?
+    (
+      bufCh6 = max(bufCh6,abs(spl6));
+      bufCh7 = max(bufCh7,abs(spl7));
+      num_ch > 8 ?
+      (
+        bufCh8 = max(bufCh8,abs(spl8));
+        bufCh9 = max(bufCh9,abs(spl9));
+        num_ch > 10 ?
+        (
+          bufCh10 = max(bufCh10,abs(spl10));
+          bufCh11 = max(bufCh11,abs(spl11));
+          num_ch > 12 ?
+          (
+            bufCh12 = max(bufCh12,abs(spl12));
+            bufCh13 = max(bufCh13,abs(spl13));
+            num_ch > 14 ?
+            (
+              bufCh14 = max(bufCh14,abs(spl14));
+              bufCh15 = max(bufCh15,abs(spl15));
+              num_ch > 16 ?
+              (
+                bufCh16 = max(bufCh16,abs(spl16));
+                bufCh17 = max(bufCh17,abs(spl17));
+                bufCh18 = max(bufCh18,abs(spl18));
+                bufCh19 = max(bufCh19,abs(spl19));
+                num_ch > 20 ?
+                (
+                  bufCh20 = max(bufCh20,abs(spl20));
+                  bufCh21 = max(bufCh21,abs(spl21));
+                  bufCh22 = max(bufCh22,abs(spl22));
+                  bufCh23 = max(bufCh23,abs(spl23));
+                  num_ch > 24 ?
+                  (
+                    bufCh24 = max(bufCh24,abs(spl24));
+                    bufCh25 = max(bufCh25,abs(spl25));
+                    bufCh26 = max(bufCh26,abs(spl26));
+                    bufCh27 = max(bufCh27,abs(spl27));
+                    num_ch > 28 ?
+                    (
+                      bufCh28 = max(bufCh28,abs(spl28));
+                      bufCh29 = max(bufCh29,abs(spl29));
+                      bufCh30 = max(bufCh30,abs(spl30));
+                      bufCh31 = max(bufCh31,abs(spl31));
+                      num_ch > 32 ?
+                      (
+                        bufCh32 = max(bufCh32,abs(spl32));
+                        bufCh33 = max(bufCh33,abs(spl33));
+                        bufCh34 = max(bufCh34,abs(spl34));
+                        bufCh35 = max(bufCh35,abs(spl35));
+                        bufCh36 = max(bufCh36,abs(spl36));
+                        bufCh37 = max(bufCh37,abs(spl37));
+                        bufCh38 = max(bufCh38,abs(spl38));
+                        bufCh39 = max(bufCh39,abs(spl39));
+                        num_ch > 40 ?
+                        (
+                          bufCh40 = max(bufCh40,abs(spl40));
+                          bufCh41 = max(bufCh41,abs(spl41));
+                          bufCh42 = max(bufCh42,abs(spl42));
+                          bufCh43 = max(bufCh43,abs(spl43));
+                          bufCh44 = max(bufCh44,abs(spl44));
+                          bufCh45 = max(bufCh45,abs(spl45));
+                          bufCh46 = max(bufCh46,abs(spl46));
+                          bufCh47 = max(bufCh47,abs(spl47));
+                          num_ch > 48 ?
+                          (
+                            bufCh48 = max(bufCh48,abs(spl48));
+                            bufCh49 = max(bufCh49,abs(spl49));
+                            bufCh50 = max(bufCh50,abs(spl50));
+                            bufCh51 = max(bufCh51,abs(spl51));
+                            bufCh52 = max(bufCh52,abs(spl52));
+                            bufCh53 = max(bufCh53,abs(spl53));
+                            bufCh54 = max(bufCh54,abs(spl54));
+                            bufCh55 = max(bufCh55,abs(spl55));
+                            num_ch > 56 ?
+                            (
+                              bufCh56 = max(bufCh56,abs(spl56));
+                              bufCh57 = max(bufCh57,abs(spl57));
+                              bufCh58 = max(bufCh58,abs(spl58));
+                              bufCh59 = max(bufCh59,abs(spl59));
+                              bufCh60 = max(bufCh60,abs(spl60));
+                              bufCh61 = max(bufCh61,abs(spl61));
+                              bufCh62 = max(bufCh62,abs(spl62));
+                              bufCh63 = max(bufCh63,abs(spl63));
+                            );
+                          );
+                        );
+                      );
+                    );
+                  );
+                );
+              );
+            );
+          );
+        );
+      );
+    );
+  );
+);
+
+@gfx
+
+uiTop = vuHeight = (gfx_h/(num_ch+1)) | 0; // +1 for the lines
+/*JFB uiLeft = */vuWidth = (gfx_w/(num_ch+1));
+dBstep = floor(((6*gfx_w)/dbMin) + 0.5);//JFB ??
+
+////////////////////
+// horizontal meters
+////////////////////
+slider5 == 0 || slider5 == 1 ?
+(
+  uiTop = gfx_texth + 4;
+  slider5 ? (vuHeight = (((gfx_h - uiTop)/(num_ch/*JFB +1 */)) | 0);) : (/*JFB uiTop = */vuHeight = gfx_texth+1);
+  
+    // default master peak
+      gfx_r=1;gfx_g=1;gfx_b=1;gfx_a=0.8;
+      gfx_x=gfx_w;
+      gfx_y=1; //JFB!!!
+      gfx_rectto(gfx_w - floor(gfx_w/uiWidthRatio + 0.5) , /*JFB gfx_y + */uiTop - 1);
+      gfx_r=0;gfx_g=0;gfx_b=0;
+      gfx_x=gfx_w-1;
+      gfx_y=2; //JFB!!!
+      gfx_rectto(gfx_w - floor(gfx_w/uiWidthRatio + 0.5) +1, /*JFB gfx_y + */uiTop - 2);
+
+  i=0;
+  loop
+  (
+    num_ch,
+  
+    // Full green rectangle
+    gfx_r=0;gfx_g = (i == (slider4 - 1)) ? 0.9 : 0.5;gfx_b=0.1;gfx_a=0.8;
+    gfx_x=0;gfx_y = uiTop + vuHeight*i;
+    gfx_rectto(gfx_w,gfx_y + vuHeight-1);
+
+    // Black rectangle according to peak
+    gfx_r=0;gfx_g=0.0;gfx_b=0.0;gfx_a=1;
+    gfx_x=gfx_w+1;
+    gfx_y=uiTop + vuHeight*i;
+    gfx_rectto(gfx_w - floor((abs(bufValue[i])*gfx_w)/dbMin + 0.5) , gfx_y + vuHeight);
+  
+    // Channel number
+    vuHeight >= gfx_texth ?
+    (
+      gfx_x=5; //JFB!!!
+      gfx_y=uiTop + vuHeight* i + floor(abs(gfx_texth-vuHeight)/2 + 0.5);
+      
+      bufPeak[i] > (dbMin*-1) ? gfx_a = 0.8 : gfx_a = 0.3;
+      (i == (slider4 - 1)) ?
+      (
+          gfx_a = 0.8; gfx_r=1;gfx_g=1;gfx_b=1;
+      )
+      :
+      (
+//          bufPeak[i] == (dbMin*-1) || bufPeak[i] > (dbMin*-1) ? (gfx_r=0.1;gfx_g=0.8;gfx_b=0.2;) : (gfx_r=0.5;gfx_g=0.5;gfx_b=0.5;);
+//ok            bufValue[i] > (dbMin*-1) ? (gfx_r=0.1;gfx_g=0.8;gfx_b=0.2;) : (gfx_r=0.5;gfx_g=0.5;gfx_b=0.5;);
+          gfx_r=0.1;gfx_g=0.8;gfx_b=0.2;
+      );
+      gfx_drawnumber(i+1,0);
+    );
+  
+    // max dB
+    vuHeight >= gfx_texth ?
+    (
+      gfx_x = gfx_w - uiRightMargin;
+      gfx_y=uiTop + vuHeight*i + floor(abs(gfx_texth-vuHeight)/2 + 0.5);
+      gfx_r=1;gfx_g=1;gfx_b=1;
+      bufPeak[i] > (dbMin*-1) ? gfx_a = 0.8 : gfx_a = 0.3;
+      gfx_drawnumber(bufPeak[i],1);
+    );
+  
+    // peaks
+    bufPeak[i] == 0 || bufPeak[i] > 0 ? //JFB ">=" KO when "-0.0" !!
+    (
+      gfx_x=gfx_w;gfx_y=uiTop + vuHeight*i;
+      gfx_r=1;gfx_g=0.0;gfx_b=0.0;gfx_a=1;
+      gfx_rectto(gfx_w - floor(gfx_w/uiWidthRatio + 0.5) , gfx_y + vuHeight - 1);
+
+      // master peak
+      gfx_x=gfx_w-1;
+      gfx_y=2; //JFB!!!
+//JFB      gfx_y = floor(abs(gfx_texth-uiTop)/2 + 0.5);
+      gfx_rectto(gfx_w - floor(gfx_w/uiWidthRatio + 0.5) +1, /*JFB gfx_y + */uiTop - 2);
+    );
+
+    // "dB"
+    vuHeight > gfx_texth && dBstep > (uiCharWidth*4 + uiRightMargin) ? // e.g. 4 'cause "-6" & "dB"
+    (
+      gfx_x = gfx_w - uiRightMargin;
+//JFB      gfx_y = floor(abs(gfx_texth-vuHeight)/2 + 0.5);
+      gfx_y = floor(abs(gfx_texth-uiTop)/2 + 0.5);
+      gfx_r=.5;gfx_g=.5;gfx_b=.5;gfx_a=0.8;
+      gfx_drawchar($'d');
+      gfx_drawchar($'B');
+    );
+
+    i+=1;
+  );
+
+  // dB lines
+  gfx_r=.5;gfx_g=.5;gfx_b=.5;
+  i=dbRulerStep;
+  while
+  (
+    tmp = gfx_w - floor(((i*gfx_w)/dbMin) + 0.5);
+
+    gfx_a=0.2;
+    gfx_x = tmp; gfx_y=uiTop;
+    gfx_lineto(gfx_x,gfx_h, 0.4);
+
+    gfx_a=0.8;
+/*JFB
+    vuHeight > gfx_texth && dBstep > 10 * 3 ? // e.g. 3 'cause "-60" JFB!!! charWidth !
+    (
+*/
+      gfx_x = tmp + 1;
+      gfx_y = floor(abs(gfx_texth-uiTop)/2 + 0.5);
+      gfx_drawnumber(i*-1,0);
+//    );
+    i+=dbRulerStep;
+    i <= dbMin;
+  );
+
+  // top H line
+/*JFB
+  gfx_x = 0; gfx_y=vuHeight;
+  gfx_lineto(gfx_w,vuHeight, 0.4);
+*/
+  mouse_cap > 0 && ((cpt - last_clic) > CLIC_TRES) ?
+  (
+     last_clic = cpt;
+     mouse_x >= (gfx_w - uiRightMargin) && mouse_x <= gfx_w ?
+     (
+        tmp = (mouse_y / vuHeight) | 0;
+        AA=tmp;
+  
+        // Clear all peaks
+        tmp == 0 ?
+        (
+          i=0;
+          loop
+          (
+            MAX_CH,
+            bufPeak[i] = dbMin * -1;
+            i+=1;
+          );
+        )
+        : bufPeak[tmp - 1] = dbMin * -1;
+     )
+     : slider5 < 4 ? slider5 += 1 : slider5 = 0;
+  );
+)
+:
+
+////////////////////
+// vertical meters
+////////////////////
+(
+  uiLeft = uiCharWidth * 3; // e.g. -60
+  slider5 == 3 ? /*JFB uiLeft = */vuWidth = (((gfx_w - uiLeft)/num_ch) | 0) : (/*JFB uiLeft = */vuWidth = uiCharWidth);
+
+  i=0;
+  loop
+  (
+    num_ch,
+  
+    // Full green rectangle
+    gfx_r=0;gfx_g = (i == (slider4 - 1)) ? 0.9 : 0.5;gfx_b=0.1;gfx_a=0.8;
+    gfx_x=uiLeft + vuWidth*i; gfx_y=0;
+    gfx_rectto(gfx_x+vuWidth-1,gfx_h);
+  
+    // Black rectangle according to peak
+    gfx_r=0;gfx_g=0.0;gfx_b=0.0;gfx_a=1;
+    gfx_x=uiLeft + vuWidth*i; 
+    gfx_y=0;
+    gfx_rectto(gfx_x + vuWidth, floor(((abs(bufValue[i])*(gfx_h+1))/dbMin)+0.5) );
+  
+    // Channel number
+    vuWidth >= uiCharWidth ?
+    (
+      gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth - vuWidth)/2 + 0.5);
+      gfx_y=gfx_h - gfx_texth*2 - 5;
+      bufPeak[i] > (dbMin*-1) ? gfx_a = 0.8 : gfx_a = 0.3;
+      (i == (slider4 - 1)) ?
+      (
+          gfx_r=1;gfx_g=1;gfx_b=1;gfx_a=0.8;
+      )
+      :
+      (
+          gfx_r=0.1;gfx_g=0.8;gfx_b=0.2;
+      );
+
+      i<9 ? gfx_drawnumber(i+1,0)
+      :
+      (
+          tmp = i+1;
+          gfx_drawnumber((tmp/10)|0, 0);
+
+          gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth - vuWidth)/2 + 0.5);
+          gfx_y=gfx_h - gfx_texth - 5;
+          gfx_drawnumber(tmp - (((tmp/10)|0)*10), 0);
+      );
+    );
+
+    // max dB
+
+    vuWidth >= uiCharWidth /*JFB&& floor(((dbRulerStep*gfx_h)/dbMin) + 0.5) >= gfx_texth*6 */ ? // e.g. 5 for "-60.0" + 1 for top margin
+    (
+      gfx_r=1;gfx_g=1;gfx_b=1;
+      bufPeak[i] > (dbMin*-1) ? gfx_a = 0.8 : gfx_a = 0.3;
+
+      nbChar = 1; // top margin!
+
+      gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth-vuWidth)/2 + 0.5); gfx_y = gfx_texth * nbChar;
+      tmp = bufPeak[i];
+      tmp == 0 || tmp > 0 ? gfx_drawchar($' ') : (gfx_drawchar($'-'); ); nbChar+=1;
+
+      tmp = abs(tmp);
+      tmp10=(tmp/10)|0;
+
+      gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth-vuWidth)/2 + 0.5); gfx_y = gfx_texth * nbChar;
+      tmp10 != 0 ? (gfx_drawnumber(tmp10,0); nbChar+=1;);
+      gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth-vuWidth)/2 + 0.5); gfx_y = gfx_texth * nbChar;
+      gfx_drawnumber((tmp - tmp10*10)|0,0); /*JFB nbChar+=1*/;
+//      (tmp-(tmp|0))*10 > 0 ?
+//      (
+        gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth-vuWidth)/2 + 0.5); gfx_y = gfx_texth * nbChar + 4;
+        gfx_drawchar($'.'); nbChar+=1;
+        gfx_x=uiLeft + vuWidth*i + floor(abs(uiCharWidth-vuWidth)/2 + 0.5); gfx_y = gfx_texth * nbChar + 4;
+        gfx_drawnumber((tmp-(tmp|0))*10,0);
+//      );
+    );
+
+    // peaks
+    bufPeak[i] == 0 || bufPeak[i] > 0 ? //JFB ">=" KO when "-0.0" !!
+    (
+      gfx_x=uiLeft + vuWidth*i ; gfx_y=0;
+      gfx_r=1;gfx_g=0.0;gfx_b=0.0;gfx_a=1;
+      gfx_rectto(uiLeft+vuWidth*(i+1) - 1, gfx_texth); // -1 for black lines between peaks
+      ZZ+=1;
+
+      // master peak
+      gfx_x=1;gfx_y=0;
+      gfx_r=1;gfx_g=0.0;gfx_b=0.0;gfx_a=1;
+      gfx_rectto(uiLeft-1, gfx_texth);  // -1 for black line between following peaks
+    );
+
+/*JFB!!!
+    // "dB"
+    vuHeight > gfx_texth && dBstep > (uiCharWidth*4 + uiRightMargin) ? // e.g. 4 'cause "-6" & "dB"
+    (
+      gfx_x = gfx_w - uiRightMargin;
+      gfx_y = floor(abs(gfx_texth-vuHeight)/2 + 0.5);
+      gfx_r=.5;gfx_g=.5;gfx_b=.5;gfx_a=0.8;
+      gfx_drawchar($'d');
+      gfx_drawchar($'B');
+    );
+*/
+    i+=1;
+  );
+  
+  // dB lines
+  gfx_r=.5;gfx_g=.5;gfx_b=.5;
+  i=dbRulerStep;
+  while
+  (
+    gfx_a=0.2;
+    tmp = floor(((i*gfx_h)/dbMin) + 0.5);
+    gfx_y = tmp; gfx_x=uiLeft;
+    gfx_lineto(gfx_w,gfx_y, 0.4);
+/*JFB
+    (tmp - gfx_y) > gfx_texth ? // e.g. 3 'cause "-60" JFB!!! charWidth !
+    (
+*/
+    gfx_a=0.8;
+      gfx_x = floor(abs(uiCharWidth*3-uiLeft)/2 + 0.5);
+      gfx_y = tmp  - floor(gfx_texth/2 + 0.5);
+      gfx_drawnumber(i*-1,0);
+//    );
+
+    i+=dbRulerStep;
+    i < dbMin;
+  );
+
+  // left V line
+/*JFB
+  gfx_x = uiLeft; gfx_y=0;
+  gfx_lineto(gfx_x,gfx_h, 0.4);
+*/
+
+  mouse_cap > 0 && ((cpt - last_clic) > CLIC_TRES) ?
+  (
+     last_clic = cpt;
+     mouse_y >= 0 && mouse_y <= gfx_texth ?
+     (
+        // Clear all peaks
+        mouse_x < uiLeft ?
+        (
+          i=0;
+          loop
+          (
+            MAX_CH,
+            bufPeak[i] = dbMin * -1;
+            i+=1;
+          );
+        )
+        : bufPeak[(abs(mouse_x-uiLeft) / vuWidth) | 0] = dbMin * -1;
+     )
+     : slider5 == 3 ? slider5 = 0 : slider5 += 1;
+  );
+
+);

@@ -1,0 +1,52 @@
+desc: MIDI Keytrack generator 2
+//tags: Key track follow generator link
+//author: Robert Randolph
+//www.admiralbumblebee.com/music/2017/08/06/Keytrack-any-parameter-in-Reaper-with-this-script.html
+//modified by me, junh1024
+
+slider1:0<0,127,1>Midi Note Value
+slider2:0<-31,31,1>offset
+slider3:1<0,4,0.1>scaling
+
+in_pin:none
+out_pin:none
+
+@init
+
+// noteOn = $x90;
+// noteOff = $x80;
+
+@slider
+
+
+
+@block
+
+
+
+while 
+(
+	midirecv(ts,msg1,msg23) ? 
+	(
+
+    // channel = msg1 & $x0F;
+    onOffStatus = msg1 & $xF0; // 144 == Note On, 128 == Note Off
+
+    // trigTest = noteTrig == 0 ? (noteOn):(noteOff); // comparison value based on our note on/off setting
+
+    // channel == inChannel ? (
+        onOffStatus == 144 ? (
+            slider1 =  msg23&127;
+        // )
+    );
+    
+    midisend(ts,msg1,msg23) ; // pass through
+
+ slider1+=slider2;
+slider1=((slider1-63)*slider3)+63;
+	);
+);
+
+
+
+  

@@ -1,0 +1,81 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Channel Iterator
+in_pin:none
+out_pin:none
+slider1:4<2,16,1>Channels
+
+
+
+@slider
+slider1 = min(max(slider1, 2), 16) |0;
+
+// channels for each open note (16 = not open)
+memset(0, 16, 128);
+
+// cnt_list = 128;
+cnt_last = 128;  loop(slider1-1, cnt_last[0] = cnt_last+=1);  cnt_last[0] = 128;  cnt = 128;
+
+
+
+@block
+midirecv(o,a,b,c) ? (
+ q = o;
+ while(
+  a > $x9F ? (
+   midisend(o, a, b, c);
+  ) : (
+   a < $x90 ? (
+    (a = b[0]) < 16 ? (
+     b[0] = 16;  midisend(o, a + $x80, b, c);
+
+     a += 128;
+     cnt_last > 0 ? (
+      a!==cnt && a!==cnt_last ? (
+       c = cnt_last[0];
+       a!==c ? (
+        b = c;  while((o = c[0]) !== a) (c = o);
+
+        (o = a[0]) !== c ? c[0] = o;
+        cnt_last[0] = a;
+        a[0] = b;
+       );
+       cnt_last = a;
+      );
+     ) : (
+      a!==cnt ? (
+       b = slider1-2;
+       c = cnt;  while((o = c[0]) !== a) (c = o; b -= 1);
+
+       c[0] = a[0];  a[0] = cnt;
+
+       loop(b, c = c[0]);  c[0] = a;  cnt = a;
+      );
+      cnt_last = a;
+     );
+    );
+   ) : (
+    str_setchar(0, -0.25, b + c*256, 'su');
+   );
+  );
+
+  (m = midirecv(o,a,b,c))===0 || q < o ? (
+   i = -2;
+   loop(strlen(0)/2,
+    v = str_getchar(0, (i += 2), 'su');
+    n = v & $~8;  v -= n;
+
+    n[0] < 16 ? midisend(q, n[0] + $x90, n+v) : (
+     n[0] = cnt-128;  midisend(q, cnt + 16, n+v);  // $x90-128
+
+     cnt===cnt_last ? cnt_last = 0;
+     cnt = cnt[0];
+    );
+   );
+   strcpy(0, "");
+   q = o;
+  );
+
+  m
+ );
+);

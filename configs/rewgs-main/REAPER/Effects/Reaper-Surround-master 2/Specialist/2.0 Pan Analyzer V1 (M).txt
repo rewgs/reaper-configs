@@ -1,0 +1,51 @@
+desc:
+
+// Other ideas: throw away min/max of 10 miniblox, moving avg, RMS or squared
+
+slider1:0.1<-1,1,0.1>Threshold
+slider2:4096<128,8192,128>Blocksize
+slider3:0.7<0.1,1,0.1>Responsiveness
+
+slider4:0<-0.5,0.5,0.01>Pan
+// multiplier
+@init
+
+count=0;
+sumL=0;
+sumR=0;
+
+blocksize=slider2;
+
+
+
+@slider
+blocksize=slider2;
+response=slider3;
+
+@block
+count+=samplesblock;
+
+(count>blocksize)?
+(
+	slider4=(((sumR-sumL)/(sumR+sumL))*response)+(slider4*(1-response));//do avg of all samples, with time weighting
+	sumL=0;
+	sumR=0;
+	count=0;
+);
+
+
+
+
+@sample
+
+// (slider1)?
+// (
+sumL+=(spl0)*sign(spl0);// need to have sign since abs makes 0, and raw adding magnifies small differences since it sums to ~0
+sumR+=(spl1)*sign(spl1); //add 2 buffer for averaging.
+
+// count+=1;//keep count of blocksize
+
+
+
+// );
+

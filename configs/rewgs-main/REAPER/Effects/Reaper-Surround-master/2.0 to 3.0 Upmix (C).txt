@@ -1,0 +1,23 @@
+desc: Upmix to 3.0 by M/S
+
+slider1:100<0,100,2>Center Level Control
+
+@init
+
+@slider
+// gain = 2^(slider1/6); // convert from dB to a multiplier
+// depth_temp=(slider1*$pi)/200; //depth scaled from 0-100 to 0>half pi
+// R_width_coeff=slider2/100;
+width_coeff=slider1/100; 
+
+@sample
+Mid=spl0+spl1;
+Side=spl0-spl1;
+
+C_temp = (Mid)*.707;
+L_temp = (Side)*.5;
+
+spl2=C_temp*(width_coeff);
+
+spl0=  (Mid)*0.5*(1-(width_coeff)) + L_temp  ;
+spl1=  (Mid)*0.5*(1-(width_coeff)) - L_temp ;

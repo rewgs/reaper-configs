@@ -1,0 +1,27 @@
+HeDa_Track Inspector VIP.lua
+HeDa_Track Inspector VIP_Master.lua
+HeDa_Track Inspector VIP_Tags.lua
+HeDa_Track Inspector VIP_Floating.lua
+HeDa_Track Inspector VIP_Floating_2.lua
+HeDa_Track Inspector VIP_Toggle Envelopes Track.lua
+HeDa_Track Inspector VIP_Toggle Enlarge Track.lua
+HeDa_Track Inspector VIP_Toggle Change Track on Item Selection.lua
+HeDa_Track Inspector VIP_New Track Version (duplicate).lua
+HeDa_Track Inspector VIP_New Track Version (clear items).lua
+HeDa_Track Inspector VIP_New Track Version (clear items and envelopes).lua
+HeDa_Track Inspector VIP_Render To New Version (stereo stems).lua
+HeDa_Track Inspector VIP_Render To New Version (mono).lua
+HeDa_Track Inspector VIP_Render To New Version (selected area stereo stems).lua
+HeDa_Track Inspector VIP_Render To New Version (selected area mono).lua
+HeDa_Track Inspector VIP_Freeze To New Version.lua
+HeDa_Track Inspector VIP_Autotag All Tracks.lua
+HeDa_Track Inspector VIP_Autotag Selected Tracks.lua
+HeDa_Track Inspector VIP_Open Send 1 FX UI.lua
+HeDa_Track Inspector VIP_Open Send 2 FX UI.lua
+HeDa_Track Inspector VIP_Open Send 3 FX UI.lua
+HeDa_Track Inspector VIP_Open Send 4 FX UI.lua
+HeDa_Track Inspector VIP_Show all versions.lua
+HeDa_Track Inspector VIP_Show previous version.lua
+HeDa_Track Inspector VIP_Show next version.lua
+HeDa_Track Inspector VIP_Add Track Marker.lua
+HeDa_Track Inspector VIP_Refresh.lua

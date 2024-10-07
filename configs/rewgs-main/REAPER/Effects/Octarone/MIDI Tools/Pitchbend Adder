@@ -1,0 +1,91 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Adder
+in_pin:Pitchbend
+out_pin:none
+slider1:4<2,16,1>Channels
+slider2:100<1,1000,0.00001>Message Frequency (Hz)
+
+
+
+@init
+channels = 0;
+
+
+
+@slider
+channels!==slider1 ? (
+  channels = (slider1=min(max(slider1|0, 2), 16));  msg_mid = slider1/2 + 223.5;  msg_rng = (slider1+1)/2;
+
+  // order = 0;     // an indexed list (same as Key Tuner's cnt_list), designating the channel order in which pitchbends must be sent
+  back = slider1;   // the 'back' pointers of the above list, we need the 'previous' element
+  bend = slider1*2; // the pitchbend MIDI input for each channel
+  prev = slider1*3; // keeps track of previous bends so as to not send same value multiple times
+  list = slider1*4; // the offset in samples for each channel until the next pitchbend should be sent
+  buf = slider1*5;  // unknown length buffer that holds data for all the pitchbends received on this block
+
+
+  memset(bend, 8192, slider1*2);
+  memset(list, 0, slider1);
+  cur = 0;  last = slider1-1;
+  c = 0;  loop(last, c[0] = c+1; back[c+1] = c; c += 1);
+
+  a = 4294967296;  // huge value so nothing stupid happens until next block
+);
+ticks = max((srate/slider2 + 0.5) |0, 1);
+
+
+
+@block
+p = buf;
+
+while(midirecv(o,a,b,c))
+(
+  abs(a-msg_mid) < msg_rng ? (
+   p[0] = o*16 + a - $xE0;  p[1] = b + c*128;
+   p += 2;
+  ) : (
+   midisend(o, a, b, c);
+  );
+);
+p[0] = 34359738352;
+p = buf;
+
+o = 0; a = (c = p[0])/16 |0; c -= a*16; p += 2;
+
+b = list;  loop(slider1, b[0] -= samplesblock; b += 1);
+b = min(a, list[cur]);
+
+
+
+@sample
+o >= b ? (
+  while(o >= a) (
+   a = (k = p[0])/16 |0;  k -= a*16;  // channel values like c[0] will be 'order[c]'
+   bend[c] = p[-1];  p += 2;
+
+   c!==last ? (
+    b = back+c;
+    c!==cur ? ((d=b[0])[0] = (q=c[0]); back[q] = d) : (cur = cur[0]);
+    last[0] = c;  b[0] = last;  last = c;
+   );
+   list[c] = o+ticks;
+
+   (b = min(max(bend[c]+spl0*8192, 0), 16383)|0) !== (d=prev+c)[0] ? (
+    d[0] = b; midisend(o, c + $xE0, b + (b & $x3F80));
+   );
+   c = k;
+  );
+
+  while(o >= (b=list[cur])) (
+   (k = min(max(bend[cur]+spl0*8192, 0), 16383)|0) !== (d=prev+cur)[0] ? (
+    d[0] = k; midisend(o, cur + $xE0, k + (k & $x3F80));
+   );
+
+   last[0] = cur;  back[cur] = last;  last = cur;
+   list[cur] = o+ticks;  cur = cur[0];
+  );
+  b = min(a, b);
+);
+
+o += 1;

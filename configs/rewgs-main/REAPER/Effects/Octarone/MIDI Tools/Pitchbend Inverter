@@ -1,0 +1,18 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Inverter
+in_pin:none
+out_pin:none
+
+
+
+@block
+while(midirecv(o,a,b,c)) (
+ abs(a-231.5) < 8 ? (
+  b += c*128;
+  c < 64 ? (b *= -0.9998779296875; b += 16383.5) : (b *= -1.0001220852154804053229153949457; b += 16385.5);  // depending on 'sign' we multiply by -8191/8192 or -8192/8191 and round it
+  midisend(o, a, b + (b & $x3F80));
+ ) : (
+  midisend(o, a, b, c);
+ );
+);

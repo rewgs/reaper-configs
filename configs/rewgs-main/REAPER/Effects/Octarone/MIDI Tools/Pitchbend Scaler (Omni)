@@ -1,0 +1,23 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Scaler (Omni)
+in_pin:none
+out_pin:none
+slider1:1<0,2,0.00001>Scale Factor
+
+
+
+@slider
+t = 8192 - slider1*8192;
+
+
+
+@block
+while(midirecv(o,a,b,c)) (
+ abs(a-231.5) < 8 ? (
+  b = min(max((b + c*128)*slider1 + t, 0), 16383);
+  midisend(o, a, b + (b & $x3F80));
+ ) : (
+  midisend(o, a, b, c);
+ );
+);

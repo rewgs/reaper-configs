@@ -1,0 +1,50 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Random Smooth Signal
+in_pin:none
+out_pin:Signal
+slider1:-1<-1,1,0.00001>Lower Value
+slider2:1<-1,1,0.00001>Upper Value
+slider3:1000<0.1,10000,0.00001>Change Duration (ms)
+
+
+
+@init
+ext_noinit = 1;
+ext_nodenorm = 1;
+o = 3 - 2000/(slider3*srate);
+step = 1;
+
+
+
+@slider
+slider2 = max(slider2, slider1);
+range = slider2-slider1;
+steps = (slider3*srate)/1000;
+
+// readjust vars if automated
+step *= steps;  o *= step;  step = 1/step;  w *= step; t *= sqr(step);
+
+step = 1/steps;
+step_q = sqr(step);
+stepC = step*0.75;
+
+
+
+@sample
+o >= steps ? (
+  /*
+     since 'o' will not always fall exactly on 'steps', we need to recalculate the variables for that extra amount (but with new points)
+     but to do that, we first need to compute (internally) the previous "points" from o,v,w,t, shift them and add a random point as new
+     NOTE: did integral of moving average, not discrete, not important here due to high samplerate, but it's the proper way to do it
+  */
+  o -= steps;  n = o*t;  v -= (w - (n+t)/2)*o;  w -= n;  n = t;  // find values at exactly 'steps' for previous quadratic curve (i.e shift it backwards by o-steps), since it's likely o > steps
+  t = (rand(1)*range + slider1 - v)*step_q + (t - w*2)*stepC;    // compute new 't', based on the prior values, we'll shift them further by that extra o-steps, but in the new curve
+  w += (t-n)/2;  n = o*t;  v += ((n-t)/2 + w)*o;  w += n;        // notice that 'n' is the 't' for the previous curve: the difference is needed to adjust 'w' properly for new curve
+);
+
+spl0 = v;
+v += w;
+w += t;
+
+o += 1;

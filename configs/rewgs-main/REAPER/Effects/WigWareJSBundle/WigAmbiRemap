@@ -1,0 +1,180 @@
+desc:WigWare Ambi signal Remap
+
+slider1:0<0,1,1{FuMa/WigWare/SoundField,SN3D,N3D}>Incoming Amb Normalisation
+slider2:0<0,3,1{FuMa/WigWare/SoundField,SN3D,N3D}>Outgoing Amb Normalisation
+slider3:0<0,1,1{FuMa/WigWare/SoundField,ACN}>Incoming Channel Ordering
+slider4:0<0,1,1{FuMa/WigWare/SoundField,ACN}>Outgoing Channel Ordering
+@init
+//3rd order for now
+order = 3;
+nch = (order+1)^2;
+matsize = nch;
+matGain = 0;
+
+//remapping matrices
+matN3D_FuMa = 8192;
+matN3D_SN3D = matN3D_FuMa + matsize;
+matFuMa_N3D = matN3D_SN3D + matsize;
+matSN3D_N3D = matFuMa_N3D + matsize;
+matACN_FuMa = matSN3D_N3D + matsize;
+matFuMa_ACN = matACN_FuMa + matsize;
+matTemp = matFuMa_ACN + matsize;
+i=0;
+loop(matsize,
+matN3D_FuMa[i] = 0.0;
+matN3D_SN3D[i] = 0.0;
+matFuMa_N3D[i] = 0.0;
+matFuMa_N3D[i] = 0.0;
+matTemp[i] = 0.0;
+i = i+1;
+);
+matACN_FuMa[0]=0;
+matACN_FuMa[1]=3;
+matACN_FuMa[2]=1;
+matACN_FuMa[3]=2;
+matACN_FuMa[4]=6;
+matACN_FuMa[5]=7;
+matACN_FuMa[6]=5;
+matACN_FuMa[7]=8;
+matACN_FuMa[8]=4;
+matACN_FuMa[9]=12;
+matACN_FuMa[10]=13;
+matACN_FuMa[11]=11;
+matACN_FuMa[12]=14;
+matACN_FuMa[13]=10;
+matACN_FuMa[14]=15;
+matACN_FuMa[15]=9;
+
+i=0;
+matN3D_FuMa[i] = 1/sqrt(2.0);i=i+1;
+matN3D_FuMa[i] = 1/sqrt(3.0);i=i+1; //1st
+matN3D_FuMa[i] = 1/sqrt(3.0);i=i+1; //1st
+matN3D_FuMa[i] = 1/sqrt(3.0);i=i+1; //1st
+matN3D_FuMa[i] = 2/sqrt(15.0);i=i+1; //2nd
+matN3D_FuMa[i] = 2/sqrt(15.0);i=i+1; //2nd
+matN3D_FuMa[i] = 1/sqrt(5.0);i=i+1; //2nd
+matN3D_FuMa[i] = 2/sqrt(15.0);i=i+1; //2nd
+matN3D_FuMa[i] = 2/sqrt(15.0);i=i+1; //2nd 
+matN3D_FuMa[i] = sqrt(8/35);i=i+1;//3rd
+matN3D_FuMa[i] = 3/sqrt(35);i=i+1; //3rd
+matN3D_FuMa[i] = sqrt(45/224);i=i+1; //3rd
+matN3D_FuMa[i] = 1/sqrt(7);i=i+1; //3rd
+matN3D_FuMa[i] = sqrt(45/224);i=i+1; //3rd
+matN3D_FuMa[i] = 3/sqrt(35);i=i+1; //3rd
+matN3D_FuMa[i] = sqrt(8/35);i=i+1; //3rd
+i=0;
+matN3D_SN3D[i] = 1.0;i=i+1;                   //0th
+matN3D_SN3D[i] = 1/sqrt(3.0);i=i+1; //1st
+matN3D_SN3D[i] = 1/sqrt(3.0);i=i+1; //1st
+matN3D_SN3D[i] = 1/sqrt(3.0);i=i+1; //1st
+matN3D_SN3D[i] = 1/sqrt(5.0);i=i+1; //2nd
+matN3D_SN3D[i] = 1/sqrt(5.0);i=i+1; //2nd
+matN3D_SN3D[i] = 1/sqrt(5.0);i=i+1; //2nd
+matN3D_SN3D[i] = 1/sqrt(5.0);i=i+1; //2nd
+matN3D_SN3D[i] = 1/sqrt(5.0);i=i+1; //2nd 
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+matN3D_SN3D[i] = 1/sqrt(7.0);i=i+1; //3rd
+i=0;
+matFuMa_N3D[i] = sqrt(2);i=i+1;                   //0th
+matFuMa_N3D[i] = sqrt(3.0);i=i+1; //1st
+matFuMa_N3D[i] = sqrt(3.0);i=i+1; //1st
+matFuMa_N3D[i] = sqrt(3.0);i=i+1; //1st
+matFuMa_N3D[i] = sqrt(15.0)/2;i=i+1; //2nd
+matFuMa_N3D[i] = sqrt(15.0)/2;i=i+1; //2nd
+matFuMa_N3D[i] = sqrt(5.0);i=i+1; //2nd
+matFuMa_N3D[i] = sqrt(15.0)/2;i=i+1; //2nd
+matFuMa_N3D[i] = sqrt(15.0)/2;i=i+1; //2nd 
+matFuMa_N3D[i] = 1/sqrt(8/35);i=i+1; //3rd
+matFuMa_N3D[i] = sqrt(35)/3;i=i+1; //3rd
+matFuMa_N3D[i] = 1/sqrt(45/224);i=i+1; //3rd
+matFuMa_N3D[i] = sqrt(7);i=i+1; //3rd
+matFuMa_N3D[i] = 1/sqrt(45/224);i=i+1; //3rd
+matFuMa_N3D[i] = sqrt(35)/3;i=i+1; //3rd
+matFuMa_N3D[i] = 1/sqrt(8/35);i=i+1; //3rd
+i=0;
+matSN3D_N3D[i] = 1.0;i=i+1;             //0th
+matSN3D_N3D[i] = sqrt(3.0);i=i+1; //1st
+matSN3D_N3D[i] = sqrt(3.0);i=i+1; //1st
+matSN3D_N3D[i] = sqrt(3.0);i=i+1; //1st
+matSN3D_N3D[i] = sqrt(5.0);i=i+1; //2nd
+matSN3D_N3D[i] = sqrt(5.0);i=i+1; //2nd
+matSN3D_N3D[i] = sqrt(5.0);i=i+1; //2nd
+matSN3D_N3D[i] = sqrt(5.0);i=i+1; //2nd
+matSN3D_N3D[i] = sqrt(5.0);i=i+1; //2nd 
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+matSN3D_N3D[i] = sqrt(7.0);i=i+1; //3rd
+
+@slider
+slider1==0 ? matGainin = matFuMa_N3D;
+slider1==1 ? matGainin = matSN3D_N3D;
+slider2==0 ? matGainout = matN3D_FuMa;
+slider2==1 ? matGainout = matN3D_SN3D;
+@block
+blah+=samplesblock;
+
+@sample
+
+//make channel ordering ACN (from FuMa)
+i=0;
+slider3==0?(
+  loop(nch,
+  matTemp[matACN_FuMa[i]] = spl(i);
+  i=i+1;
+  );
+) : (
+  loop(nch,
+  matTemp[i] = spl(i);
+  i=i+1;
+  );
+);  
+
+//if gain shift needed
+slider1!=slider2?
+(
+  //first, make all N3D
+  slider1<2?
+  (
+    i=0; //xxx to N3D
+    loop(nch,
+      matTemp[i] = matTemp[i] * matGainin[i];
+      i=i+1;
+      );
+  );
+  
+  slider2<2?
+  (
+    i=0; //N3D to xxx
+    loop(nch,
+      matTemp[i] = matTemp[i] * matGainout[i];
+      i=i+1;
+      );
+  );
+);
+
+//make channel order FuMa (from ACN)
+slider4==0?
+(
+  i=0;
+  loop(nch,
+    spl(i) = matTemp[matACN_FuMa[i]];
+    i=i+1;
+  );  
+) :
+(
+  i=0;
+  loop(nch,
+  spl(i) = matTemp[i];
+  i=i+1;
+  );
+);
+

@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>timerwheel</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>timerwheel.lua</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#1_0_2_released_03_Nov_2022">1.0.2 released 03-Nov-2022 </a></li>
+<li><a href="#1_0_1_released_04_Oct_2022">1.0.1 released 04-Oct-2022 </a></li>
+<li><a href="#1_0_0_released_22_Aug_2022">1.0.0 released 22-Aug-2022 </a></li>
+<li><a href="#0_2_0_released_11_Feb_2020">0.2.0 released 11-Feb-2020 </a></li>
+<li><a href="#0_1_0_released_01_Feb_2020">0.1.0 released 01-Feb-2020 </a></li>
+</ul>
+
+
+<h2>Topics</h2>
+<ul class="">
+  <li><strong>readme</strong></li>
+</ul>
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../index.html">timerwheel</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<p><a href="https://github.com/Tieske/timerwheel.lua/actions/workflows/unix_build.yml"><img src="https://img.shields.io/github/workflow/status/Tieske/timerwheel.lua/Unix%20build?label=Unix%20build&amp;logo=linux" alt="Unix build"/></a>
+<a href="https://coveralls.io/github/Tieske/timerwheel.lua"><img src="https://img.shields.io/coveralls/github/Tieske/timerwheel.lua?logo=coveralls" alt="Coveralls code coverage"/></a>
+<a href="https://github.com/Tieske/timerwheel.lua/actions/workflows/lint.yml"><img src="https://github.com/Tieske/timerwheel.lua/workflows/Lint/badge.svg" alt="Lint"/></a></p>
+
+
+<h1>timerwheel.lua</h1>
+
+<p>Efficient timer for timeout related timers: fast insertion, deletion, and
+execution (all as O(1) implemented), but with lesser precision.</p>
+
+<p>This module will not provide the timer/runloop itself. Use your own runloop
+and call <a href="../index.html#wheel:step">wheel:step</a> to check and execute timers.</p>
+
+
+<h1>Installation</h1>
+
+<p>Install through LuaRocks (<code>luarocks install timerwheel</code>) or from source, see the
+<a href="https://github.com/Tieske/timerwheel.lua">github repo</a>.</p>
+
+<h1>Documentation</h1>
+
+<p>The docs are <a href="https://tieske.github.io/timerwheel.lua/">available online</a>, or can
+be generated using <a href="http://stevedonovan.github.io/ldoc/">Ldoc</a>. Just run
+<code>&quot;ldoc .&quot;</code> from the repo.</p>
+
+
+<h1>Tests</h1>
+
+<p>Tests are in the <code>spec</code> folder and can be executed using the
+<a href="https://lunarmodules.github.io/busted/">busted test framework</a>. Just run
+<code>&quot;busted&quot;</code> from the repo.</p>
+
+<p>Besides that <code>luacheck</code> is configured for linting, just run <code>&quot;luacheck .&quot;</code> from
+the repo. And if LuaCov is installed, the Busted test-run will result in a
+coverage report (file <code>&quot;luacov.report.out&quot;</code>).</p>
+
+
+<h1>Copyright and License</h1>
+
+<p>See <a href="https://github.com/Tieske/timerwheel.lua/blob/master/LICENSE">LICENSE</a>.</p>
+
+<h1>History</h1>
+
+<p>Versioning is strictly based on <a href="https://semver.org/">Semantic Versioning</a>.</p>
+
+<h4>Releasing new versions</h4>
+
+<ul>
+    <li>create a release branch</li>
+    <li>update the changelog below</li>
+    <li>update copyright-years in <code>./LICENSE</code></li>
+    <li>create a new rockspec and update the version inside the new rockspec:<br/>
+    <code>cp timerwheel-scm-1.rockspec ./rockspecs/timerwheel-X.Y.Z-1.rockspec</code></li>
+    <li>render the docs: run <code>ldoc .</code></li>
+    <li>commit the changes as <code>release X.Y.Z</code></li>
+    <li>push the commit, and create a release PR</li>
+    <li>after merging tag the release commit with <code>X.Y.Z</code></li>
+    <li>upload to LuaRocks:<br/>
+    <code>luarocks upload ./rockspecs/timerwheel-X.Y.Z-1.rockspec --api-key=ABCDEFGH</code></li>
+    <li>test the newly created rock:<br/>
+    <code>luarocks install timerwheel</code></li>
+</ul>
+
+<p><a name="1_0_2_released_03_Nov_2022"></a></p>
+<h2>1.0.2 released 03-Nov-2022</h2>
+
+<ul>
+    <li>Fix: memory leak, occasionally ID's were not removed. Causing a memory leak in
+    long running processes</li>
+</ul>
+
+<p><a name="1_0_1_released_04_Oct_2022"></a></p>
+<h2>1.0.1 released 04-Oct-2022</h2>
+
+<ul>
+    <li>Fix: if a slot was modified (by cancelling) a hole might appear in the table
+    causing an xpcall with <code>nil</code> instead of the callback function</li>
+</ul>
+
+<p><a name="1_0_0_released_22_Aug_2022"></a></p>
+<h2>1.0.0 released 22-Aug-2022</h2>
+
+<ul>
+    <li>Bump to 1.0 since API is stable</li>
+    <li>Fix: added a newline when writing errors to <code>stderr</code>, since <code>io.stderr:write()</code>
+    does not automatically do this like <code>print()</code> does.</li>
+</ul>
+
+<p><a name="0_2_0_released_11_Feb_2020"></a></p>
+<h2>0.2.0 released 11-Feb-2020</h2>
+
+<ul>
+    <li>Added <a href="../index.html#wheel:count">count</a> method to retrieve the current number of active timers</li>
+</ul>
+
+<p><a name="0_1_0_released_01_Feb_2020"></a></p>
+<h2>0.1.0 released 01-Feb-2020</h2>
+
+<ul>
+    <li>Initial released version</li>
+</ul>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-11-03 17:31:27 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

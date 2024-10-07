@@ -1,0 +1,56 @@
+                         GRIM SYNC                          
+           Advanced REAPER to Wwise bridge system           
+                                                            
+               Created by LKC TOOLS (c) 2022                
+                                                            
+                   LKC Studio Montreuil:                    
+                          T.Lukic                           
+                          N.Lukic                           
+                                                            
+                    Testing & Feedback:                     
+                          M.Antic                           
+                        D.Cvetkovic                         
+                        S.Bogdanovic                        
+                         T.Radovic                          
+                                                            
+                                                            
+                         Thanks to:                         
+                                                            
+   Our families and friends for their support and wisdom.   
+                                                            
+                        Audiokinetic                        
+                            MHG                             
+                                                            
+                          G.Camous                          
+                          S.Cornaz                          
+                          A.Massi                           
+                                                            
+                          cfillion                          
+                         JerContact                         
+                         Lokasenna                          
+                            nvk                             
+                            rxi                             
+                           spk77                            
+                           X-Raym                           
+                                                            
+                          S.Ashby                           
+                        M.Stojkovic                         
+                          R.Mirkov                          
+                       U.Radovanovic                        
+                          V.Krunic                          
+                                                            
+                         A.Quentiet                         
+                          D.Bridet                          
+                          E.Giglio                          
+                       F.Centracchio                        
+                         G.Soufflet                         
+                          I.Yebra                           
+                         K.M.Tahora                         
+                          M.Renard                          
+                         Q.Beaumont                         
+                         T.Couchard                         
+                         T.Ghernati                         
+                         T.Sonnier                          
+                         T.Soufflet                         
+                                                            
+                                                            

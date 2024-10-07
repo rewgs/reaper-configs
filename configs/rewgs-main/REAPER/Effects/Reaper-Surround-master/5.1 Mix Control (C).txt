@@ -1,0 +1,25 @@
+desc: (Common-sized). Useful after upscalers that don't have controls of DTS Neural Upmix.
+
+slider1:0<-100,100,1>Depth
+slider2:100<0,100,10>Rear Width
+
+import surroundlib2.txt
+import surroundlib3.txt
+
+@init
+// this is stuff that happens once (or if the samplerate changes, etc)
+
+@slider
+// gain = 2^(slider1/6); // convert from dB to a multiplier
+depth_coeff=(slider1*$pi)/200; //depth scaled from 0-100 to 0>half pi
+R_width_coeff=slider2/100;
+
+calculate_depth_coeffs(depth_coeff);
+
+@sample
+
+//Depth
+do_depth(depth_coeff);
+
+//Rear width
+rear_width(R_width_coeff);

@@ -1,0 +1,39 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Combiner (Pitchbend)
+in_pin:none
+out_pin:none
+
+
+
+@init
+// bend = 0;
+p = buf = 16;
+memset(0, 8192, 16);
+
+
+
+@block
+midirecv(o,a,b,c) ? (
+ q = o;
+ while(
+  abs(a-231.5) < 8 ? (  // pitchbend
+   (a-$xE0)[0] = b + c*128;  b = 1<<(a &= 7);
+   (m & b) === 0 ? (m += b; p[0] = a; p += 1);
+  ) : (
+   midisend(o, a, b, c);
+  );
+
+  (d = midirecv(o,a,b,c))===0 || q < o ? (
+   loop(p-16,
+    p = buf[0]; n = min(max(p[0] + p[8] - 8192, 0), 16383);
+    midisend(q, p + $xE0, n + (n & $x3F80));
+    buf += 1;
+   );
+
+   q = o; m = 0; p = buf = 16;
+  );
+
+  d
+ );
+);

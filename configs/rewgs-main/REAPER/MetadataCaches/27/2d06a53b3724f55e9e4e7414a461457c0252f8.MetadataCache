@@ -1,0 +1,10 @@
+C10017 /Applications/audioguide-1.72/examples
+F cage.aiff 1005838 0 1615390482 0
+D s 44100 n 1 l 0:11.403 i 16
+F dinosaur.wav 8274676 0 1640244732 0
+D y 2021-12-23 s 44100 n 2 l 0:31.269
+D i 24
+F "heat sink.aiff" 1235506 0 1615390482 0
+D s 44100 n 1 l 0:14.007 i 16
+F lachenmann.aiff 5701764 0 1615390482 0
+D s 44100 n 1 l 1:04.645 i 16

@@ -1,0 +1,40 @@
+---------------------------------------------------------------------------------------
+  Solo Tracks of Selected Items - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0rc2 (2020-07-08)
+  # Solo selected tracks if no items are selected. (HeDa_Toggle Solo Tracks of Selected Items)
+  
+* v1.0rc1 (2017-09-30)
+  # make action triggers case insensitive. (which also makes it REAPER 5.50 compatible)
+  + configurable undo trigger entries by editing AutoSolo_actions.cfg. (Copy AutoSolo_actions.cfg to "Solo Tracks of Selected Items settings" folder to edit it)
+
+* v0.9 (2017-02-28)
+  # update when "Select Item In Next/Previous track"
+
+* v0.8 (2017-02-08)
+  # update solo tracks when Insert Media Items 
+
+* v0.7 (2017-02-07)
+  # update solo tracks when deleting items
+  # update solo tracks when cut and paste items
+
+* v0.6 (2017-02-06)
+  # solo tracks when moving or copying items
+
+* v0.5 (2017-01-30)
+  # Undo fix
+
+* v0.4 (2017-01-27)
+  + Solo tracks on initializing script
+  
+* v0.3 (2017-01-25)
+  + Unsolo All tracks when exiting script
+
+* v0.2 (2016-06-21)
+  + Translated to Lua. 
+  + Improved optimized version. CPU friendly.
+	
+* v0.1 (2015-02-22)
+  + initial version Lua translation from EEL version
+	

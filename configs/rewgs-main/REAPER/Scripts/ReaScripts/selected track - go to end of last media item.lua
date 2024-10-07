@@ -1,0 +1,1 @@
+-- This will use $ like in vim.

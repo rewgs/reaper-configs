@@ -1,0 +1,12 @@
+C10018 "/Users/jonathankawchuk/Documents/Projects/In Progress/Fading Faces/FF Reaper Docs/FF Gelada nmfcross/media"
+F "FF Gelada nmfcross_freeze.wav" 35328744 0 1678572472 0
+D y 2023-03-11 s 96000 n 2 l 0:46.000
+D i 32
+F "FF Gelada nmfcross_freeze_NHU9719730.wav" 19200744 0 1678571730 0
+D y 2023-03-11 s 96000 n 2 r 0:19.000
+D l 0:25.000 i 32
+F NHU9719730-glued.wav 1172724 0 1678571209 0
+D y 2023-03-11 s 96000 n 2 r 0:27.453
+D l 0:03.052 i 16
+F NHU9719730-glued_nmfcross_167857122544851.wav 1172032 0 1678571634 0
+D s 96000 n 1 l 0:03.052 i 32

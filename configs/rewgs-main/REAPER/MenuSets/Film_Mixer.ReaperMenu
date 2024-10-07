@@ -1,0 +1,28 @@
+[Floating toolbar 1]
+icon_0=text
+icon_1=text_wide
+icon_3=toolbar_video_screen.png
+icon_4=toolbar_midi_mode_musical_notation.png
+icon_5=text_wide
+icon_6=text_wide
+icon_8=text_wide
+icon_9=text_wide
+icon_10=text_wide
+icon_12=text_wide
+icon_14=text_wide
+item_0=_S&M_COPYFXCHAIN5 Copy FX Chain
+item_1=_S&M_COPYFXCHAIN10 Paste FX Chain
+item_2=-1
+item_3=_512e2cfd1b85473787a647eb354e7eba Dialogue
+item_4=_994a7cf488704ee5ae41d5e1b12df597 Temp
+item_5=_30c934d6276b40f999553ab442464ac1 All Tracks
+item_6=_d1c0404f9372466ab00edc06e4d0b3ba Only Used Tracks
+item_7=-1
+item_8=2999 Repeat the most recent action
+item_9=3000 Repeat the action prior to the most recent action
+item_10=41717 Render selected area to multichannel
+item_11=-1
+item_12=_RSc10597a6100715d118f922a525999ba3d07426a0 Search
+item_13=-1
+item_14=_SWSSNAPSHOT_OPEN Snapshots
+

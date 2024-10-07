@@ -1,0 +1,930 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en"><head>
+
+<Title>ReaperDoc2</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+<meta name="keywords" content="REAPERDOC2">
+<meta name="description" content="Reaper Project File Documentation Tool">
+<!-- CSS Stylesheet -->
+	
+
+
+
+<style type="text/css" id="vbulletin_css">
+<!--
+/* vBulletin 3 CSS For Style 'reaper style' (styleid: 4) */
+body
+{
+	background: #303030;
+	color: #000000;
+	font-size: 10pt;
+}
+a:link, body_alink
+{
+	color: #b0b0b0;
+	text-decoration: underline;
+}
+a:visited, body_avisited
+{
+	color: #b0b0b0;
+	text-decoration: underline;
+}
+a:hover, a:active, body_ahover
+{
+	color: #b0b0b0;
+	text-decoration: underline;
+}
+.page
+{
+	background: #EEEEEE;
+	color: #000000;
+}
+.page a:link, .page_alink
+{
+	text-decoration: underline;
+}
+.page a:visited, .page_avisited
+{
+	text-decoration: underline;
+}
+.page a:hover, .page a:active, .page_ahover
+{
+	text-decoration: underline;
+}
+td, th, p, li
+{
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tborder
+{
+	background: #b0b0b0;
+	color: #000000;
+	border: 1px solid #000000;
+}
+.tcat
+{
+	background: #FFFFFF; url(images/gradients/gradient_tcat.gif) color: #000000;
+	font-size: 10pt;
+	font-weight: bold; repeat-x
+}
+.tcat a:link, .tcat_alink
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #000000; url(images/gradients/gradient_thead.gif) color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold; repeat-x
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #FFFF00;
+}
+.tfoot
+{
+	background: #000000;
+	color: #ffffff;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #b0b0b0;
+	text-decoration: underline;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #b0b0b0;
+	text-decoration: underline;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #b0b0b0;
+	text-decoration: underline;
+}
+.alt1, .alt1Active
+{
+	background: #ffffff;
+	color: #000000;
+}
+.alt1 a:link, .alt1_alink, .alt1Active a:link, .alt1Active_alink
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.alt1 a:visited, .alt1_avisited, .alt1Active a:visited, .alt1Active_avisited
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.alt1 a:hover, .alt1 a:active, .alt1_ahover, .alt1Active a:hover, .alt1Active a:active, .alt1Active_ahover
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.alt2, .alt2Active
+{
+	background: #e0e0e0;
+	color: #000000;
+}
+.alt2 a:link, .alt2_alink, .alt2Active a:link, .alt2Active_alink
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.alt2 a:visited, .alt2_avisited, .alt2Active a:visited, .alt2Active_avisited
+{
+	color: #000000;
+	text-decoration: underline;
+}
+.alt2 a:hover, .alt2 a:active, .alt2_ahover, .alt2Active a:hover, .alt2Active a:active, .alt2Active_ahover
+{
+	color: #000000;
+	text-decoration: underline;
+}
+td.inlinemod
+{
+	background: #FFFFCC;
+	color: #000000;
+}
+.wysiwyg
+{
+	background: #F5F5FF;
+	color: #000000;
+	font: 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, .bginput
+{
+	font-size: 10pt;
+}
+.button
+{
+	font-size: 11px;
+}
+select
+{
+	font-size: 11px;
+}
+option, optgroup
+{
+	font-size: 11px;
+}
+.smallfont
+{
+	font-size: 11px;
+}
+.time
+{
+	color: #666686;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	color: #FF0000;
+	font-weight: bold;
+}
+.fjsel
+{
+	background: #3E5C92;
+	color: #E0E0F6;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+.panel
+{
+	background: #E4E7F5 url('images/gradients/gradient_panel.gif') repeat-x top left;
+	color: #000000;
+	padding: 10px;
+	border: 2px outset
+}
+.panelsurround
+{
+	background: #D1D4E0 url('images/gradients/gradient_panelsurround.gif') repeat-x top left;
+	color: #000000
+}
+legend
+{
+	color: #22229C;
+	font-size: 11px;
+}
+.vbmenu_control
+{
+	background: #738FBF;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.vbmenu_popup
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #0B198C;
+}
+.vbmenu_option
+{
+	background: #BBC7CE;
+	color: #000000;
+	font-size: 11px;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #22229C;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite
+{
+	background: #8A949E;
+	color: #FFFFFF;
+	font-size: 11px;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 14pt; }
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+label { cursor: default; }
+.normal { font-weight: normal; }
+.inlineimg { vertical-align: middle; }
+-->
+</style><!-- / CSS Stylesheet -->
+
+
+
+
+<center>
+<table bgcolor="#000000" border="0" height="523" width="800">
+<tbody><tr height="10"><td colspan="3" align="center" valign="top" height="49">
+<table border="0" width="100%">
+<tbody><tr>
+<td align="left" valign="center">
+<table border="0">
+<tbody><tr><td>
+<font color="#ffffff" face="Courier New" size="+3"><b>REAPERDOC2</b></font>
+</td>
+</tr></tbody></table>
+</td>
+</tr></tbody></table>
+</td>
+</tr>
+<tr><td align="left" bgcolor="#eeeeee" valign="top" height="446">
+
+
+
+<!-- content table -->
+<!-- open content container -->
+
+<div align="center">
+	<div class="page" style="width: 100%; text-align: left;">
+		<div style="padding: 0px 10px;">
+
+
+
+<table border="0" width="100%">
+<tbody><tr><td>
+<!-- / nav buttons bar -->
+
+<br>
+
+
+
+</td>
+
+</tr></tbody></table>
+
+
+<!-- sub-forum list  -->
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%">Summary<p><span class="normal">Welcome to ReaperDoc2 - a tool to convert Reaper project files into 
+    a readable printable format.&nbsp; Template files are used to determine how 
+    to format the output file.&nbsp; Written in Python. This means that it can run on both Windows and Mac 
+    and can be used as a ReaScript within Reaper.  It also can run standalone like the original version.
+	<p>The original ReaperDoc was developed by Gregg Reno <a href="http://www.greggreno.com/" TARGET="_blank"><font color="#0000FF">http://www.greggreno.com</font></a> using Visual Basic.  He developed the 
+	algorithms and templates and original documentation and sample output used in this product and all thanks 
+	and credit for the ideas and work should go to him.</p>
+	<font color="#0000FF"><br>
+    </font><font>You can discuss the development of this program in
+    <a href="http://forum.cockos.com/"><font color="#0000FF" TARGET="_blank">The Cockos Forums</font></a>.</span><p>
+    <b>NOTE</b>:&nbsp; If you are viewing this page from within ReaperDoc2, 
+    you can always find this htm file in your ReaperDoc2 installation directory.</td>
+</tr>
+</tbody></table>
+<br>
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%"><a id="contents">Contents</a>
+	<p>
+	<ul>
+	<li><a href="#news"><font color="#0000FF">News and Download</font></a>
+	<li><a href="#installation"><font color="#0000FF">Installation</font></a>
+	<li><a href="#using"><font color="#0000FF">Using ReaperDoc2</font></a>
+	<li><a href="#prefs"><font color="#0000FF">Preferences</font></a>
+	<li><a href="#templates"><font color="#0000FF">Templates</font></a>
+	</ul>
+	</td>
+</tr>
+</tbody></table>
+<br>
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%"><a id="news">News and Download</a>
+    <p>
+	<b>Download the latest version at <a href="http://stash.reaper.fm/tag/Misc">
+	<font color="#0000FF">The Reaper Stash</font></a>.  Search for ReaperDoc2.</b></p>
+	<p><b>December 14, 2012:</b>&nbsp; 
+    Released version 1.0 Final.&nbsp; Bug fixes and enhancements.</p>
+	<ul><li><b>Bugs Fixed:</b></li>
+	<ol>
+	<li>When used to create files multiple times without closing and reopening, FX, Sends and Receives were corrupted and reported incorrect track names and/or numbers.</li>
+	<li>Sends and Receives sometimes reported incorrect track names and/or numbers and sometimes crashed for reasons other than the above.</li>
+	<li>The csv template created a tab delimited file instead of a comma delimited file and produced inconsistent results when lists of FX, Sends, Receives were produced.  It was also modified to format "Sample Rate" as left-justified instead of right-justified.</li>
+	<li>Sometimes when used as a custom action in Reaper, the ReaperDoc2 window would display behind the Reaper window and could only be seen by minimizing Reaper. This may be only partially fixed. It seems to depend on operating system and available memory.</li>
+	</ol>
+	<li><b>Enhancements:</b></li>
+	<ol>
+	<li>Paths may be typed into the file selection windows instead of using the browser buttons if the user chooses.</li>
+	<li>The browsers for output file and template file will now show all files instead of just .htm and .html.  This allows the user to user to select and or name other file types.</li>
+	<li>Because of the above, if you name an output file "something.csv", it will open in Excel or Open Office or Libre Office if one of those is associated with .csv files. ".txt" files should open in a text editor.</li>
+	<li>More selections were added for "Separator" in the Preferences dialog.  See <a href="#prefs"><font color="#0000FF">Preferences</font></a> for more on this.</li>
+	<li>Documentation/help file changed to reflect the above.</li>
+	</ol>
+	</ul>
+	<p><b>November 1, 2012:</b>&nbsp; 
+    Released version 0.1 Beta.&nbsp; Similar in functionality to the original 
+    ReaperDoc, but written in Python. This means that it can run on both Windows and Mac 
+    and can be used as a ReaScript within Reaper.  It also can run standalone.</p>
+	<p>This product has been written in Python.
+	It has been tested on Windows XP and Windows Vista with Reaper and Python v2.7 and v3.2.
+	It has also been tested on Apple OS/X with it's builtin Python.
+	</p>
+	<p><a href="#contents"><font color="#0000FF">Go back to Contents</font></a></p>
+  </td>
+</tr>
+</tbody></table>
+<br>
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%"><a id="installation">Installation</a>
+    <p>Although Python scripts (even ReaScripts) can be installed and run from any place on your harddrive, I recommend that all scripts intended to be ReaScripts be installed in the REAPER/Scripts application data directory. You can find this location by in Reaper from the main menu by clicking  "Options -&gt; Show REAPER Resource Path in Explorer/Finder". I have found that there might not be a Scripts folder under the REAPER folder. If the Scripts folder does not exist, you should create one.</p>
+	<p>Python must be installed. Usually Mac OS/X already has Python installed. This link <a href="http://www.python.org/download/" TARGET="_blank"><font color="#0000FF">http://www.python.org/download/</font></a> lists the versions of Python available.</p>
+	<p>To run ReaperDoc2 as a custom action within Reaper, ReaScripts must be enabled in Reaper.  Click "Options -&gt; Preferences -&gt; Plug-ins -&gt; ReaScript". Check the Enable box. On that dialog also check that it has correctly identified Python.</p>
+	<p>
+	Simply unzip the entire contents of the ReaperDoc2.zip (including folder hierarchy) file into the Scripts directory. The file reaperdoc2.htm is the file you are reading now.  It is also available from the help menu of ReaperDoc2.
+	</p>
+	<p>To make this a custom action in Reaper (a ReaScript), click "Actions -&gt; Action List" in the main menu.  Then, click the ReaScript: New/Load button. This should take you to Scripts folder.  Navigate to the Scripts/ReaperDoc2 folder and select reaperdoc2.py.  Now you have a new action in your action list.</p>
+	<p><a href="#contents"><font color="#0000FF">Go back to Contents</font></a></p>
+  </td>
+</tr>
+</tbody></table>
+<br>
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%"><a id="prefs">Preferences</a>
+    <p>The preferences are available from the "File -&gt; Preferences" menu item. These selections are remembered by ReaperDoc2.  You don't have to select them every time you run the program.
+	<ul>
+	<li>Separator:  This is the separator that will be used between Items, FX, Sends, Receives, and other things and other things that occur in multiples on a track.
+	<ol><li>"&lt;BR&gt;", the HTML line break. Aways use this for HTML output, if you want line breaks between list items. This is the default.</li>
+	<li>"comma", places a comma between list items.</li>
+	<li>"cr", places a single character carriage return (\r or chr(13)) between list items. May be useful in some instances.  Ignored by HTML.</li>
+	<li>"linefeed", places a linefeed character (\n or chr(10)) between list items.  Useful for csv files when you want the lists of FX, Sends, Receives to display in a single cell on different lines in your spreadsheet.  Might also be useful if the output file will be used in Linux.  Ignored by HTML.</li>
+	<li>"crlf", carriage return/linefeed which is the standard Windows line end (\r\n). Might be used like linefeed above for Excel, but I find unreliable. Otherwise just for text formating.  Ignored by HTML.</li>
+	<li>"space", a simple ascii space to be used for separating items.</li>
+	<li>"tab", may be used for tab-delimited files or for simple formatting in text files.   Ignored by HTML.</li>
+	</ol>
+	</li>
+	<li>Date Format: A variety of date formats attempting to allow for various country's preferences. Defaults to "yyyy-mm-dd".</li>
+	<li>Time Format: A variety of time formats attempting to allow for various country's preferences. Defaults to "hh:mm:ss", 24 hour.</li>
+	</ul></p>
+	<p><a href="#contents"><font color="#0000FF">Go back to Contents</font></a></p>
+  </td>
+</tr>
+</tbody></table>
+<br>
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%"><a id="using">Using ReaperDoc2</a><p><span class="normal">It's 
+    pretty easy to use ReaperDoc2:</span>
+      <ul>
+      <li><span class="normal">The Reaper Project must be saved.</span></li>
+	  <li><span class="normal">To run standalone, just double-click on reaperdoc2.py.</span></li>
+	  <li><span class="normal">To run as a Reaper custom action, see <a href="#installation"><font color="#0000FF">Installation</font></a>.</span></li>
+      <li><span class="normal">Set your preferences if they need to be changed. See <a href="#prefs"><font color="#0000FF">Preferences</font></a>.</span></li>
+      <li><span class="normal">Select three files in the dialog box:</span>
+      	<ul>
+      		<li><span class="normal">Select a Reaper project file to open, in ReaScript mode the Browse button will go to the project directory.</span></li>
+      		<li><span class="normal">Select an output HTML file name, in ReaScript mode the Browse button will go to the project directory.</span></li>
+      		<li><span class="normal">Select a template to use.&nbsp; This will 
+            be pre-filled with the default template. The browse button will take you to the template directory.</span></li>
+      	</ul>
+      </li>
+      <li><span class="normal">Click the "Create File" button</span></li>
+      <li><span class="normal">ReaperDoc2 will write to the HTML file you 
+      selected using the current template file (see Templates section for more 
+      info)</span></li>
+      <li><span class="normal">The HTML file will open in the program's browser 
+      window.</span></li>
+      <li><span class="normal">If you want, you can use the Browser's File -&gt; Print menu 
+      item to print the document</span></li>
+      </ul>
+      <p>
+    The following examples show some of the templates and sample output files 
+    generated by ReaperDoc2:<br>
+&nbsp;<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="69%" id="AutoNumber3" bordercolor="#000000">
+      <tr>
+        <td width="58%" bgcolor="#C0C0C0" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif"><b>Template</b></td>
+        <td width="43%" bgcolor="#C0C0C0" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif"><b>Output File</b></td>
+      </tr>
+      <tr>
+        <td width="58%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./templates/default_template.htm" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">Default_Template</font></a></td>
+        <td width="43%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./samples/default_out.htm" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">Default_Template_Out.htm</font></a></td>
+      </tr>
+      <tr>
+        <td width="58%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./templates/list_template.htm" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">List Template</font></a></td>
+        <td width="43%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./samples/list_out.htm" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">List_Template_Out.htm</font></a></td>
+      </tr>
+      <tr>
+        <td width="58%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./templates/more_details_template.htm" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">More Details Template</font></a></td>
+        <td width="43%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./samples/more_details_out.htm" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">More_Details_Template_Out.htm</font></a></td>
+      </tr>
+      <tr>
+        <td width="58%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./templates/CSV_Excel_Template.txt" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">CSV_Excel_Template</font></a><font color="#0000FF">
+        </font>for exporting to <br>
+        Excel tab delimited format</td>
+        <td width="43%" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif">
+        <a href="./samples/CSV_Excel_out.txt" style="color: #b0b0b0; text-decoration: underline" TARGET="_blank">
+        <font color="#0000FF">CSV_EXcel_Out.txt</font></a></td>
+      </tr>
+    </table>
+    <p>&nbsp;
+	<p><a href="#contents"><font color="#0000FF">Go back to Contents</font></a></p>
+	</td>
+</tr>
+</tbody></table>
+
+<br>
+<table class="tborder" style="border-bottom-width: 0px;" align="center" border="0" cellpadding="6" cellspacing="1" width="95%">
+<tbody><tr>
+	<td class="tcat" width="100%"><a id="templates">Templates</a><p><span class="normal">ReaperDoc 
+    uses a file called a Template to determine the format of the output file.&nbsp; 
+    A template is simply a formatted file (usually HTML) with some special 
+    keywords embedded within it.&nbsp; You can use the included templates, or 
+    create your own.</span><p><span class="normal">When converting a project 
+    file, the keywords will be replaced with data from the project file.&nbsp; </span>Keywords all start and 
+    end with double pound characters (##)<span class="normal"> .&nbsp; The 
+    current list of keywords are:<br>
+&nbsp;</span><div align="center">
+      <center>
+      <table border="0" cellpadding="4" cellspacing="1" style="border-collapse: collapse" id="AutoNumber1" width="700" height="1374">
+        <tr>
+          <td align="left" width="151" height="19"><b><font face="Arial" size="3">Project Level Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial" size="2">##FILE-NAME##</font></td>
+          <td align="left" width="530" height="16">The name of the Reaper project file</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial" size="2">##VERSION##</font></td>
+          <td align="left" width="530" height="16">Reaper format version number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial" size="2">##TEMPO##</font></td>
+          <td align="left" width="530" height="16">Song tempo</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial" size="2">##SAMPLE-RATE##</font></td>
+          <td align="left" width="530" height="16">Sample Rate</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font size="2" face="Arial">##NOTES##</font></td>
+          <td align="left" width="530" height="16">Project notes / comments</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          Track Level Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##TRACK-NUM##</font></td>
+          <td align="left" width="530" height="16">Track Number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##TRACK-NAME##</font></td>
+          <td align="left" width="530" height="16">Track Name</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##VOLUME##</font></td>
+          <td align="left" width="530" height="16">Track Volume</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##PAN##</font></td>
+          <td align="left" width="530" height="16">Track Pan</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##MUTE##</font></td>
+          <td align="left" width="530" height="16">Track Muted.&nbsp; &quot;Mute&quot; if muted, 
+          otherwise blank</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##SOLO##</font></td>
+          <td align="left" width="530" height="16">Track Solo.&nbsp; &quot;Solo&quot; if track solo is 
+          on, otherwise blank</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font size="2" face="Arial">##FX-LIST##</font></td>
+          <td align="left" width="530" height="16">Simple list of effects - no 
+          special group tags needed</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font size="2" face="Arial">##ITEM-LIST##</font></td>
+          <td align="left" width="530" height="16">Simple list of items - no 
+          special group tags needed</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font size="2" face="Arial">##SEND-LIST##</font></td>
+          <td align="left" width="530" height="16">Simple list of sends - no 
+          special group tags needed</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font size="2" face="Arial">##RCV-LIST##</font></td>
+          <td align="left" width="530" height="16">Simple list of receives - no 
+          special group tags needed</td>
+        </tr>
+
+        <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          Effects Level Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##FX-NUM##</font></td>
+          <td align="left" width="530" height="16">Effects sequence number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##FX-NAME##</font></td>
+          <td align="left" width="530" height="16">Effects name</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##FX-TYPE##</font></td>
+          <td align="left" width="530" height="16">Effects type (ie VST, DX, etc)</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##FX-DLL##</font></td>
+          <td align="left" width="530" height="16">Effects DLL (used for VSTs)</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##FX-ACTIVE##</font></td>
+          <td align="left" width="530" height="16">Effects Active? (&quot;Active&quot; if active, 
+          otherwise blank)</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          Send Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##SEND-NUM##</font></td>
+          <td align="left" width="530" height="16">Send sequence number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##SEND-TRACK-NUM##</font></td>
+          <td align="left" width="530" height="16">Send To track number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="32"><font face="Arial">##SEND-TRACK-NAME##</font></td>
+          <td align="left" width="530" height="32">Send To track name</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="14"><font face="Arial">##SEND-MUTE##</font></td>
+          <td align="left" width="530" height="14">Send To Muted.&nbsp; &quot;MUTE&quot; if muted, 
+          otherwise blank</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##SEND-VOLUME##</font></td>
+          <td align="left" width="530" height="16">Send To Volume</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##SEND-PAN##</font></td>
+          <td align="left" width="530" height="16">Send To Pan</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          Receive Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif" height="16"><font face="Arial">##RCV-NUM##</font></td>
+          <td align="left" width="530" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif" height="16">
+          Receive From sequence number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif" height="16"><font face="Arial">##RCV-TRACK-NUM##</font></td>
+          <td align="left" width="530" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif" height="16">
+          Receive From track number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif" height="16"><font face="Arial">##RCV-TRACK-NAME##</font></td>
+          <td align="left" width="530" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 10pt; font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif" height="16">
+          Receive From track name</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##RCV-MUTE##</font></td>
+          <td align="left" width="530" height="16">Send To Muted.&nbsp; &quot;MUTE&quot; if muted, 
+          otherwise blank</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##RCV-VOLUME##</font></td>
+          <td align="left" width="530" height="16">Send To Volume</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##RCV-PAN##</font></td>
+          <td align="left" width="530" height="16">Send To Pan</td>
+        </tr>
+
+        <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          Item Level Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-NUM##</font></td>
+          <td align="left" width="530" height="16">Item sequence number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-NAME##</font></td>
+          <td align="left" width="530" height="16">Item Name (sound file name)</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-POS##</font></td>
+          <td align="left" width="530" height="16">Item Position</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-LEN##</font></td>
+          <td align="left" width="530" height="16">Item Length</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-GROUP##</font></td>
+          <td align="left" width="530" height="16">Item Group Number</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-MUTE##</font></td>
+          <td align="left" width="530" height="16">Item Muted.&nbsp; &quot;MUTE&quot; if muted, 
+          otherwise blank</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-VOLUME##</font></td>
+          <td align="left" width="530" height="16">Item Volume</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##ITEM-PAN##</font></td>
+          <td align="left" width="530" height="16">Item Pan</td>
+        </tr>
+       <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          If / Then / Else</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16" valign="top">
+          <font face="Arial">&lt;</font><font face="Arial" size="2">#IF</font></td>
+          <td align="left" width="530" height="16">Beginning of If Then Else 
+          structure.&nbsp; &lt;#IF must be followed by one of the following:<ul>
+            <li>-IN-GROUP - If track is inside a group</li>
+            <li>-IS-GROUP - if this track is the group header</li>
+            <li>-IS-MUTED - if track is muted</li>
+          </ul>
+          <p>The keyword is followed by user defined tags or text which will 
+          only be output if the condition is met.<p>Note that there cannot be a 
+          space between the ##IF and the condition. For example, &quot;&lt;#IF-IN-GROUP&quot; 
+          is valid but &quot;&lt;#IF -IN-GROUP&quot; is not.</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16" valign="top"><font face="Arial" size="2">
+          ##ELSE</font></td>
+          <td align="left" width="530" height="16">Tags or text following the 
+          ##ELSE statement will be output if the condition is NOT met</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16" valign="top"><font face="Arial" size="2">
+          ##END-IF#&gt;</font></td>
+          <td align="left" width="530" height="16">Ends the If Then Else 
+          structure</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="38"><b><font face="Arial" size="3"><br>
+          Other Info</font></b></td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial" size="2">##TEMPLATE-NAME##</font></td>
+          <td align="left" width="530" height="16">The name of the template used for the 
+          conversion</td>
+        </tr>
+        <tr>
+          <td align="left" width="151" height="16"><font face="Arial" size="2">##OUTPUT-NAME##</font></td>
+          <td align="left" width="530" height="16">The name of the HTML output file</td>
+        </tr>
+         <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##DATE##</font></td>
+          <td align="left" width="530" height="16">Current date - uses format 
+          selected in Preferences</td>
+        </tr>
+         <tr>
+          <td align="left" width="151" height="16"><font face="Arial">##TIME##</font></td>
+          <td align="left" width="530" height="16">Current time - uses format 
+          selected in Preferences</td>
+        </tr>
+     </table>
+      </center>
+    </div>
+    <p><b>If Then Else Example</b><p>The If Then Else structure is a little more 
+    complicated than the other tags, but is useful for only outputting certain 
+    tags or text if a particular condition is met.&nbsp; For example:<p>&lt;#IF-IS-GROUP 
+    Group ##ELSE Track ##ENDIF#&gt;<p>In the 
+    above example, the text &quot;Group&quot; will be output if the track is a group 
+    header, 
+    otherwise it will output the string &quot;Track&quot;.&nbsp; See the &quot;list_template&quot; template 
+    file to see how the If Then Else structure is used.<p><b><font face="Verdana" size="2">
+    Special Tags</font></b><p><span class="normal">Templates may also contain special HTML tags.&nbsp; 
+    These tags handle repeating groups of data, like multiple effects per track 
+    and multiple tracks per project.<br>
+&nbsp;<center>
+      <table border="0" cellpadding="4" cellspacing="1" style="border-collapse: collapse" id="AutoNumber1" width="700">
+        <tr>
+          <td align="left" width="151"><font face="Arial" size="2">&lt;!-- TRACK_START --&gt;</font></td>
+          <td align="left" width="530">Marks the beginning of the track info</td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          TRACK_END --&gt;</font></span></td>
+          <td align="left" width="530"><span class="normal">Marks the end of the 
+          track info</span></td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- FX_START --&gt;</font></span></td>
+          <td align="left" width="530">Marks the beginning of the effects info</td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          FX_END --&gt;</font></span></td>
+          <td align="left" width="530"><span class="normal">Marks the end of the 
+          effects info</span></td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          ITEM_START --&gt;</font></span></td>
+          <td align="left" width="530">Marks the beginning of the item info</td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          ITEM_END --&gt;</font></span></td>
+          <td align="left" width="530"><span class="normal">Marks the end of the 
+          item info</span></td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          SEND_START --&gt;</font></span></td>
+          <td align="left" width="530">Marks the beginning of the item info</td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          SEND_END --&gt;</font></span></td>
+          <td align="left" width="530"><span class="normal">Marks the end of the 
+          item info</span></td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          RECEIVE_START --&gt;</font></span></td>
+          <td align="left" width="530">Marks the beginning of the item info</td>
+        </tr>
+        <tr>
+          <td align="left" width="151"><span class="normal"><font face="Arial" size="2">&lt;!-- 
+          RECEIVE_END --&gt;</font></span></td>
+          <td align="left" width="530"><span class="normal">Marks the end of the 
+          item info</span></td>
+        </tr>        
+        </table>
+      </center>
+    
+    </span><p>With the track start and end tags, you tell ReaperDoc what HTML to 
+    use for every track.&nbsp; So the template defines the track format once, 
+    but ReaperDoc will duplicate that track format for every track in the 
+    project.<p>The effects block is marked with the FX start and end tags, and 
+    both tags should be within the track tags.<p>The best way to see how this is used is to look at the 
+    default_template.html file.<p>&nbsp;
+	<p><a href="#contents"><font color="#0000FF">Go back to Contents</font></a></p>
+	</td>
+</tr>
+</tbody></table>
+
+<br>
+
+		</div>	
+	</div>
+</div>
+
+
+
+
+</td>
+
+</tr>
+<tr><td colspan="3" height="16"></td></tr>
+</tbody></table>
+</center>
+
+
+
+
+
+</body></html>

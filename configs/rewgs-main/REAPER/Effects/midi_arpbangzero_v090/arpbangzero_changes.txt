@@ -1,0 +1,369 @@
+arp!0 - groovy midi arpeggiator
+
+release notes:
+
+0.1beta - 28 jan 2012:
+- initial release
+0.2beta - 30 jan 2012:
+- fix length seq active step hilighting
+- improve easter egg
+- debug evmsgs view for rt click notes
+- bump max octaves to 3
+- tweak dropdown rightmost pos logic
+- bump len range to 8
+- add automation logic using invis js sliders. *NOTE* this breaks presets
+- add note hold logic/ui
+- rework timing/offset logic so ui is more responsive (& timing better?)
+- stress testing fixes: noteon first send ordering, swing calcs, hanging 
+  notes after pause, ...
+- tweak swing slider behavior
+0.21beta - 31 jan 2012:
+- support click/drag/release behavior for dropdown menus
+- experimental 24 & 32 step modes
+0.22beta - 31 jan 2012:
+- fix factory defaults for 24/32 step modes
+0.23beta - 31 jan 2012:
+- fix shift right click in button grid from flashy bad draw
+- fix mouseover hilite for non-cc# choice grids
+- collapsable slidergrids
+- fix slider logic: don't pass fractional coords to gfx_rectto
+- change default offset percent to 10%
+- make offset percent automatable.  *NOTE* offset percent in old presets 
+  will need to be manually restored.
+0.24beta - n/r
+- text color tweaks
+- send ctl changes at swung/offset time to sync w/ notes
+- limit seq lens when maxsteps changes
+0.30beta - 2 feb 2012
+- swap behavior of right and alt/option clicks: right clicks now set 
+  sequence length; alt/option clicks set default values
+- expandable buttongrids
+- tweak dropdown slider sizes and appearance
+- mouseover hilite for sync & chan
+0.31beta - 2 feb 2012
+- fix fractional midi cc bug (thanks gofer!)
+0.32beta - 5 feb 2012
+- save and restore sequence play positions when host starts playback.
+  *NOTE* play positions lost when host quits & restarts.  save & restore
+  from preset if necessary.
+- make clear notes logic independent of play/pause; new clear icon
+- change hold button pos; new hold icon
+0.33beta - 6 feb 2012
+- save and optionally restore current notes with presets
+- save internal octave position with presets
+- indicate current octave position if > 0 octaves
+- control-click octaves control sets current octave position
+- rework timing logic (again) for clarity and to work right when starting
+  playback in host
+- add unipolar option to offset sequence: allows pos offsets without 1 tick
+  latency at start of playback and for notes on the beat.
+- clean up slider bar logic
+0.34beta - 7 feb 2012
+- limit octpos to octaves on preset loads and when octaves changes
+0.35beta - 8 feb 2012
+- puts{...} & gpt{...} macros
+- help/settings pane
+- random order option for sequences
+0.36beta - 8 feb 2012
+- fix logic to set seq len using rightclick (instead of rightdown)
+0.50beta - 11 feb 2012 - mad science release
+- display active notes in time/pitch order
+- add swing steps setting: swing every N steps
+- make random sequence order and swing steps automatable.  *NOTE* resave old
+  presets with desired values or they will keep the previous preset's values 
+  when loaded.
+- restore click on notes label to toggle notes loading with presets
+- move all "presetable" internal vars to array memory using "[]".  rework
+  settings change logic for these vars to use cleaner pointer techniques.
+  use slider(var) and slider_automate(bitmask) for cleaner automation logic.
+- right-click & drag swing slider doubles swing amount
+- variants!
+- tweak settings pane
+- random seq order indicator (~) & shift-click seq label to toggle random
+0.51beta - 13 feb 2012 - power user release
+- variant debug bits
+- sort transforms
+0.52beta - 13 feb 2012- the wild value is dead release
+- fix wild value/mousedown bug: clicking change variant button would change 
+  controls ending up under the click in new variant - thanks zappadave!
+- fix alpha.txt transform spec: no commas in comments
+0.55beta - 18 feb 2012 - get it right release
+- tweak sortx logic: support for fixed sortxcnt; avoid inf loop if no 
+    repeats; wraparound sortx pos if notecnt < sortxcnt
+- fix failure to restore current variant on startup
+- add name section to sort xform
+- save sort xform pattern in presets to remove dependancy on txt files
+- show current sort xform in settings pane
+- update slider/code to reflect new max of 16 swingsteps
+- sort xform dropmenu on rightclick sort label: xform on/off; copy/paste;
+  load xform
+- clean up dropdown mouse logic
+- reduce saved preset size
+- limit number of variants to 7 to avoid large Js preset bug
+- tweak clicker/flag chars
+- variants dropmenu: copy/paste/apply changes to ALL variants.  replaces
+  [edit xxx] clicker
+- copy/paste for variants & sort xforms
+- support "special" sort xform values based on positive type index after
+  leading 0 value; relative values now required to have negative offset value
+  after initial 0.  
+- new sort xform special type 1: probable bounded random step
+- new settings for when to redo sort xform to support changing random xforms:
+  first/last step, octave/note cycles.
+- fix failure to update tempo on variant change & paste
+- change to right-click labels for toggle random seq order and toggle sortx;  
+  alt/option-click labels for debug;
+- new zeta.txt & eta.txt transform files to demonstrate fixed length output 
+  and semi-random transforms.
+0.56beta - 19 feb 2012 - again? release
+- dim text color for newish selected items in settings pane
+- fix child of the wild value bug: click in left to collapse button grid 
+  would set sliders ending up beneath the click
+- dim 2ndary text controls
+0.57beta - 19 feb 2012 - transformation lingers release
+- use sort xform names in settings pane & sort dropmenu
+0.58beta - 21 feb 2012 - child of tweak release
+- support for up to 24 sort xform spec files using all Greek letter names.  
+  only show xform names for extant files.
+0.59beta - 22 feb 2012 - because we can!? release
+- new sortx rules: probable skip and probable conditional skip.
+  *note* probablility param for old probable bounded random rule has been
+  moved to 3rd position to match new rules.
+- new sortx files to demonstrate new rules: 1/4to1, falldown, randstart
+- play/pause with host global setting
+0.60beta - 22 feb 2012 - might as well release
+- midi through when paused global setting
+0.61beta - 23 feb 2012 - too fast? release
+- fix host play detection logic to work with immediate notes when playback 
+  starts
+- fix fractional playpos bug that broke on the beat input
+- global setting file: arpbangzero_settings.txt in
+  <ReaperRsrcDir>/Data/arpbangero_files
+0.62beta - 23 feb 2012 - little bits release
+- move global settings load out of @serialize; reload settings when
+  "colors:" label is clicked; reload sortx when "load:" label is clicked.
+- handle missing global settings file better
+- tweak default custom colors in global settings file
+- clear notes on host seek global setting
+0.64beta - 24 feb 2012 - second thoughts release
+- fix hostplay vs midi order of processing bug
+- fix seek forward clear notes bug
+- fine tune clear notes on sync parameters
+- removed clear notes on pause if midithru on
+- fix event clear bug that broke notes on beat when rewinding
+0.65beta - 28 feb 2012 - color crazy release
+- fix black window glitch at startup with custom colors
+- README.txt with installation docs and release notes
+- docs.txt
+- tweak colorscheme logic and format: expand maximum number of custom
+  color schemes to 20.  add separate rgb values for 2ndary hilite.  
+  *note* customized colors in global settings file will need to be revised.
+- lotso' new default user colorschemes in global settings file
+0.66beta - 29 feb 2012 - leap day release
+- change defaults if no global settings file, for play/pause w/ host,
+  midi through when paused and clear notes on host seek to on
+- tweak viridian colors
+- fix control2 double step bug
+0.67beta - 3 mar 2012 - w00t! w00t! release
+- limit right extent of settings to gui width vs window width
+- couple o' new user colorschemes
+- gui optimizations: gfx_clear= -1!; redraw only when mouse active or step
+  changes
+0.68beta - 5 mar 2012 - less fuzzy release
+- leftclick on slidergrid label expands/contracts for symmetry
+- fix missing current notes hilite bug with unipolar offsets
+- tweak redraw optimization to redraw on more significant events
+- better logic for triggering gui redraw from non-gui code: gdirtx
+- tweak trans button kb background alpha
+- reorder note position logic to account for changed current notes just 
+  preceding the current step; reset notepos to default -1 when notecnt==0
+- change default for offset to unipolar
+- fix scrambled first draw of settings pane
+- move default user colorschemes into their own file; use global settings
+  file only for customized schemes; display customized colorschemes on 
+  separate lines just after the 5 builtin schemes, followed by defaults
+- fix ya bug in timing logic; add jitter protection logic
+0.69beta - 7 mar 2012 - eye candy release
+- background icons for length & voices seqs
+- new global setting to enable icons &/or text for length/gate/voices/trans
+  seqs; if icon only make icons darker
+- multi-colors.  *NOTE* custom color schemes will need to be revised for
+  this release to add new multi-color dummy values.
+0.70beta - 7 mar 2012 - loose ends release
+- tweaks to multi-color logic.  *NOTE* revise custom color schemes again.
+0.71beta - 11 mar 2012 - more loose ends++ release
+- fix multi-colored dropdown buttongrids to normally use fade color as 
+  background
+- negative a1 in multicolor means inverts fade direction
+- show decimal point for gate seq buttons for values near zero
+- add tick mark to gate seq button if gate >= 1 tick; can be disabled in global 
+  settings
+- tweak icon only trans icons
+- tweak timing logic to handle beat_position a fraction of a sample later than
+  a tick when playback starts on or seeks to a tick
+- tweak midi logic to handle noteoffs one @block after playback pauses
+- rework sortx file logic to use data files with many sortx specs instead of
+  one per file: arpbangzero_sortx.txt and arpbangzero_defsortx.txt.  goodbye
+  Greek alphabet.  hello easier to manage & order sortx specs.
+- new sort transforms
+- tweak @serialize logic to be more robust
+- bump max sortx size a bit w/in large js preset bug limit
+- change preset/variant format to add octaves mode
+- new replicant octaves mode adds octave notes to virtual input note list for
+  seamless sortx across octaves and to avoid "stuck" octaves w/ dir first.
+  change octave mode in settings page or rightclick octaves label.  octave
+  mode saved with presets and variants.  new replicant mode is default for 
+  new arps.  old presets should load with heuristic mode selected, which is 
+  now indicated by a '~' suffix on the octaves label.
+- restore rightclick on variant to recall saved play positions
+- move resortx logic into current notes loop
+0.72beta - 15 mar 2012 - stability is good release
+- fix bugs & clean up sort xform update logic: work right with replicant 
+  octaves; more intuitive behavior with downup/updown orders; work right
+  with single notes/octaves; work right with dir sequence.
+0.75alpha - 17 mar 2012 - feeling lucky release
+- major dir sequence upgrade.  new dir types.
+- add right-click on play while paused for single step
+0.76beta - 20 mar 2012 - to boldly go release
+- finish work on new dir types.  see updated documentation for details.
+- add options to expand transpose range/gui: range can be 24/36/48 semitones.
+  add transpose base option: transpositions can start at -24/-12/0 semitones.
+- change positions of slidergrids to align related accent & offset seqs.
+- change variant program change logic to support > 8 variants; reset seq
+  positions and don't save changes to previous variant now selected by 
+  enabling program changes prior to variant program change; add next &
+  previous variant and play/pause pc's.
+- bugfix: bogus unidirectional offset logic 
+- bugfix: truncated sortx length logic
+0.77beta - 20 mar 2012 - not infinitely improbable release
+- add option to use control 2 seq for step improbability: positive values
+  are the probability of supressing note output for a step; negative values
+  are the probability of skipping a step.
+0.78beta - 22 mar 2012 - little things release
+- added control/command right-click to insert new sequence step and 
+  alt/option right-click to delete sequence step
+- change section operation symbol from reverse "?" to "!" for better docs.
+- fix flawed dir back in time logic
+0.79beta - 26 mar 2012 - terminology matters release
+- tweak multi colorschemes in global settings file
+- fix dropdown buttongrid color bug
+- add alt/option-click [arp!0] for reload settings
+- add control/command-click [arp!0] for toggle global options
+- fix updown/downup order logic to handle dir:first/last/prev better which 
+  prevents some dir seqs that stick at high/low octave boundaries
+- changed step sequence name to dir, for directions.  changed transp seq
+  name to trans.
+- added program change base+29 for restoring saved play positions for all
+  sequences.  renumbered some of the previous variant program changes to
+  make room.
+- allow contract and resortx metas on same step.
+0.80beta - final feature creature release - 4 apr 2012
+- hilight edited step when showing dropdown
+- limit output range of midi note numbers
+- scaled, absolute or synchronized tick times
+- midi bus setting
+- bump max variants to 12
+- remove save seq play positions when preset is saved
+0.81beta - 14 apr 2012 - very nearly finally release 
+- fix prog change dopos/nosave variant logic
+- optional control 3/4 seqs
+- make slider mid-line visible for 100% opaque slider bar colors
+- rightclick in dropdowns to set value w/out closing dropdown
+- rework scaled tick time logic to separate tick index and fraction
+  into separate automation controls.
+- experimental additive contract meta: adds note from contracted step
+  to following steps.
+- revised dir operations gui to use dirop meta instead of dirop steyp
+  type.  dirop meta shows special dirop icons for better intuitition.
+- pdf docs with pictures!
+0.82rc - 1 may 2012 - line in sand release
+- fix initial note logic for downup & down+up orders
+- fix single note bug for updown/downup orders
+- add global setting for default load notes w/ preset
+- only load notes w/ preset if saved notecnt > 0
+- fix sortx logic flaw: precompute sortxlen before used in tick logic
+- make sortx on/off and update events automatable
+- new dirops: on first/on last/on crossover/reset play pos's
+- fix tick scaling automation bug
+- add missing support for ctl3/4 save/restore play pos's
+- save play pos's only when paused, & only for edited seq
+- indicate saved play pos's when paused with small cutout at bottom right of step
+- use midi cc's for variant changes & other control functions (vs prg changes)
+- extended midi cc logic to automate sequence step values
+- midi lock global setting: prevents loading midi chan/bus/control from presets
+- fix stuck notes when changing midi bus while arp playing
+0.83rc - 15 may 2012 - lbl release
+- fix extended midi cc to only send all ccs on variant/preset changes if enabled
+- add logic to adjust seq len when inserting/deleting steps
+- fix logic to set ctl3/4 seq lengths w/ right click
+- send midi cc's before notes
+- add option for tiny marks to indicate current steps
+- fix sortx bug in apply changes to all variants
+- optimize skin logic: only compute skin colors when skin changes
+0.84rc - 17 may 2012 - lbf release
+- change saved step indicators to bottom left
+- fix logic for right relative dot highlight widths
+- fix bug in dot highlight shadows logic
+0.85rc - 24 may 2012 - back to future release
+- fix ctl3/4 sequence length bug
+- fix left click in tick slider bug
+- add true double-click logic to dropdown buttongrid
+- fix bug in send midi cc for dir seq edits
+- fix bug: don't always send extended midi cc on chans 1-5
+- prevent extended midi cc out when arp!0 chan + extended cc chan offset > 16
+- fix inverted midi cc do pos reset & save var edits logic
+- new default color scheme: clarity
+- reorganized & tweaked color schemes; removed a few that seemed redundant
+- add left/right-click on "swing" label to go to next/prev color scheme
+- documentation updates/edits
+- bump max default colors to 32
+0.86rc - 28 may 2012 - forward into past release
+- fix incompatibility w/ pre-bugfixed Js
+- add on host seek dirop: jump to dirop when host seeks
+- change subtract/contract metas to prime2/prime (''/') for dirops
+- prime/prime2 metas for larger weights in :4 dirop and remove :x16 dirop
+- prime/prime2 metas for sequential sections variants of ?: random section dirop
+0.87rc - 31 may 2012 - it lives! mad science release
+- experimental subdir dirop: alien dirop substitutes oneshot dir seq from next 
+  variant. heart dirop immediately returns to invoking dir seq. alien dirop with
+  prime/prime2 metas subs 2nd & 3rd next variants.  
+- changed 4x section dirop to 3x section (:4 to 3:), and changed variant 
+  values when combined with prime/prime2/section metas to enable musically 
+  useful multiples of sequential sections.
+- WARNING: in next release, presets saved w/ arp!0 v0.81beta and earlier
+  will not load.
+0.88rc - 9 june 2012 - almost nearly semi-final thoughts and warnings release
+- WARNING: in next release, presets saved w/ arp!0 v0.81beta and earlier
+  will not load.
+- WARNING: some obscure dirops have been removed or altered.  presets using
+  the resortx meta, dir repeat and sequential section dirops will need to
+  be manually updated.
+- tweak opacity of dirop specific metas to match lighter dirops
+- remove resortx meta functionality; replace with "%" resortx dirop
+- remove dir repeat dirops; replace with prime/prime2 variants of the 4 
+  "on-foo" dirops: on-foo+prime seeks to prior on-foo+prime2; will wrap 
+  around to find following on-foo+prime2.
+- move sequential section logic from variants of "?:" random section dirop
+  to dedicated ",:" sequential section dirop which supports 3 independent
+  section sequences.
+- allow right-click on [arp!0] logo to show debug info
+- a few semi-useful labeled debug infos, including last read preset version
+- tweak a few dirop icons for clarity
+- temporarily display preset version number
+0.89rc - 12 june 2012 - not so fast release
+- fix variant dir seq logic broken by prelim dir ui remapping code
+___
+copyright 2012 dan mcmullen bang@bangzero.org
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. 

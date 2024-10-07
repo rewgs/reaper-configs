@@ -1,0 +1,15 @@
+**/*bin
+.DS_Store
+/SlicingTest/*.csv
+SlicingTest/*_nmf_*.wav
+test.lua
+*.rpp-bak
+LayersTest/untitled_*
+*.rpp-bak
+LayersTest/LayersTestSrc_*.wav
+scythe
+lib/bin.zip
+release
+cli.dmg
+rw.ReaCoMa 2.0.dmg
+REAPER Scripts

@@ -1,0 +1,44 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Key Tuner (Slave)
+in_pin:none
+out_pin:none
+options:gmem=KeyTuner,want_all_kb
+import MIDI Tools/Key Tuner (Master)
+
+
+
+// fake invalid scale, program change *required* for slaves so they can read the master scales (even if they load before the master)...
+@slider
+frac_to_bend===0 ? (
+  frac_to_bend = 4096;
+  cnt_max = 16;
+
+  key = -1;
+  key_tuning = -16384; // large enough so all notes are invalid
+  scale_notes = 1;
+  iscale_notes= 1;
+  scale_repeat = 2;
+  midi_root = key;  scale_root = key_tuning;
+);
+cnt_last = 32;  loop(cnt_max-1, cnt_last[0] = cnt_last+=1);  cnt_last[0] = 32;  cnt = 32;
+
+
+
+@serialize
+file_avail(0) < 0 ? (
+  a = (8192/frac_to_bend + 0.25 + (cnt_max-1)*256 + vst_detune_mode) |0;
+  file_var(0, a);
+) : (
+  file_var(0, vst_detune_mode);
+  cnt_max = vst_detune_mode >> 8;
+  frac_to_bend = (vst_detune_mode -= cnt_max*256) & $~7;  vst_detune_mode -= frac_to_bend;
+  frac_to_bend = frac_to_bend ? 8192/frac_to_bend : 16384;  cnt_max += 1;
+
+  key = -1;
+  key_tuning = -16384;
+  scale_notes = 1;
+  iscale_notes= 1;
+  scale_repeat = 2;
+  midi_root = key;  scale_root = key_tuning;
+);

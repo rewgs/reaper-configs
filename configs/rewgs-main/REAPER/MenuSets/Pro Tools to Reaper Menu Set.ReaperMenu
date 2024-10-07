@@ -1,0 +1,17 @@
+[Main toolbar]
+icon_9=text_wide
+icon_10=text_wide
+icon_11=text_wide
+item_0=40029 Undo
+item_1=40030 Redo
+item_2=40041 Enable auto-crossfade
+item_3=1156 Enable grouping
+item_4=1155 Enable ripple editing
+item_5=40070 Move envelope points with media items
+item_6=40145 Show arrange view grid
+item_7=1157 Enable snapping
+item_8=1135 Enable locking
+item_9=_RS749b9278ae6517c71edf3d02ea586b9a50afc346 SUB PROJECT
+item_10=_RS2bf03cea9657d5e1b2de542cbcd3bbe9342fa0b7 SURROUND
+item_11=_RS401df0ea4a85d70bf47fff0836ec8c29786215e3 STEREO
+

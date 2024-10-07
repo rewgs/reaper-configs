@@ -1,0 +1,390 @@
+/*
+Copyright the ATK Community and Joseph Anderson, Josh Parmenter, Trond Lossius, 2013
+
+               J Anderson     j.anderson[at]ambisonictoolkit.net
+               J Parmenter    j.parmenter[at]ambisonictoolkit.net
+               T Lossius      trond.lossius[at]bek.no
+
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+and GNU General Public License along with this program.  If not, see
+<http://www.gnu.org/licenses/>.
+
+
+---------------------------------------------------------------------
+  Class: FocusPushPressZoom
+  First Order Ambisonic (FOA) focus, press, push and zoom transformer
+---------------------------------------------------------------------
+*/
+
+
+/* --- DEBUG STUFF ---
+
+This plugin contains some code that ight be useful for debugging,
+providing an alternative GUI displaying the content of various matrixes.
+For regular use of the plugin the debug code is commented out in the same way as here.
+
+--- DEBUG STUFF --- */
+
+
+desc: ATK FOA Transform FocusPressPushZoom
+// First Order Ambisonic focus, press, push and zoom transformer
+
+
+// Import library with shared functions, also imports cookdsp
+import ../../libraries/atk/atk.jsfx-inc
+
+
+in_pin:W
+in_pin:X
+in_pin:Y
+in_pin:Z
+
+out_pin:W
+out_pin:X
+out_pin:Y
+out_pin:Z
+
+slider1:0<0,3,1{Focus, Press, Push, Zoom}>Transformation mode
+slider2:0<180,-180,0.1>Azimuth (mouse)
+slider3:0<-90,90,0.1>Elevation
+slider4:0<0,90,0.1>Degree of transformation (mouse)
+
+/* --- DEBUG STUFF ---*/
+// Debug sliders:
+//slider5:0<0,1,1{GUI, Debug}>Displ ay mode
+//slider6:0<0,13,1{matrixRotate1, matrixTumble1, matrixTransform, matrixTumble2, matrixRotate2, matrixDSP, matrixNewDSP, matrixInc, matrixDisplayPoints, matrixDisplayTransformed, matrixDisplayInterpreted, matrixCounter, matrixTest, matrixUnity}>Matrix to display
+/*--- DEBUG STUFF --- */
+
+
+
+/**********************************************************
+Initialisation
+**********************************************************/
+@init
+
+// Flag indicating that the plugin has not been fully mInitialised yet
+mInitialised = 0;
+
+mAzimuth   = 0;
+mElevation = 0.;
+mDrawCenterPoint = 0;   // This depends on whether transform mode affects directioness or not
+
+// Setting memory locations for a number of 4x4 matrixes as 1D arrays
+matrixRotate1   = 1000;
+matrixTumble1   = 1020;
+matrixTransform = 1040;
+matrixTumble2   = 1060;
+matrixRotate2   = 1080;
+
+// These are used for matrix multiplications
+matrixTemp1     = 1100;
+matrixTemp2     = 1120;
+
+// Resulting matrixes used for DSP processing
+matrixDSP       = 1200;
+matrixNewDSP    = 1220;
+matrixInc       = 1240;
+
+// Matrixes for graphic display of transformations
+matrixDisplayPoints      = 1300;
+matrixDisplayTransformed = 1400;
+matrixDisplayInterpreted = 1500;
+
+// Matrixes for testing and debugging of matrixMultiplication()
+matrixCounter = 2000;
+matrixTest    = 2100;
+matrixUnity   = 2200;
+
+// Generate test matrixes
+i = 0;
+loop(
+  32,
+  matrixCounter[i] = i * 0.01;
+  i += 1;
+);
+
+i = 0;
+loop(
+  16,
+  matrixUnity[i] = 0.;
+  i += 1;
+);
+
+matrixUnity[0] = 1.;
+matrixUnity[5] = 1.;
+matrixUnity[10] = 1;
+matrixUnity[15] = 1.;
+
+matrixMultiplication  (matrixTest,    4, 4, matrixUnity,     4, 8, matrixCounter);
+
+// This only needs to be generated once:
+mNumDisplayedPoints = 24;
+generateDisplaySignalMatrix(matrixDisplayPoints, mNumDisplayedPoints);
+
+
+// Radius of interaction circle
+kInteractionCircleRadius = 11.;
+
+// Initialisation of user interaction parameters
+mPreviousMouseCap = 0;
+mClickingAtCircle = 0;
+
+function calculateMatrix()
+(
+  // Required for graphics
+  mCosAzimuth   = cos(mAzimuth);
+  mSinAzimuth   = sin(mAzimuth);
+
+  mCosElevation = cos(mElevation);
+  mSinElevation = sin(mElevation);
+  
+  // Generate matrixes
+  generateRotationMatrix(matrixRotate1, (-mAzimuth));
+  generateTumblelMatrix(matrixTumble1, -mElevation);
+  
+  // Determine what transform to do
+  mode == 0 ? (         // Focus
+    generateFocusMatrix(matrixTransform, mTransformAngle);
+    mDrawCenterPoint = 0;
+  ) : (
+    mode == 1 ? (       // Press
+      generatePressMatrix(matrixTransform, mTransformAngle);
+      mDrawCenterPoint = 1;
+    ) : (
+      mode == 2? (      // Push
+        generatePushMatrix(matrixTransform, mTransformAngle);
+        mDrawCenterPoint = 1;
+      ) : (             // Zoom
+        generateZoomMatrix(matrixTransform, mTransformAngle);
+        mDrawCenterPoint = 0;
+      );
+    );
+  );
+  generateRotationMatrix(matrixRotate2, mAzimuth);
+  generateTumblelMatrix(matrixTumble2, mElevation);
+  
+  /* Build processing matrix by performing a series of matrix multiplications
+                        result =         left X                   right             */
+  matrixMultiplication  (matrixTemp1,    4, 4, matrixTumble1,     4, 4, matrixRotate1);
+  matrixMultiplication  (matrixTemp2,    4, 4, matrixTransform,   4, 4, matrixTemp1);
+  matrixMultiplication  (matrixTemp1,    4, 4, matrixTumble2,     4, 4, matrixTemp2);
+  matrixMultiplication  (matrixNewDSP,   4, 4, matrixRotate2,     4, 4, matrixTemp1);
+  
+  // Transformation and interpretation of display points
+  matrixMultiplication  (matrixDisplayTransformed, 4, 4, matrixNewDSP, 4, mNumDisplayedPoints, matrixDisplayPoints);
+  interpreteProcessedPoints(matrixDisplayInterpreted, matrixDisplayTransformed, mNumDisplayedPoints);
+  
+  // Set initial DSP processing coefficients if the plugin has not yet been mInitialised
+  mInitialised == 0 ?
+  (
+    i = 0;
+    loop(16,
+      matrixDSP[i] = matrixNewDSP[i];
+    );
+    // Now we are fully mInitialised
+    mInitialised = 1;
+  );
+);
+
+
+/**********************************************************
+Updated slider value:
+**********************************************************/
+@slider
+
+mode                 = slider1;
+mAzimuth             = slider2 * kDeg2Rad;
+mElevation           = slider3 * kDeg2Rad;
+mNormTransformAngle  = slider4 / 90.;
+mTransformAngle      = slider4 * kDeg2Rad;
+
+/* --- DEBUG STUFF ---
+debugMode       = slider5;
+
+slider6 == 0 ? (
+  mViewMatrix = matrixRotate1;
+) : (
+  slider6 == 1 ? (
+    mViewMatrix = matrixTumble1;
+  ) : (
+    slider6 == 2 ? (
+      mViewMatrix = matrixTransform;
+    ) : (
+      slider6 == 3 ? (
+        mViewMatrix = matrixTumble2;
+      ) : (
+        slider6 == 4 ? (
+          mViewMatrix = matrixRotate2;
+        ) : (
+          slider6 == 5 ? (
+            mViewMatrix = matrixDSP;
+          ) : (
+            slider6 == 6 ? (
+              mViewMatrix = matrixNewDSP;
+            ) : (
+              slider6 == 7 ? (
+                mViewMatrix = matrixInc;
+              ) : (
+                slider6 == 8 ? (
+                  mViewMatrix = matrixDisplayPoints;
+                ) : (
+                  slider6 == 9 ? (
+                    mViewMatrix = matrixDisplayTransformed;
+                  ) : (
+                    slider6 == 10 ? (
+                      mViewMatrix = matrixDisplayInterpreted;
+                    ) : (
+                      slider6 == 11 ? (
+                        mViewMatrix = matrixCounter;
+                      ) : (
+                        slider6 == 12 ? (
+                          mViewMatrix = matrixTest;
+                        ) : (
+                          mViewMatrix = matrixUnity;
+                        );
+                      );
+                    );
+                  );
+                );
+              );
+            );
+          );
+        );
+      );
+    );
+  );
+);
+/*--- DEBUG STUFF --- */
+
+calculateMatrix();
+
+
+/**********************************************************
+Graphics
+**********************************************************/
+@gfx 500 500
+
+/* --- DEBUG STUFF ---
+debugMode == 0 ?
+(
+/*--- DEBUG STUFF --- */
+
+  // This is the regular interactive GUI mode:
+  
+  // Set colors
+  determineGeometry();
+  drawBackgroundImage();
+  
+  // Only update plugin parameters if the user click and drag interaction circle
+  mClickingAtCircle = clickingOnInteractionCircle(mPreviousMouseCap, mPosX, mPosY, mInteractionCircleRadius, mClickingAtCircle);
+  // Save current mouse_cap value in order to use in the above test at next iteration
+  mPreviousMouseCap = mouse_cap;
+
+  (mClickingAtCircle) ? (
+    mMouseX = mouse_x - gCenterX;
+    mMouseY = mouse_y - gCenterY;
+    
+    // Update mAzimuth and slider2 and notify GUI of the change
+    mAzimuth = atan2(-mMouseX, -mMouseY);
+    slider2 = mAzimuth * kRad2Deg;
+    slider_automate(slider2);
+    
+    // At (abs(elevation) > 88 degrees) it becomes meaningless to alter the transformation angle
+    (mCosElevation > kCos88) ? (
+      // Update mTransformAngle and slider4 and notify GUI of the change
+      mNormTransformAngle = sqrt(mMouseX*mMouseX + mMouseY*mMouseY) * gInverseRadius / cos(mElevation);
+      // Restrict the range to [0, 1]
+      mNormTransformAngle > 1. ? mNormTransformAngle = 1.;
+      
+      mTransformAngle = mNormTransformAngle * $pi * 0.5;
+      slider4 = mNormTransformAngle * 90.;
+      slider_automate(slider4);
+    );
+    
+    calculateMatrix();
+    
+    mHiglightCircle = 1;
+  ) : (
+    mHiglightCircle = hoverOverInteractionCircle(mPosX, mPosY, mInteractionCircleRadius);
+  );
+  
+  // Draw points illustrating the effect of the transform
+  displayTransformedPoints(matrixDisplayInterpreted, mNumDisplayedPoints, mDrawCenterPoint);
+  
+  // Draw circle for interaction, map vertical position to saturation, lightness and radius
+  (mSinElevation < 0) ? (
+    mSaturation = 1. - 0.25*mSinElevation;
+    mLightness = 0.4;
+  ) : (
+    mSaturation = 1.;
+    mLightness = 0.4 + 0.25*mSinElevation;
+  );
+  gxColorSetHsl(1.0, 195., mSaturation, mLightness + 0.15*mHiglightCircle);
+  
+  mPosX = gCenterX - gRadius * mNormTransformAngle * (mSinAzimuth * mCosElevation);
+  mPosY = gCenterY - gRadius * mNormTransformAngle * (mCosAzimuth * mCosElevation);
+  mInteractionCircleRadius = 4. * mSinElevation + kInteractionCircleRadius;
+  drawInteractionCircle(mPosX, mPosY, mInteractionCircleRadius);
+    
+/* --- DEBUG STUFF ---  
+) : (
+  // Debug mode can be used to inspect the content of the various matrixes
+  (slider6 > 7) && (slider6 < 13) ? numCols = mNumDisplayedPoints. : numCols = 4.;
+  postMatrixForDebugging(mViewMatrix, 4, numCols);
+);
+/*--- DEBUG STUFF --- */
+    
+
+/**********************************************************
+Preprocessing prior to audio vector processing.
+**********************************************************/
+@block
+
+mInverseSamplesblock = 1. / samplesblock;
+
+// Counter is called "ii" rather than "i" in order to ensure that we do not use the same counter here as in other sections
+ii = 0;
+loop(16,
+  matrixInc[ii] = (matrixNewDSP[ii] - matrixDSP[ii]) * mInverseSamplesblock;
+  ii += 1;
+);
+
+
+/**********************************************************
+Calculate audio sample
+**********************************************************/
+@sample
+
+ii = 0;
+loop(16,
+  matrixDSP[ii] += matrixInc[ii];
+  ii += 1;
+);
+
+wIn = spl0;
+xIn = spl1;
+yIn = spl2;
+zIn = spl3;
+
+// Some transforms blow up if track is 2 channels only as spl2 and spl3 might be un-ininitiated.
+(num_ch == 2) ? (
+  yIn = 0.;
+  zIn = 0.;
+);
+
+// Matrix multiplication with input signal:
+spl0 = wIn * matrixDSP[0] + xIn  * matrixDSP[1]  + yIn * matrixDSP[2]  + zIn * matrixDSP[3];
+spl1 = wIn * matrixDSP[4] + xIn  * matrixDSP[5]  + yIn * matrixDSP[6]  + zIn * matrixDSP[7];
+spl2 = wIn * matrixDSP[8] + xIn  * matrixDSP[9]  + yIn * matrixDSP[10] + zIn * matrixDSP[11];
+spl3 = wIn * matrixDSP[12] + xIn * matrixDSP[13] + yIn * matrixDSP[14] + zIn * matrixDSP[15];

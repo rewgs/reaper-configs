@@ -1,0 +1,140 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Randomizer
+in_pin:none
+out_pin:none
+slider1:4<2,16,1>Channels
+slider2:100<1,1000,0.00001>Message Frequency (Hz)
+slider3:-1<-1,1,0.00001>Lower Value
+slider4:1<-1,1,0.00001>Upper Value
+slider5:1000<1,10000,0.00001>Change Duration (ms)
+
+
+
+@init
+channels = 0;
+
+
+
+@slider
+channels!==slider1 ? (
+  channels = (slider1=min(max(slider1|0, 2), 16));  msg_mid = slider1/2 + 223.5;  msg_rng = (slider1+1)/2;
+
+  // the 'c' vars are the v,w,t and o values for each channel (for the quadratic function)
+  bend = 0;
+  prev = slider1;
+  co = slider1*2;
+  list = slider1*3;
+  notes= slider1*4;
+  cv = slider1*5;
+  cw = slider1*6;
+  ct = slider1*7;
+
+  memset(bend, 8192, slider1*2);
+  memset(list, 0, slider1*5);
+  a = co; loop(slider1, a[0] = rand(1); a += 1);
+
+  step = 1;
+);
+slider3 = min(max(slider3, -1), 1);
+slider4 = min(max(slider4, slider3), 1);
+slider5 = max(slider5, 1);
+slider2 = max(max(slider2, 1000/slider5), 1);
+
+range = (slider4 - slider3)*8192;  hrange = range/2;
+lower = slider3*8192;
+ticks = srate/slider2;
+iticks = slider2/srate;  iticks1 = 1-iticks;
+steps = (slider2*slider5)/1000;  steps1 = steps+1;
+
+// readjust vars if automated
+a = co; w = cw; t = ct;  step *= steps;  b = 1/step;  c = sqr(b);
+loop(slider1,
+  a[0] *= step;  w[0] *= b;  t[0] *= c;
+  a += 1; w += 1; t += 1;
+);
+step = 1/steps;
+step_q = sqr(step);
+stepC = step*0.75;
+rstep = range*step;
+rstep_q = range*step_q;
+
+
+
+@block
+q = 0;
+while(
+ ((d = midirecv(o,a,b,c))===0 ? (o = samplesblock; 1)) || q < o ? (
+  i = 0;  h = $xE0;
+  loop(slider1,
+   k = list[0];
+
+   o > k ? (
+    bend+=i; prev+=i; cv+=i; cw+=i; ct+=i; co+=i; h+=i; i=0;
+    v = cv[0]+(j = bend[0]);  w = cw[0];  t = ct[0];  x = co[0];
+    p = prev[0]; y = lower+j;
+
+    l = (o - k)*iticks+iticks1 |0;
+    while(l > (n = steps1-x |0)) (
+     n > 0 ? (
+      l -= n;  x += n;
+      loop(n,
+       (n = min(max(v, 0), 16383)|0) !== p ? (
+        p = n; midisend(k, h, n + (n & $x3F80));
+       );
+       v += w; w += t; k += ticks;
+      );
+     );
+     x -= steps;  n = x*t;  v -= (w - (n+t)/2)*x;  w -= n;  n = t;
+     t = (rand(1)*range + y - v)*step_q + (t - w*2)*stepC;
+     w += (t-n)/2;  n = x*t;  v += ((n-t)/2 + w)*x;  w += n;
+    );
+    x += l;
+    loop(l,
+     (n = min(max(v, 0), 16383)|0) !== p ? (
+      p = n; midisend(k, h, n + (n & $x3F80));
+     );
+     v += w; w += t; k += ticks;
+    );
+    prev[0] = p;  list[0] = k;
+    cv[0] = v-j;  cw[0] = w;  ct[0] = t;  co[0] = x;
+   );
+   list += 1; i += 1;
+  );
+  i -= slider1; bend+=i; prev+=i; list-=slider1; cv+=i; cw+=i; ct+=i; co+=i;
+
+  q = o;
+ );
+
+ d ? (
+  abs(a-msg_mid) < msg_rng ? (
+   (a -= $xE0)[0] = b + c*128;  // bend
+   o < (k=(l=list+a)[0]) ? (
+    t = ct[a];  c = (o - k)*iticks;  l[0] = o;  co[a] += c;  w = cw+a;
+    b = c*t;  cv[a] += ((b-t)/2 + w[0])*c;  w[0] += b;
+   );
+  ) : (
+   midisend(o, a, b, c);
+   a < $xA0 ? (
+    a < $x90 ? (
+     (a += notes-$x80) < cv ? a[0] = max(a[0]-1, 0);
+    ) : (a-=$x90) < slider1 ? (
+     (notes[a] += 1)===1 ? (
+      b = rand(1); c = rand(1); co[a] = (x = rand(1)*steps);
+
+      t = (rand(1) + b - c*2)*rstep_q;  ct[a] = t;
+      w = (c - b)*rstep + t/2;  v = x*t;
+
+      cv[a] = (c + b)*hrange + ((v-t)/2 + w)*x + lower;
+      cw[a] = w + v;  list[a] = o;
+     ) : o < (k=(l=list+a)[0]) ? (
+      t = ct[a];  c = (o - k)*iticks;  l[0] = o;  co[a] += c;  w = cw+a;
+      b = c*t;  cv[a] += ((b-t)/2 + w[0])*c;  w[0] += b;
+     );
+    );
+   );
+  );
+  1  // continue the while if 'd' happened
+ );
+);
+b = list; loop(slider1,  b[0] -= samplesblock; b += 1);

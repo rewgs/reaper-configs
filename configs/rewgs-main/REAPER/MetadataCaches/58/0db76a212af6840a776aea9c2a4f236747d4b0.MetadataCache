@@ -1,0 +1,82 @@
+C10017 "/Users/jonathankawchuk/Documents/Projects/In Progress/PBR 20th Live Tape/PBR20 Reaper Projects/PBR20 Live Show/media"
+F "09 27 19 BMIR Open Concert Rolston SD WEB Cut.mp4" 8678903 0 1638488305 0
+D s 44100 n 2 l 8:05.622
+F "66th Ave NW.m4a" 69116 0 1635470562 0
+D s 48000 n 1 l 0:08.159
+F "7-Audio 3 [2022-02-02 143325].aif" 221184054 0 1643841249 0
+D s 48000 n 1 l 25:36.000 i 24
+F "Banff National Park 3.m4a" 404558 0 1634605085 0
+D s 48000 n 1 l 0:48.499
+F "Banff National Park 4.m4a" 29099 0 1634754635 0
+D s 48000 n 1 l 0:03.311
+F "Banff National Park 5.m4a" 30846 0 1634754739 0
+D s 48000 n 1 l 0:03.462
+F "Banff National Park 6.m4a" 2082 0 1634758362 0
+D s 24000 n 1 l 0:00.400
+F "Connory Instruction Swirl_1 7.0.2.wav" 269457194 0 1643581149 0
+D s 48000 n 10 l 3:07.122 i 24
+F "jonathan-kawhcuk-stereo-master-pure-audio-blu-ray-48-24 [2022-02-02 143325].aif" 442368054 0 1643841249 0
+D s 48000 n 2 l 25:36.000 i 24
+F jonathan-kawhcuk-stereo-master-pure-audio-blu-ray-48-24.wav 741739676 0 1638488196 0
+D y 2021-07-28 s 48000 n 2 r 9:59:56.999
+D l 42:55.482 i 24
+F "McQuarrie Ave 2.m4a" 24637 0 1637428619 0
+D s 48000 n 1 l 0:02.714
+F "McQuarrie Ave.m4a" 38363 0 1637428482 0
+D s 48000 n 1 l 0:04.400
+F "PBR20 Live Show_2_17_Instructions_2021-12-11_13-43_001.wav" 3125272 0 1639258994 0
+D y 2021-12-11 s 96000 n 1 r 1:14:47.317
+D l 0:04.068 i 64
+F "PBR20 Live Show_2_freeze-001.wav" 3061272 0 1639262520 0
+D y 2021-12-11 s 96000 n 2 r 4:32.637
+D l 0:03.985 i 32
+F "PBR20 Live Show_2_freeze-001_sines-r_163926253064141.wav" 3060580 0 1639262530 0
+D s 96000 n 2 l 0:03.985 i 32
+F "PBR20 Live Show_2_freeze-001_sines-s_163926253064141.wav" 3060580 0 1639262530 0
+D s 96000 n 2 l 0:03.985 i 32
+F "PBR20 Live Show_2_freeze_1.wav" 4255624 0 1639262462 0
+D y 2021-12-11 s 96000 n 2 r 4:37.885
+D l 0:05.540 i 32
+F "PBR20 Live Show_2_freeze_1_sines-r_163926249125161.wav" 4254932 0 1639262491 0
+D s 96000 n 2 l 0:05.540 i 32
+F "PBR20 Live Show_2_freeze_1_sines-s_163926249125161.wav" 4254932 0 1639262491 0
+D s 96000 n 2 l 0:05.540 i 32
+F "PBR20 Live Show_2_stems_Solar Plexus Remix-001.wav" 353305416 0 1641758330 0
+D y 2022-01-09 s 96000 n 2 l 7:40.032
+D i 32
+F "Polyphonic throat singing 1.m4a" 81784 0 1637818315 0
+D s 48000 n 1 l 0:09.170
+F "Polyphonic throat singing 2.m4a" 123586 0 1637817762 0
+D s 48000 n 1 l 0:14.478
+F "reclamation 2.2 iz.mp3" 1741788 0 1639283324 0
+D s 48000 n 2 l 1:04.161 i 217k
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [A4].wav" 137666944 0 1639261045 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [A5].wav" 137666944 0 1639261046 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [Bb4].wav" 137666944 0 1639261045 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [Bb5].wav" 137666944 0 1639261046 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [C5].wav" 137666944 0 1639261045 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [D5].wav" 137666944 0 1639261045 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [Eb5].wav" 137666944 0 1639261046 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [F5].wav" 137666944 0 1639261046 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [G4].wav" 137666944 0 1639261045 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32
+F "Ungulate Edit_22 Noise Bass Fix_24_freeze_Ric Ah [G5].wav" 137666944 0 1639261046 0
+D y 2021-12-11 s 96000 n 2 r 1:02:14.160
+D l 2:59.252 i 32

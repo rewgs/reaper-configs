@@ -1,0 +1,32 @@
+﻿---------------------------------------------------------------------------------------
+ Render LUFS VIP - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v2.0pre3 (2020-06-26)
+  + option to move rendered track above selected track
+
+* v2.0pre2 (2020-04-11)
+  # tweak in parameter adjustments for each pass
+  # fix: unchecked Add rendered items to new tracks was still leaving the items inserted
+  # fix: automation items not saving values correctly
+
+* v2.0pre1 (2020-02-13)
+  + Render Region Matrix. Render Multiple files adjusting parameter as needed for each one. 
+  + Use secondary focus region. Use smaller region inside each region to optimize parameter for that region instead of the full region.
+  + Write automation items for each region with the adjusted parameters as needed.
+  + Target to ShortTerm Loudness Max option instead of Integrated Loudness.
+  + Add rendered items to new tracks in project.
+  + Delete rendered files. Adjusts the parameter, and deletes the rendered file. 
+  # results log of all regions rendered at the end of the process
+
+* v1.0 (2019-04-07)
+  + support for render settings API (REAPER 5.974 needed) (no more need to change the setting to add into project)
+  + GUI for manual configuration of Parameter range.
+  + Support multiple parameters configurations per plugin.
+  # fix: bad behavior when ripple editing was on. 
+
+* v1.0pre2 (2017-12-15)
+  + Remove final rendered track
+  
+* v1.0pre1 (2017-11-21)
+  + Initial pre-release with GUI

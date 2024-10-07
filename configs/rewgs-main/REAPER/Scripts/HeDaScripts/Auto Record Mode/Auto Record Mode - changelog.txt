@@ -1,0 +1,6 @@
+----------------------------------------------------------------------------
+  Auto Record Mode - Changelog (What's new)     
+----------------------------------------------------------------------------
+
+* v0.1 (2015-03-23)
+  + Automatically sets Record mode based on item selection or time selection.

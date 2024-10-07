@@ -1,0 +1,37 @@
+﻿---------------------------------------------------------------------------------------
+  HeDaMixer VIP - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0pre6 (2020-04-18)
+  + "Lock" selected button to show on graph always the same tracks after changing track selections
+  # fix right dragging to clear part of the graph was crashing in some situations
+
+* v1.0pre5 (2020-03-22)
+  + Independent graph vertical scale (min/max) from the meters
+  + CTRL+mouse wheel upper half of graph to change maximum value
+  + CTRL+mouse wheel lower half of graph to change minimum value
+  # fix selected SL +ML mode
+
+* v1.0pre4 (2020-03-13)
+  # small fixes
+
+* v1.0pre3 (2020-03-10)
+  # fix: crash when checking for selected tracks that no longer exists
+  + graph width button: Left click: to adjust width of graph area to arrange width. Right click: continuoulsy adjust. (Requires js_ReascriptAPI)
+  + clear graph button
+  # use font 2 (smaller) for markers/regions
+
+* v1.0pre2 (2019-08-26)
+  # fix for monitorFX chain with dpmeter4
+
+* v1.0pre1 (2019-08-23)
+  + initial integration in HeDaMixer
+  + Loudness Graphs (ML, SL)
+  + Master Track graph display on/off
+  + Selected tracks graph isolation
+  + Regions and markers display on graph
+  + Right drag to erase graph area
+  + Left drag to define time selection
+  + Left click to go to time
+  + Mouse wheel zoom in/out
+  

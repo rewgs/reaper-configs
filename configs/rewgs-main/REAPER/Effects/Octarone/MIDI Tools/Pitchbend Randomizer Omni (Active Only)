@@ -1,0 +1,103 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Randomizer Omni (Active Only)
+in_pin:none
+out_pin:none
+slider1:100<1,1000,0.00001>Message Frequency (Hz)
+slider2:-1<-1,1,0.00001>Lower Value
+slider3:1<-1,1,0.00001>Upper Value
+slider4:1000<1,10000,0.00001>Change Duration (ms)
+
+
+
+@init
+bend = prev = 8192;
+step = 1;
+k = 9007199254740992;  // huge value to make it inactive (one comparison only!)
+
+
+
+@slider
+slider2 = min(max(slider2, -1), 1);
+slider3 = min(max(slider3, slider2), 1);
+slider4 = max(slider4, 1);
+slider1 = max(max(slider1, 1000/slider4), 1);
+
+range = (slider3 - slider2)*8192;  hrange = range/2;
+lower = slider2*8192;  y = lower+bend;
+ticks = srate/slider1;
+iticks = slider1/srate;  iticks1 = 1-iticks;
+steps = (slider1*slider4)/1000;  steps1 = steps+1;
+
+step *= steps;  x *= step;  step = 1/step;  w *= step; t *= sqr(step);
+
+step = 1/steps;
+step_q = sqr(step);
+stepC = step*0.75;
+rstep = range*step;
+rstep_q = range*step_q;
+
+
+
+@block
+q = 0;
+while(
+ ((d = midirecv(o,a,b,c))===0 ? (o = samplesblock; 1)) || q < o ? (
+  o > k ? (
+   l = (o - k)*iticks+iticks1 |0;
+   while(l > (n = steps1-x |0)) (
+    n > 0 ? (
+     l -= n;  x += n;
+     loop(n,
+      (n = min(max(v, 0), 16383)|0) !== prev ? (
+       prev = n; midisend(k, $xE0, n + (n & $x3F80));
+      );
+      v += w; w += t; k += ticks;
+     );
+    );
+    x -= steps;  n = x*t;  v -= (w - (n+t)/2)*x;  w -= n;  n = t;
+    t = (rand(1)*range + y - v)*step_q + (t - w*2)*stepC;
+    w += (t-n)/2;  n = x*t;  v += ((n-t)/2 + w)*x;  w += n;
+   );
+   x += l;
+   loop(l,
+    (n = min(max(v, 0), 16383)|0) !== prev ? (
+     prev = n; midisend(k, $xE0, n + (n & $x3F80));
+    );
+    v += w; w += t; k += ticks;
+   );
+  );
+
+  q = o;
+ );
+
+ d ? (
+  abs(a-231.5) < 8 ? (
+   v -= bend;  v += (bend = b + c*128);  y = lower+bend;
+   o < k ? (
+    c = (o - k)*iticks;  k = o;  x += c;
+    b = c*t;  v += ((b-t)/2 + w)*c;  w += b;
+   );
+  ) : (
+   midisend(o, a, b, c);
+   a < $xA0 ? (
+    a < $x90 ? (
+     (notes = max(notes-1, 0))===0 ? k = 9007199254740992;
+    ) : (
+     (notes += 1)===1 ? (
+      b = rand(1); c = rand(1); x = rand(1)*steps;
+      t = (rand(1) + b - c*2)*rstep_q;
+      w = (c - b)*rstep + t/2;  n = x*t;
+      v = (c + b)*hrange + ((n-t)/2 + w)*x + y;
+      w = w + n;  k = o;
+     ) : o < k ? (
+      c = (o - k)*iticks;  k = o;  x += c;
+      b = c*t;  v += ((b-t)/2 + w)*c;  w += b;
+     );
+    );
+   );
+  );
+  1
+ );
+);
+k -= samplesblock;

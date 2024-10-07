@@ -1,0 +1,7 @@
+C10018 "/Users/rewgs/work/jonathan-kawchuk-reaper-template-and-pipeline/tests/export test/media"
+F "export test_freeze_track 2.wav" 16896744 0 1687044852 0
+D y 2023-06-17 s 96000 n 2 r 0:02.000
+D l 0:22.000 i 32
+F "export test_stems_track 1.wav" 19968744 0 1687044426 0
+D y 2023-06-17 s 96000 n 2 l 0:26.000
+D i 32

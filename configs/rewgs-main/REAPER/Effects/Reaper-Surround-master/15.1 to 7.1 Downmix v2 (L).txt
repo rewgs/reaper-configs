@@ -1,0 +1,97 @@
+desc: Large 15.1 to 7.1 Downmix
+
+slider1:100<0,100,1>ELL Width
+slider2:100<0,100,1>Height Width
+slider3:0<0,1,1{Off,On}>(Matrix Height)
+
+slider4:0<0,100,1>Center Width
+slider5:0<0,100,2>Bottom into C
+
+slider6:0<-100,100,2>ELL Side Depth
+slider7:0<-100,100,2>Top Side Depth
+
+slider8:0<0,100,5>Side Physical Level
+slider9:100<0,100 ,1>Height height 
+
+
+import surroundlib1.txt
+import surroundlib2.txt
+import surroundlib3.txt
+
+
+//Height/ELL into front (copy from 51d)
+
+@init
+polarity=1;
+heightsL=0;
+heightsR=0;
+
+@slider
+ELL_W=slider1/100   ;
+top_W=slider2/100   ;
+slider3 == 1 ? polarity = -1 : polarity = 1;
+width_coeff=slider4/100; 
+
+center_coeff =slider5/100; //convert from slider to coefficient
+slider_coeff = 1-center_coeff;
+
+Top_Side_Depth=((slider7 ))/ 100;
+ELL_Side_Depth=((slider6 ))/ 100;
+
+side_physical_level=slider8/100;
+Height_height=slider9/100;
+Height_height_TS=(100-((100-slider9)*0.75))/100;
+
+
+@sample 
+
+ MS_encode_ELL();
+
+//MS decode ELL
+spl0=(front_M)+ (front_S * ELL_W) ;
+spl1=(front_M)- (front_S * ELL_W) ;
+spl4=(back_M )+ (back_S  * ELL_W) ;
+spl5=(back_M )- (back_S  * ELL_W) ;
+spl6=(side_M )+ (side_S  * ELL_W) ;
+spl7=(side_M )- (side_S  * ELL_W) ;
+
+//need top first otherwise bottom gets silenced, convert top to M/S
+ MS_encode_Top();
+
+//decode M/S with polarity
+spl8 = ( (top_front_M)+ (top_front_S * top_W) ) ;
+spl9 = ( (top_front_M)- (top_front_S * top_W) ) *polarity;
+spl12= ( (top_back_M )+ (top_back_S  * top_W) ) ;
+spl13= ( (top_back_M )- (top_back_S  * top_W) ) *polarity;
+spl14= ( (top_side_M )+ (top_side_S  * top_W) ) ;
+spl15= ( (top_side_M )- (top_side_S  * top_W) ) *polarity;
+
+
+//Width, C into LR
+do_width(width_coeff);
+
+//Btm into C
+spl2 += (spl10+spl11) * center_coeff ; 
+     
+spl10 = spl10 *slider_coeff ;
+spl11 = spl11 *slider_coeff ;
+
+ELL_Side_Depth_71_to_71(ELL_Side_Depth);
+
+//Top side depth
+ Top_Side_Depth_adj_v2 ( Top_Side_Depth );
+
+ do_side_physical_level(side_physical_level);
+
+Height_height_adj_v1(Height_height);
+
+spl6+=heightsL;
+spl7+=heightsR;
+
+	spl0+=spl10;
+	spl1+=spl11;
+//downmix
+// downmix_151_71_v1();
+
+//silence
+silence_top_layer_151();

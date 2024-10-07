@@ -1,0 +1,201 @@
+// enum {
+MarkerName = 0;
+MarkerStart = 1;
+MarkerEnd = 2;
+MarkerIsRegion = 3;
+MarkerId = 4;
+MarkerFieldCount = 5;
+// }
+
+GroupTrack = "group";
+MasterTrack = "master";
+
+num_markers = 0;  
+num_regions = 0;
+num_tracks = 0;
+num_render_tracks = 0;
+project_full_path = #;
+current_project = EnumProjects(-1, project_full_path);
+
+function toConsole(s)
+(
+    ShowConsoleMsg(s);
+);
+
+function writeTrack(track_type, track_name, region_render_matrix_offset)
+(
+  fwrite(file_handle, "        {\n", 0);
+  fwrite(file_handle, sprintf(#, "            \"type\": \"%s\",\n", track_type), 0);    
+  track_type == GroupTrack ? (
+    fwrite(file_handle, sprintf(#, "            \"name\": \"%s\",\n", track_name), 0);
+  );
+
+  fwrite(file_handle, "            \"instruments\": [\n", 0);
+  region_index = 0;
+  marker_index = 0;
+  instrument_count = 0;
+  loop(marker_count,
+    marker_offset = MarkerInfo + marker_index * MarkerFieldCount;
+    marker_offset[MarkerIsRegion] ? (
+      RenderRegionMatrix[region_render_matrix_offset + region_index] == 1 ? (
+        instrument_count > 0 ? (
+          fwrite(file_handle, ",\n", 0);          
+        );
+        fwrite(file_handle, "                {\n", 0);
+        fwrite(file_handle, "                    \"type\": \"single\",\n", 0);
+        fwrite(file_handle, sprintf(#, "                    \"start\": %f,\n", marker_offset[MarkerStart]), 0);          
+        fwrite(file_handle, sprintf(#, "                    \"end\": %f,\n", marker_offset[MarkerEnd]), 0);
+        region_name = marker_offset[MarkerName];
+        strlen(region_name) == 0 ? (
+          region_name = sprintf(#, "region_%02d", marker_offset[MarkerId]);
+        );
+        fwrite(file_handle, sprintf(#, "                    \"audio\": \"%s_%s.wav\"\n", track_name, region_name), 0);
+        fwrite(file_handle, "                }", 0);          
+        instrument_count += 1;
+      );
+      region_index += 1;
+    );
+    marker_index += 1;        
+  );
+  fwrite(file_handle, "\n            ]\n", 0);                
+);
+
+function exportLayout() local(projectPath)
+(
+  projectPath = #;
+  projectName = #;
+  projectBaseName = #;
+  GetProjectName(current_project, projectName);
+  strncpy(projectPath, project_full_path, strlen(project_full_path) - strlen(projectName) - 1);  
+  strncpy(projectBaseName, projectName, strlen(projectName) - 4);
+  exported_layout_path = sprintf(#, "%s/%s.timeline.fsprometa", projectPath, projectBaseName);
+  toConsole(sprintf(#,"Exporting layout to: %s\n", exported_layout_path));  
+    
+  marker_count = CountProjectMarkers(current_project, num_markers, num_regions);
+  toConsole(sprintf(#,"Number of regions: %d\n", num_regions));  
+  toConsole(sprintf(#,"Number of markers: %d\n", num_markers));
+  num_tracks = GetNumTracks();
+  num_render_tracks = num_tracks + 1; // include Master mix
+  toConsole(sprintf(#,"Number of tracks: %d\n", num_tracks));
+  TrackNames = 0;
+  MarkerNames = TrackNames + num_tracks;
+  RenderRegionMatrix = 0;
+  MarkerInfo = RenderRegionMatrix + num_render_tracks * num_regions;
+    
+  track_index = 0;
+  loop(num_tracks,
+    track = GetTrack(0, track_index);
+    track_name = #;
+    GetTrackName(track, track_name);  
+    x = TrackName + track_index;
+    strcpy(x, track_name);
+    track_index += 1;
+  );
+  
+  marker_index = 0;
+  marker_id = 0;
+  loop(marker_count,
+    region_name = #;
+    EnumProjectMarkers(marker_index, isregn, pos, rgnend, region_name, marker_id);
+    name_slot = MarkerNames + marker_index;
+    strcpy(name_slot, region_name);
+    marker_offset = MarkerInfo + marker_index * MarkerFieldCount;
+    marker_offset[MarkerName] = name_slot;
+    marker_offset[MarkerStart] = pos;
+    marker_offset[MarkerEnd] = rgnend;
+    marker_offset[MarkerIsRegion] = isregn;
+    marker_offset[MarkerId] = marker_id;
+    marker_index += 1;    
+  );
+  
+  track_start = 0;
+  region_start = 0;
+  loop(num_regions * num_render_tracks,
+    RenderRegionMatrix+track_start[region_start] = 0;
+    region_start = (region_start + 1) % num_regions;
+    region_start == 0 ? (
+      track_start = track_start + num_regions;
+    );
+  );
+  
+  region_index = 0;
+  marker_index = 0;
+  loop(marker_count,
+    marker_offset = MarkerInfo + marker_index * MarkerFieldCount;
+    marker_offset[MarkerIsRegion] ? (
+      render_track = 0;
+      while(
+        track = EnumRegionRenderMatrix(current_project, marker_offset[MarkerId], render_track);
+        track ? (
+          track_index = GetMediaTrackInfo_Value(track, "IP_TRACKNUMBER");
+          track_index == -1 ? ( // -1 is Master mix
+            RenderRegionMatrix[region_index] = 1;        
+          );
+          track_index > 0 ? (
+            RenderRegionMatrix[track_index*num_regions + region_index] = 1;
+          );
+          render_track += 1;
+        );   
+        track != NULL;
+      );
+      region_index += 1;
+    );
+    marker_index += 1;
+  );
+   
+  file_handle = fopen(exported_layout_path, "w");
+  file_handle > 0 ? (
+    fwrite(file_handle, "{\n", 0);
+    fwrite(file_handle, sprintf(#, "    \"sourceproject\": \"%s/%s\",\n", projectPath, projectName), 0);
+    fwrite(file_handle, "    \"markers\": [\n", 0);
+    marker_index = 0;
+    exported_markers = 0;
+    loop(marker_count,
+      marker_offset = MarkerInfo + marker_index * MarkerFieldCount;
+      !marker_offset[MarkerIsRegion] ? (
+        fwrite(file_handle, "        {\n", 0);
+        marker_name = marker_offset[MarkerName];
+        strlen(marker_name) == 0 ? (
+            marker_name = sprintf(#, "%d", marker_offset[MarkerId]);
+        );
+        fwrite(file_handle, sprintf(#, "            \"name\": \"%s\",\n", marker_name), 0);
+        fwrite(file_handle, sprintf(#, "            \"position\": %f\n", marker_offset[MarkerStart]), 0);
+        exported_markers += 1;
+        exported_markers < num_markers ? (
+          fwrite(file_handle, "        },\n", 0);
+        ) : (
+          fwrite(file_handle, "        }\n", 0);
+        );
+      );
+      marker_index += 1;
+    );
+    fwrite(file_handle, "    ],\n", 0);
+
+    fwrite(file_handle, "    \"audiotracks\": [\n", 0);
+    track_index = 0;
+    region_render_matrix_offset = 0;
+    loop(num_render_tracks,
+      track_index == 0 ? (
+        writeTrack(MasterTrack, MasterTrack, region_render_matrix_offset);
+      ) : (
+        writeTrack(GroupTrack, TrackNames + track_index - 1, region_render_matrix_offset);
+      );
+      track_index += 1;
+      track_index < num_render_tracks ? (
+        fwrite(file_handle, "        },\n", 0);
+      ) : (
+        fwrite(file_handle, "        }\n", 0);      
+      );
+      region_render_matrix_offset += num_regions;
+    );
+    
+    fwrite(file_handle, "    ]\n", 0);        
+    fwrite(file_handle, "}\n", 0);    
+    fclose(file_handle);
+    toConsole("Successfully exported the project\n");
+  ) : (
+    toConsole("Error opening file\n");
+  );
+);
+
+exportLayout();

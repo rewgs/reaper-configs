@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" name="nofish ReaScripts" commit="d8ecb53e3e512a1fa9bfe93fb5308c694ec3185f">
+  <category name="editing">
+    <reapack name="nofish_Delete muted items from item selection.lua" type="script" desc="Delete muted items from item selection">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 see http://forum.cockos.com/showpost.php?p=1589221&postcount=4\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T17:20:10Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/c2f497bd9eee531f3dd4dafd88189e35dd86ff16/editing/nofish_Delete%20muted%20items%20from%20item%20selection.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Select muted items.lua" type="script" desc="Select muted items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Selects muted items.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2018-02-22T17:26:02Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/b2164c73328bb0fa62bdb335327ace9c325e6dab/editing/nofish_Select%20muted%20items.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Select next item (in time) across tracks.lua" type="script" desc="Select next item (in time) across tracks">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Selects next item in the timeline of the currently selected one across all tracks\line In the script's USER CONFIG AREA can be set if cursor should move to beginning of next selected item\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-10-03T17:34:55Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/41238a479c399fe3ca5a0a607b920d6c6ad07cdf/editing/nofish_Select%20next%20item%20(in%20time)%20across%20tracks.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Split items at time selection, else at edit cursor, crossfading to the left.lua" type="script" desc="Split items at time selection, else at edit cursor, crossfading to the left">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Split sel. items at time sel., in case no split happened: split sel. items at edit cursor w/crossfade on left (using SWS/AW action)\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2019-05-29T17:08:34Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/89ec298a33911285efe699302698bb098d796d2c/editing/nofish_Split%20items%20at%20time%20selection,%20else%20at%20edit%20cursor,%20crossfading%20to%20the%20left.lua</source>
+      </version>
+      <version name="1.01" author="nofish" time="2019-05-29T17:32:16Z">
+        <changelog><![CDATA[# Fix typo in title]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/424458c45c187caf45815d9669461394ad7e0f4f/editing/nofish_Split%20items%20at%20time%20selection,%20else%20at%20edit%20cursor,%20crossfading%20to%20the%20left.lua</source>
+      </version>
+      <version name="1.02" author="nofish" time="2019-05-30T13:11:29Z">
+        <changelog><![CDATA[# Avoid 'No time selection active' pop up]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/621afe92bb104965105a71993d26bd5dcfea1f6a/editing/nofish_Split%20items%20at%20time%20selection,%20else%20at%20edit%20cursor,%20crossfading%20to%20the%20left.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Unselect muted items.lua" type="script" desc="Unselect muted items">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Unselects muted items.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2018-02-22T17:26:02Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/b2164c73328bb0fa62bdb335327ace9c325e6dab/editing/nofish_Unselect%20muted%20items.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="Loudness">
+    <reapack name="nofish_Analyze loudness (integrated) per channel of selected items active take.lua" type="script" desc="Analyze loudness (integrated) per channel of selected items active take">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires REAPER v5.21 / SWS v2.9.6 or above\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.00" author="nofish" time="2019-12-30T17:39:58Z">
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/2bc57ec65848005450bd9ac48b1e82845e7f31ad/Loudness/nofish_Analyze%20loudness%20(integrated)%20per%20channel%20of%20selected%20items%20active%20take.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Analyze loudness of master output in time selection (via temp render).lua" type="script" desc="Analyze loudness of master output in time selection (via temp render)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Renders a file, analyzes and displays loudness values and deletes the file\line In the scripts USER CONFIG AREA can be set if True Peak should be analyzed (slower) or not\line Requires REAPER v5.974, SWS v2.9.6\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.02" author="nofish" time="2019-04-03T16:12:30Z">
+        <changelog><![CDATA[+ Use Render API (required render settings are set automatically)]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/c23e5ec2fa44cd122c9bd14c65b9fa9a8881f7ad/Loudness/nofish_Analyze%20loudness%20of%20master%20output%20in%20time%20selection%20(via%20temp%20render).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Normalize loudness of selected items active take to X LUFS max momentary - no prompt.lua" type="script" desc="Normalize loudness of selected items active take to X LUFS max momentary - no prompt">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Normalizes active take of selected audio items to a user defineable LUFS max momentary value (sets Item take volume).\line This version of the script doesn't give a user prompt to set the target value (for use in custom actions),\line but instead uses the target value set in the related script "nofish_Set normalize loudness to X LUFS max momentary target vaulue.lua"\line Note: 'Momentary loudness' uses a time window of 0.4 sec. for analysis, so items shorter than this can't be analyzed / normalized correctly.\line In the script's USER CONFIG AREA can be set if info / progress should be displayed in the console.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires REAPER v5.21 / SWS v2.9.6 or above\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.03" author="nofish" time="2017-09-13T20:44:10Z">
+        <changelog><![CDATA[# fixed nil value]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/9e27d643455ba28ca54965ac54ab62789c903af0/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20momentary%20-%20no%20prompt.lua</source>
+      </version>
+      <version name="1.04" author="nofish" time="2017-09-14T15:34:12Z">
+        <changelog><![CDATA[# warn when item is too short for analysis, avoid applying crazy gain in this case]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/7e84b1d140e4732ef4349dc7a7c7dde8c5fbb34a/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20momentary%20-%20no%20prompt.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Normalize loudness of selected items active take to X LUFS max momentary.lua" type="script" desc="Normalize loudness of selected items active take to X LUFS max momentary">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Normalizes active take of selected audio items to a user defineable LUFS max momentary value (sets Item take volume).\line Note: 'Momentary loudness' uses a time window of 0.4 sec. for analysis, so items shorter than this can't be analyzed / normalized correctly.\line In the script's USER CONFIG AREA can be set if info / progress should be displayed in the console.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires REAPER v5.21 / SWS v2.9.6 or above\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.02" author="nofish" time="2017-09-13T20:44:10Z">
+        <changelog><![CDATA[# better console output]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/9e27d643455ba28ca54965ac54ab62789c903af0/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20momentary.lua</source>
+      </version>
+      <version name="1.03" author="nofish" time="2017-09-14T15:34:12Z">
+        <changelog><![CDATA[# warn when item is too short for analysis, avoid applying crazy gain in this case]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/7e84b1d140e4732ef4349dc7a7c7dde8c5fbb34a/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20momentary.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Normalize loudness of selected items active take to X LUFS max short term - no prompt.lua" type="script" desc="Normalize loudness of selected items active take to X LUFS max short term - no prompt">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Normalizes active take of selected audio items to a user defineable LUFS max short term value (sets Item take volume).\line This version of the script doesn't give a user prompt to set the target value (for use in custom actions),\line but instead uses the target value set in the related script "nofish_Set normalize loudness to X LUFS max short term target vaulue.lua"\line Note: 'Short term loudness' uses a time window of 3 sec. for analysis, so items shorter than this can't be analyzed / normalized correctly.\line In the script's USER CONFIG AREA can be set if info / progress should be displayed in the console.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires REAPER v5.21 / SWS v2.9.6 or above\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.02" author="nofish" time="2017-09-08T15:01:12Z">
+        <changelog><![CDATA[# better console output]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/cebd837ce969f4a0306a9372301520fb972dbdfa/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term%20-%20no%20prompt.lua</source>
+      </version>
+      <version name="1.03" author="nofish" time="2017-09-08T15:57:17Z">
+        <changelog><![CDATA[# fixed nil value]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/dc6c285d971afcdd0d11fedbb593daaacdbc1fc3/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term%20-%20no%20prompt.lua</source>
+      </version>
+      <version name="1.04" author="nofish" time="2017-09-14T15:34:12Z">
+        <changelog><![CDATA[# warn when item is too short for analysis, avoid applying crazy gain in this case]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/7e84b1d140e4732ef4349dc7a7c7dde8c5fbb34a/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term%20-%20no%20prompt.lua</source>
+      </version>
+      <version name="1.05" author="nofish" time="2017-10-12T16:14:00Z">
+        <changelog><![CDATA[# change VAL/DB conversion functions
+# make more variables local]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/8c47a87256c8960739735dec4a29a2ce5550af13/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term%20-%20no%20prompt.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Normalize loudness of selected items active take to X LUFS max short term.lua" type="script" desc="Normalize loudness of selected items active take to X LUFS max short term">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Normalizes active take of selected audio items to a user defineable LUFS max short term value (sets Item take volume).\line Note: 'Short term loudness' uses a time window of 3 sec. for analysis, so items shorter than this can't be analyzed / normalized correctly.\line In the script's USER CONFIG AREA can be set if info / progress should be displayed in the console.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires REAPER v5.21 / SWS v2.9.6 or above\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-09-07T18:21:57Z">
+        <changelog><![CDATA[+ initial version]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/2e27047e6017334988d95dd6b07d5e0286743433/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term.lua</source>
+      </version>
+      <version name="1.01" author="nofish" time="2017-09-08T12:45:39Z">
+        <changelog><![CDATA[# added required REAPER / SWS version check]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/e431fac20627a4836e619024c879fb1f8839b3b4/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term.lua</source>
+      </version>
+      <version name="1.02" author="nofish" time="2017-09-08T15:01:12Z">
+        <changelog><![CDATA[# better console output]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/cebd837ce969f4a0306a9372301520fb972dbdfa/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term.lua</source>
+      </version>
+      <version name="1.03" author="nofish" time="2017-09-14T15:34:12Z">
+        <changelog><![CDATA[# warn when item is too short for analysis, avoid applying crazy gain in this case]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/7e84b1d140e4732ef4349dc7a7c7dde8c5fbb34a/Loudness/nofish_Normalize%20loudness%20of%20selected%20items%20active%20take%20to%20X%20LUFS%20max%20short%20term.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Normalize take pan (Loudness based).lua" type="script" desc="Normalize take pan (Loudness based) (experimental)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Request: https://forum.cockos.com/showthread.php?t=178277\line Thread: https://forum.cockos.com/showthread.php?t=229544 (thanks ashcat_lt!)\line works via adjusting take pan (stereo takes only)\line in the accompanying script "Normalize take pan (Loudness based) - Set threshold.lua" can be set a a difference threshold (Loudness difference between l/r) over which the script starts processing\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.00" author="nofish" time="2020-01-06T22:52:30Z">
+        <changelog><![CDATA[+ initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/37615b7c5c8ad2720f0044c5f2515ad5f2500454/Loudness/nofish_Normalize%20take%20pan%20(Loudness%20based).lua</source>
+        <source main="main" file="nofish_Normalize take pan (Loudness based) - Set threshold.lua">https://github.com/nofishonfriday/ReaScripts/raw/37615b7c5c8ad2720f0044c5f2515ad5f2500454/Loudness/nofish_Normalize%20take%20pan%20(Loudness%20based)%20-%20Set%20threshold.lua</source>
+      </version>
+      <version name="1.0.1" author="nofish" time="2022-04-24T22:00:08Z">
+        <changelog><![CDATA[# clarify it's experimental]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/20905adcbc774f9cf2b84d509f53d497a38e901f/Loudness/nofish_Normalize%20take%20pan%20(Loudness%20based).lua</source>
+        <source main="main" file="nofish_Normalize take pan (Loudness based) - Set threshold.lua">https://github.com/nofishonfriday/ReaScripts/raw/20905adcbc774f9cf2b84d509f53d497a38e901f/Loudness/nofish_Normalize%20take%20pan%20(Loudness%20based)%20-%20Set%20threshold.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Set normalize loudness to X LUFS max momentary target value.lua" type="script" desc="Set normalize loudness to X LUFS max momentary target value">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script works together with "nofish_Normalize loudness of selected items active take to X LUFS max momentary - no prompt.lua"\line Set the LUFS max momentary target value here than use above script to normalize to this target value.\line The target value is persistent across REAPER projects.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-09-13T20:44:10Z">
+        <changelog><![CDATA[+ initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/9e27d643455ba28ca54965ac54ab62789c903af0/Loudness/nofish_Set%20normalize%20loudness%20to%20X%20LUFS%20max%20momentary%20target%20value.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Set normalize loudness to X LUFS max short term target value.lua" type="script" desc="Set normalize loudness to X LUFS max short term target value">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 This script works together with "nofish_Normalize loudness of selected items active take to X LUFS max short term - no prompt.lua"\line Set the LUFS max short term target value here than use above script to normalize to this target value.\line The target value is persistent across REAPER projects.\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-09-08T15:39:56Z">
+        <changelog><![CDATA[+ initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/31a29efa5b45eb9c1067cd5efeaa5c51bed4623f/Loudness/nofish_Set%20normalize%20loudness%20to%20X%20LUFS%20max%20short%20term%20target%20value.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="MIDI (Main)">
+    <reapack name="js_nofish_Set all events of selected MIDI items to specific channel.lua" type="script" desc="Set all events of selected MIDI items to specific channel">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Changes the channel of all notes, CCs and notation events in all selected MIDI items to a specific channel\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab At least one MIDI take must be selected while the script is run to show a prompt to enter new channel for events\sa180\par}
+}
+]]></description>
+        <link rel="website">http://forum.cockos.com/showthread.php?t=192336</link>
+      </metadata>
+      <version name="1.02" author="juliansader, nofish" time="2017-06-01T01:20:37Z">
+        <changelog><![CDATA[+ nofish: moved script from MIDI editor to Main section (since it's based on item selection)]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/edef946377847905dd6d00a17561247fd014f935/MIDI%20(Main)/js_nofish_Set%20all%20events%20of%20selected%20MIDI%20items%20to%20specific%20channel.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Set all note ons in all selected items MIDI takes to specific velocity (prompt).lua" type="script" desc="Set all note ons in all selected items MIDI takes to specific velocity (prompt)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets all note ons in all selected items MIDI takes to specific velocity\line Opens a prompt at script start to set destination velocity (if at least one item conatining a MIDI take is selected)\par}
+}
+]]></description>
+        <link rel="donation">https://paypal.me/nofish</link>
+      </metadata>
+      <version name="1.0" author="nofish, thanks juliansader" time="2018-12-01T19:33:00Z">
+        <changelog><![CDATA[+ initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/bf653b6afb73223cf6ee77542e168c30fbb96940/MIDI%20(Main)/nofish_Set%20all%20note%20ons%20in%20all%20selected%20items%20MIDI%20takes%20to%20specific%20velocity%20(prompt).lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="MIDI Editor">
+    <reapack name="nofish_Light toolbar button when editable MIDI take is pooled.lua" type="script" desc="Light toolbar button when editable MIDI take is pooled">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 thread: http://forum.cockos.com/showthread.php?t=163359\line screen capture: https://i.imgur.com/mz8kmGU.gif\line assign script to a MIDI editor toolbar button, button lights up when a pooled take is set to editable in the MIDI editor\line optionally make the script auto-start with REAPER, see https://forum.cockos.com/showthread.php?t=257588\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0.0" author="nofish" time="2021-10-12T21:14:10Z">
+        <changelog><![CDATA[initial release]]></changelog>
+        <source main="midi_editor">https://github.com/nofishonfriday/ReaScripts/raw/1f140c4b33bf6801315da80e095b08a1b75e78d3/MIDI%20Editor/nofish_Light%20toolbar%20button%20when%20editable%20MIDI%20take%20is%20pooled.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Show midi note name in tooltip_nofish mod.lua" type="script" desc="Show midi note name in tooltip_nofish mod.lua">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Show tooltip with note name and position under mouse cursor\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.01" author="SeXan / mod by nofish" time="2019-03-27T02:35:12Z">
+        <changelog><![CDATA[+ Support assigning script to toolbar button (lights when active)
++ Register in MIDI editor section (instead of Main section)
++ Display 16th (instead of ticks)
+# Account for Pref: MIDI octave name display offset
+# Remove tooltip if mouse cursor outside piano roll]]></changelog>
+        <source main="midi_editor">https://github.com/nofishonfriday/ReaScripts/raw/35f053b941ef7c5cd17b9cff999f53cd5159671c/MIDI%20Editor/Show%20midi%20note%20name%20in%20tooltip_nofish%20mod.lua</source>
+      </version>
+    </reapack>
+    <reapack name="Smart toggle mute note(s) (under mouse).lua" type="script" desc="Smart toggle mute note(s) (under mouse)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Assign script to shortcut (MIDI editor section).\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If notes selected: toggle mute state for selected notes\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If no notes selected: toggle mute state for note under mouse (do nothing if mouse cursor isn't over note)\sa180\par}
+}
+]]></description>
+        <link rel="website">http://forum.cockos.com/showthread.php?t=192034</link>
+      </metadata>
+      <version name="1.01" author="nofish" time="2018-02-22T16:57:21Z">
+        <changelog><![CDATA[# fix: selected CC's get unintentionally muted, thanks FnA]]></changelog>
+        <source main="midi_editor">https://github.com/nofishonfriday/ReaScripts/raw/e24b6073ada3eef2fad289bcb8f35062978af7be/MIDI%20Editor/Smart%20toggle%20mute%20note(s)%20(under%20mouse).lua</source>
+      </version>
+      <version name="1.02" author="nofish" time="2019-01-29T23:02:27Z">
+        <changelog><![CDATA[# fix: remove some weird chars]]></changelog>
+        <source main="midi_editor">https://github.com/nofishonfriday/ReaScripts/raw/aa3d7477331cd30de99caab14e368d99835dd1c8/MIDI%20Editor/Smart%20toggle%20mute%20note(s)%20(under%20mouse).lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="misc">
+    <reapack name="Mute first n hardware outs on tracks that are currently recording.lua" type="script" desc="Mute first n hardware outs on tracks that are currently recording">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 See this thread for the idea:\line https://forum.cockos.com/showthread.php?t=197728\line Known issues:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Doesn't work correctly in 'Record mode: auto-punch selected items'\sa180\par}
+}
+]]></description>
+        <link rel="donation">https://paypal.me/nofish</link>
+      </metadata>
+      <version name="1.0" author="nofish" time="2018-10-10T14:31:48Z">
+        <changelog><![CDATA[+ Initial Release
++ Script can be assigned to a toolbar button (lights when active), press again to exit]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/53bbeb44eb37f293a5339ebba7ae96465036edc0/misc/Mute%20first%20n%20hardware%20outs%20on%20tracks%20that%20are%20currently%20recording.lua</source>
+      </version>
+      <version name="1.01" author="nofish" time="2018-10-30T10:41:53Z">
+        <changelog><![CDATA[+ Add option to disable input monitoring during pre-roll]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/5f17029121369b2941f012405eb963c56c473794/misc/Mute%20first%20n%20hardware%20outs%20on%20tracks%20that%20are%20currently%20recording.lua</source>
+      </version>
+      <version name="1.02" author="nofish" time="2018-11-02T14:01:47Z">
+        <changelog><![CDATA[# Only disable input monitoring when in Tape Auto Style mode
+# Fix ever growing tables (init at each rec. start)]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/48718a42464b9952825c6814ee0d6845f5c7508e/misc/Mute%20first%20n%20hardware%20outs%20on%20tracks%20that%20are%20currently%20recording.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Bypass master volume envelope.lua" type="script" desc="Bypass master volume envelope">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 see 'Website' button, needs SWS installed: http://www.sws-extension.org/\par}
+}
+]]></description>
+        <link rel="website">https://forum.cockos.com/showthread.php?t=221772</link>
+        <link rel="donation">https://paypal.me/nofish</link>
+      </metadata>
+      <version name="1.0" author="nofish" time="2019-06-09T15:13:57Z">
+        <changelog><![CDATA[+ initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/09434dca3f3f078c9a7b27ef2bc286bde40f23b1/misc/nofish_Bypass%20master%20volume%20envelope.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Copy item end timecode to clipboard and or console.lua" type="script" desc="Copy item end timecode to clipboard and or console.lua">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Copies first sel. item's end timecode to cliboard and / or shows it in console (see script's USER CONFIG AREA)\par}
+}
+]]></description>
+        <link rel="donation">https://paypal.me/nofish</link>
+      </metadata>
+      <version name="1.0" author="nofish" time="2019-06-25T22:07:02Z">
+        <changelog><![CDATA[+ initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/65b91181ad2a1c402a4f9b23dbbd85b115612d5e/misc/nofish_Copy%20item%20end%20timecode%20to%20clipboard%20and%20or%20console.lua</source>
+      </version>
+      <version name="1.01" author="nofish" time="2019-06-25T23:41:30Z">
+        <changelog><![CDATA[# tweak string formatting]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/a781e1df0e48e1479acc0a1946c219ef9b3a2402/misc/nofish_Copy%20item%20end%20timecode%20to%20clipboard%20and%20or%20console.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Dynamic mixer.lua" type="script" desc="Dynamic Mixer (WIP)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 for use with toolbar button see http://forum.cockos.com/showthread.php?t=166554\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T17:20:10Z">
+        <changelog><![CDATA[+ initial Lua release by spk77
+]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/c2f497bd9eee531f3dd4dafd88189e35dd86ff16/misc/nofish_Dynamic%20mixer.lua</source>
+      </version>
+      <version name="1.02" author="nofish" time="2016-12-27T02:02:52Z">
+        <changelog><![CDATA[nofish:
++ script can be assigned to a toolbar button (lights when active), press again to exit
++ MCP track view is restored on exit (thanks spk77)]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/5ec8124f165a60603a0390ef03a73dff63bcf5b4/misc/nofish_Dynamic%20mixer.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_List tracknames in console.lua" type="script" desc="List tracknames in console">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 see http://forum.cockos.com/showpost.php?p=1597751&postcount=6\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T17:20:10Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/c2f497bd9eee531f3dd4dafd88189e35dd86ff16/misc/nofish_List%20tracknames%20in%20console.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Needle dropping.lua" type="script" desc="Needle dropping.lua">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Jumps to random item positions See https://forum.cockos.com/showthread.php?t=200261\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-12-10T12:59:24Z">
+        <changelog><![CDATA[+ Initial Release
+]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/7ccc4f80a82ed2ac26f95d6d1fe5bd5307fb9420/misc/nofish_Needle%20dropping.lua</source>
+      </version>
+      <version name="1.01" author="nofish" time="2017-12-10T13:04:23Z">
+        <changelog><![CDATA[+ Added 'Exclusively select currently playing item' auto-selection mode]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/5a35e2bbc69c7c035d424f57bfa9001f3b39f663/misc/nofish_Needle%20dropping.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Normalize selected items active take to X dBFS true peak.lua" type="script" desc="Normalize selected items active take to X dBFS true peak">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Normalizes active take of selected audio items to a user defineable dBFS value (sets Item take volume).\line In the script's USER CONFIG AREA can be set if info / progress should be displayed in the console.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires REAPER v5.21 / SWS v2.9.6 or above\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.05" author="nofish" time="2017-10-01T22:10:00Z">
+        <changelog><![CDATA[# change VAL/DB conversion functions
+# make more variables local]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/c7edf396d1db3cdb673f383afc1ad0cacc6199a5/misc/nofish_Normalize%20selected%20items%20active%20take%20to%20X%20dBFS%20true%20peak.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Play (skip razor edit area).lua" type="script" desc="Play (skip razor edit area)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 mod of https://forum.cockos.com/showthread.php?p=2425238#post2425238, thanks Edgemeal\line Plays from edit cursor position and skips razor edit area (if exists), by setting a time selection from razor edit area\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0.0" author="nofish" time="2023-06-01T19:01:34Z">
+        <changelog><![CDATA[+ release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/d8ecb53e3e512a1fa9bfe93fb5308c694ec3185f/misc/nofish_Play%20(skip%20razor%20edit%20area).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Print visible (within item start end) take markers on seleted tracks to console.lua" type="script" desc="Print visible (within item start end) take markers on selected tracks to console">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 thread: https://forum.cockos.com/showthread.php?t=271513\line Note: for takes with active stretch markers this script doesn't work correctly currently (take marker positions are wrong)!\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0.0" author="nofish" time="2022-10-11T14:51:06Z">
+        <changelog><![CDATA[initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/a8e1d7e2e693787b353dac98ad03bdb90dcacf48/misc/nofish_Print%20visible%20(within%20item%20start%20end)%20take%20markers%20on%20seleted%20tracks%20to%20console.lua</source>
+      </version>
+      <version name="1.0.1" author="nofish" time="2022-10-11T19:17:56Z">
+        <changelog><![CDATA[minor formatting change (remove dot after project time)]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/e4b4dd69919bb260e45b529349eaa7917517bc2a/misc/nofish_Print%20visible%20(within%20item%20start%20end)%20take%20markers%20on%20seleted%20tracks%20to%20console.lua</source>
+      </version>
+      <version name="1.0.2" author="nofish" time="2022-10-17T14:46:40Z">
+        <changelog><![CDATA[# prevent creating undo point
+# remove stale Undo_BeginBlock()
+# remove useless comment]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/84cca995394235d331555567b72a60b8c3ce0a85/misc/nofish_Print%20visible%20(within%20item%20start%20end)%20take%20markers%20on%20seleted%20tracks%20to%20console.lua</source>
+      </version>
+      <version name="1.0.3" author="nofish" time="2023-05-13T15:59:59Z">
+        <changelog><![CDATA[# add note about stretch markers not supported currently]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/d3e7e8500e2961bf35f85d56c903a2c95657df84/misc/nofish_Print%20visible%20(within%20item%20start%20end)%20take%20markers%20on%20seleted%20tracks%20to%20console.lua</source>
+      </version>
+      <version name="1.0.4" author="nofish" time="2023-05-13T16:07:56Z">
+        <changelog><![CDATA[# add note about stretch markers not supported currently]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/8c7f995d574fb2b4b25c8c354692c560b09b861e/misc/nofish_Print%20visible%20(within%20item%20start%20end)%20take%20markers%20on%20seleted%20tracks%20to%20console.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Realtime clock.lua" type="script" desc="Realtime clock">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 displays a small clock window see http://forum.cockos.com/showthread.php?t=165884\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T17:49:14Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/1ae1f57f8011834f1a892474135c68a518a18f2a/misc/nofish_Realtime%20clock.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Reset Mix - all tracks (for stem export).lua" type="script" desc="Reset Mix - all tracks (for stem export)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Does the following:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bypass all automation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bypass all track FX (except VSTi)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Reset all track volume, reset all track pan\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Reset master volume, Bypass master FX\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Optionally: Reset all item and take volume\sa180\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-10-21T13:45:28Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/c8db8931787593b5679c718eba9e7199f4252208/misc/nofish_Reset%20Mix%20-%20all%20tracks%20(for%20stem%20export).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Reset Mix - selected tracks (for stem export).lua" type="script" desc="Reset Mix - selected tracks (for stem export)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Does the following:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bypass all automation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Bypass sel. tracks FX (except VSTi)\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Reset sel. tracks volume, reset sel. tracks pan\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Reset master volume, Bypass master FX\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Optionally: Reset all item and take volume\sa180\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-10-21T13:55:06Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/a50203dc3c35f8766abce43061a6ed4ae32afd03/misc/nofish_Reset%20Mix%20-%20selected%20tracks%20(for%20stem%20export).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_run action - wait x sec - run next action (example).lua" type="script" desc="Run action - wait x sec - run next action (example)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 example script for waiting x seconds between running two actions\line see http://forum.cockos.com/showthread.php?t=189856\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-03-25T14:45:41Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/6eb01ea89afe161677231b85c645cccb4f072cb0/misc/nofish_run%20action%20-%20wait%20x%20sec%20-%20run%20next%20action%20(example).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Save track FX chains (for sel tracks).lua" type="script" desc="Save track FX chains (for sel. tracks)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 see http://forum.cockos.com/showpost.php?p=1596059&postcount=26\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T17:49:14Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/1ae1f57f8011834f1a892474135c68a518a18f2a/misc/nofish_Save%20track%20FX%20chains%20(for%20sel%20tracks).lua</source>
+      </version>
+      <version name="1.0.1" author="nofish" time="2022-04-22T21:43:13Z">
+        <changelog><![CDATA[# Always reference active project (rather than first project tab)]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/dd1e8144d7267848cceb339e213a931d6bb285df/misc/nofish_Save%20track%20FX%20chains%20(for%20sel%20tracks).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Set all items to timebase Time if at least containing one audio or video take else to timebase Beats (pos., length, rate).lua" type="script" desc="Set all items to timebase Time if at least containing one audio or video take, else to timebase Beats (pos., length, rate)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Request: https://forum.cockos.com/showthread.php?t=229817\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.00" author="nofish" time="2020-01-06T19:17:36Z">
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/8730db7b1fa5eadcf37cb0ada109ca54a48c2e06/misc/nofish_Set%20all%20items%20to%20timebase%20Time%20if%20at%20least%20containing%20one%20audio%20or%20video%20take%20else%20to%20timebase%20Beats%20(pos.,%20length,%20rate).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Solo (exclusive) last focused FX - GUI.lua" type="script" desc="Solo (exclusive) last focused FX - GUI">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 http://forum.cockos.com/showpost.php?p=1758750&postcount=3\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T18:03:58Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/6615f78272f76e52967fb56b93933bfdf4a52b72/misc/nofish_Solo%20(exclusive)%20last%20focused%20FX%20-%20GUI.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Solo (exclusive) last focused FX - no GUI (w_undo point).lua" type="script" desc="Solo (exclusive) last focused FX - no GUI (w_undo point)">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 http://forum.cockos.com/showpost.php?p=1759449&postcount=11\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T18:03:58Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/6615f78272f76e52967fb56b93933bfdf4a52b72/misc/nofish_Solo%20(exclusive)%20last%20focused%20FX%20-%20no%20GUI%20(w_undo%20point).lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Solo (exclusive) last focused FX - no GUI.lua" type="script" desc="Solo (exclusive) last focused FX - no GUI">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 http://forum.cockos.com/showpost.php?p=1759098&postcount=8\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2016-12-26T18:03:58Z">
+        <changelog><![CDATA[+ Initial Release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/6615f78272f76e52967fb56b93933bfdf4a52b72/misc/nofish_Solo%20(exclusive)%20last%20focused%20FX%20-%20no%20GUI.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Toggle Ignore mousewheel on all faders.lua" type="script" desc="Toggle &quot;Ignore mousewheel on all faders&quot;">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Toggles Preference "Ignore mousewheel on all faders" can be assigned to toolbar button\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="nofish" time="2017-05-02T18:31:53Z">
+        <changelog><![CDATA[+ Initial release]]></changelog>
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/2fb4543cc70459cc224f12814b9b52eefbac9f96/misc/nofish_Toggle%20Ignore%20mousewheel%20on%20all%20faders.lua</source>
+      </version>
+    </reapack>
+    <reapack name="nofish_Write tracknames to textfile.eel" type="script" desc="Write tracknames to textfile">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 http://forum.cockos.com/showthread.php?t=169099\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" time="2016-12-26T17:49:14Z">
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/1ae1f57f8011834f1a892474135c68a518a18f2a/misc/nofish_Write%20tracknames%20to%20textfile.eel</source>
+      </version>
+      <version name="1.01" author="nofish" time="2018-02-23T16:08:17Z">
+        <source main="main">https://github.com/nofishonfriday/ReaScripts/raw/9f8c562d419f97520e0e4536708d7b0ae9e99e28/misc/nofish_Write%20tracknames%20to%20textfile.eel</source>
+      </version>
+    </reapack>
+  </category>
+  <metadata>
+    <link rel="website">http://forum.cockos.com/member.php?u=6870</link>
+  </metadata>
+</index>

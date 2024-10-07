@@ -1,0 +1,50 @@
+desc: Fixes surround by adjusting the cross width of 5.1
+
+slider1:0<-12,12,1>Pre Gain (dB)
+slider2:3<-12,12,1>Width (dB)
+
+
+// the first number is the default value, the numbers in the <> are min val,
+// max val, and step.
+
+@init
+// this is stuff that happens once (or if the samplerate changes, etc)
+
+@slider
+// this happens when a slider changes
+
+// so we'll set our multiplier to be used later
+// so realistically this happens once or when the user changes shit.
+// we store our volume multiplier in 'vol', for use per-sample. 
+// in theory the sample code below could have this directly...
+gain = 2^(slider1/6); // convert from dB to a multiplier
+widthgain= 2^(slider2/6); 
+@block
+// this happens per-block, not really that important for this app
+
+@sample
+// this happens per-sample. spl0 is the left channel, spl1 is the right,
+// and if your track has more than 2 channels, spl2, spl3, etc..
+
+
+
+// pregain,encode,widthgain,decode
+
+Right_Mid=spl4*gain;
+Right_Side=spl5*gain;
+
+Left_Mid = ( spl0 + Right_Mid ) * 0.5    ;
+Left_Side = ( spl0 - Right_Mid ) * 0.5    ;
+Right_Mid = ( spl1 + Right_Side ) * 0.5    ;
+Right_Side = ( spl1 - Right_Side ) * 0.5    ;
+
+
+Left_Side=Left_Side*widthgain;
+Right_Side=Right_Side*widthgain;
+
+
+
+spl0 = Left_Mid + Left_Side;
+spl4 = Left_Mid - Left_Side;
+spl1 = Right_Mid + Right_Side;
+spl5 = Right_Mid - Right_Side;

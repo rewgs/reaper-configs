@@ -1,0 +1,89 @@
+---------------------------------------------------------------------------------------
+  Notes Reader - Changelog (What's new)   
+---------------------------------------------------------------------------------------
+
+* v1.0pre2 (2016-07-06)
+  # fix: load defaults button doesn't affect the track source now.
+
+* v0.98 (2016-06-14)
+  + Translated to Lua language.
+  + Right click anywhere to show menu
+  + Integrated Fill gaps with empty items in this menu, not as separated action.
+  + Remember undocked window position/size
+
+* v0.97 (2015-04-15)
+  + Mouse wheel to scroll up and down options when the reader window is small
+  # REAPER 4 issues with trackGUI
+  # bugfix re-reading settings after project change.
+  # minor bugfixes, flickering in some situatioms.
+  
+* v0.96 (2015-03-30)
+  + configurable section name for options saving. allows easy copy script as secondary reader with its own options.
+  # save settings button. Dock and settings are saved only when clicking the button. There was a bug saving settings atexit.
+  # small bug in multitrack reading.
+  
+* v0.95 (2015-03-27)
+  # reading from folder track also accepts items in folder track. 
+  # setting for reading single track or track + its children is now manual again.
+  # gap items always to default color instead of color from item. white wasn't seen well over default background color.
+ 
+* v0.94 (2015-03-26)
+  + option for full transparent progress bar
+  # now possible to move reader track or insert tracks above it without losing association of track to read.
+  
+* v0.93 (2015-03-21)
+  + support for spacer text items. Items with a note with a space 
+  + script to fill all gaps with spacer text items in selected track
+  # bug next item text displayed when stopped 
+  # Right click to open options UI. can be changed to left click in script
+ 
+* v0.92 (2015-03-19)
+  + option to display next item's text for single track reading and single line text items
+  # bug options showing when moving window in REAPER 4
+  # bug text not displayed at left edge of first item.
+ 
+* v0.91 (2015-03-18)
+  + option to display animated line
+  
+* v0.9 (2015-03-17)
+  + New UI options. Click on reader to open and close.
+  + option auto-color text from item
+  + option auto-color background from item
+  # display all notes when overlapped when reading from parent track.
+  # known bug: multiline texts + multitrack reading + auto coloring is not fully supported.
+
+* v0.8 (2015-03-08)
+  + SHIFT+click: Enable/Disable reading from parent track
+  # better multiline formatting
+  
+* v0.7 (2015-03-06)
+  + multiple tracks reader, specify the parent track.
+  # more format combinations
+  # background format can be <background="#rrggbb">  or <background="#rrggbb" />
+  # bug note was not displayed if cursor stopped exactly at item start.
+ 
+* v0.6 (2015-03-04)
+  + new multiline engine
+  + centered display option (good for subtitles) CTRL+Click to change left/center
+  + italics, bold, underline, font color support, and background color support.
+  # now also works in stopped mode 
+  # CPU optimizations
+  
+* v0.5 (2015-03-01)
+  + multiline text supported
+  # bug fix some notes were not displayed 
+ 
+* v0.4 (2015-02-25)
+  + right click mouse button to enable/disable recording notification
+  
+* v0.3 (2015-02-24)
+  + remembers track id, globally in REAPER 4 and per project in REAPER 5
+ 
+* v0.2 (2015-02-21)
+  + REAPER 5 version with docked state support. It will remember docked position. Thanks spk77
+  + REAPER 4 version as separated download
+ 
+* v0.1 (2015-02-20)
+  + Multiple readers. click on reader to specify track id to read from.
+  + Customizable colors per item
+  + Recording background color support. detects when it is recording. 

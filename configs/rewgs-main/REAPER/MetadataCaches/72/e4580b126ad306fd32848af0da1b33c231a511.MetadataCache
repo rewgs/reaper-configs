@@ -1,0 +1,41 @@
+C10018 "/Users/jonathankawchuk/Documents/Projects/In Progress/Anna Atmos Mixing/Anna Atmos STEMS/Digital Masters_ 24bit 44.1kHz (High Res, Apple Digital Masters-Lossless)"
+F "01 The Ghost - Master v1g 220602 HLK 2448.wav" 87717970 0 1654153602 0
+D t "The Ghost" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 l 5:02.962 i 24
+D m 1
+F "02 I Can Hear The Birds Now - Master v1f 220602 HLK 2448.wav" 53477800 0 1654153602 0
+D t "I Can Hear The Birds Now" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 5:02.962 l 3:04.698
+D i 24 m 2
+F "03 Pavlov_s Dog - Master v1e 220602 HLK 2448.wav" 57057352 0 1654153602 0
+D t "Pavlov's Dog" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 8:09.661 l 3:17.062
+D i 24 m 3
+F "04 Crown Shyness - Master v1e 220602 HLK 2448.wav" 65370682 0 1654153602 0
+D t "Crown Shyness" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 11:26.723 l 3:45.776
+D i 24 m 4
+F "05 Say My Name - Master v2c 220602 HLK 2448.wav" 85399470 0 1654153602 0
+D t "Say My Name" a "Anna B Savage" b in|FLUX y 2022-05-19
+D s 48000 n 2 r 15:19.360 l 4:54.954
+D i 24 m 5
+F "06 inFLUX - Master v1c 220602 HLK 2448.wav" 70936414 0 1654153602 0
+D t in|FLUX a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 20:07.500 l 4:05.000
+D i 24 m 6
+F "07 Hungry - Master v1d 220602 HLK 2448.wav" 63264044 0 1654153602 0
+D t Hungry a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 24:12.500 l 3:38.500
+D i 24 m 7
+F "08 Feet of Clay - Master v1d 220602 HLK 2448.wav" 61961192 0 1654153602 0
+D t "Feet of Clay" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 27:51.000 l 3:34.000
+D i 24 m 8
+F "09 Touch Me - Master v1f 220602 HLK 2448.wav" 80017416 0 1654153602 0
+D t "Touch Me" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 31:25.000 l 4:36.365
+D i 24 m 9
+F "10 The Orange - Master v2b 220602 HLK 2448.wav" 99858656 0 1654153602 0
+D t "The Orange" a "Anna B Savage" b in|FLUX y 2022-05-27
+D s 48000 n 2 r 36:18.538 l 5:44.896
+D i 24 m 10

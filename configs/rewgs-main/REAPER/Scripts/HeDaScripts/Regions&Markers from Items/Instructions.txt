@@ -1,0 +1,30 @@
+---------------------------------------------------------------------------------------------------
+  HeDa Regions & Markers from Items - Instructions     
+---------------------------------------------------------------------------------------------------
+  
+ There are two versions of the script. One that runs in the background constantly
+ and one that opens a window where you can select which tracks to activate
+ 
+ Label the tracks containing your items with a suffix "Markers x" or "Regions x"
+ Where x is a number that will be used as the start id number for the markers.
+ You can have several tracks, with different starting numbers to avoid markers to have the same id.
+ You should avoid different tracks with same id markers.
+ For example you could have these tracks, with 100 items in each.
+ - EXPORT Regions 1
+ - Structure Regions 100
+ - Lyrics Regions 200
+ - Annotations 300
+ If you add/remove tracks while the script is running you should close and restart 
+ the script to refresh the list of tracks
+ 
+ Add some items, or empty items in the track.
+ The notes of the item will be used for the region or marker name.
+ Region or Marker color will be inherited from the item's color.
+ If you have SWS extensions with auto coloring regions or markers you should revise the settings below
+ 
+ When the script is running it will update the regions and markers, from the items in 
+ each track that is not muted. Mute the track and it will delete the markers. 
+ We have to delete them since we can't hide them. But if you want them back, 
+ just unmute the track. So it's like Show/Hide.
+
+ ---------------------------------------------------

@@ -1,0 +1,135 @@
+desc: big functions
+
+@init
+
+spk0pos=-30;
+spk1pos=30;
+spk4pos=-150;
+spk5pos=150;
+spk6pos=-90;
+spk7pos=90;
+W=60;
+
+
+function Top_Side_Depth_adj_v2 ( Top_Side_Depth )
+(
+	Top_Side_Depth>0?( //Push TS to TF
+	spl8 +=(spl14)*   Top_Side_Depth;
+	spl9 +=(spl15)*   Top_Side_Depth;
+
+	//but also push TB to TS
+	spl14=( ( spl14)*(1-Top_Side_Depth) )+((spl12)*   Top_Side_Depth);
+	spl15=( ( spl15)*(1-Top_Side_Depth) )+((spl13)*   Top_Side_Depth);
+
+	spl12*=(1-Top_Side_Depth) ;
+	spl13*=(1-Top_Side_Depth) ;
+	)
+	:
+	(//push TS to TB
+	Top_Side_Depth*=-1;
+	spl12 +=(spl14)*   Top_Side_Depth;
+	spl13 +=(spl15)*   Top_Side_Depth;
+
+	//but also push TF to TS
+	spl14=( ( spl14)*(1-Top_Side_Depth) )+((spl8)*   Top_Side_Depth);
+	spl15=( ( spl15)*(1-Top_Side_Depth) )+((spl9)*   Top_Side_Depth);
+
+	spl8*=(1-Top_Side_Depth) ;
+	spl9*=(1-Top_Side_Depth) ;
+	);
+);
+
+function Height_height_adj_v1(Height_height)
+(
+	//move TF & TB into ELL F&B
+	spl0 +=  ( spl8  *(1-Height_height));
+	spl1 +=  ( spl9  *(1-Height_height));
+	spl4 +=  (spl12 *(1-Height_height) );
+	spl5 +=  (spl13 *(1-Height_height) );
+
+	spl6 +=( spl14*(1-Height_height_TS) );
+	spl7 +=( spl15*(1-Height_height_TS) );
+
+	//decrease TF & TB 
+	 spl8  *=Height_height;
+	 spl9  *=Height_height;
+	spl12  *=Height_height;
+	spl13  *=Height_height;
+
+	spl14*=Height_height_TS;
+	spl15*=Height_height_TS;
+
+	//mapping
+	heightsL = spl8 + spl12 + spl14;
+	heightsR = spl9 + spl13 + spl15;
+);
+
+function calculate_10_to_71_coeffs (pan)
+(
+	(  pan  >=spk0pos-W && pan <=spk0pos+W )? spl0_coeff = abs(cos( ( (1.5* (pan - spk0pos )) )*($pi/180)  )) : spl0_coeff=0;
+	(  pan  >=spk1pos-W && pan <=spk1pos+W )? spl1_coeff = abs(cos( ( (1.5* (pan - spk1pos )) )*($pi/180)  )) : spl1_coeff=0;
+	(( pan  >=spk4pos-W && pan <=spk4pos+W )||(pan>150))?spl4_coeff = abs(cos( ( (1.5* (pan - spk4pos )) )*($pi/180)  )) : spl4_coeff=0;//special handling
+	(( pan  >=spk5pos-W  ||  pan< -spk5pos ))?spl5_coeff = abs(cos( ( (1.5* (pan - spk5pos )) )*($pi/180)  )) : spl5_coeff=0;//for rear wraparound
+	(  pan  >=spk6pos-W && pan <=spk6pos+W )? spl6_coeff = abs(cos( ( (1.5* (pan - spk6pos )) )*($pi/180)  )) : spl6_coeff=0;
+	(  pan  >=spk7pos-W && pan <=spk7pos+W )? spl7_coeff = abs(cos( ( (1.5* (pan - spk7pos )) )*($pi/180)  )) : spl7_coeff=0;
+
+);
+
+function do_10_to_71_pan(in0)
+(
+	spl0 = spl0_coeff * in0;
+	spl1 = spl1_coeff * in0;
+	spl4 = spl4_coeff * in0;
+	spl5 = spl5_coeff * in0;// ( pan +60>=spk1pos-W && pan +60<=spk1pos+W )? spl1 += cos( ( (1.5* (pan - spk1pos +60)) )*($pi/180)  )*in1 ;
+	spl6 = spl6_coeff * in0;
+	spl7 = spl7_coeff * in0;
+);
+
+function calculate_71_to_151_coeffs_pc(theslider1)
+(	//pan compensated
+	temp1 = theslider1*0.9 ; //map 0-100 to 0-90deg
+	temp2 = temp1*$pi /180 ; //convert from degrees to rads
+	top_coeff_pan = sin(temp2)  ; //top coefficient
+
+	temp4 = 90 - temp1; //
+	temp5 = temp4*$pi /180; //to rads
+	ell_coeff_pan = sin(temp5);//bottom coefficient
+);
+
+
+function calculate_71_to_151_coeffs_npc(theslider1)
+(	//non pan compensated
+	top_coeff_pan = ( theslider1/100);  //vert coefficient
+	ell_coeff_pan = 1-( abs(theslider1/100));
+);
+	
+function do_71_to_151_pan(theslider1)
+(
+	(  theslider1 >= 0 )?  (
+	//need top first otherwise it gets silenced
+	spl8 = spl0 * top_coeff_pan;
+	spl9 = spl1 * top_coeff_pan;
+
+	spl12= spl4 * top_coeff_pan;
+	spl13= spl5 * top_coeff_pan;
+	spl14= spl6 * top_coeff_pan;
+	spl15= spl7 * top_coeff_pan;
+
+	spl0 = spl0 * ell_coeff_pan;
+	spl1 = spl1 * ell_coeff_pan;
+
+	spl4 = spl4 * ell_coeff_pan;
+	spl5 = spl5 * ell_coeff_pan;
+	spl6 = spl6 * ell_coeff_pan;
+	spl7 = spl7 * ell_coeff_pan;
+	)
+	:
+	(	//top coeff is actually for bottom. need -ve to counteract the -ve sin as calc'd above
+	spl10= spl0 *- top_coeff_pan;
+	spl11= spl1 *- top_coeff_pan;
+	spl0 = spl0 * ell_coeff_pan;
+	spl1 = spl1 * ell_coeff_pan; 
+	);
+);
+// function calculate_71_to_151_coeffs_npc(theslider1)
+// ();

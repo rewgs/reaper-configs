@@ -1,0 +1,56 @@
+﻿---------------------------------------------------------------------------------------
+  Region Tracks VIP - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v2.0pre9 (2020-08-01)
+  # fix: performance fix unmuting. Thanks @Thonex
+
+* v2.0pre8 (2019-05-06)
+  + Preference: "Use track mute buttons" (enabled by default uses mute track to activate or deactivate region tracks)
+  # fix: add parent item prefix without add track prefix
+  # fix: minimize/dock/close buttons not visible (again)
+
+* v2.0pre7 (2019-04-26)
+  # option to Use Parent Track name or Track name as prefixes is now separated in two options.
+  + option for prefixes to use Parent Item instead of Parent Track name. 
+  + wildcard $parent_item is replaced with Parent Item's text
+  + wildcard $parent_track is replaced with parent track's name
+  + wildcard $item_track is replaced with item's track name
+  + wildcard $seconds is replaced with item's length in seconds.
+  # fix: crash when moving item out of track in some cases
+  # fix: minimize/dock/close buttons not visible
+
+* v2.0pre6 (2019-02-13)
+  + option to add Track name prefix and Parent Track name(if any) to region names.
+  + added Prefix separator option in preferences (a space by default)
+
+* v2.0pre5 (2018-01-12)
+  + Preference: Muted Items do not create regions/markers
+  + Add/Remove Render Region Matrix to Master track.
+  # fix: small graphic glitch when showing menu
+  + About page with changelog
+
+* v2.0pre4 (2017-12-10)
+  # fix: overlapping issue on first item, thanks X-Raym for good bug hunting! ;)
+  
+* v2.0pre3 (2017-12-10)
+  # fix: resizing to small window issue
+  + Option for region tracks: Use existing name and color of existing regions if found in the same place.
+
+* v2.0pre2 (2017-12-06)
+  + Preference: Number of IDs reserved per track by default. 
+  + Right click for Menus in RRM buttons
+  # fix small overlapping issue (only simple overlap supported) 
+
+* v2.0pre1 (2017-11-29)
+  + Complete rewrite of "Regions&Markers from Items" script. New GUI. New engine. Better association with items. 
+  +	Compatible with Region Render Matrix.
+  + Option to Join overlapped items into single region.
+  + On change refresh. Minimized mode on change.
+  + Manual Refresh.
+  + Optimized Autorefresh. Option to fall back to On change if it is slower than a threshold.
+  + No need to specify minimum index in track name suffix. Dedicated button for it.
+  + Change minimum index for each track maintaining Region Render Matrix, it can be used as region render matrix presets for each group.
+  + Buttons to add to Render Region Matrix.
+  + New GUI
+  

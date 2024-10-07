@@ -1,0 +1,269 @@
+﻿---------------------------------------------------------------------------------------
+  HeDaMixer VIP - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v2.0pre32 (2020-06-20)
+  # fix crash y_meter_top on some configuration
+
+* v2.0pre31 (2020-05-27)
+  + Fader sends. Convert the faders between gain faders and send faders 
+  + Settings > Show > Show fader sends buttons
+  + Settings > Show > Number of fader sends buttons
+
+* v2.0pre30 (2020-05-09)
+  # fix Use VST2 version option.
+
+* v2.0pre29 (2020-04-18)
+  # fix in launching and closing tags instances
+  # fix: launching tag instances was overwriting main regular instance tabs.
+
+* v2.0pre28 (2020-04-09)
+  + special TI tags instances create the new TI-tag tab instead of the previous locked special tag mode. Thanks @Stroudy
+  # fix setting default meter back to peaks . Thanks @Stroudy
+  # fix deleting all tabs
+
+* v2.0pre27 (2020-04-05)
+  + Settings > Color > Use Color Override for Gain Reduction meters
+  + Settings > Color > Set Color Override for Gain Reduction meters...
+  # fix gain reduction color from TI fx groups.
+  # optimizations to avoid reading data from TI constantly.
+
+* v2.0pre26 (2020-03-22)
+  + Independent graph vertical scale (min/max) from the graph
+  # fix: graphic glitch on track color background if first track not visible
+  # fix: in separator layout background color
+  # fix: improved indentation with separators before and after tracks
+  # fix: default meter width reset tab meter wdith to default meter width
+  # more small fixes
+
+* v2.0pre25 (2020-03-13)
+  + Settings>Show>Show Mute/Solo/FX/IO buttons
+  + Settings>Default meter type>dpmeter sync on 
+  + Settings>Color>Auto track name/id text color
+  + Clickable fader gain numbers to set gain by entering the value
+  # maintain IL display even if there is no SL signal
+  + save autogain switch per tab
+  # fix: RESET configuration to default not refreshing fonts and some colors.
+  # fix: some graphics, lines...
+
+* v2.0pre24 (2020-03-10)
+  + Track depth support (up and down arrows to configure identation)
+  + Settings>Show> Icon size
+  + Settings>Show> Fader width area
+  + Settings>Show> Highlight selected tracks border
+  + Settings>Show> Show toolbar graph button
+  + Settings>Color> Muted tracks color...
+  + Settings>Color> Muted tracks overlay opacity...
+  + Theme images with larger/smaller sizes support
+  + Default_6 theme
+  # Menu: "Refresh Tracks" now also updates track order if changed in TCP and lock tracks is enabled.
+  # highlight selected track opacity setting more visible by default, matching default 6 theme.
+  # fix: vertical alignments of track icon, track name, track id. Optimizing vertical space when not showing these elements.
+  # fix: default meter width saved per tab not restored when restarting HeDaMixer
+  # focus arrange area when starting
+  # cache track icons
+  # several small bug fixes
+
+* v2.0pre23 (2019-09-25)
+  # fix: 7698: attempt to compare nil with number
+  
+* v2.0pre22 (2019-09-25)
+  # fix possible snapshot related crash bad argument #1 to 'GetTrackUIVolPan' (MediaTrack expected)
+
+* v2.0pre21 (2019-09-20)
+  + Tabs: setting in tab menu to autoload snapshots for that tab. disabled by default.
+  + Option: Set color for highlight selected track border.
+  # fix crash
+
+* v2.0pre20 (2019-09-14)
+  + Auto save/load snapshots of volume and panning for each tab.
+  # fix: dual pan knob
+  # fix: prevent knobs dragging when dragging other elements
+  # optimization: cache get tracks by GUID
+
+* v2.0pre19 (2019-08-26)
+  # fix: reset IL buttons overlap with meter 
+  # fix: Set Color 4...
+  # fix: labels circular panning mode.
+  # fix: don't move first tab to the left and last tab to the right.
+
+* v2.0pre18 (2019-08-23)
+  # fix 7453: attempt to compare nil with number
+
+* v2.0pre17 (2019-08-21)
+  + New Panning display mode: Knobs (you can make custom knobs with Knobman and add the PNGs to the knobs theme folder)
+  + circular/knob panning: left/right double clicking to reset panning 
+
+* v2.0pre16 (2019-08-16)
+  + New Panning display mode: Circular
+  # fix: changing meter type RMS or EBUR128 when there are no tabs
+  # fix: Save scroll position for each tab (Thanks @hopi)
+  # fix: vertical position of small faders(when width < 25 pixels)
+  
+* v2.0pre15 (2019-08-10)
+  + Compatibility with dpMeter4
+  + Disabling True Peak measurement for increased performance. (req dpMeter 4.1.1)
+  # fix max peak rounding
+  # fix problem deleting first tab
+  # fix crash when changing meters width after deleting tabs
+  # fix meter width for EBUR128 on multichannel tracks.
+  + some internal changes for compatibility with Graph module(coming soon)
+  
+* v2.0pre14 (2019-06-17)
+  # Setting: Must be visible in MCP
+  # Setting: Must be visible in TCP
+  # fix crash setting reference level with the menu and first time setting level (now fixed)
+
+* v2.0pre13 (2019-06-15)
+  + compatibility with new optimized TI tags 
+  + Settings: Color: Meter black background opacity...  (1.0 by default will display black background. It was 0.3 before)
+  # Show ML: if not showing ML, then show IL for the meter, not SL as before.
+  # Setting: IL number at bottom. Show IL number at the bottom of the meter with a black background.
+  # fix: RESET configuration as default correctly refreshes meter color
+  # fix: reset while AutoGain was not working with multiple tracks
+  # fix: allow independent autogain adjustment with multiple tracks selected
+  
+* v2.0pre12 (2019-05-25)
+  # fix: fixing issues with SHIFT modifier and faders, drag, double click.
+  # fix: fixing issue with regularize height of meters
+  
+* v2.0pre11 (2019-05-23)
+  + regularize height of meters according to maximum height of panning area. H key toggle.
+  + SHIFT drag fader to disallow grouping  [p=2138240]Thanks @Skorobagatko
+  
+* v2.0pre10 (2019-05-17)
+  # fix: crash when zooming horizontally without any tab created.
+  # fix: enter reference level from right click menu on the track
+  # fix: do not show right click menu on track if there is no selected track.
+
+* v2.0pre9 (2019-05-14)
+  + Support RMS and EBUR128 for "Meter from another track"
+  + Per track reference levels (Right click track menu: Reference level...)
+  + ALT+click on selected track(s) to set reference level where clicked
+  + Automatic Gain Level Adjustment to Reference level
+  + CTRL+drag fader for fine adjustment
+  + Right click track menu: Separator BEFORE track...
+  + Notice warning when adding many tracks (RMS or EBUR128)
+  # CTRL+mouse wheel zooms vertically
+  # ALT+mouse wheel zooms in/out
+  # fix: Add tab menu crash when there are no tags in project
+  # fix: panlaw aux tracks to 0
+
+* v2.0pre8 (2019-05-09)
+  + Tag tabs
+  + Add tab menu: New tab
+  + Add tab menu: New tab and rename
+  + Add tab menu: New Track Inspector Tag tab
+  + Setting: Show: Expand name display on mouse over track name
+  # internal: font optimizations
+
+* v2.0pre7 (2019-04-24)
+  + Reorder tabs (right click menu on the tab to move left or right)
+  # removed the default tab "1"
+  # fix: Make sure proper version (VST3 or VST2) of dpmeter3 is used.
+  # lock hidden tracks
+  # fit window to tracks when starting HeDaMixer VIP (autolock selected tracks on start)
+  # fix show IL number option
+  + show IL scale suffix option
+
+* v2.0pre6 (2019-04-02)
+  + Main menu: Show: Centered name and id texts
+  + Main menu: dB scales: Level lines opacity...
+  # optimizations
+
+* v2.0pre5 (2019-03-28)
+  + Main menu: Color: Set Color 2 
+  + Main menu: Color: Set Color 3 
+  + Main menu: Color: Set Color 4 
+  + Main menu: Color: Set Color for db scale text 
+  + Clicking after last track to unselect all tracks.
+  # fix meter color setting with track background color enabled
+
+* v2.0pre4 (2019-03-27)
+  + option to show/hide track number 
+  + added font5 for IL, and use font4 for id number
+  + Main menu: Color: Track background color 
+  + Main menu: Color: Track background color opacity
+  + Main menu: Color: Track background color id
+  # a few bug fixes
+
+* v2.0pre3 (2019-03-26)
+  + Mixer tabs. Manage multiple sets of tracks with tabs
+  # Main menu for general settings and menu specific for each track on right click on track.
+  + RESET to default command on main menu.
+  + 4 Fonts and sizes and menu to change fonts. Font 1 default font. Font 2 db grid small, font 3 track names, font 4 track number and IL. 
+  # fix: draw last track vertical line
+  # fix: do not allow faders below threshold to avoid disappearing faders when -inf.
+
+* v2.0pre2 (2019-03-13)
+  + Instance variable that overrides locked tracks to selected tracks on start.
+  + Action to refresh opened mixer to selected tracks.
+  # fix: don't unselect tracks on exit.
+
+* v2.0pre1 (2019-03-11)
+  + RMS meters (using Track Inspector JSFX) Customizable RMS window
+  + EBUR128 meters (using dpmeter3 v1.3.4) Click in IL number to reset IL in track. Middle click to reset IL in all displayed tracks on the mixer
+  + EBUR128 Loudness Range display (using VST3 dpmeter3)
+  # About page with changelog and links to VIP members and VIP donations.
+  # Font size for db scale
+  
+* v1.0pre9 (2018-11-19)
+  # fixing mute and solo buttons, work with selected tracks and grouping.
+
+* v1.0pre8 (2018-08-14)
+  + Big CPU optimization drawing only what is seen. Now we can have many tracks , as with the use MCP tracks option. Only visible ones in the window will be drawn.
+  # fix: mouse over bottom text label with custom width tracks draws lines with correct width.
+
+* v1.0pre7 (2018-08-13)
+  + Option to use all tracks in MCP 
+  + Theming: new files support for displaying image at peak hold line and meter line (peakhold.png and meter.png)
+  # fix: bad string displayed when volume -Inf.
+  # fix: possible crash
+
+* v1.0pre6 (2018-03-20)
+  # fix: Running instances from Track Inspector Tags.
+
+* v1.0pre5 (2018-03-14)
+  + Panning: Mono Pan. Stereo Pan. Dual Pan. 
+  + Panning: Some initial ReaSurround support.
+  + Mouse over track names to read entire track name.
+  + Keys + and - to change font size.(keys work with HeDaMixer window focused) 
+  + Theme: Change Font support. "Bebas Neue" included as default. If not, Arial or default font should be used. 
+  + Setting: Show > Margin between tracks
+  # fix: theme settings, colors, saved for each instance.
+  # fix: crash in meter from another track. Thanks @hopi
+
+* v1.0pre4 (2018-03-05)
+  + Change fader image per track. Menu searches pngs in the faders folder. Included some example faders with default fader in different colors.
+  # Change default fader type for all tracks, now uses new function that searches pngs in the faders folder too.
+  # fix: locked tracks issue after switching from another project tab.
+  # fix: correctly load theme from settings folder if found. If not, use default theme.
+  # removed instances 2 and 3 examples. Use Save as new instance function to make new instances.
+  # fix: track selection change if dragging fader and releasing mouse button outside the current dragged fader.
+
+* v1.0pre3 (2018-02-17)
+  # fix: toolbar_misc_key_lock.png not needed [p=1954013]  thanks @timh613
+  # fix: (position out of bounds) [p=1955399] thanks @hopi
+
+* v1.0pre2 (2018-02-08)
+  + Automation support.
+  # try to fix theme not found error.
+  # fix: crash gap width dialog when deleting the number
+
+* v1.0pre1 (2018-02-02)
+  + Display peaks meter, waveform, fader, mute, solo, FXChain, I/O.
+  + Display Selected tracks and Lock current tracks
+  + Support for Track Inspector Tags special instances that show only tracks with specific TI tag.
+  + Support for Track Inspector FX Groups, for displaying gain reduction for each plugin with different colors by FX group.
+  + Option: Display Gain reduction from supported plugins. Multiple gain reduction indicator support.
+  + Option: Set reference level grid
+  + Option: Change color above reference level  
+  + Option: Meter color by Track color or by defined color
+  + Option: Change background color, and text color, and text shadows
+  + Option: Selecting one meter, scrolls into TCP view or MCP view
+  + Load and save configurations as presets of all the options.
+  + Save as new instance
+  + Gaps after a track.
+  + Layout: initial support for different layouts. early limited. Separator layout. will be improved.
+  + Auto layout Separators from MCP layout.
+  + Initial public test version. 

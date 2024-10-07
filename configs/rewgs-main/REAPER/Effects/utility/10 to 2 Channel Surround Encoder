@@ -1,0 +1,103 @@
+desc: 10-to-2 Channel Surround Sound Encoder
+
+
+slider5:65<0,100,1>Output Level (%)
+
+slider10:100<0,100,1>Front Left Level (%)
+slider11:100<0,100,1>Front Right Level (%)
+slider12:100<0,100,1>Front Center Level (%)
+slider13:100<0,100,1>LFE Level (%)
+slider14:100<0,100,1>Rear Left Level (%)
+slider15:100<0,100,1>Rear Right Level (%)
+slider16:  0<0,100,1>Side Left Level (%)
+slider17:  0<0,100,1>Side Right Level (%)
+slider18:  0<0,100,1>Left Height Level (%)
+slider19:  0<0,100,1>Right Height Level (%)
+
+slider20:-45<-90,90,0.1>Front Left Rotate (Deg)
+slider21:+45<-90,90,0.1>Front Right Rotate (Deg)
+slider22:  0<-90,90,0.1>Front Center Rotate (Deg)
+slider23:  0<-90,90,0.1>LFE Rotate (Deg)
+slider24:-75<-90,90,0.1>Rear Left Rotate (Deg)
+slider25:+75<-90,90,0.1>Rear Right Rotate (Deg)
+slider26:-65<-90,90,0.1>Side Left Rotate (Deg)
+slider27:+65<-90,90,0.1>Side Right Rotate (Deg)
+slider28:-55<-90,90,0.1>Left Height Rotate (Deg)
+slider29:+55<-90,90,0.1>Right Height Rotate (Deg)
+
+slider30:0<0,500,1>Front Left Delay (ms)
+slider31:0<0,500,1>Front Right Delay (ms)
+slider32:0<0,500,1>Front Center Delay (ms)
+slider33:0<0,500,1>LFE Delay (ms)
+slider34:0<0,500,1>Rear Left Delay (ms)
+slider35:0<0,500,1>Rear Right Delay (ms)
+slider36:0<0,500,1>Side Left Delay (ms)
+slider37:0<0,500,1>Side Right Delay (ms)
+slider38:0<0,500,1>Left Height Delay (ms)
+slider39:0<0,500,1>Right Height Delay (ms)
+
+@init
+
+_slider30=-1;
+_slider31=-1;
+_slider32=-1;
+_slider33=-1;
+_slider34=-1;
+_slider35=-1;
+_slider36=-1;
+_slider37=-1;
+_slider38=-1;
+_slider39=-1;
+
+@slider
+
+slider30!=_slider30?(_slider30=slider30;d0=in+floor(srate*slider30/1000)*10;);
+slider31!=_slider31?(_slider31=slider31;d1=in+floor(srate*slider31/1000)*10;);
+slider32!=_slider32?(_slider32=slider32;d2=in+floor(srate*slider32/1000)*10;);
+slider33!=_slider33?(_slider33=slider33;d3=in+floor(srate*slider33/1000)*10;);
+slider34!=_slider34?(_slider34=slider34;d4=in+floor(srate*slider34/1000)*10;);
+slider35!=_slider35?(_slider35=slider35;d5=in+floor(srate*slider35/1000)*10;);
+slider36!=_slider36?(_slider36=slider36;d6=in+floor(srate*slider36/1000)*10;);
+slider37!=_slider37?(_slider37=slider37;d7=in+floor(srate*slider37/1000)*10;);
+slider38!=_slider38?(_slider38=slider38;d8=in+floor(srate*slider38/1000)*10;);
+slider39!=_slider39?(_slider39=slider39;d9=in+floor(srate*slider39/1000)*10;);
+
+a=(slider20+45)*$pi/180; c0=cos(a)*slider10/100; s0=sin(a)*slider10/100;
+a=(slider21+45)*$pi/180; c1=cos(a)*slider11/100; s1=sin(a)*slider11/100;
+a=(slider22+45)*$pi/180; c2=cos(a)*slider12/100; s2=sin(a)*slider12/100;
+a=(slider23+45)*$pi/180; c3=cos(a)*slider13/100; s3=sin(a)*slider13/100;
+a=(slider24+45)*$pi/180; c4=cos(a)*slider14/100; s4=sin(a)*slider14/100;
+a=(slider25+45)*$pi/180; c5=cos(a)*slider15/100; s5=sin(a)*slider15/100;
+a=(slider26+45)*$pi/180; c6=cos(a)*slider16/100; s6=sin(a)*slider16/100;
+a=(slider27+45)*$pi/180; c7=cos(a)*slider17/100; s7=sin(a)*slider17/100;
+a=(slider28+45)*$pi/180; c8=cos(a)*slider18/100; s8=sin(a)*slider18/100;
+a=(slider29+45)*$pi/180; c9=cos(a)*slider19/100; s9=sin(a)*slider19/100;
+
+@sample
+
+(in=in-10)<0?in=srate*10;
+(d0=d0-10)<0?d0=srate*10; 
+(d1=d1-10)<0?d1=srate*10;
+(d2=d2-10)<0?d2=srate*10; 
+(d3=d3-10)<0?d3=srate*10;
+(d4=d4-10)<0?d4=srate*10; 
+(d5=d5-10)<0?d5=srate*10;
+(d6=d6-10)<0?d6=srate*10; 
+(d7=d7-10)<0?d7=srate*10;
+(d8=d8-10)<0?d8=srate*10; 
+(d9=d9-10)<0?d9=srate*10;
+
+in[0]=spl0; 
+in[1]=spl1; 
+in[2]=spl2; 
+in[3]=spl3; 
+in[4]=spl4; 
+in[5]=spl5; 
+in[6]=spl6; 
+in[7]=spl7; 
+in[8]=spl8; 
+in[9]=spl9;
+
+spl0=(d0[0]*c0+d1[1]*c1+d2[2]*c2+d3[3]*c3+d4[4]*c4+d5[5]*c5+d6[6]*c6+d7[7]*c7+d8[8]*c8+d9[9]*c9)*slider5/100;
+spl1=(d0[0]*s0+d1[1]*s1+d2[2]*s2+d3[3]*s3+d4[4]*s4+d5[5]*s5+d6[6]*s6+d7[7]*s7+d8[8]*s8+d9[9]*s9)*slider5/100;
+

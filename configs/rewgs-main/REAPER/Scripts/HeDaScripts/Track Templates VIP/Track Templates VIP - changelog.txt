@@ -1,0 +1,275 @@
+---------------------------------------------------
+  Track Templates - Changelog (What's new)     
+---------------------------------------------------
+
+* v1.3pre8 (2020-10-26)
+  # fix stuck on splash screen Initializing when closing projects...(try #1)
+
+* v1.3pre7 (2020-09-10)
+  + Hide attribute to always hide specific files or folders (right click menu on item to hide, edit .cfg file removing the "hide" row to unhide)
+  # improved theme loading from settings folder (also searching for the theme file without the instance suffix number)
+
+* v1.3pre6 (2020-06-02)
+  + Settings > Auto Preview Audio (clicking or keyboard navigating automatically plays audio preview)
+  + Settings > Focus Arrange (optional now: Keep arrange focused)
+
+* v1.3pre5 (2020-05-22)
+  # dragdrop fx chain to items: change selected items to be more than 1 instead of more than 0, to insert on takes of all selected items.
+  # fix: action after inserting wasn't working with FX chains
+  # fix: trying to improve double click for fast double clicking
+
+* v1.3pre4 (2020-05-17)
+  # fix: avoid inserting template by clicking fast in the audio preview buttons
+  # fix: play button hidden if label hidden
+  # fix: bugs with send presets without source channels
+  # focus to arrange after clicking
+  # avoid typing search if search has no focus
+  + Right click play button to stop audio preview
+
+* v1.3pre3 (2020-05-14)
+  # when saving fx chain, cancel the rename dialog do not save fx chain. Thanks @Reflected
+  # crash on certain plugin names. Thanks @Reflected
+  + Settings > Toolbar > FX button is displayed on TT mode. Thanks @Reflected
+  
+* v1.3pre2 (2020-05-13)
+  + Save FX Chains as .RfxChain files
+  + Settings > Use single click in directory panel
+  # ask before overwriting track templates or fx chains when saving them
+  # Set plugin number to capture to negative number to capture the last selected plugin
+  # fix: refresh audio buttons automatically after rendering audio previews
+  # fix: crash when finding audio files with files
+  # do not open last fx window when inserting fx chain (I don't know why it was doing that)
+
+* v1.3pre1 (2020-05-08)
+  + Set Custom Image Icon to template or folder
+  + Set Custom Sticker Image to template or folder
+  + Audio preview play buttons if sidecar ogg file(s) are found
+  # Refresh button/menu command now also regenerates the audio previews database to display the play buttons, in case you manually put the audio preview files in the folder.
+  + Save track(s) as Template(s): export selected tracks as templates
+  + Save track(s) as Template(s): Automatic screenshot of the plugin
+  + Save track(s) as Template(s): Automatic audio previews generation
+  + Save track(s) as Template(s): option to include items or not
+  + Sends source channel option (1/2, 3/4, 5/6)
+  + Menu > Create Directory...
+  # JSAPI requirement
+  # memory optimizations
+
+* v1.2pre13 (2020-03-09)
+  # don't draw semitransparent fill selected templates, just the border
+  # enter key to insert multiple selected too
+  
+* v1.2pre12 (2020-01-24)
+  # fix crash when script staying open after inserting [p=2236095] Thanks @vsthem
+
+* v1.2pre11 (2020-01-24)
+  # fix: inserting multiple templates and tagging
+  + TI send presets for track templates
+
+* v1.2pre10 (2020-01-03)
+  # fix: selection refresh when typing search and mouse outside window
+
+* v1.2pre9 (2019-12-12)
+  # fix crash smart inserting in some cases
+  # improved label text crop inside the icons
+  # do not leave blank gap between icons when using "labels below icon" and "always hiding labels in directory panel" or "always hiding labels for specific folders" 
+
+* v1.2pre8 (2019-12-10)
+  # left and right arrows navigate items instead of moving cursor inside search box
+  # fix top margin on vertical layout
+  # fix crash on vertical layout
+  # fix don't show use directories panel button if using vertical layout
+  # fix toolbar buttons if using directories panel
+  # small fixes
+
+* v1.2pre7 (2019-12-09)
+  + Settings: Show labels below icon
+  + Settings: color option to color label below icon or tinting entire icon
+  # fix: CTRL click to select multiple was silly broken in pre5
+
+* v1.2pre6 (2019-12-03)
+  + Show/Hide labels for item (in right click menu)
+  # fix bug when browsing to subfolders from directories panel
+
+* v1.2pre5 (2019-11-25)
+  # fix directories panel right click and selection support.
+  + tags on directories(folders). tags will be applied to all templates inside the directory
+  # smashing hidden underground rebel bugs
+
+* v1.2pre4 (2019-11-23)
+  + smart tag directories(folders). If template doesn't have smart tag, it would use directory(folder) smart tag.
+
+* v1.2pre3 (2019-11-20)
+  # fix search box logic for multiple words as it was before (for filename searches)
+  # fix double click on search box to clear the search
+  
+* v1.2pre2 (2019-11-19)
+  # fix: problem selecting items when hiding subdirectories 
+  # fix internal table for selection, problem still exists with directories panel enabled. will fix.
+  # fix crash related to tags in search box
+  # fix add/remove favourite with multiple selected
+ 
+* v1.2pre1 (2019-11-18)
+  + TT Tags: Add/Remove tags to track templates. These tags are converted to Track Inspector Tags when inserting the track template and TI is running. 
+  + Settings Menu: Action to run before inserting...
+  + Settings Menu: Action to run after inserting...
+  + Toolbar button: enable/disable run action before inserting
+  + Toolbar button: enable/disable run action after inserting
+  + Search by tag: Use # character in the edit box. ie: #Strings  to search by tag Strings
+  + Toolbar button: Show smart tags buttons to search by tag
+  + Multiple selection support: For inserting and defining tags, smart tags, etc.
+  # CTRL+click to select multiple 
+  # SHIFT+click to select multiple consecutively
+  + Custom Colors for each template. Tints color over the items.
+  + Settings Menu: Show Custom colors
+  # Favourites stored in sidecar .cfg files instead of instance settings file.
+  # Rename... also renames TT custom properties file (.cfg)
+  # fix insert as children with multiple depths levels
+  # when smart inserting scrolls inserted track into view
+  # many new bug fixes
+  
+* v1.1 (2019-11-10)
+  # fix: crash opening directory with Smart Insert enabled
+  # fix: loading FX Chains with Smart Insert enabled
+  # fix: Insert normally if no smart tag is found when inserting
+
+* v1.1pre15 (2019-11-07)
+  + Smart Insert (Searches track with smart TI tag and inserts as last child from it)
+  + Toolbar buttons for "Insert as Child", "Replace FX Chain", and "Rename Track with FX Chain name" modes.
+  + Toolbar button for "Smart Inserting" as default mode
+  # fix: better fit toolbar buttons in window width
+  + Right click menu
+  + Right click Menu: Insert (always insert normally, independently of settings)
+  + Right click Menu: Smart Insert (always smart insert normally, independently of settings)
+  + Right click Menu: Add/Remove Favourite (same as right clicking before the menu)
+  + Right click Menu: Set Smart Insert Tag (Define which TI tag to search for the parent)
+
+* v1.1pre14 (2019-11-04)
+  + Performance: Increase performance when opening the window. delaying loading images as needed after window is opened.
+  + Keyboard: up/down arrows to navigate by keyboard, enter to insert
+  + Menu: Remember last search
+  # Settings: refresh toolbar button hidden by default.
+  # Settings: dock toolbar button hidden by default.
+  # fix: better minimum search box width before displaying it in a new line
+  # fix: Del key when mouse out of window
+  # fix: if the setting load icons is disabled, it was not showing images, but still loading them into memory
+
+* v1.1pre13 (2019-10-30)
+  + Menu: Save current configuration as new instance (new REAPER action is added)
+  # search box: search by each word
+  # fix: crash if no track is selected
+  # fix: mouse click detect on folders broken in pre11
+
+* v1.1pre12 (2019-10-29)
+  # fix: inserting track template as children when selected track is already a folder
+  # fix: inserting track template as children when selected track is last in folder
+  # fix: inserting track template normally when selected track is last in folder
+
+* v1.1pre11 (2019-10-28)
+  + Setting: Rename track with FX chain name
+  + CTRL+click to rename track with FX Chain name
+  + Setting: Insert Track Templates as children
+  # fix: search box works with mouse outside window
+  # Del key to clear entire search box
+  # fix: disable buttons while dragging in search box
+  
+* v1.1pre10 (2019-10-22)
+  + ALT+click to replace FX Chain instead of adding FX chain.
+  + Setting: Replace existing FX chains (in this case ALT+click adds, not replaces)
+
+* v1.1pre9 (2019-08-06)
+  # fix: drop into items takes for v5.981+ 
+
+* v1.1pre8 (2019-08-02)
+  # fix: drag and drop to tracks fix for v5.981+
+  # fix: drag and drop to Mixer and FX Chains windows
+
+* v1.1pre7 (2019-05-20)
+  + Match FX Chain templates to Selected track names
+  # fix: do not crash when trying to insert FX Chains outside FXChains folder.
+
+* v1.1pre6 (2019-05-13)
+  + Insert FX Chains much faster (clicking, dragging to track, or dragging to item take)
+  + Support dragging FX Chains into multiple selected tracks and multiple selected items
+  # fix: font fix search box
+
+* v1.1pre5 (2019-02-11)
+  # crash dragging FX chain to empty area below tracks, now it adds FX chain to selected tracks.
+  + Set "folder_brackets" to 0 to avoid adding brackets [ ] to the folder names.
+  + added variables in theme. "over_color" sets the color for the mouse over buttons for templates and "over2_color" for FX chains.
+
+* v1.1pre4 (2017-10-07)
+  + Setting: Always hide labels in directory pane
+
+* v1.1pre3 (2017-10-05)
+  + Drag and drop support for templates and FX chains into tracks.
+  + experimental: Insert FX Chains into item take by drag and drop.
+  + Be able to use custom instances from "Track Templates VIP settings" folder. So they are not deleted when updating.
+  + Specify minimum width of window in pixels where the directories panel is hidden and items fit to width in one column only. If -1 is entered, previous behavior is used (width of window < height of window)
+  # fix: do not scroll to top after clicking a folder if "Lock directories panel to home" is active. 
+  # fix: Always hide labels for specific folder option was also hiding labels for directories panel.
+
+* v1.1pre2 (2017-07-26)
+  + Settings: Options to show/Hide toolbar buttons.
+  + Settings: Always hide labels option for each directory
+
+* v1.1pre1 (2017-06-03)
+  + FX Chains support
+  + Button to toggle between FXChains (FX) and Track Templates (TT)
+  + Setting: Define FX Chains home directory (/FXChains by default)
+
+* v1.0 (2017-05-30)
+  
+* v1.0pre7 (2017-05-20)
+  + Show directories panel: splits in two panels, one for directories, and one for the templates
+  + Lock directories panel to home: option useful to always show directories panel if you only have one subdirectory depth structure
+  # Zoom - and + buttons: Use Right click to zoom the directories panel.
+  
+* v1.0pre6 (2017-03-21)
+  + Rename directories and templates (SHIFT+click on item to rename) Renaming maintains favorites.
+  # fix: bug removing a favorite
+  # fix: bug favorites being lost
+  # new favorites internal storage
+
+* v1.0pre5 (2017-03-20)
+  # Internals: better icon buffers management
+  # Internals: debug log option
+  # fix: refresh buffer while typing filter
+  + added documentaion page and forum thread links in the menu
+
+* v1.0pre4 (2017-03-18)
+  # fix: redraw issue
+
+* v1.0pre3 (2017-03-17)
+  # fix a bug in refresh button
+  # fix when template track icon is not found
+  # fix more CPU optimizations
+  + Setting: Define templates home directory...
+  + Setting: Show icons (turn on/off all icon images/screenshots)
+  # show directories first
+  # Remember a different zoom when aligned in one vertical column (window vertical size > horizontal size)
+
+* v1.0pre2 (2017-03-16)
+  + Track Icons inside template file support. It still uses sidecar png in template folder if found.
+  + Setting: Show files from all subdirectories
+  + Setting: Hide subdirectories
+  # some small optimizations
+
+* v1.0pre1 (2017-03-15)
+  + Custom Icons for directories and templates (Save .png image file with the same name as the template in your Track Templates VIP settings directory. Icons for directories must be in square brakets i.e. [DIRECTORY].png )
+  + Filter search by name
+  + Favorites: Show only favorited items (right click on template or directory to set/unset favorite)
+  + Folders navigation
+  + Refresh button.
+  + Dock/Undock button
+  + Zoom in and out buttons to change the size of the items. Also CTRL+mouse wheel. 
+  + Multiple Instances (read inside HeDa_Track Templates VIP.lua file to set a new instance, 3 instances provided by default)
+  + Open current Template Directory in explorer or finder.
+  + Setting: ≡ Menu for settings 
+  + Setting: Always show labels (by default it only shows the label if no icon is found)
+  + Setting: Autosize labels with zoom
+  + Setting: Show tooltips
+  + Setting: Exit after importing template docked 
+  + Setting: Exit after importing template floating
+ 
+* v0.1 (2016-12-20)
+  + internal. concept and get array of templates.

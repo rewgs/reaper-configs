@@ -1,0 +1,20 @@
+C10017 "/Users/jonathankawchuk/Music/Grab Bag for Jonathan"
+F "clarinet squeeks.wav" 813050 0 1496338201 0
+D s 44100 n 2 l 0:03.072 i 24
+F "g gran casa rolls.aif" 34742286 0 1208041598 0
+D s 48000 n 2 l 2:00.473 i 24
+F "low growls.wav" 31955110 0 1482395423 0
+D y 2016-12-22 s 48000 n 2 r 12:59.541
+D l 1:50.952 i 24
+F "Metal Hit.aif" 3399606 0 1378754276 0
+D s 48000 n 2 l 0:11.786 i 24
+F "Organic Hit.wav" 601774 0 1430452333 0
+D y 2015-04-30 s 48000 n 2 r 1:00:33.391
+D l 0:02.086 i 24
+F "Sub Hit_48KHz.wav" 1901604 0 1413693575 0
+D y 2014-06-22 s 48000 n 2 r 1:00:08.000
+D l 0:06.484 i 24
+F Urei_CLICK.aif 22568 0 1332580941 0
+D s 44100 n 2 l 0:00.124 i 16
+F Urei_CLICK.wav 44036 0 1531577813 0
+D s 44100 n 2 l 0:00.124 i 32

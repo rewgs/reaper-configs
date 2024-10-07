@@ -1,0 +1,15 @@
+﻿---------------------------------------------------------------------------------------
+ Render LUFS - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0pre3 (2019-04-19)
+  + Tiny fades option on second pass
+
+* v1.0pre2 (2019-04-18)
+  # fix: first pass rendered in 64 bit
+  # fix: first pass rendered in project sample rate
+
+* v1.0pre1 (2019-04-16)
+  + Master Output Time selection support.
+  + Initial pre-release. 
+  

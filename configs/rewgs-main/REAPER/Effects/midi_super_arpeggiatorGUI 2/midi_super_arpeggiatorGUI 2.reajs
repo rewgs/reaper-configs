@@ -1,0 +1,1194 @@
+/*  by whatsup October 2009
+  GUI added by argee
+
+  Click and drag up/down on numeric parameter values to change them
+  --------------------------------------------------------------------------------
+  Ctrl-Click changes drag to fine tune value
+  Alt-Click changes drag to large value
+  Right-Click resets to default value
+
+  on the variant grid
+  ---------------------
+  Left-Click paints variant
+  Right-Click erases variant
+  Alt-Click resets to default value
+
+  some parameter changes may not be heard until you re-start playback  */
+
+desc:MIDI Super Arpeggiator (GUI version)
+
+filename:0,midi_super_arp_bg2.png
+
+slider1:1<0,1,1{Off,On}>-Power
+slider2:0<0,1,1{No,Yes}>-Latch
+slider3:1<0.0,16,0.0625>-Rate (x BPM)
+slider4:1<0.01,1,0.00625>-Note Length (0..1)
+slider5:0<0,3,1{Up,Up & Down (bounce),Up & Down (sticky),Randomize}>-Note Mode
+slider6:0<0,1,1{No,Yes}>-Reverse
+slider7:0<0,1,1{No,Yes}>-Alt
+slider8:0<0,1,1{No,Yes}>-Sorted
+slider9:0<-48,48,1>-Transpose
+slider10:0<0,3,1{Up,Up & Down (bounce),Up & Down (sticky),Randomize}>-Transpose Mode
+slider11:0<0,1,1{No,Yes}>-Transpose Reverse
+slider12:0<0,24,1>-Transpose Amount
+slider13:0<-24,24,1>-Transpose Speed
+slider14:0<0,15,1>-Transpose Repeat
+slider15:1<1,32,1>-Pattern Selector
+slider16:8<0,32,1>-Max Variants
+slider17:1<0,1,1{Yes,No}>-Play Origin Note too
+slider18:0<0,1,1{No,Yes}>-Randomize Variants
+slider19:0<0,1,1{No,Yes}>-Reverse Variants
+slider20:0<0,1,1{Off,On}>-Chord
+slider21:/MIDI_Super_Arpeggiator:none:Chord Type
+slider22:1<0,1,0.005>-Chord Speed
+slider23:0<0,1,1{Yes,No}>-Chord Sustain
+slider24:1<1,16,1>-Slice Amount
+slider25:0<0,2,1{Up,Up & Down (bounce),Up & Down (sticky),Randomize}>-Slice Transpose Mode
+slider26:0<0,1,1{No,Yes}>-Slice Transpose Reverse
+slider27:0<-24,24,1>-Slice Transpose Speed
+slider28:0<0,15,1>-Slice Transpose Repeat
+slider29:1<0,1,0.01>-Slice Velocity Amount
+slider30:0<0,1,1{No,Yes}>-Swing Slice
+slider31:0<0,1,1{No,Yes}>-Velocity Slice
+slider32:0<0,1,1{No,Yes}>-Ping Pong Slice
+slider33:0<-1,1,0.03125>-Swing Balance
+slider34:1<1,127,1>-Min Velocity
+slider35:0<0,127,1>-Max Velocity (0=use played velocity)
+slider36:0<-127,127,1>-Velocity Speed,Direction
+slider37:0<0,64,1>-Ping Pong Amount
+slider38:0<-127,127,1>-Ping Pong Speed,Direction
+slider39:16<0,16,1{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,all}>-MIDI Channel
+
+// these lines tell Reaper the effect has no audio input/output,
+// which enables processing optimizations.
+// MIDI-only FX should always have these lines.
+in_pin:none
+out_pin:none
+
+//===============end of section===============
+
+@init
+
+ext_noinit = 1;  // don't init on transport state
+
+//load the mode list starting at offset 100
+sModes=100;
+strcpy(sModes,"Up"); sModes+=1;
+strcpy(sModes,"Up & Down (bounce)"); sModes+=1;
+strcpy(sModes,"Up & Down (sticky)"); sModes+=1;
+strcpy(sModes,"Randomize");
+
+ChordList=0;
+lastChordList=ChordList+32;
+
+MAX_VARs=32;
+MAX_PATTERNs=32;
+
+VelocityList=lastChordList+32;
+NoteList=VelocityList+128;
+SortedNoteList=NoteList+128;
+PatternList=SortedNoteList+128;
+MaxVarList=PatternList+((MAX_VARs+1)*MAX_PATTERNs);
+cl=MaxVarList+MAX_PATTERNs;
+
+NoteCnt=-1;
+sArpPower=-1;
+sNoteRev=1000;
+sTransRev=1000;
+PatternNum=-1;
+
+sChordType=-1;
+lastChordCnt=0;
+
+sMaxVelocity=127;
+
+MIDIpan=64;
+
+helpOn=0;
+toggle=0;
+drop=0;
+startup=1;
+
+CopyPatNum=0;
+CopysMaxVar=0;
+CopyVarList=10000;
+
+//handle mouse wheel actions over a control
+function HandleMouseWheel(ctrlnum,slideval,minval,maxval,inc)(
+  mouse_on == ctrlnum ? (
+    mouse_wheel < 0? slideval = max(minval,slideval-inc):
+    mouse_wheel > 0? slideval = min(maxval,slideval+inc);
+    mouse_wheel = 0;
+  );
+  slideval;
+);
+
+//draw numerical text centered in a rectangle, handles up to 4 decimal places
+function doCenterNumVal(ctrX, ctrY, val, dec)(
+  str = val;
+  dec == 4 ? str = sprintf(#, "%.4f", val);
+  dec == 3 ? str = sprintf(#, "%.3f", val);
+  dec == 2 ? str = sprintf(#, "%.2f", val);
+  dec == 1 ? str = sprintf(#, "%.1f", val);
+  dec == 0 ? str = sprintf(#, "%.0f", val);
+  gfx_measurestr(str, str_w, str_h);
+  gfx_x = ctrX - str_w/2; gfx_y = ctrY - str_h/2;
+  gfx_drawstr(str);
+);
+
+//draw text string centered in a rectangle
+function doCenterTextString(ctrX, ctrY, getstr)(
+  str = getstr;
+  gfx_measurestr(str, str_w, str_h);
+  gfx_x = ctrX - str_w/2; gfx_y = ctrY - str_h/2;
+  gfx_drawstr(str);
+);
+
+//determine whether mouse is positioned within a defined rectangle
+function Is_Mouse_At_RectCtrl(ctrlnum,minX, maxX, minY, maxY)
+(
+  mouse_x > minX && mouse_x < maxX && mouse_y > minY && mouse_y < maxY ?
+  (ctrlnum):(
+    knobdrag == 1 ? 0;
+  );
+);
+
+//draw note mode combo box and handle mouse actions for it
+function doNoteMode(ctrlNum,SldrVal,leftX,topY, defval)
+local (mouse_over)(
+  gfx_setfont(1,"Arial Bold",15,0);
+  nm=100+SldrVal;
+  gfx_x=leftX;gfx_y=topY;
+  doCenterTextString(leftX+58, topY+9, nm);
+  ondrop = 0;
+  knobdrag == 0 ? mouse_over = Is_Mouse_At_RectCtrl(ctrlnum,leftX, leftX+120, topY, topY+20);
+
+  mouse_over == ctrlnum && slider1 == 1 ? (
+    mouse_cap == 1 ? (
+     toggle == 0 ? (
+       //drop == ctrlnum ? drop = 0;
+       drop == 0 ? drop = ctrlnum;
+       toggle = 1;
+     );
+    ):
+    mouse_cap == 2 ? SldrVal = defval :
+    (toggle == 1 ? toggle = 0;
+    );
+    mouse_wheel > 0? SldrVal = max(0,SldrVal-= 1);
+    mouse_wheel < 0? SldrVal = min(3,SldrVal += 1);
+    mouse_wheel = 0;  
+    knobdrag = 0;
+  );
+
+//draw dropdown box for note mode
+    drop == ctrlnum && slider1 == 1 ? (
+      //draw frame
+      gfx_r=gfx_g=gfx_b=0;gfx_a=0.4;
+      gfx_x = leftX;gfx_Y=topY+80;
+      gfx_rectto(gfx_X+116,gfx_Y+15);
+      gfx_a=1;
+      gfx_r=0.5;gfx_g=0.7;gfx_b=0.8;
+      gfx_x = leftX-3;gfx_Y=topY+20;
+      gfx_rectto(gfx_X+122,gfx_Y+70);
+      mouse_x > leftX+5 && mouse_x < leftX+120 && mouse_y > topY+20 && mouse_y < topY+85 ? (
+        ondrop = 1;
+        gfx_r=gfx_g=gfx_b=1;
+        gfx_x=leftX-3;
+        gfx_y=(floor((mouse_y-(topY+20))/16)*16)+(topY+20);
+        gfx_rectto(gfx_x+122,gfx_y+18);
+      ):(ondrop=0);
+        nm = 100;
+        gfx_r=gfx_g=gfx_b=0;
+        gfx_x=leftX+2;
+        gfx_y=topY+22;
+        j=1;
+        gfx_setfont(1,"Arial",15,0);
+        loop(4,
+          gfx_drawstr(nm);
+          gfx_x=leftX+2;
+          gfx_y=(topY+22)+j*16;
+          j+=1;
+          nm+=1;
+         );
+    );
+    mouse_cap > 0 && ondrop == 1 && drop == ctrlnum ? (
+      SldrVal = floor((mouse_y-(topY+20))/16);
+      drop = 0;
+    );
+    mouse_over == 0 && ondrop == 0 && drop == ctrlnum ? (
+      drop = 0;
+    );
+  SldrVal;
+);
+
+//draw value and handle mouse actions for a rectangular value box
+function doValueBox(ctrlnum,leftX,topY,width,height,slideval,minval,maxval,defval,inc,decs)
+local(mouse_over)(
+  knobdrag == 0 ? mouse_over = Is_Mouse_At_RectCtrl(ctrlnum,leftX,leftX+width,topY,topY+height);
+  mouse_over == ctrlnum && slider1 == 1 && ondrop == 0 ? (
+    mouse_cap > 0 ? (
+      mouseclick = ctrlnum;
+      mouse_cap == 5 ? inc *= 0.25;
+      mouse_cap == 17? inc *= 3;
+      mouse_y > saveY ? slideval = max(minval,slideval -= inc);
+      mouse_y < saveY ? slideval = min(maxval,slideval += inc);
+      knobdrag = 1;
+    ):(
+      mouse_wheel < 0? slideval = max(minval,slideval-= inc);
+      mouse_wheel > 0? slideval = min(maxval,slideval += inc);
+      mouse_wheel = 0;  
+      knobdrag = 0;
+    );
+    mouse_cap == 2 ? slideval = defval;
+  );
+
+  gfx_r=gfx_g=gfx_b=0;
+  ctrlnum == 32 ? (
+    gfx_setfont(1,"Arial Bold",18,0);
+  ):(
+    gfx_setfont(1,"Arial Bold",15,0);
+  );  
+
+  ctrlnum == 100 ? (  //to handle the MIDI channel selector
+    slideval == 16 ? (
+      doCenterTextString(leftX+width/2,topY+height/2,"All");
+    ):(
+      doCenterNumVal(leftX+width/2, topY+height/2, slideval+1, decs);
+    );
+  ):(
+    doCenterNumVal(leftX+width/2, topY+height/2, slideval, decs);
+  );
+
+  gfx_setfont(1,"Arial Bold",15,0);
+  slideval;
+);
+
+//draw an on/off light (uses a bitmap for the light) and handle mouse actions for it
+function doOnOffLight(ctrlnum,SldrVal,leftX,topY)
+local (mouse_over)(
+  knobdrag == 0 ? mouse_over = Is_Mouse_At_RectCtrl(ctrlnum,leftX,leftX+15,topY,topY+15);
+  mouse_over == ctrlnum ? (
+    slider1 == 1 || ctrlnum == 50 ? (
+      mouse_cap > 0 ? (
+        toggle == 0 ? (
+          SldrVal = Abs(SldrVal - 1);
+          toggle = 1;
+          );
+        ):(toggle == 1 ? toggle = 0
+        );  
+    );    
+  );
+  gfx_a=1;
+  ctrlnum == 16 || ctrlnum == 23 && SldrVal == 0 ? (
+//  draw the "light" (uses graphics from the bitmap included with the GUI)
+    gfx_blit(0,1,0,647,30,15,15,leftX,topY,15,15,0,0);
+  ):(
+  ctrlNum != 16 && ctrlnum != 23 && SldrVal == 1 ? gfx_blit(0,1,0,647,30,15,15,leftX,topY,15,15,0,0);
+  );
+  SldrVal;
+);
+
+//the following contains all the code that was in @slider section so that it can
+//be accessed from gfx section as well
+function doSliderCode()(
+  slider1&=1;
+  slider2&=1;
+  ((sArpPower!=slider1)||(sLatch!=slider2))?
+  (
+    sArpPower=slider1;
+    sLatch=slider2;
+    lastTrans=1000;
+  );
+  
+  sBPM=(max(0,slider3)/srate)/60;
+  myTempo=0;
+  
+  sNoteLen=min(1,slider4);
+  
+  slider5&=3;
+  slider6&=1;
+  ((sNoteMode!=slider5)||(sNoteRev!=slider6))?
+  (
+    sNoteMode=slider5;
+    NoteBounce=sNoteMode&1;
+    sNoteRev=slider6;
+    NoteRev=(sNoteRev-1)|1;
+  );
+  
+  slider7&=1;
+  slider8&=1;
+  sTrans=slider9|=0;
+  
+  slider10&=3;
+  slider11&=1;
+  ((sTransMode!=slider10)||(sTransRev!=slider11))?
+  (
+    sTransMode=slider10;
+    TransBounce=sTransMode&1;
+    sTransRev=slider11;
+    TransRev=(sTransRev-1)|1;
+  );
+  sTransAmount=slider12|=0;
+  (sTransAmount<0)?sTransAmount=0:sTransAmount>24?sTransAmount=24;
+  sTransSpd=slider13|=0;
+  (sTransSpd<-24)?sTransSpd=-24:sTransSpd>24?sTransSpd=24;
+  sTransRpt=slider14&=$x0F;
+  
+  sPatternNum=(slider15-1)&$x1F;
+  (PatternNum!=sPatternNum)?
+  (
+    MaxVarList[PatternNum]=sMaxVar;
+    PatternNum=sPatternNum;
+    VarList=PatternList+(PatternNum*(MAX_VARs+1));
+    slider16=MaxVarList[PatternNum];
+    
+  );
+  startup == 1 ? (
+    sMaxVar = slider16 = 16;;
+    startup = 0;
+  ):sMaxVar=min(MAX_VARs,slider16&=$x3F);
+  
+  sPlayOrigin=slider17&=1;
+  
+  (slider20)?
+  (
+    slider21&=$x7FFF;
+    (sChordType!=slider21)?
+    (
+      // read txt file
+      Tmp=file_open(slider21);
+      (Tmp>=0)?
+      (
+        ChordCnt=file_mem(Tmp,ChordList,32);
+        file_close(Tmp);
+        (ChordCnt>0)?
+        (
+          lastChordCnt=0;loop(ChordCnt,ChordList[lastChordCnt]|=0;lastChordCnt+=1);
+          sChordType=slider21;
+        );
+      );
+      slider21=sChordType;
+    );
+    ChordCnt=lastChordCnt;
+    slider22<0?slider22=0:slider22>1?slider22=1;
+  ):ChordCnt=0;
+  
+  slider23&=1;
+  
+  sMaxSlice=((slider24-1)&$x0F)+1;
+  SliceBounce=(slider25&1)+MaxSlice=sMaxSlice-1;
+  HalfSlice=SliceBounce/2;
+  
+  slider26&=1;
+  
+  sSliceTransSpd=slider27|0;
+  (sSliceTransSpd<-24)?sSliceTransSpd=-24:sSliceTransSpd>24?sSliceTransSpd=24;
+  sSliceTransRpt=slider28&=$x0F;
+  
+  //;slider29=min(1,max(0,slider29));
+  slider29<0?slider29=0:slider29>1?slider29=1;
+  
+  slider30&=1;
+  slider31&=1;
+  slider32&=1;
+  
+  (slider33<-1)?slider33=-1:(slider33>1)?slider33=1;
+  Swing0=1/sMaxSlice;
+  Swing1=(1+slider33)/sMaxSlice;
+  Swing2=(1-slider33)/sMaxSlice;
+  
+  sMinVelocity=slider34&$x7F;
+  (slider35>0)?sMaxVelocity=slider35&$x7F;
+  sVelocityAdd=slider36|0;
+  
+  slider37&=$x7F;
+  PingPongLeft=64-slider37;
+  PingPongRight=63+slider37;
+  sPingPongAdd=slider38|0;
+
+);
+//===============end of section===============
+
+@serialize
+file_mem(0,PatternList,((MAX_VARs+1)*MAX_PATTERNs)+MAX_PATTERNs);
+//===============end of section===============
+
+@slider
+doSliderCode();
+//===============end of section===============
+
+@block
+
+while
+(
+  (midirecv(msgpos,msg1,msg23))?
+  (
+//-- channel filter
+    Note=msg1&$x0F;
+    MIDIchannel=(slider39>=16)?Note:slider39&$x0F;
+    msg=msg1&$x00F0;
+    ((Note==MIDIchannel)&&((msg==$x0080)||(msg==$x0090)))?
+    (
+      ((lastTrans!=sTrans)||(lastMIDIchannel!=MIDIchannel))?
+      (
+        lastTrans=sTrans;
+        midisend(msgpos,lastMIDIchannel|$x00B0,$x007B); // $xB0=CC, $x7B=123=all notes off
+        lastMIDIchannel=MIDIchannel;
+        memset(VelocityList,-1,128);
+        NoteCnt=-1;
+        NoteOff=MIDIchannel|$x0080;
+      );
+
+      Note=(msg23+sTrans)&$x7F;
+
+      (sArpPower==0)?midisend(msgpos,msg1,msg23);
+
+      // note on
+      ((msg==$x0090)&&(msg23&$x7F00))?
+      (
+        // incoming note on is not on the list ?
+        (VelocityList[Note]<=0)?
+        (
+          VelocityList[Note]=(msg23/256)&$x7F;
+          Tmp=0;
+          NoteCnt+=1;
+          // reset everything on first note
+          (NoteCnt<=0)?
+          (
+            lastNote=-1;
+            Swing=1;BeatPos=1;
+            NotePos=-1;NewNotePos=-1;
+            TransPos=0;TransRpt=0;
+            VarPos=1000;SliceTransPos=1000;ChordPos=-1000;
+            VarSwingPos=0;SliceSwingPos=0;
+            NoteRev=(sNoteRev-1)|1;
+            TransRev=(sTransRev-1)|1;
+            NewTransPos=(sTransMode>=3)?rand(sTransAmount+1)&$x7F:(TransRev>0)?sTransAmount:0;
+          ):
+          (
+            // insert place to note in the sorted list
+            while
+            (
+              (Tmp<NoteCnt)?
+              (
+                (SortedNoteList[Tmp]>Note)?
+                (
+                  memcpy(SortedNoteList+Tmp+1,SortedNoteList+Tmp,NoteCnt-Tmp);
+                  0;
+                ):Tmp+=1;
+              );
+            );
+          );
+          NoteList[NoteCnt]=Note;
+          SortedNoteList[Tmp]=Note;
+        );
+      ):
+
+      // note off
+      // incoming note off is on the list ?
+      (VelocityList[Note]>0)?
+      (
+        (sLatch==0)?
+        (
+          VelocityList[Note]=0;
+          // if there are more notes to play, delete the incoming note off from both lists
+          (NoteCnt>0)?
+          (
+            // find and delete note from list
+            Tmp=0;
+            while
+            (
+              (Tmp<NoteCnt)?
+              (
+                (NoteList[Tmp]!=Note)?
+                  Tmp+=1:
+                (
+                  memcpy(NoteList+Tmp,NoteList+Tmp+1,NoteCnt-Tmp);
+                  0;
+                );
+              );
+            );
+            // find and delete note from sorted list
+            Tmp1=0;
+            while
+            (
+              (Tmp1<NoteCnt)?
+              (
+                (SortedNoteList[Tmp1]!=Note)?
+                  Tmp1+=1:
+                (
+                  memcpy(SortedNoteList+Tmp1,SortedNoteList+Tmp1+1,NoteCnt-Tmp1);
+                  0;
+                );
+              );
+            );
+            // note off == current playing note ? reset
+            ((slider8&&(NewNotePos==Tmp1))||((slider8==0)&&(NewNotePos==Tmp)))?
+            (
+              Swing=1;BeatPos=1;
+              NewNotePos=-1;
+              TransPos=0;TransRpt=0;
+              VarPos=sPlayOrigin;
+              SliceTransPos=0;SliceTransRpt=0;SliceVelocity=0;
+              ChordPos=ChordCnt;
+            );
+            (NotePos>=NoteCnt)?NotePos-=1;
+          ):
+          // no more notes to play, shut notes
+          // are we playing chord or single note ? (so we won't send a same note off twice)
+          (ChordPos>0)?
+          (
+            loop
+            (
+              ChordPos,
+              ChordPos-=1;
+              Note=lastChordList[ChordPos];
+              ((Note>=0)&&(Note<=127))?midisend(0,NoteOff,Note);
+            );
+          ):
+          (lastNote>=0)?midisend(msgpos,NoteOff,lastNote);
+          NoteCnt-=1;
+        );  // (sLatch==0)
+      );  // (VelocityList[Note]>0)
+    ):  // ((Note==MIDIchannel)&&((msg==$x0080)||(msg==$x0090)))
+
+    // no note on/off, send it to host
+    (
+      ((Note==MIDIchannel)&&(msg == $x00B0)&&((msg23&$x7F) == $x007B))?(NoteCnt=-1;lastTrans=1000);
+      midisend(msgpos,msg1,msg23);
+    );
+
+    1;
+  );
+);
+
+(myTempo!=tempo)?
+(
+  myTempo=tempo;
+  BeatAdd=sBPM*myTempo;  // need to place here instead of the slider section
+);
+//===============end of section===============
+
+@sample
+
+(NoteCnt>=0)?
+(
+  (BeatPos>=Swing)?
+  (
+    BeatPos-=Swing;
+    (lastNote>=0)?
+    (
+      midisend(0,NoteOff,lastNote);
+      lastNote=-1;
+      (ChordPos>0)?lastChordList[ChordPos-1]=-1;
+    );
+    // no more chord notes to play ?
+    (abs(ChordPos)>=ChordCnt)?
+    (
+      // shut chord notes
+      loop
+      (
+        ChordPos,
+        ChordPos-=1;
+        PlayNote=lastChordList[ChordPos];
+        ((PlayNote>=0)&&(PlayNote<=127))?midisend(0,NoteOff,PlayNote);
+      );
+      // no more slice notes to play ?
+      (SliceTransPos>=sMaxSlice)?
+      (
+        SliceTransPos=0;SliceTransRpt=0;
+        SliceVelocity=0;
+        VarSwingPos+=1;
+        // normal mode ? (variants first, then notes)
+        (slider7==0)?
+        (
+          VarPos+=1;
+          // no more variant notes to play ?
+          (VarPos>sMaxVar)?
+          (
+            VarPos=sPlayOrigin;
+            NotePos+=1;
+            NewNotePos=-1;
+          );
+        ):
+        (
+          // alternate mode (notes first, then variants)
+          NotePos+=1;
+          NewNotePos=-1;
+          (NotePos>NoteCnt)?
+          (
+            VarPos+=1;
+            (VarPos>sMaxVar)?VarPos=sPlayOrigin;
+          );
+        );
+      );  // (SliceTransPos>=sMaxSlice)
+      // ping pong effect
+      (sPingPongAdd)?
+      (
+        (((SliceTransPos+SliceTransRpt)==0)||slider32)?
+        (
+          MIDIpan+=sPingPongAdd;
+          (MIDIpan<=PingPongLeft)?(MIDIpan=PingPongLeft;sPingPongAdd=-sPingPongAdd):
+          (MIDIpan>=PingPongRight)?(MIDIpan=PingPongRight;sPingPongAdd=-sPingPongAdd);
+          midisend(0,MIDIchannel|$x00B0,10|(MIDIpan*256));  // send Pan CC
+        );
+      );
+    );  // (ChordPos>=ChordCnt)
+    (sArpPower)?
+    (
+      // are we playing chord notes ?
+      (ChordPos>0)?
+      (
+        lastChordList[ChordPos]=PlayNote=ChordNote+ChordList[ChordPos];
+        ChordPos+=1;
+        // is this last chord note ? set the swing to slice swing & shut last chord note
+        (ChordPos>=ChordCnt)?(Swing=lastSwing;lastNote=PlayNote):
+        // shut last chord note if chord isn't sustain
+        (slider23)?lastNote=PlayNote;
+      ):
+      (
+        (NewNotePos<0)?
+        (
+          // calc new NotePos
+          (NotePos>NoteCnt)?
+          (
+            (sNoteMode&&NoteCnt)?(NotePos=NoteBounce;NoteRev=0-NoteRev):NotePos=0;
+            NoteVelocity=0;
+            TransRpt+=1;
+            (TransRpt>sTransRpt)?
+            (
+              TransRpt=0;
+              TransPos+=1;
+              (TransPos>sTransAmount)?
+              (
+                (sTransMode&&sTransAmount)?(TransPos=TransBounce;TransRev=0-TransRev):TransPos=0;
+              );
+              NewTransPos=(sTransMode>=3)?rand(sTransAmount+1)&$x7F:(TransRev>0)?sTransAmount-TransPos:TransPos;
+            );
+          );
+          NewNotePos=(sNoteMode>=3)?rand(NoteCnt+1)&$x7F:(NoteRev>0)?NoteCnt-NotePos:NotePos;
+          NewNote=(slider8)?SortedNoteList[NewNotePos]:NoteList[NewNotePos];
+          MaxVelocity=(slider35>0)?sMaxVelocity:VelocityList[NewNote];
+          (NoteVelocity<=0)?
+          (
+            NoteVelocity=MaxVelocity;
+            VelocityAdd=sVelocityAdd;
+          );
+        );
+        PlayNote=NewNote;
+        PlayNote+=sTransSpd*NewTransPos;
+        SliceSwingPos+=1;
+        (sMaxVar&&VarPos)?
+        (
+          // calc variant
+          PlayNote+=VarList[(slider18)?(rand(sMaxVar)&$x3F)+1:(slider19)?sMaxVar+1-VarPos:VarPos];
+          Tmp=(slider30)?SliceSwingPos:VarSwingPos;
+          Swing=(Tmp&1)?Swing1:Swing2;
+        ):Swing=(slider30)?((SliceSwingPos&1)?Swing1:Swing2):Swing0;
+        // calc slice pos
+        (slider25>=3)?
+          Tmp=rand(sMaxSlice)&$x0F:
+        (
+          // calc normal / up&down mode
+          Tmp=(slider25&&(HalfSlice<SliceTransPos))?SliceBounce-SliceTransPos:SliceTransPos;
+          (slider26)?Tmp=MaxSlice-Tmp;
+        );
+        // calc slice trans
+        PlayNote+=sSliceTransSpd*Tmp;
+        SliceTransRpt+=1;
+        (SliceTransRpt>sSliceTransRpt)?(SliceTransRpt=0;SliceTransPos+=1);
+        // are there chord notes to play ?
+        (ChordCnt>0)?
+        (
+          // calc new note & remember chord note
+          ChordNote=PlayNote;
+          lastChordList[]=PlayNote+=ChordList[];
+          // shut last chord note if chord isn't sustain or if it has only one chord note
+          ((slider23)||(ChordCnt==1))?lastNote=PlayNote;
+          ChordPos=1;
+          // remember slice swing
+          lastSwing=Swing;
+          // calc chord speed
+          Swing=Swing0*slider22;
+          // no chord mode - remember play note
+        ):lastNote=PlayNote;
+      );  // : (ChordPos>0)
+      (PlayNote>127)?(PlayNote=-1;lastNote=-1);
+      (PlayNote>=0)?
+      (
+        ((SliceVelocity>0)&&((slider31==0)||(ChordPos>0)))?
+          Tmp=SliceVelocity:
+        (
+          // velocity effect
+          (VelocityAdd)?
+          (
+            NoteVelocity+=VelocityAdd;
+            (NoteVelocity<=sMinVelocity)?(NoteVelocity=sMinVelocity;VelocityAdd=-VelocityAdd):
+            (NoteVelocity>=MaxVelocity)?(NoteVelocity=MaxVelocity;VelocityAdd=-VelocityAdd);
+          );
+          Tmp=SliceVelocity;
+          SliceVelocity=(NoteVelocity*slider29)|1;
+          Tmp=(Tmp>0)?SliceVelocity:NoteVelocity;
+        );
+        midisend(0,MIDIchannel|$x0090,PlayNote|(Tmp*256));
+      );
+    );
+  ):  // (BeatPos>=Swing)
+  (BeatPos>=sNoteLen)?
+  (
+    (lastNote>=0)?
+    (
+      ((ChordCnt<=0)||(ChordPos<ChordCnt))?
+      (
+        midisend(0,NoteOff,lastNote);
+        (ChordPos>0)?lastChordList[ChordPos-1]=-1;
+      ):
+      (
+        loop
+        (
+          ChordPos,
+          ChordPos-=1;
+          lastNote=lastChordList[ChordPos];
+          ((lastNote>=0)&&(lastNote<=127))?midisend(0,NoteOff,lastNote);
+        );
+        ChordPos=-1000;
+      );
+      lastNote=-1;
+    );
+  );
+  BeatPos+=BeatAdd;
+);
+//===============end of section===============
+
+@gfx 580 637
+//================ code below displays/handles the GUI
+//
+//GUI functions use control ID number as first parameter
+//mouse_on stores/returns control ID number for custom controls
+//controls 1-5 are for the variant grid and sliders
+//controls 6,7,8 are the mode combo boxes
+//controls 9 and up are the rest
+//ID numbers are unique but their order is not significant
+  gfx_a=1;
+//set the general font to use for the GUI (some variations are defined elsewhere in the code)
+  gfx_setfont(1,"Arial Bold",15,0);
+
+//draw the background graphics
+  gfx_blit(0,1,0,0,0,580,637,0,0,580,637,0,0);
+
+//change colour for window values
+  gfx_r=gfx_g=gfx_b=0;
+
+//power button
+  slider1 = doOnOffLight(50,slider1,11,6);
+
+//latch
+  slider2 = doOnOffLight(41,slider2,68,43);
+
+//BPM num
+  slider3 = doValueBox(9,27,83,44,14,slider3,0,16,1,0.125,3);
+  sBPM = (slider3/srate)/60;
+  myTempo=0;
+
+//note length num
+  slider4 = doValueBox(10,86,83,35,14,slider4,0,1,1,0.01,2);
+
+//MIDI Ch num
+  slider39 = doValueBox(100,134,83,26,14,slider39,0,16,16,1,0);
+
+//Alternate note variant
+  slider7 = doOnOffLight(11,slider7,21,146);
+
+//Reverse note order
+  slider6 = doOnOffLight(12,slider6,21,170);
+
+//Sort note variant
+  slider8 = doOnOffLight(13,slider8,100,146);
+
+//Reverse variant order
+  slider19 = doOnOffLight(14,slider19,21,196);
+
+//Randomize variant order
+  slider18 = doOnOffLight(15,slider18,21,224);
+
+//Play Original Note
+  slider17 = doOnOffLight(16,slider17,21,250);
+
+//Transpose steps
+  slider9 = doValueBox(17,196,91,25,14,slider9,-48,48,0,1,0);
+
+//Transpose vary amount
+  slider12 = doValueBox(18,254,91,25,14,slider12,0,24,0,1,0);
+
+//Transpose reverse
+  slider11 = doOnOffLight(19,slider11,199,55);
+
+//Transpose repeat
+  slider14 = doValueBox(20,312,91,25,14,slider14,0,15,0,1,0);
+
+//Transpose speed
+  slider13 = doValueBox(21,360,91,47,14,slider13,-24,24,0,1,0);
+
+//Chords on/off
+  slider20 = doOnOffLight(22,slider20,437,237);
+
+//Chords sustain on/off
+  slider23 = doOnOffLight(23,slider23,437,257);
+
+//Chord speed
+  slider22 = doValueBox(24,500,252,60,14,slider22,0,1,1,0.005,3);
+
+//Slice swing on/off
+  slider30 = doOnOffLight(25,slider30,436,98);
+
+//Slice velocity on/off
+  slider31 = doOnOffLight(26,slider31,436,71);
+
+//Slice ping pong on/off
+  slider32 = doOnOffLight(27,slider32,506,98);
+
+//Slice amount
+  slider24 = doValueBox(28,515,47,37,14,slider24,1,16,1,1,0);
+
+//Slice velocity
+  slider29 = doValueBox(29,516,72,37,14,slider29,0,1,1,0.01,2);
+
+//Slice transpose speed
+  slider27 = doValueBox(30,436,190,24,14,slider27,0,24,0,1,0);
+
+//Slice Transpose repeat
+  slider28 = doValueBox(31,478,190,24,14,slider28,0,15,0,1,0);
+
+//Slice transpose reverse on/off
+  slider26 = doOnOffLight(32,slider26,527,187);
+
+//Ping pong slider and value display
+  gfx_blit(0,1,0,611,62,13,21,257-slider37*76/64,250,13,21,0,0);
+  gfx_blit(0,1,0,627,62,13,21,267+slider37*76/64,250,13,21,0,0);
+  gfx_r=gfx_g=gfx_b=1;
+  doCenterNumVal(314,243,slider37,0);
+
+//Ping pong speed
+  slider38 = doValueBox(33,371,250,37,14,slider38,-127,127,0,1,0);
+
+//Swing balance slider and value display
+  gfx_blit(0,1,0,648,64,18,20,261+slider33*78,202,18,20,0,0);
+  gfx_r=gfx_g=gfx_b=1;
+  doCenterNumVal(389,208,slider33,3);
+
+//velocity speed
+  slider36 = doValueBox(35,371,159,37,14,slider36,-127,127,0,1,0);
+
+//origin for max velocity on/off
+  UseOrigVel = doOnOffLight(39,UseOrigVel,397,123);
+  UseOrigVel == 1 ? slider35 = 0 : slider35 = sMaxVelocity;
+
+//velocity min/max sliders and value display
+  gfx_blit(0,1,0,611,62,13,21,184+slider34*136/128,154,13,21,0,0);
+  gfx_r=gfx_g=gfx_b=1;
+  gfx_x=248;gfx_y=139;
+  gfx_drawnumber(sMinVelocity,0);
+  gfx_drawstr(" - ");
+  slider35 > 0 ? (
+    sMinVelocity = slider34 = min(sMinVelocity,sMaxVelocity);
+    gfx_blit(0,1,0,627,62,13,21,194+slider35*136/128,154,13,21,0,0);
+    gfx_drawnumber(sMaxVelocity,0)
+    ):(
+    gfx_drawstr("OR");
+  );
+  gfx_r=gfx_g=gfx_b=0;
+  
+//pattern selector
+//   draw highlight for pattern numbers with max variant > 0 in white
+  k=0;
+  loop(32,
+    MaxVarList[k] > 0 ? gfx_r=gfx_g=gfx_b=1 : gfx_r=gfx_g=gfx_b=0.55;
+    gfx_x=77 + k * 26.7 - (k > 15 ? 427 : 0);
+    gfx_y=288 + (k > 15 ? 16 : 0);
+    doCenterNumVal(gfx_x,gfx_y,k+1,0);
+    k+=1;
+  );
+// draw highlight box for selected pattern number
+  gfx_x=65 + (slider15 - 1) * 26.7 - (slider15 > 16 ? 427 : 0);
+  gfx_y=281 + (slider15 > 16 ? 16 : 0);
+  gfx_r=0.2;gfx_g=0.85;gfx_b=1;
+  gfx_rectto(gfx_x+26, gfx_y+14);
+  gfx_r=gfx_g=gfx_b=0;
+  doCenterNumVal(gfx_x-13,gfx_y-7,slider15,0);
+  
+//draw max variant slider
+  gfx_blit(0,1,0,609,22,25,30,20 + ((drop >= 0) ? sMaxVar*16 : scrlhelp2*16),608,25,30,0,0);
+
+//draw scroll slider
+  gfx_blit(0,1,0,615,102,25,35,553,449 - (scrl*2.17),25,35,0,0);
+
+// === Handle note mode combo boxes - must come after other controls so
+// === drop down lists will be drawn over top of other controls when shown
+
+//note mode type
+  slider5 = doNoteMode(6,slider5,33,120,0);
+//transpose mode type
+  slider10 = doNoteMode(7,slider10,284,52,0);
+
+//slice transpose mode type
+  slider25 = doNoteMode(8,slider25,437,148,0);
+
+//help button
+  helpOn = doOnOffLight(40,helpOn,553,6);
+
+
+//GRAPHICS FOR THE VARIANT GRID WINDOW
+//=============================================
+//draw num for max variant
+  gfx_r=gfx_g=gfx_b=0.7;
+  gfx_x=558;gfx_y=615;
+  gfx_drawnumber(sMaxVar,0);
+
+helpOn == 0 ? (
+  //draw shaded area past max variant
+    gfx_r=0.2;gfx_g=0.4;gfx_b=0.6;
+    gfx_x=35+sMaxVar*16;
+    gfx_a=0.2;
+    gfx_y=316;
+    gfx_rectto(547,608);
+  
+  //draw shaded line at 0 variant
+    gfx_a=0.2;
+    gfx_x=35;
+    gfx_y=458+scrl*11.7;
+    gfx_y > 306 && gfx_y < 605 ? gfx_rectto(547,gfx_y+12);
+  
+  //draw variant scale and shaded lines
+    getsrcYpos = 556;
+    getYpos = 1159+scrl*11.7;
+    gfx_a=1;
+    loop(11,
+      getYpos > 306 && getYpos < 605 ? (
+        gfx_blit(0,1,0,615,getsrcYpos,24,15,5,getYpos,24,15,0,0);
+        gfx_a=0.15;
+        gfx_x=35;
+        gfx_y=getYpos+1;
+        gfx_rectto(547,gfx_y+12);
+        gfx_a=1;
+      );
+      getYpos-=140.4;
+      getsrcYpos-=18;
+    );
+  
+//===== draw grid and variants
+  
+//horizontal lines
+    gfx_r=gfx_g=gfx_b=0.35;
+    num=0;
+    loop(24,
+      gfx_x=36;gfx_y=num*11.7+329;
+      gfx_lineto(547,gfx_y,0.7);
+      num+=1;
+    );
+//vertical lines
+    num=0;
+    loop(32,
+      gfx_x=52+num*16;gfx_y=316;
+      gfx_lineto(gfx_x,608,0.7);
+      num+=1;
+    );
+  
+//variants
+    num=1;
+    loop(sMaxVar,
+      gfx_r=0.1;gfx_g=0.14;gfx_b=0.2;
+      gfx_x=22+16*num;
+      VarList[num] >= -64 ? (
+        gfx_y=460-(VarList[num]-scrl)*11.7;
+        gfx_y < 306 || gfx_y > 605 ? (gfx_r=0.1;gfx_g=gfx_b=0.8);
+        gfx_y=min(600,max(gfx_y,317));
+        gfx_rectto(gfx_x+13*sNoteLen,gfx_y+8);
+      );
+      num+=1;
+    );
+  
+//draw max variant vertical line
+    gfx_a=1;
+    gfx_x=36+sMaxVar*16;
+    gfx_y=315;
+    gfx_r=0;gfx_g=0;gfx_b=0;
+    gfx_lineto(gfx_x,608,1);
+    gfx_x+=1;gfx_y=315;
+    gfx_lineto(gfx_x,608,1);
+):(
+  gfx_blit(0,1,0,40,660,510,280,40,320,510,280,0,0);
+);
+//==================== end draw grid area section
+
+// This section handles mouse actions for the variant grid area and the sliders
+//================================================================================
+mouse_on == 0 ? (
+// determine mouse position and assign a unique control ID number
+  mouse_x > 554 && mouse_x < 573 ? (
+    mouse_y > 335 && mouse_y < 588 ? mouse_on = 2 : //scroll slider
+    mouse_y > 316 && mouse_y < 331 ? mouse_on = 3 : //scroll up button
+    mouse_y > 593 && mouse_y < 607 ? mouse_on = 4 ; //scroll down button
+   ):
+  mouse_x > 34 && mouse_x < 552 && mouse_y > 320 && mouse_y < 607 ? mouse_on = 1 :    //on variant grid
+  mouse_x > 27 && mouse_x < 555 && mouse_y > 610 ? mouse_on = 5 :                     //max variant slider
+  mouse_x > 200 && mouse_x < 336 && mouse_y > 254 && mouse_y < 270 ? mouse_on = 36 :  //on ping pong slider
+  mouse_x > 200 && mouse_x < 336 && mouse_y > 203 && mouse_y < 218 ? mouse_on = 37 :  //on swing slider
+  mouse_x > 200 && mouse_x < 336 && mouse_y > 163 && mouse_y < 177 ? mouse_on = 38 :  //on velocity min/max slider
+  mouse_x > 67 && mouse_x < 494 && mouse_y > 280 && mouse_y < 310 ? mouse_on = 42 ;   //on pattern selector
+  mouse_x > 494 && mouse_x < 506 ? (
+    mouse_y > 281 && mouse_y < 292 ? mouse_on = 100:  //copy pattern button
+    mouse_y > 298 && mouse_y < 309 ? mouse_on = 101;  //paste pattern button
+  );
+);
+
+//if the power is on
+slider1 == 1 ? (  
+// handle mouse wheel actions on sliders if the mouse buttons are up
+  mouse_on == 1 ? (
+//    set note number and variant number based on mouse position in the grid
+    varno = 1+floor((mouse_x-37)/16);
+    varamt = floor(((460-mouse_y)/11.7)+scrl+1);
+    gfx_x=520;gfx_y=292;
+    gfx_r=gfx_g=gfx_b=0.8;
+    gfx_drawnumber(varno,0);gfx_drawchar($'/');gfx_drawnumber(varamt,0);
+    gfx_r=0;gfx_g=0;gfx_b=0;
+  );
+  mouse_cap == 0 ? (
+//  handle grid scroll whether on grid or scroll slider
+    mouse_on == 1 || mouse_on == 2 ? (
+      helpOn == 0 ? (
+        mouse_wheel < 0? scrl = max(-52,scrl- 3);
+        mouse_wheel > 0? scrl = min(52,scrl + 3);
+        mouse_wheel = 0;
+      );
+    );    
+ //max variant slider
+    slider16 = HandleMouseWheel(5,slider16,0,32,1);
+ //ping pong slider
+    slider37 = HandleMouseWheel(36,slider37,0,64,1);
+ //swing slider
+    slider33 = HandleMouseWheel(37,slider33,-1,1,0.03125);
+ //pattern selector
+    slider15 = HandleMouseWheel(42,slider15,1,32,1);
+//velocity sliders
+    num=(mouse_x-198);
+    onMin == 0 ? onMin = num <= sMinVelocity + 13 ? 1 : 2;
+    onMin == 1 ? (
+      slider35 == 0 ? slider34 = HandleMouseWheel(38,slider34,1,127,1) :
+      slider35 > 0 ? slider34 = HandleMouseWheel(38,slider34,1,slider35,1);
+    ):
+    onMin == 2 && slider35 > 0 ? slider35 = HandleMouseWheel(38,slider35,1,127,1);
+
+    mouse_on = 0;
+    knobdrag = 0;
+    griddrag = 0;
+    onMin = 0;
+  ):(              // otherwise handle mouse button down events
+ //on variant grid
+    mouse_on == 1 && knobdrag == 0 ? (
+      helpOn == 0 ? (
+      varno <= sMaxVar ? VarList[varno] = (mouse_cap & 16) ? 0 : (mouse_cap & 22) ? -1000 : varamt;
+      griddrag = 1;
+      );
+    );
+  
+ //on scroll slider
+    mouse_on == 2 && griddrag == 0 && helpOn == 0 ? (
+      mouse_cap == 1 ? scrl = max(-52,min(52,floor((460-mouse_y)*0.48))) :
+      mouse_cap == 2 ? scrl = (drop < 0) ? 52 : 0 ;
+      knobdrag = 0;
+    ):
+ //on scroll up/down buttons
+    mouse_on == 3 && griddrag == 0 && helpOn == 0 ? scrl = max(-52,min(52,scrl+1)):
+    mouse_on == 4 && griddrag == 0 && helpOn == 0 ? scrl = max(-52,min(52,scrl-1));
+  
+ //on max variant slider
+    mouse_on == 5 && griddrag == 0 && helpOn == 0 ? (
+      mouse_cap == 1 ? (
+        num = max(0,min(32,floor((mouse_x-25)*0.0625)));
+        knobdrag = 1;
+        (drop >= 0) ? slider16 = num : scrlhelp2 = num;
+      ) :
+      mouse_cap == 2 ? (drop >= 0) ? slider16 = 8 : scrlhelp2 = 8;
+      sMaxVar=slider16;
+    ):
+ //otherwise if we're not dragging a value already
+    knobdrag == 0 ? (
+      drop == 0 ? (
+ //on ping pong slider
+        mouse_on == 36 ? (
+          slider37 = min((floor(Abs(268 - mouse_x)*50/64)),64);
+          mouse_cap == 2 ? (slider37 = 0; knobdrag = 0);
+        ):
+ //on swing slider
+        mouse_on == 37 ? (
+          slider33 = min((mouse_x-268)/76,1);
+          mouse_cap == 2 ? (slider33 = 0; knobdrag = 0);
+        ):
+ //on velocity min/max slider
+        mouse_on == 38 ? (
+          num=(mouse_x-198);
+          onMin == 0 ? onMin = num <= sMinVelocity + 13 ? 1 : 2;
+          mouse_cap == 1 ? (
+            onMin == 1 ? slider34 = floor(max(1, min(slider35>0 ? sMaxVelocity:127,num)));
+            slider35 > 0 && onMin == 2 ? (
+              slider35 = floor(max(sMinVelocity,min(127,num-13)));
+              sMaxVelocity=slider35&$x7F;
+            );
+          ):
+          mouse_cap == 2 ? (
+            onMin == 1 ? slider34=1 : slider35=0;
+            sMinVelocity=slider34&$x7F
+          );
+        ):
+//on pattern selector
+        mouse_on == 42 ? (
+          slider15 = Floor((mouse_x - 38)/26.7) + (mouse_y > 296?16:0);
+        );
+      );
+    );
+    mouse_on == 100 ? (
+//gfx_circle(x,y,r[,fill,antialias]) -- REAPER 4.60+
+//Draws a circle, optionally filling/antialiasing.       
+      gfx_r=1;gfx_g=1;gfx_b=1;gfx_a=0.3;
+      gfx_x=495;gfx_y=281;
+      gfx_rectto(507,292);
+      gfx_a=1;
+      CopyPatNum = sPatternNum;
+      CopysMaxVar = sMaxVar;
+      p=0;
+      loop(sMaxVar+1,
+        CopyVarList[p]=VarList[p];
+        p+=1;
+      );
+    ):
+    mouse_on == 101 ? (
+      gfx_r=1;gfx_g=1;gfx_b=1;gfx_a=0.3;
+      gfx_x=495;gfx_y=298;
+      gfx_rectto(507,309);
+      gfx_a=1;
+      PatternNum != CopyPatNum ?
+      (
+        sMaxVar=CopysMaxVar;
+        slider16=sMaxVar;
+        p=0;
+        loop(sMaxVar+1,
+          VarList[p]=CopyVarList[p];
+          p+=1;
+        );
+       );    
+    );
+  );
+);
+
+//if the power button is off, draw a shade over the whole GUI (all controls will be disabled as well)
+slider1 == 0 ? (
+  gfx_x=0;gfx_y=32;gfx_r=gfx_g=gfx_b=0;gfx_a=0.5;
+  gfx_rectto(580,630);
+);
+// call the function containing the slider section code to update values
+doSliderCode();
+//save the current mouse Y value for comparison on the next gfx cycle
+saveY=mouse_y;
+
+//end of gfx section

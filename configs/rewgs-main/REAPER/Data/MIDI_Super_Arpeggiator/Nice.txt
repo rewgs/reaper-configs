@@ -1,0 +1,7 @@
+//Chord File. Each note should be on a new line,
+//and there should be no more lines after the final note. (there should be a Carriage-Return after the final note)
+//the Notes Here are relative to the actual Incoming Notes
+4
+7
+16
+19

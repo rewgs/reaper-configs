@@ -1,0 +1,27 @@
+--------------
+** SETTINGS **
+--------------
+
+There are a few values you can change in the beginning of the script.
+
+***************************
+folderPNG = "folder.png"
+***************************
+Change to another icon to represent a hidden folder. Icon must be located in this folder:
+.../reaper/Data/track_icons/
+
+***************************
+toggleInMixer = false 
+***************************
+
+Is set to true, tracks will be visible/hidden in the mixer as well as in the track control panel. Default is false.
+
+***************************
+useBlankIcon = false
+***************************
+If set to true, the icon bar will always be visible -even if there are nog folder with hidden child tracks. To use this feature you must move the file “blank.png” into this folder:
+.../reaper/Data/track_icons/
+
+
+
+For a smoother workflow consider to set this as Default Action in Mouse Modifier in the Track Control Panel context. You'll be able to toggle the visibility by double clicking the icon. See attached image.

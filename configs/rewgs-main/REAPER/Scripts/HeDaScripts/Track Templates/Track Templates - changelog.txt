@@ -1,0 +1,60 @@
+---------------------------------------------------
+  Track Templates - Changelog (What's new)     
+---------------------------------------------------
+
+* v1.0 (2017-05-30)
+
+* v1.0pre7 (2017-05-20)
+  + Show directories panel: splits in two panels, one for directories, and one for the templates
+  + Lock directories panel to home: option useful to always show directories panel if you only have one subdirectory depth structure
+  # Zoom - and + buttons: Use Right click to zoom the directories panel.
+  
+* v1.0pre6 (2017-03-21)
+  + Rename directories and templates (SHIFT+click on item to rename) Renaming directories maintains favorites.
+  # fix: bug removing a favorite
+  # fix: bug favorites being lost
+  # new favorites internal storage
+
+* v1.0pre5 (2017-03-20)
+  # Internals: better icon buffers management
+  # Internals: debug log option
+  # fix: refresh buffer while typing filter
+  + added documentaion page and forum thread links in the menu
+
+* v1.0pre4 (2017-03-18)
+  # fix: redraw issue
+
+* v1.0pre3 (2017-03-17)
+  # fix a bug in refresh button
+  # fix when template track icon is not found
+  # fix more CPU optimizations
+  + Setting: Define templates home directory...
+  + Setting: Show icons (turn on/off all icon images/screenshots)
+  # show directories first
+  # Remember a different zoom when aligned in one vertical column (window vertical size > horizontal size)
+
+* v1.0pre2 (2017-03-16)
+  + Track Icons inside template file support. It still uses sidecar png in template folder if found.
+  + Setting: Show files from all subdirectories
+  + Setting: Hide subdirectories
+  # some small optimizations
+
+* v1.0pre1 (2017-03-15)
+  + Custom Icons for directories and templates (Save .png image file with the same name as the template in your Track Templates VIP settings directory. Icons for directories must be in square brakets i.e. [DIRECTORY].png )
+  + Filter search by name
+  + Favorites: Show only favorited items (right click on template or directory to set/unset favorite)
+  + Folders navigation
+  + Refresh button.
+  + Dock/Undock button
+  + Zoom in and out buttons to change the size of the items. Also CTRL+mouse wheel. 
+  + Multiple Instances (read inside HeDa_Track Templates VIP.lua file to set a new instance, 3 instances provided by default)
+  + Open current Template Directory in explorer or finder.
+  + Setting: ≡ Menu for settings 
+  + Setting: Always show labels (by default it only shows the label if no icon is found)
+  + Setting: Autosize labels with zoom
+  + Setting: Show tooltips
+  + Setting: Exit after importing template docked 
+  + Setting: Exit after importing template floating
+ 
+* v0.1 (2016-12-20)
+  + internal. concept and get array of templates.

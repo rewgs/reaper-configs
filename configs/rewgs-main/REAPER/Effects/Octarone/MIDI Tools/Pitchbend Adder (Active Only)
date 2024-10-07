@@ -1,0 +1,130 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Adder (Active Only)
+in_pin:Pitchbend
+out_pin:none
+slider1:4<2,16,1>Channels
+slider2:100<1,1000,0.00001>Message Frequency (Hz)
+
+
+
+@init
+channels = 0;
+
+
+
+@slider
+channels!==slider1 ? (
+  channels = (slider1=min(max(slider1|0, 2), 16));  msg_mid = slider1/2 + 223.5;  msg_rng = (slider1+1)/2;
+
+  // order = 0;
+  back = slider1;
+  bend = slider1*2;
+  prev = slider1*3;
+  list = slider1*4;
+  notes= slider1*5; // count of open notes for each channel; i.e it gets increment on note on, decremented on note off
+  buf = slider1*6;
+
+
+  memset(bend, 8192, slider1*2);
+  memset(list, 0, slider1*2);
+  cur = 0;  last = slider1-1;
+  c = 0;  loop(last, c[0] = c+1; back[c+1] = c; c += 1);
+
+  pitchmask = notemask = 0;  // bit masks where each bit (0-15) represents whether that channel had a pitchbend or a note, for the last offset
+  active = 0;  // mask for which channel is active in @sample
+
+  a = 4294967296;  // huge value so nothing stupid happens until next block
+);
+ticks = max((srate/slider2 + 0.5) |0, 1);
+
+
+
+@block
+p = buf;
+
+midirecv(o,a,b,c) ? (
+ q = o;
+ while(
+  abs(a-msg_mid) < msg_rng ? (
+   p[0] = o*16 + (a -= $xE0);  p[1] = b + c*128;
+   p += 2;  notes[a] ? (pitchmask |= 1<<a);
+  ) : (
+   midisend(o, a, b, c);
+   a < $xA0 ? (
+    a < $x90 ? (
+     (a-=$x80) < slider1 && (b = notes+a)[0] ? (
+      (b[0] -= 1)===0 ? (p[0] = o*16 + a; p[1] = -3; p += 2);  // -3 = deactivate
+     );
+    ) : (
+     (a-=$x90) < slider1 && (notes[a] += 1)===1 ? (notemask |= 1<<a);  // this will send either -1 or -2 to activate: the difference is that -2 does not send a pitchbend (due to pitchbend message already sending it)
+    );
+   );
+  );
+
+  (d = midirecv(o,a,b,c))===0 || q < o ? (
+   notemask ~= (pitchmask &= notemask);  q *= 16;
+
+   // crude log2 approximations for every 4-bit pair in the mask (only need the actual integer) cause we can't extract exponent in JS...
+   i = -2;
+   loop(2,
+    pitchmask ? (
+     j = pitchmask &15;   while(j) (k = j & -j; j -= k; p[0] = q + ((0.0143342366336138493626-k) * (k-16.476391718991968563) * 0.0500793322774972223224 |0);  p[1] = i;  p += 2);
+     j = pitchmask &240;  while(j) (k = j & -j; j -= k; p[0] = q + ((326.3262050573478037683-k) * (k+62.474589767338485172) * 0.0001956223917089735246969 |0);  p[1] = i;  p += 2);
+     j = pitchmask &3840; while(j) (k = j & -j; j -= k; p[0] = q + ((5972.0565433742704976-k) * (k+1750.4306987341214) * 0.000000764149967613177830847 |0);  p[1] = i;  p += 2);
+     j = pitchmask &61440;while(j) (k = j & -j; j -= k; p[0] = q + ((105583.917369540620185-k) * (k+38037.9038552982346238) * 0.000000002984960810988975901747 |0);  p[1] = i;  p += 2);
+    );
+    pitchmask = notemask;  i = -1;
+   );
+   q = o; pitchmask = notemask = 0;
+  );
+
+  d
+ );
+);
+p[0] = 34359738352;
+p = buf;
+
+o = 0; a = (c = p[0])/16 |0; c -= a*16; p += 2;
+
+b = list;  loop(slider1, b[0] -= samplesblock; b += 1);
+b = min(a, list[cur]);
+
+
+
+@sample
+o >= b ? (
+  while(o >= a) (
+   a = (k = p[0])/16 |0;  k -= a*16;  // channel values like c[0] will be 'order[c]'
+   j = 1<<c;
+   (d = p[-1]) < -1 ? (
+    d < -2 ? (active -= j) : (active += j);
+   ) : (
+    d < 0 ? (active += j;  d = bend[c]) : (bend[c] = d);
+
+    c!==last ? (
+     b = back+c;
+     c!==cur ? ((i=b[0])[0] = (q=c[0]); back[q] = i) : (cur = cur[0]);
+     last[0] = c;  b[0] = last;  last = c;
+    );
+    list[c] = o+ticks;
+
+    (active & j)  &&  (b = min(max(d+spl0*8192, 0), 16383)|0) !== (i=prev+c)[0] ? (
+     i[0] = b; midisend(o, c + $xE0, b + (b & $x3F80));
+    );
+   );
+   p += 2; c = k;
+  );
+
+  while(o >= (b=list[cur])) (
+   (active & (1<<cur))  &&  (k = min(max(bend[cur]+spl0*8192, 0), 16383)|0) !== (d=prev+cur)[0] ? (
+    d[0] = k; midisend(o, cur + $xE0, k + (k & $x3F80));
+   );
+
+   last[0] = cur;  back[cur] = last;  last = cur;
+   list[cur] = o+ticks;  cur = cur[0];
+  );
+  b = min(a, b);
+);
+
+o += 1;

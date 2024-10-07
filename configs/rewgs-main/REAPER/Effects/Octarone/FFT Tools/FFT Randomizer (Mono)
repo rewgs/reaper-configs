@@ -1,0 +1,441 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: FFT Randomizer (Mono)
+in_pin:Input
+out_pin:Output
+options:want_all_kb
+slider1:1<0,3,1{4096,8192,16384}>FFT size
+slider2:0<-90,90,0.0000001>Gain (dB)
+slider3:25<25,1000,0.0000001>MIDI Force Change (ms)
+slider4:0<0,6,1{Layer 1,Layer 2,Layer 3,Layer 4,Layer 5,Layer 6,Layer 7}>Edit Layer
+slider5:0<0,90,0.0000001>Magnitude Range (dB)
+slider6:0<-15,15,0.0000001>Magnitude Contrast
+slider7:0.00001<0.00001,30,0.0000001>Magnitude Speed (Hz)
+slider8:135.9277857<50,200,0.0000001>Magnitude Speed Modulation Rate (%)
+slider9:0<-360,360,0.00001>Phase Range (Degrees)
+slider10:0<-15,15,0.0000001>Phase Contrast
+slider11:0.00001<0.00001,15,0.0000001>Phase Speed (Hz)
+slider12:135.9277857<50,200,0.0000001>Phase Speed Modulation Rate (%)
+import FFT Tools/FFT Randomizer (Stereo)
+
+
+@init
+mbuf = 73729;
+
+mamt = mbuf + 514*2;
+mcontrast = mamt + 7;
+mspd = mcontrast + 7;
+mspdmod = mspd + 7;
+
+mamt_eq = mspdmod + 7*5;
+meq = mamt_eq + 1023*2;
+
+mtime = meq + 513*2;
+maccel = mtime + 7;
+maccel_slope = maccel + 7;
+maccel_t = maccel_slope + 7;
+
+cache_istep = maccel_t + 7*5;
+Lbufs = cache_istep + 56;
+
+i = 0; t = Lbufs + 42;
+loop(2,
+ j = 9;
+ loop(7,
+  loop(3,
+   Lbufs[i] = t;
+   i += 1; t += j;
+  );
+  j += j-1;
+ );
+);
+
+midi_base = Lbufs + 42 + 1023*3*2;
+
+fftsize === 0 ? (
+  i = 7;
+  loop(2,
+   loop(7, mamt[i] = 1; mamt[i+7] = 0.00001; mamt[i+14] = 1.3592778570863051786; i += 1);
+   i += 21;
+  );
+  memset(mamt_eq, 1, 1023*2);
+);
+fftsize=0;
+
+
+
+@serialize
+t = 74757;
+
+file_avail(0) >= 0 ? (
+  fftsize===0 ? fftsize = -1;
+  i = 7;
+  loop(2,
+   loop(7, t[i] = 1; t[i+7] = 0.00001; t[i+14] = 1.3592778570863051786; i += 1);
+   i += 21;
+  );
+  memset(t+7*8, 1, 1023*2);
+);
+
+slider4 > 0 ? (file_mem(0, t, slider4); t += slider4 );
+t += 1;  loop(7, file_mem(0, t, 6); t += 7; );
+slider4 < 6 ? (file_mem(0, t, 6-slider4); t += 6-slider4 );
+
+file_mem(0, t, (1023+513)*2);
+fftsize > 0 && file_avail(0) >= 0 ? ( init_timebufs(); recache(); y = qfftsize );
+
+
+
+@slider
+o_srate !== srate ? ( o_srate = srate; fftsize = 0 );
+
+i = 1<<(slider1+12);
+pdc_bot_ch = 0;
+pdc_top_ch = 1;
+pdc_delay  = i;
+
+fftsize !== i ? (
+  fftsize=i;
+  hfftsize=fftsize*0.5;
+  qfftsize=fftsize*0.25;
+  iqfftsize=1/qfftsize;
+
+  curblock = 0;
+  lastblock1 = 16384 + qfftsize;
+  lastblock2 = 32768 + hfftsize;
+  lastblock3 = 49152 + hfftsize+qfftsize;
+  window = 65536;
+  midi_len = 0;
+
+  i=0;  j=$pi*iqfftsize*0.5;  k=j*2;
+  loop(hfftsize,
+    window[i]=cos(i*k)*0.08 - cos(i*j)*0.5 + 0.42;
+    i+=1;
+  );
+  window[i] = 1;
+  window_mirror = window + i;
+
+  srate >= 88200 ? (
+    step = iqfftsize * 512;
+    steps = (hfftsize/1024 - 2)|0;
+    samplerate_empty = hfftsize - 2;
+    samplerate_adjust = hfftsize + 2;
+    samplerate_gui = srate*0.25;
+  ) : (
+    step = iqfftsize * 256;
+    steps = (hfftsize/512 - 2)|0;
+    samplerate_empty = 0;
+    samplerate_adjust = fftsize + 2;
+    samplerate_gui = srate*0.5;
+    fftsize1=fftsize+1;
+  );
+  step_q = sqr(step);
+
+  memset(mtime, 0, 7*8);
+  init_timebufs();
+  y = qfftsize;
+);
+
+normalization = iqfftsize * exp(slider2*0.1151292546497023) * 0.0744047619047619;
+midi_force_time = slider3*0.001*srate * iqfftsize;
+recache();
+
+
+
+@sample
+
+curblock >= y ? (
+  y=lastblock3;
+  lastblock3=lastblock2;
+  lastblock2=lastblock1;
+  lastblock1=curblock;
+  curblock=y - fftsize;
+
+  fft_real(curblock, fftsize);
+  fft_permute(curblock, hfftsize);
+
+  midi_len > 0 ? (
+    fft_till_midi >= 0 ? (
+      fft_till_midi < 1 ? (
+        midi_len = fft_till_midi + midi_force_time*(rand(1)*0.031060037526 + 0.84469981236995) + 1;
+
+        x = 0.62322880647674973 / (midi_len-1);  y = 1 / midi_len;
+        loop(2,
+         loop(7,
+          t = x * cache_istep[0];
+          maccel[0] = t;
+          maccel[7] = t * y;
+          maccel[14]=-midi_len;
+
+          maccel += 1; cache_istep += 1;
+         );
+         maccel += 21;
+        );
+        maccel -= 56; cache_istep -= 14;
+
+        (midi_ptr += 1) < midi_end ? (fft_till_midi = midi_ptr[0]);
+      );
+      fft_till_midi -= 1;
+    );
+
+    (midi_len -= 1) < 1 ? (
+      midi_len <= 0 ? (
+        Lbufs -= 41;
+
+        loop(2,
+         loop(7,
+          t = rand(1)*0.693938318382530274;
+          p = rand(1)*0.693938318382530274 - t;
+          q = rand(1)*0.647260804462535513;
+
+          maccel[0] = t + p*q + 0.704964114761144905;
+          maccel[7] = p * Lbufs[0];
+          maccel[14]= q;
+
+          maccel += 1; Lbufs += 3;
+         );
+         maccel += 21;
+        );
+        maccel -= 56; Lbufs -= 1;
+        fft_till_midi >= 0 ? ( midi_len = 9007199254740992 );
+      ) : (
+        t = 1-midi_len;
+        loop(2,
+         loop(7,
+          maccel[0] = maccel[0]*midi_len + t;
+          maccel += 1;
+         );
+         maccel += 21;
+        );
+        maccel -= 56;
+      );
+    );
+  );
+
+  loop(2,
+   x=64; k=8;
+   mbuf[0] = 0; mbuf[1] = 0; mbuf[129] = 0; mbuf[257] = 0; mbuf[385] = 0;
+
+   loop(7,
+     Lbuf0 = Lbufs[0]; Lbuf1 = Lbufs[1]; Lbuf2 = Lbufs[2];
+
+     q = mtime[0];
+     p = q - min(Lbufs[-42] * maccel[0], 0.5) + 0.5;
+     y = (p - q*0.5 - 0.5)*q;
+
+     u = mbuf[0]; a = mbuf[1];
+     v = u*1.25 - a*0.25;
+     w = (a - u) * 0.5;
+
+     a = Lbuf0[0];  b = Lbuf1[0];  c = b - a;
+     mbuf[0] = v + p*c + y*(Lbuf2[0] - b - c) + a;
+     v += w;
+
+     j=x*2; mbuf += 1; i = mbuf+j;
+     Lbuf0 += 1; Lbuf1 += 1; Lbuf2 += 1;
+
+     loop(k/2,
+      t = (u + i[0])*0.25;
+      u = mbuf[0]; t -= u*0.5;
+
+      loop(2,
+       a = Lbuf0[0];  b = Lbuf1[0];  c = b - a;
+       mbuf[0] = v + p*c + y*(Lbuf2[0] - b - c) + a;
+       v += w;  w += t;
+
+       Lbuf0 += 1; Lbuf1 += 1; Lbuf2 += 1;
+       mbuf += x;
+      );
+      i += j;
+     );
+
+     q += (q-p)*2 + 1;  i = k+1;
+     q >= 1 ? (
+       q -= 1; Lbuf0 -= i;
+       Lbufs[0] = Lbuf1-i; Lbufs[1] = Lbuf2-i; Lbufs[2] = Lbuf0;
+
+       t = mtime[-3128];  c = mtime[-3121];
+       p = mamt_eq;
+
+       t < 0 ? (
+         j = (rand(1)*(k+0.9999847412109375))|0;
+         rand(1) > 0.5 ? (t = -t);
+
+         a = rand(1)*0.3690938549812533 + 1;
+         Lbuf0 += j;  p += j;
+
+         v = rand(2);  w = (v > 1 ? (1 - (2-v)^c) : (v^c - 1)) * t;
+         Lbuf0[0] = w * p[0];
+         u = w;  b = 2-a;
+
+         loop(j,
+           Lbuf0 -= 1;  p -= 1;
+           v = rand(2);  w += (v > 1 ? (a - (2-v)^c) : (v^c - b)) * t;
+           Lbuf0[0] = w * p[0];
+         );
+         Lbuf0 += j;
+         loop(k-j,
+           Lbuf0 += 1;  p += 1;
+           v = rand(2);  u += (v > 1 ? ((2-v)^c - a) : (b - v^c)) * t;
+           Lbuf0[0] = u * p[0];
+         );
+
+       ) : (
+         loop(i,
+           v = rand(2);
+           Lbuf0[0] = (t * p[0]) * (v > 1 ? (1 - (2-v)^c) : (v^c - 1));
+           Lbuf0 += 1;  p += 1;
+         );
+       );
+     );
+     mtime[0] = q;
+
+     q = maccel_t[0] + Lbufs[-41];
+     q >= 1 ? (
+       q -= 1;
+       t = maccel[0] + maccel_slope[0]*(1 - q*Lbufs[-40]);
+
+       p = rand(1)*0.693938318382530274 + 0.704964114761144905 - t;
+
+       maccel[0] = t + p*q;
+       maccel_slope[0] = p * Lbufs[-41];
+     ) : (
+       maccel[0] += maccel_slope[0];
+     );
+     maccel_t[0] = q;
+
+
+     Lbufs += 3;
+     mbuf -= 513;  mamt_eq += i;
+     x *= 0.5; k *= 2;
+     mtime+=1; maccel+=1; maccel_t+=1; maccel_slope+=1;
+   );
+   mtime+=21; maccel+=21; maccel_t+=21; maccel_slope+=21;
+   mbuf += 514;
+  );
+  mtime-=56; maccel-=56; maccel_t-=56; maccel_slope-=56;
+  Lbufs -= 42;  mamt_eq -= 2046;
+
+  loop(2, mbuf -= 2; mtime -= 1; mbuf[1] = (mbuf[0] += mtime[0]); loop(512, mbuf -= 1; mtime -= 1;  mbuf[0] += mtime[0]));
+  mtime += 1026;
+
+
+  x = mbuf[0]; y = mbuf[1];
+  w = (y - x) * step;
+  v = exp((y + x)*0.5 - w*1.5) * normalization;
+  curblock[0] *= v;
+
+  // the fft_real's nyquist bin is stored at curblock[1], but we are only interested in it if we process full spectrum
+  // when we need it, though, we will overflow the buffer once (one complex number) in the loop, so temporarily save the data after the buffer!
+  samplerate_empty===0 ? ( Lbuf1 = curblock[fftsize]; Lbuf2 = curblock[fftsize1] );
+
+  x = mbuf[514]; y = mbuf[515];
+  w = exp(w);  t = 1;
+  q = (y - x) * step;
+  y += x - q;  y *= 0.5;
+
+  p = sin(q); q = cos(q);
+  i = sin(y); j = cos(y);
+
+  curblock += 2; Lbuf0 = curblock+1;
+  loop(512,
+   v *= w; w *= t;
+   u = (mbuf[514] + mbuf[516] - mbuf[515]*2) * step_q;
+   t = exp((mbuf[0] + mbuf[2] - mbuf[1]*2) * step_q);
+
+   x = curblock[0]; y = Lbuf0[0];
+   a = sin(u); u = cos(u);
+
+   curblock[0] = (x*j + y*i) * v;
+   Lbuf0[0]    = (y*j - x*i) * v;
+
+   curblock += 2;  Lbuf0 += 2;
+
+   x = curblock[0]; y = Lbuf0[0];
+   v *= w; w *= t;
+   c = p;  k = q;
+   p = u*p + a*q;
+   q = u*q - a*c;
+   a = i;
+   i = i*q + p*j;
+   j = j*q - p*a;
+
+   curblock[0] = (x*j + y*i) * v;
+   Lbuf0[0]    = (y*j - x*i) * v;
+
+   curblock += 2;  Lbuf0 += 2;  u *= 2;
+   loop(steps,
+    x = curblock[0]; y = Lbuf0[0]; v *= w; w *= t;
+    a = c; c = p; p = p*u - a;
+    a = k; k = q; q = q*u - a;
+    a = i; i = i*q  + p*j;  j = j*q - p*a;
+
+    curblock[0] = (x*j + y*i) * v;
+    Lbuf0[0]    = (y*j - x*i) * v;
+
+    curblock += 2;  Lbuf0 += 2;
+   );
+   mbuf += 1;
+
+   a = c; c = p; p = p*u - a;
+   a = k; k = q; q = q*u - a;
+   a = i; i = i*q  + p*j;  j = j*q - p*a;
+  );
+  mbuf -= 512;
+
+  samplerate_empty ? (
+   memset(curblock, 0, samplerate_empty);
+   curblock -= samplerate_adjust;  curblock[1] = 0;
+  ) : (
+   curblock[-2] = Lbuf1; curblock[-1] = Lbuf2;  // restore the overflown data
+   curblock -= samplerate_adjust;  curblock[1] *= (j < 0) ? (-v) : v;
+  );
+
+  fft_ipermute(curblock, hfftsize);
+  ifft_real(curblock, fftsize);
+
+  y = curblock + qfftsize;
+  window -= qfftsize;
+  window_mirror += qfftsize;
+);
+
+
+
+a = window[0]; b = window[qfftsize];
+c = window_mirror[0]; k = window_mirror[-qfftsize];
+x = spl0;
+
+spl0 = curblock[0] + lastblock1[0] + lastblock2[0] + lastblock3[0];
+
+curblock[0] = a*x;
+lastblock1[0] = b*x;
+lastblock2[0] = c*x;
+lastblock3[0] = k*x;
+
+window += 1; window_mirror -= 1;
+curblock += 1; lastblock1 += 1; lastblock2 += 1; lastblock3 += 1;
+
+
+
+@block
+midi_end = midi_base;
+
+t = (curblock-y)*iqfftsize + 1;
+i = -1;
+while (midirecv(x,a,b))
+(
+ a===$xC0 ? (
+  (j = x*iqfftsize + t) >= (i+1) ? (midi_end[0] = j-i; i = j; midi_end += 1);
+ );
+);
+
+midi_end > midi_base ? (
+ midi_base[0] -= 1;
+ midi_ptr = midi_base;
+ fft_till_midi >= 0 ? (
+  midi_base[0] >= 1 ? midi_ptr -= 1;
+ ) : (
+  fft_till_midi = midi_base[0];
+ );
+ midi_len = 9007199254740992;
+);

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index version="1" commit="9b4d49ac9841aca0fc37a93466ddcaff7afa8427" name="n0ne scripts">
+  <category name="Various/FX Finder">
+    <reapack name="n0ne_Fast FX Finder.lua" type="script" desc="Fast FX Finder">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Fast VST/FX Rack/Template Finder\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 A little window that allows for quick searching of FX (can be VST, templates or fxrack).\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 The script stores how often you select a certain FX and orders the list by how many times something is used.\par}
+}
+]]></description>
+      </metadata>
+      <version name="0.7.15" author="n0ne" time="2020-01-05T12:05:29Z">
+        <changelog><![CDATA[Initial Release]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/6300caad5a440a8e79637ce01db2c88110356afc/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.16" author="n0ne" time="2020-01-05T18:59:04Z">
+        <changelog><![CDATA[+ Also add VST's to items (hold control)
++ Highlighting of search term
+- Reset scrol position bug fix]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/2721b59b00ab0661352b07fdec3f0987f1f345f1/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.17" author="n0ne" time="2020-01-12T13:24:48Z">
+        <changelog><![CDATA[+ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/53914dc389b135256a065e83311797f145c22f3e/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.18" author="n0ne" time="2020-01-19T20:22:07Z">
+        <changelog><![CDATA[0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/3035f34ffd40bc5e61972c0037ec61aa2dee0923/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.19" author="n0ne" time="2020-01-20T07:46:10Z">
+        <changelog><![CDATA[0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/ab319d77c1bab9dfed66c7e829648528aa3ecccf/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.20" author="n0ne" time="2020-01-22T20:11:02Z">
+        <changelog><![CDATA[0.7.20
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/52d7c1013f0412d870f3b0628f7a078d85899a9f/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.21" author="n0ne" time="2020-01-22T21:17:16Z">
+        <changelog><![CDATA[0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/c302bdf021905c8c52280463872a21b4d8e64dc5/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.22" author="n0ne" time="2020-02-23T12:22:48Z">
+        <changelog><![CDATA[0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/f30fa8a0f906460a4b729e9cfd228573958f63a4/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.23" author="n0ne" time="2020-03-15T17:09:21Z">
+        <changelog><![CDATA[0.7.23
++ Fix negative screen coordinates error message
++ Updated error message when JSFX ini file does not exist. Updating Reaper deletes this file and you need to run the default FX browser once.
++ Added colors for different type's of FX
+0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/299042c7d3a5f48065556403492146fcba221c1d/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.24" author="n0ne" time="2020-03-15T17:11:11Z">
+        <changelog><![CDATA[0.7.24
++ Fix negative screen coordinates error message
++ Updated error message when JSFX ini file does not exist. Updating Reaper deletes this file and you need to run the default FX browser once.
++ Added colors for different type's of FX
++ Added option to float fx windows after adding FXCHAIN
+0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/aeca1eb4fdf7b75e51a811d57b7deaa205b7c883/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.25" author="n0ne" time="2020-04-04T10:08:57Z">
+        <changelog><![CDATA[0.7.25
++ Fix window focus when opening in dock
+0.7.24
++ Fix negative screen coordinates error message
++ Updated error message when JSFX ini file does not exist. Updating Reaper deletes this file and you need to run the default FX browser once.
++ Added colors for different type's of FX
++ Added option to float fx windows after adding FXCHAIN
+0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/054cdcf7d7169eb9a925232806f533f2d10b40ff/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.26" author="n0ne" time="2020-06-11T17:12:54Z">
+        <changelog><![CDATA[0.7.26
++ added more comments to default settings file to make it easier to costumize things
+0.7.25
++ Fix window focus when opening in dock
+0.7.24
++ Fix negative screen coordinates error message
++ Updated error message when JSFX ini file does not exist. Updating Reaper deletes this file and you need to run the default FX browser once.
++ Added colors for different type's of FX
++ Added option to float fx windows after adding FXCHAIN
+0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/e508a4dda80bca386126c91faf6846de6cc1b15e/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.27" author="n0ne" time="2020-08-17T15:04:40Z">
+        <changelog><![CDATA[0.7.27
++ Added support for copy/pasting. CTRL + C will copy the whole textfield.  CTRL + V will paste at the carret.
+0.7.26
++ added more comments to default settings file to make it easier to costumize things
+0.7.25
++ Fix window focus when opening in dock
+0.7.24
++ Fix negative screen coordinates error message
++ Updated error message when JSFX ini file does not exist. Updating Reaper deletes this file and you need to run the default FX browser once.
++ Added colors for different type's of FX
++ Added option to float fx windows after adding FXCHAIN
+0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/db52c6fb7f984c213c427b3bd51551ba97820526/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+      <version name="0.7.28" author="n0ne" time="2023-04-19T13:01:53Z">
+        <changelog><![CDATA[0.7.28
++ Checking if the right ini file is set for MacOC 64 or arm64
++ Added shameless self promotion in titlebar of the window ;)
++ The window will now stay open when trying to insert while no track/item is selected and display a tooltip to indicate this
+0.7.27
++ Added support for copy/pasting. CTRL + C will copy the whole textfield.  CTRL + V will paste at the carret.
+0.7.26
++ added more comments to default settings file to make it easier to costumize things
+0.7.25
++ Fix window focus when opening in dock
+0.7.24
++ Fix negative screen coordinates error message
++ Updated error message when JSFX ini file does not exist. Updating Reaper deletes this file and you need to run the default FX browser once.
++ Added colors for different type's of FX
++ Added option to float fx windows after adding FXCHAIN
+0.7.22
++ Fix bug with paths in Reaper 6.04
+0.7.21
++ Add Audio Unit support
+0.7.19
++ Fixed textbox bug
++ Improve textbox: use ctrl+backspace for deleting the last word, ctrl+shift+backspace to clear the field. Home and end work too!
+0.7.18
++ Allow blacklist search to also look in plugin filename (add dll to skip VST version or VSTi to skip instruments for example)
++ Only pull actual template and fxchain files from directories
++ Don't filter when you start typing a '@' tag. If you want to filter for a word starting with '@', escape it like: \@
++ Added support for JSFX and @js tag!
++ Cleaned up default settings ini, left some test comments in there ;p
++ Add (experimental) support for loading actions. Turn on in settings. Can use @a tag. Right now only main window actions.
+0.7.17
++ Allow resizing of GUI and change number of results
++ Store window position
++ Scroll down list with tab and arrow keys
++ Add setting to open FX in chain
++ Fix searching in hidden filename parts
++ Add support for searching with tags: @fx, @chain, @temp, @i, @vst3, @vst
++ Improve format of ini file. Backwards compatible but recommended to update (see REQ/ settings default)]]></changelog>
+        <source main="main">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/n0ne_Fast%20FX%20Finder.lua</source>
+        <source file="REQ/j_file_functions.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/j_file_functions.lua</source>
+        <source file="REQ/JProjectClass.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/JProjectClass.lua</source>
+        <source file="REQ/JProjectClassReq.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/JProjectClassReq.lua</source>
+        <source file="REQ/j_tables.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/j_tables.lua</source>
+        <source file="REQ/JGui.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/JGui.lua</source>
+        <source file="REQ/JGuiColors.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/JGuiColors.lua</source>
+        <source file="REQ/JGuiControls.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/JGuiControls.lua</source>
+        <source file="REQ/JGuiFunctions.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/JGuiFunctions.lua</source>
+        <source file="REQ/j_trackstatechunk_functions.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/j_trackstatechunk_functions.lua</source>
+        <source file="REQ/j_settings_functions.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/j_settings_functions.lua</source>
+        <source file="REQ/j_string_functions.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/j_string_functions.lua</source>
+        <source file="REQ/jKeyboard.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/jKeyboard.lua</source>
+        <source file="REQ/mouse.lua">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/mouse.lua</source>
+        <source file="REQ/fx-finder-settings-default.ini">https://github.com/n0ner/Reaper/raw/9b4d49ac9841aca0fc37a93466ddcaff7afa8427/Various/FX%20Finder/REQ/fx-finder-settings-default.ini</source>
+      </version>
+    </reapack>
+  </category>
+</index>

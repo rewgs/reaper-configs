@@ -1,0 +1,108 @@
+desc:WigWare Ambisonic Rotate, Tumble and Tilt Example (W,X,Y,Z)
+//Based on Equations from
+//http://www.york.ac.uk/inst/mustech/3d_audio/ambis2.htm
+//Rotate (A)
+//x' = x * cos A - y * sin A 
+//y' = x * sin A + y * cos A 
+//Tumble (B)
+//x' = x * cos B - z * sin B 
+//z' = x * sin B + z * cos B
+//Tilt (C)
+//y' = y * cos C - z * sin C
+//z' = y * sin C + z * cos C
+slider1:0<-180,180,1>Rotate Angle
+slider2:0<-180,180,1>Tumble Angle
+slider3:0<-180,180,1>Tilt Angle
+
+@init
+a = 0.99; b = 1 - a;
+//Using more k values than I need for future expansion
+//forward dominance, for example!
+k1=1;k2=0;k3=0;k4=0;
+k5=0;k6=1;k7=0;k8=0;
+k9=0;k10=0;k11=1;k12=0;
+k13=0;k14=0;k15=0;k16=1;
+
+rot=slider1*$pi/180;
+tum=slider2*$pi/180;
+til=slider3*$pi/180;
+//Win Xin                    Yin                    Zin
+k5s=0; k6s=cos(-rot)*cos(tum);  k7s=-sin(-rot);          k8s=sin(tum);           //X'
+k9s=0; k10s=sin(-rot);          k11s=cos(-rot)*cos(til); k12s=-sin(til);         //Y'
+k13s=0;k14s=sin(tum);          k15s=sin(til);          k16s=cos(tum)*cos(til);   //Z'
+
+k5=0; k6=cos(-rot)*cos(tum);  k7=-sin(-rot);          k8=sin(tum);           //X'
+k9=0; k10=sin(-rot);          k11=cos(-rot)*cos(til); k12=-sin(til);         //Y'
+k13=0;k14=sin(tum);          k15=sin(til);          k16=cos(tum)*cos(til);   //Z'
+
+@slider
+rot=slider1*$pi/180;
+tum=slider2*$pi/180;
+til=slider3*$pi/180;
+
+//Win Xin                    Yin                    Zin
+k5s=0; k6s=cos(-rot)*cos(tum);  k7s=-sin(-rot);          k8s=sin(tum);           //X'
+k9s=0; k10s=sin(-rot);          k11s=cos(-rot)*cos(til); k12s=-sin(til);         //Y'
+k13s=0;k14s=sin(tum);          k15s=sin(til);          k16s=cos(tum)*cos(til);   //Z'
+
+@block
+
+@sample
+//W = spl0;  this save 0.1% processor usage on my old laptop!
+spl0 = spl0;
+X = spl1;
+Y = spl2;
+Z = spl3;
+
+//smooth all parameters
+k6 = (k6s * b) + (k6 * a);
+k7 = (k7s * b) + (k7 * a);
+k8 = (k8s * b) + (k8 * a);
+k10= (k10s* b) + (k10* a);
+k11= (k11s* b) + (k11* a);
+k12= (k12s* b) + (k12* a);
+k14= (k14s* b) + (k14* a);
+k15= (k15s* b) + (k15* a);
+k16= (k16s* b) + (k16* a);
+
+//spl0 = W;
+spl1 = k6*X + k7*Y + k8*Z;
+spl2 = k10*X + k11*Y + k12*Z;
+spl3 = k14*X + k15*Y + k16*Z;
+
+@gfx
+res = 64;
+gfx_x = gfx_w/2 - 15;
+gfx_y = 10;
+gfx_r = 0.5;gfx_g=0.5;gfx_b=0.5;gfx_a=1.0;
+gfx_drawchar($'F');gfx_drawchar($'r');gfx_drawchar($'o');gfx_drawchar($'n');gfx_drawchar($'t');
+gfx_x = 10;
+gfx_y = gfx_h/2 - 15;
+gfx_r = 0.5;gfx_g=0.5;gfx_b=0.5;gfx_a=1.0;
+gfx_drawchar($'L');gfx_drawchar($'e');gfx_drawchar($'f');gfx_drawchar($'t');
+//gfx_drawchar($'Rotating by ');
+//gfx_drawchar($' degrees');
+//gfx_w, gfx_h
+offsetx = gfx_w/2;
+offsety = gfx_h/2;
+th=0.0;
+xpolar = cos(th+rot)*cos(0+tum) - sin(tum);
+gfx_x = offsetx + offsetx*sin(th)*abs(xpolar);
+gfx_y = offsety + offsety*cos(th)*abs(xpolar);
+loop(res, 
+  th+=$pi*2/res;
+  xpolar = cos(th+rot)*cos(0+tum)  - sin(tum);
+  xpolar < 0.0 ? (gfx_r = 1.0;gfx_g=1.0;gfx_b=1.0;gfx_a=1.0;) : (gfx_r = 1.0;gfx_g=0.2;gfx_b=0.2;gfx_a=1.0;);
+  gfx_lineto(offsetx + offsetx*sin(th)*abs(xpolar),offsety + offsety*cos(th)*abs(xpolar),1.0);
+      );
+      
+th=0.0;
+xpolar = sin(th+rot)*cos(0+til) - sin(til);
+gfx_x = offsetx + offsetx*sin(th)*abs(xpolar);
+gfx_y = offsety + offsety*cos(th)*abs(xpolar);
+loop(res, 
+  th+=$pi*2/res;
+  xpolar = sin(th+rot)*cos(0+til) - sin(til);
+  xpolar < 0.0 ? (gfx_r = 0.5;gfx_g=0.5;gfx_b=1.0;gfx_a=1.0;) : (gfx_r = 1.0;gfx_g=0.5;gfx_b=0.0;gfx_a=1.0;);
+  gfx_lineto(offsetx + offsetx*sin(th)*abs(xpolar),offsety + offsety*cos(th)*abs(xpolar),1.0);
+      );      

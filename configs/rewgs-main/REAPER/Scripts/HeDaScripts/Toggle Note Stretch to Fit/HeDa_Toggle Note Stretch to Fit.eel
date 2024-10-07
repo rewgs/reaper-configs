@@ -1,0 +1,62 @@
+/**
+ * ReaScript Name: Toggle Note's stretch to fit item of selected items
+ * Description: Change note's stretch to fit item of many items at once.
+ * Instructions: Select empty items and run the script. 
+ * Author: HeDa
+ * Author URl: http://forum.cockos.com/member.php?u=47822
+ * Repository: 
+ * Repository URl: 
+ * File URl: 
+ * Licence: GPL v3
+ * Forum Thread:
+ * Forum Thread URl: http://forum.cockos.com/showthread.php?t=155896
+ * Version: 0.1 
+ * Version Date: 2015-02-20
+ * REAPER: 4.76
+ * Extensions: 
+ */
+ 
+function main() // local (i, j, item, take, track)
+(
+	Undo_BeginBlock(); // Begining of the undo block. Leave it at the top of your main function.
+
+	// YOUR CODE BELOW
+
+	// LOOP THROUGH SELECTED ITEMS
+	
+	selected_items_count = CountSelectedMediaItems(0);
+	
+	i = 0; // INITIALIZE loop through selected items
+	loop(selected_items_count, (item = GetSelectedMediaItem(0, i)) ? (
+			// GET INFOS
+			
+			GetSetItemState(item, #str="");	// get xml chunk
+			match("%{#stra}sIMGRESOURCEFLAGS %{value}d%{#strb}s", #str);	//find the line and store variables before and after and the setting value
+			value==0 ? (	
+				strcat(#stra,"IMGRESOURCEFLAGS 2");		// append the line with stretch to fit item
+			):(
+				strcat(#stra,"IMGRESOURCEFLAGS 0");		// append the line without stretch to fit item
+			);
+			strcat(#stra,#strb);	// final chunk modified.
+		
+			// SET INFOS
+			GetSetItemState2(item, #stra, 1);	// set the xml chunk back to the item
+	
+			
+		); // ENDIF inside loop selected items
+		i += 1; // INCREMENT loop through selected items
+	); // ENDLOOP through selected items
+	
+	
+	// YOUR CODE ABOVE
+
+	Undo_EndBlock("Toggle note stretch to fit ", 0); // End of the undo block. Leave it at the bottom of your main function.
+);
+
+////msg_start(); // Display characters in the console to show you the begining of the script execution.
+
+main(); // Execute your main function
+
+UpdateArrange(); // Update the arrangement (often needed)
+
+////msg_end(); // Display characters in the console to show you the end of the script execution.

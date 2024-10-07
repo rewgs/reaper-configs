@@ -1,0 +1,5 @@
+C10018 "/Users/jonathankawchuk/Music/Impulse Response Samples/audiocheck test sweeps"
+F audiocheck.net_sweep20-20klin.wav 1770952 0 1395998968 0
+D s 44100 n 1 l 0:20.000 i 16
+F audiocheck.net_sweep20-20klog.wav 1770952 0 1395998964 0
+D s 44100 n 1 l 0:20.000 i 16

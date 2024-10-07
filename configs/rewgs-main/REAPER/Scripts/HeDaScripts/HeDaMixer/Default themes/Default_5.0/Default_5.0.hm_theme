@@ -1,0 +1,27 @@
+return {
+-- Table: {1}
+{
+   ["background_color_red"] = 51,
+   ["background_color_green"] = 51,
+   ["background_color_blue"] = 51,
+   ["text_color_red"] = 255,
+   ["text_color_green"] = 255,
+   ["text_color_blue"] = 255,
+   ["text_color2_red"] = 128,
+   ["text_color2_green"] = 128,
+   ["text_color2_blue"] = 128,
+   ["text_color3_red"]=128,
+   ["text_color3_green"]=255,
+   ["text_color3_blue"]=150,
+   ["text_color4_red"]=128,
+   ["text_color4_green"]=150,
+   ["text_color4_blue"]=255,
+   ["meteraboveref_red"]=255,
+   ["meteraboveref_green"]=200,
+   ["meteraboveref_blue"]=100,
+   ["meter_red"]=0,
+   ["meter_green"]=254,
+   ["meter_blue"]=149, 
+   ["font_1"]="Arial",
+},
+}

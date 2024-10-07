@@ -1,0 +1,141 @@
+desc: medium functions
+
+
+@init
+
+coeff_A=0;
+coeff_B=0;
+coeff_C=0;
+coeff_D=0;
+
+function calculate_depth_coeffs(depth_coeff)
+(
+	(  depth_coeff >= 0 )? 
+	(
+	  coeff_A = cos( depth_coeff - ($pi/2)  );
+	 ):
+	(
+	  coeff_A = cos( depth_coeff + ($pi/2) ); 
+	);
+	 coeff_B = cos( depth_coeff );
+ );
+ 
+function calculate_pan_coeffs(pan_coeff)
+(
+	//Pan ref
+	(  pan_coeff >= 0 )?  (
+		coeff_C =cos( pan_coeff - ($pi/2)  ) ;
+	):
+	(
+		coeff_C = cos( pan_coeff + ($pi/2) ) ; 
+	);
+		coeff_D = cos( pan_coeff );
+);
+
+
+
+function do_depth(depth_coeff)
+(
+	(  depth_coeff >= 0 )?  (
+	  spl0 += coeff_A*spl4;
+	  spl4 = coeff_B*spl4;
+
+	  spl1 += coeff_A*spl5;
+	  spl5 = coeff_B*spl5;
+	):
+	(
+	  spl4 += coeff_A*spl0; //reversed order is important
+	  spl0 = coeff_B*spl0;
+	  spl5 += coeff_A*spl1; 
+	  spl1 = coeff_B*spl1;
+	);
+);
+
+function do_pan(pan_coeff)
+(
+	(  pan_coeff >= 0 )?  (
+		spl1 += coeff_C  *spl0;
+		spl0 =  coeff_D *spl0;
+
+		spl5 += coeff_C  *spl5;
+		spl4 =  coeff_D *spl4;
+	):
+	(
+		spl0 += coeff_C*spl1; //reversed order is important
+		spl1 =  coeff_D*spl1;
+		spl4 += coeff_C*spl5; 
+		spl5 =  coeff_D*spl5;
+	);
+);
+
+function do_side_physical_level(side_physical_level)
+(
+	spl0+=(spl6)*0.5*(1-side_physical_level);
+	spl1+=(spl7)*0.5*(1-side_physical_level);
+	spl4+=(spl6)*0.5*(1-side_physical_level);
+	spl5+=(spl7)*0.5*(1-side_physical_level);
+	spl6*=side_physical_level;
+	spl7*=side_physical_level;
+);
+
+function downmix_151_71_v1()
+(
+	spl0 += spl8 + spl10; //top C & LFE are a L & R of a new bottom layer
+	spl1 += spl9 + spl11;
+	spl4 += spl12;
+	spl5 += spl13;
+	spl6 += spl14;
+	spl7 += spl15;
+);
+
+function silence_top_layer_151()
+(
+	spl8 = 0;
+	spl9 = 0;
+	spl10= 0;
+	spl11= 0;
+	spl12= 0;
+	spl13= 0;
+	spl14= 0;
+	spl15= 0;
+);
+
+function MS_encode_ELL()
+(
+	front_M =(spl0+spl1)*0.5;
+	front_S =(spl0-spl1)*0.5; 
+	back_M  =(spl4+spl5)*0.5;
+	back_S  =(spl4-spl5)*0.5; 
+	side_M  =(spl6+spl7)*0.5;
+	side_S  =(spl6-spl7)*0.5; 
+);
+
+function MS_encode_Top()
+(
+	top_front_M =(spl8+spl9)*0.5;
+	top_front_S =(spl8-spl9)*0.5; 
+	top_back_M  =(spl12+spl13)*0.5;
+	top_back_S  =(spl12-spl13)*0.5; 
+	top_side_M  =(spl14+spl15)*0.5;
+	top_side_S  =(spl14-spl15)*0.5; 
+);
+
+
+function ELL_Side_Depth_71_to_71(ELL_Side_Depth)
+(
+	ELL_Side_Depth>0?(
+	//ELL side depth
+	spl0 +=(spl6)*   ELL_Side_Depth;
+	spl1 +=(spl7)*   ELL_Side_Depth;
+	spl6=  (spl6)*(1-ELL_Side_Depth);
+	spl7=  (spl7)*(1-ELL_Side_Depth);
+	)
+	:
+	(
+	ELL_Side_Depth*=-1;
+	spl4 +=(spl6)*  ELL_Side_Depth;
+	spl5 +=(spl7)*  ELL_Side_Depth;
+	spl6= (spl6)*(1-ELL_Side_Depth);
+	spl7= (spl7)*(1-ELL_Side_Depth);
+	);
+);

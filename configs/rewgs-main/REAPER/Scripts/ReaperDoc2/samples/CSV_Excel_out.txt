@@ -1,0 +1,18 @@
+ReaperDoc	F:\dev\ReaperDoc\samples\BradSucks_MakingMeNervous.rpp
+Tempo:	120 BPM 4/4
+Sample Rate:	44100
+
+Track #	Name	Volume	Pan	Mute/Solo	Effects	Sends	Receives
+1	vocals	+24.00db	C	Mute 	VST: ReaFir (FFT EQ+Dynamics Processor) (Cockos)		
+2	lalala	+7.50db	C	 Solo			
+3	bassline	+1.50db	C	Mute Solo	DX: VW SpyPos,DX: VW AudioConvert,VST: ReaEQ (Cockos),VST: ReaTune (Cockos),Guitar/chorus		
+4	lead_guitar	0.00db	R 68%	 			
+5	rhythm_guitar	-1.20db	L 100%	 			
+6	newsolo	-7.50db	C	 			
+7	drums	-38.00db	C	 			
+8	bassdrum	-70.25db	C	 			
+9	hihat	-inf	R 27%	 			
+10	claps	-5.05db	R 25%	 			
+11	tamborine	-4.79db	L 16%	 			
+12	inslide	-20.80db	C	 			
+

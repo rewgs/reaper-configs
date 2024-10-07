@@ -1,0 +1,37 @@
+---------------------------------------------------
+  Track Inspector - Installation instructions
+---------------------------------------------------
+
+* Requirements
+
+    - REAPER v5.16 or above http://www.reaper.fm/download.php
+      This script is built for REAPER 5 and above only.
+    - SWS Extensions v2.7.3 or more recent. http://sws-extension.org/
+    - TBProAudio dpMeterII v1.1.8 or above http://www.tb-software.com/TBProAudio/dpmeter2.html
+      Why is dpMeter needed? This app uses the dpMeter plugin made by TBProAudio for the Loudness analysis. 
+	  It gets the number values from it and displays the meter.
+
+* Installation
+    Make sure you have the required SWS extensions installed. 
+	
+    Install the VST3 version of dpMeterII
+    If you install both VST2 and VST3 versions, you will have to rename the VST2 version in REAPER 
+	with a suffix, so it is better to install only the VST3 version.
+    
+	Extract THE FOLDER inside the zip, with all the files, to the REAPER resources path.
+	Or in the portable folder if running a portable installation. The path of the script should look like:
+    C:\Users\(UserX)\AppData\Roaming\REAPER\Scripts\HeDaScripts\Track Inspector\HeDa_Track Inspector VIP.lua
+	or like this for a portable installation (example):
+	C:\REAPER\Scripts\HeDaScripts\Track Inspector\HeDa_Track Inspector.lua
+	
+	Then add the script to REAPER as any script in the actions window. Click "Load", and select the lua file.
+    Then the action is added and you can create a toolbar button or assign it a keyboard shortcut.
+	There is an additional lua file that starts the script in master mode by default showing the master track.
+
+* Terminating the script:
+
+    When running again the action, it will ask what do you want to do. Terminate and close it. 
+	Or run another instance. You have to click to remember the setting and click Terminate to close
+	it because it doesn't support multiple instances by default
+	
+    

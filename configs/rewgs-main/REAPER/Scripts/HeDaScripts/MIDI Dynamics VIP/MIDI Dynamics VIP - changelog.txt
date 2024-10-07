@@ -1,0 +1,9 @@
+﻿---------------------------------------------------------------------------------------
+ MIDI Dynamics VIP - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0pre2 (2019-05-09)
+  + Support to work in the arrange or inline MIDI editor with a selected item
+
+* v1.0pre1 (2017-11-02)
+  + Initial pre-release. MIDI note velocity supported. Reget notes, and reset button.

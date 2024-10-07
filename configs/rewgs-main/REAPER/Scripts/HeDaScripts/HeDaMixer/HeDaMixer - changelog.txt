@@ -1,0 +1,74 @@
+﻿---------------------------------------------------------------------------------------
+  HeDaMixer - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.02 (2019-07-30)
+  # better fix font error
+
+* v1.01 (2019-06-24)
+  # fix font error
+
+* v1.0 (2019-03-11)
+  # About page with changelog and links to VIP members and VIP donations.
+  # Font size for db scale
+
+* v1.0pre9 (2018-11-19)
+  # fixing mute and solo buttons, work with selected tracks and grouping.
+
+* v1.0pre8 (2018-08-14)
+  + Big CPU optimization drawing only what is seen. Now we can have many tracks , as with the use MCP tracks option. Only visible ones in the window will be drawn.
+  # fix: mouse over bottom text label with custom width tracks draws lines with correct width.
+
+* v1.0pre7 (2018-08-13)
+  + Option to use all tracks in MCP 
+  + Theming: new files support for displaying image at peak hold line and meter line (peakhold.png and meter.png)
+  # fix: bad string displayed when volume -Inf.
+  # fix: possible crash
+
+* v1.0pre6 (2018-03-20)
+  # fix: Running instances from Track Inspector Tags.
+
+* v1.0pre5 (2018-03-14)
+  + Panning: Mono Pan. Stereo Pan. Dual Pan. 
+  + Panning: Some initial ReaSurround support.
+  + Mouse over track names to read entire track name.
+  + Keys + and - to change font size.(keys work with HeDaMixer window focused) 
+  + Theme: Change Font support. "Bebas Neue" included as default. If not, Arial or default font should be used. 
+  + Setting: Show > Margin between tracks
+  # fix: theme settings, colors, saved for each instance.
+  # fix: crash in meter from another track. Thanks @hopi
+
+* v1.0pre4 (2018-03-05)
+  + Change fader image per track. Menu searches pngs in the faders folder. Included some example faders with default fader in different colors.
+  # Change default fader type for all tracks, now uses new function that searches pngs in the faders folder too.
+  # fix: locked tracks issue after switching from another project tab.
+  # fix: correctly load theme from settings folder if found. If not, use default theme.
+  # removed instances 2 and 3 examples. Use Save as new instance function to make new instances.
+  # fix: track selection change if dragging fader and releasing mouse button outside the current dragged fader.
+
+* v1.0pre3 (2018-02-17)
+  # fix: toolbar_misc_key_lock.png not needed [p=1954013]  thanks @timh613
+  # fix: (position out of bounds) [p=1955399] thanks @hopi
+
+* v1.0pre2 (2018-02-08)
+  + Automation support.
+  # try to fix theme not found error.
+  # fix: crash gap width dialog when deleting the number
+
+* v1.0pre1 (2018-02-02)
+  + Display peaks meter, waveform, fader, mute, solo, FXChain, I/O.
+  + Display Selected tracks and Lock current tracks
+  + Support for Track Inspector Tags special instances that show only tracks with specific TI tag.
+  + Support for Track Inspector FX Groups, for displaying gain reduction for each plugin with different colors by FX group.
+  + Option: Display Gain reduction from supported plugins. Multiple gain reduction indicator support.
+  + Option: Set reference level grid
+  + Option: Change color above reference level  
+  + Option: Meter color by Track color or by defined color
+  + Option: Change background color, and text color, and text shadows
+  + Option: Selecting one meter, scrolls into TCP view or MCP view
+  + Load and save configurations as presets of all the options.
+  + Save as new instance
+  + Gaps after a track.
+  + Layout: initial support for different layouts. early limited. Separator layout. will be improved.
+  + Auto layout Separators from MCP layout.
+  + Initial public test version. 

@@ -1,0 +1,34 @@
+---------------------------------------------------
+  Loudness Graph - Installation instructions
+---------------------------------------------------
+
+Requirements
+
+    - REAPER 5.16 or above http://www.reaper.fm/download.php
+      This script is built for REAPER 5 and above only.
+    - SWS Extensions 2.7.1 or more recent. http://sws-extension.org/
+    - TBProAudio / dpMeterII 1.1.8 or above http://www.tb-software.com/TBProAudio/dpmeter2.html
+      Why is dpMeter needed? This script uses the dpMeter plugin made by TBProAudio for the Loudness analysis. 
+	  It gets the number values from it and represents the meters and graph.
+	- Powerful CPU: It is a CPU hungry script if you add many tracks to analyze. If you see some glitches in 
+	  the graph it may be because the CPU is not powerful enough to draw the graph in realtime.
+
+Installation
+
+    Install the VST3 version of dpMeterII
+    If you install both VST2 and VST3 versions, you will have to rename the VST2 version in REAPER with a suffix, 
+	so it is better to install only the VST3 version.
+    
+	Extract THE FOLDER inside the zip, with all the files, to the REAPER resources path.
+	Or in the portable folder if running a portable installation. The path of the script should look like:
+    C:\Users\(UserX)\AppData\Roaming\REAPER\Scripts\HeDaScripts\Loudness Graph VIP\HeDa_Loudness Graph VIP.lua
+	or like this for a portable installation (example):
+	C:\REAPER\Scripts\HeDaScripts\Loudness Graph VIP\HeDa_Loudness Graph VIP.lua
+	
+	Then add the script to REAPER as any script in the actions window. Click "Load", and select the lua file.
+    Then the action is added and you can create a toolbar button or assign it a keyboard shortcut.
+
+Terminating the script:
+
+    If you run the script again while it is running, a prompt will be presented to terminate the script.
+    You should click to remember the setting and click Terminate to close it.

@@ -1,0 +1,80 @@
+SCR 4 0 RSf499ed0d4972424785d00b8a73525390fb8060d3 "Custom: Pro Tools BackSpace.lua" "Pro Tools BackSpace.lua"
+SCR 4 0 RS7856ced26bf39624b56a7c80a91c66ac54f6d747 "Custom: Pro Tools Commit.lua" "Pro Tools Commit.lua"
+SCR 4 0 RSe04acbc4943d376c102cdf661bc8a591e4ef06db "Custom: Pro Tools Consolidate Clip.lua" "Pro Tools Consolidate Clip.lua"
+SCR 4 0 RS704eb318b098cd34588fefdf576fa52915d412a8 "Custom: Pro Tools Ctrl-Shift-Tab.lua" "Pro Tools Ctrl-Shift-Tab.lua"
+SCR 4 0 RSa8a74f969731f953cd5cc0d48ff5270ea1b04760 "Custom: Pro Tools Down Shortcut.lua" "Pro Tools Down Shortcut.lua"
+SCR 4 0 RS3aa7333894e2c09462fad6c4c3b78425266135b8 "Custom: Pro Tools Duplicate Clips.lua" "Pro Tools Duplicate Clips.lua"
+SCR 4 0 RS238197211c03acabbe24762820ce4612ab690a00 "Custom: Pro Tools Go To Beginning of Session.lua" "Pro Tools Go To Beginning of Session.lua"
+SCR 4 0 RS4c53c5517b7406a10cbafba8aca2a7314eed5fac "Custom: Pro Tools Move Cursor to Next Clip Edge.lua" "Pro Tools Move Cursor to Next Clip Edge.lua"
+SCR 4 0 RSc6ef40525beeb5f10e72687d9ce187ff806e9fc1 "Custom: Pro Tools Move Cursor to Previous Clip Edge.lua" "Pro Tools Move Cursor to Previous Clip Edge.lua"
+SCR 4 0 RSf773964d8f50d7f79eb9eb3af4407d1bc316f546 "Custom: Pro Tools Nudge Position +.lua" "Pro Tools Nudge Position +.lua"
+SCR 4 0 RS53ba79e7873298f2df9bc8726515a96dc3fe9089 "Custom: Pro Tools Nudge Position -.lua" "Pro Tools Nudge Position -.lua"
+SCR 4 0 RS182251412bdd207a9b9585a48808ba7c7ad64aa6 "Custom: Pro Tools PLUS B Shortcut.lua" "Pro Tools PLUS B Shortcut.lua"
+SCR 4 0 RSd678b1d6a4682f6795c7d21c19b12bbfaa9e99d6 "Custom: Pro Tools PLUS Clip Volume_s + 1db.lua" "Pro Tools PLUS Clip Volume_s + 1db.lua"
+SCR 4 0 RS76decc2050f34bf42b85d785971269ebc8ddf96e "Custom: Pro Tools PLUS Clip Volume_s -1db.lua" "Pro Tools PLUS Clip Volume_s -1db.lua"
+SCR 4 0 RS731251de02de089aa84060199f4479c3ca5b7648 "Custom: Pro Tools PLUS Delete.lua" "Pro Tools PLUS Delete.lua"
+SCR 4 0 RSf486cb701051b11e837b4c1e4ee6fc89dee732d3 "Custom: Pro Tools PLUS Explode and rename 5.1 Files for Pro Tools.lua" "Pro Tools PLUS Explode and rename 5.1 Files for Pro Tools.lua"
+SCR 4 0 RSab8a6bc8d293eeb7bc6db58094dda1a7ffb1a1c6 "Custom: Pro Tools PLUS Go to Memory Location.lua" "Pro Tools PLUS Go to Memory Location.lua"
+SCR 4 0 RSbca2182035771cde1fcb427edfaae015608ad965 "Custom: Pro Tools PLUS Normalize Item.lua" "Pro Tools PLUS Normalize Item.lua"
+SCR 4 0 RSc17c96c3a857fb3102cc2e486d7942c90ed630fc "Custom: Pro Tools PLUS Open FX with Preset.lua" "Pro Tools PLUS Open FX with Preset.lua"
+SCR 4 0 RS7da738f2e5664d340a212851d02956fec64883a8 "Custom: Pro Tools PLUS Pitch Down.lua" "Pro Tools PLUS Pitch Down.lua"
+SCR 4 0 RSe49663acb78f6065c585c16b39b3338df49e3776 "Custom: Pro Tools PLUS Pitch Normal.lua" "Pro Tools PLUS Pitch Normal.lua"
+SCR 4 0 RS2d21f4a709e04feda8ad65c9df96415b263a776b "Custom: Pro Tools PLUS Pitch Up.lua" "Pro Tools PLUS Pitch Up.lua"
+SCR 4 0 RS2dbc8666fb406de6ae30a4e93ca4cddf7c34459a "Custom: Pro Tools PLUS Rename Items Mulitple.lua" "Pro Tools PLUS Rename Items Mulitple.lua"
+SCR 4 0 RS0c3e23200a47704467de5938dbfba6e61b9424e5 "Custom: Pro Tools PLUS Rename Items Single.lua" "Pro Tools PLUS Rename Items Single.lua"
+SCR 4 0 RSea37386ae46c633e16633ae0b1d03152a6bd2bdc "Custom: Pro Tools PLUS Reverse.lua" "Pro Tools PLUS Reverse.lua"
+SCR 4 0 RS401df0ea4a85d70bf47fff0836ec8c29786215e3 "Custom: Pro Tools PLUS Save Project As Stereo.lua" "Pro Tools PLUS Save Project As Stereo.lua"
+SCR 4 0 RS2bf03cea9657d5e1b2de542cbcd3bbe9342fa0b7 "Custom: Pro Tools PLUS Save Project As Surround.lua" "Pro Tools PLUS Save Project As Surround.lua"
+SCR 4 0 RS749b9278ae6517c71edf3d02ea586b9a50afc346 "Custom: Pro Tools PLUS Sub Project With Video Track.lua" "Pro Tools PLUS Sub Project With Video Track.lua"
+SCR 4 0 RS43e9c768244f62dbf9afbdb2d2611a92e8023d4d "Custom: Pro Tools PLUS Trim Clip Left Side.lua" "Pro Tools PLUS Trim Clip Left Side.lua"
+SCR 4 0 RS1d8c4d71d272240eafdb4a4bb4e68a99e9594cbe "Custom: Pro Tools PLUS Trim Clip Right Side.lua" "Pro Tools PLUS Trim Clip Right Side.lua"
+SCR 4 0 RS393757325ea8ace93e0c9761f6fef63d3b6ef8b2 "Custom: Pro Tools Paste.lua" "Pro Tools Paste.lua"
+SCR 4 0 RSecc49cfbbe3e3b2dffab5ee64a53d1aa9024d7b2 "Custom: Pro Tools Select All.lua" "Pro Tools Select All.lua"
+SCR 4 0 RSefb036f06715f5f71b6deba3f7a07df5a74386cd "Custom: Pro Tools Shift-Tab.lua" "Pro Tools Shift-Tab.lua"
+SCR 4 0 RS8bed6130491cada48c55ed6e25e61374c9b4f600 "Custom: Pro Tools Show All Tracks Volume Automation.lua" "Pro Tools Show All Tracks Volume Automation.lua"
+SCR 4 0 RSc2f0f576e2c8cbb144da611fc0fa50b943c0d5b8 "Custom: Pro Tools Show Track Volume Automation.lua" "Pro Tools Show Track Volume Automation.lua"
+SCR 4 0 RS2b8fe1bd28a18845dc8fa5cce898d665241c0e94 "Custom: Pro Tools Solo Exclusive Latch.lua" "Pro Tools Solo Exclusive Latch.lua"
+SCR 4 0 RSeea78370cfeacb39f12ed2814f5b936bf09db92d "Custom: Pro Tools Solo Exclusive.lua" "Pro Tools Solo Exclusive.lua"
+SCR 4 0 RS89432d442ce5ee2ebb5b80d1ad6639d46eeca92d "Custom: Pro Tools Spacebar.lua" "Pro Tools Spacebar.lua"
+SCR 4 0 RSd23121fc5cb6a9cb0f55d1b18f5397c3754b237b "Custom: Pro Tools Split Clips.lua" "Pro Tools Split Clips.lua"
+SCR 4 0 RS089777b18d98ef0064d3d27a641db9ce06c40f62 "Custom: Pro Tools Toggle Insertion Follows Playback.lua" "Pro Tools Toggle Insertion Follows Playback.lua"
+SCR 4 0 RSb7404f4a4ca9887c4a1ec127a9cb7da618fcccb8 "Custom: Pro Tools Toggle Link Timeline and Edit Cursor.lua" "Pro Tools Toggle Link Timeline and Edit Cursor.lua"
+SCR 4 0 RS6190f3ad36c43a95b5f8a3543e2a947086fc7437 "Custom: Pro Tools Toggle Mute for Clip.lua" "Pro Tools Toggle Mute for Clip.lua"
+SCR 4 0 RS398dae96f972c73eca6ab528f215553db5fad571 "Custom: Pro Tools Up Shortcut.lua" "Pro Tools Up Shortcut.lua"
+KEY 1 8 _RSf499ed0d4972424785d00b8a73525390fb8060d3 0
+KEY 17 67 _RS7856ced26bf39624b56a7c80a91c66ac54f6d747 0
+KEY 16 35 _RSe04acbc4943d376c102cdf661bc8a591e4ef06db 0
+KEY 21 9 _RS704eb318b098cd34588fefdf576fa52915d412a8 0
+KEY 1 32808 _RSa8a74f969731f953cd5cc0d48ff5270ea1b04760 0
+KEY 9 68 _RS3aa7333894e2c09462fad6c4c3b78425266135b8 0
+KEY 1 13 _RS238197211c03acabbe24762820ce4612ab690a00 0
+KEY 1 9 _RS4c53c5517b7406a10cbafba8aca2a7314eed5fac 0
+KEY 17 9 _RSc6ef40525beeb5f10e72687d9ce187ff806e9fc1 0
+KEY 1 107 _RSf773964d8f50d7f79eb9eb3af4407d1bc316f546 0
+KEY 1 109 _RS53ba79e7873298f2df9bc8726515a96dc3fe9089 0
+KEY 1 66 _RS182251412bdd207a9b9585a48808ba7c7ad64aa6 0
+KEY 8 61 _RSd678b1d6a4682f6795c7d21c19b12bbfaa9e99d6 0
+KEY 8 45 _RS76decc2050f34bf42b85d785971269ebc8ddf96e 0
+KEY 1 32814 _RS731251de02de089aa84060199f4479c3ca5b7648 0
+KEY 1 110 _RSab8a6bc8d293eeb7bc6db58094dda1a7ffb1a1c6 0
+KEY 5 78 _RSbca2182035771cde1fcb427edfaae015608ad965 0
+KEY 8 95 _RS7da738f2e5664d340a212851d02956fec64883a8 0
+KEY 13 80 _RSe49663acb78f6065c585c16b39b3338df49e3776 0
+KEY 8 43 _RS2d21f4a709e04feda8ad65c9df96415b263a776b 0
+KEY 13 82 _RS2dbc8666fb406de6ae30a4e93ca4cddf7c34459a 0
+KEY 5 82 _RS0c3e23200a47704467de5938dbfba6e61b9424e5 0
+KEY 9 82 _RSea37386ae46c633e16633ae0b1d03152a6bd2bdc 0
+KEY 1 65 _RS43e9c768244f62dbf9afbdb2d2611a92e8023d4d 0
+KEY 1 83 _RS1d8c4d71d272240eafdb4a4bb4e68a99e9594cbe 0
+KEY 1 86 _RS393757325ea8ace93e0c9761f6fef63d3b6ef8b2 0
+KEY 9 86 _RS393757325ea8ace93e0c9761f6fef63d3b6ef8b2 0
+KEY 9 65 _RSecc49cfbbe3e3b2dffab5ee64a53d1aa9024d7b2 0
+KEY 5 9 _RSefb036f06715f5f71b6deba3f7a07df5a74386cd 0
+KEY 16 45 _RS8bed6130491cada48c55ed6e25e61374c9b4f600 0
+KEY 0 45 _RSc2f0f576e2c8cbb144da611fc0fa50b943c0d5b8 0
+KEY 1 32 _RS89432d442ce5ee2ebb5b80d1ad6639d46eeca92d 0
+KEY 9 69 _RSd23121fc5cb6a9cb0f55d1b18f5397c3754b237b 0
+KEY 1 78 _RS089777b18d98ef0064d3d27a641db9ce06c40f62 0
+KEY 0 63 _RSb7404f4a4ca9887c4a1ec127a9cb7da618fcccb8 0
+KEY 9 77 _RS6190f3ad36c43a95b5f8a3543e2a947086fc7437 0
+KEY 1 32806 _RS398dae96f972c73eca6ab528f215553db5fad571 0

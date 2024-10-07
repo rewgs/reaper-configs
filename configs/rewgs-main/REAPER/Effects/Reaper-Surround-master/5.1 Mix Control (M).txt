@@ -1,0 +1,34 @@
+desc:Based on DTS Neural Upmix (Medium). Useful after upscalers that don't have these controls.
+
+slider1:0<0,100,1>Width
+slider2:0<-100,100,1>Depth
+slider3:0<-100,100,1>Pan
+slider4:100<0,100,10>Rear Width
+
+import surroundlib2.txt
+import surroundlib3.txt
+
+@init
+// this is stuff that happens once (or if the samplerate changes, etc)
+
+@slider
+// gain = 2^(slider1/6); // convert from dB to a multiplier
+width_coeff=slider1/100; 
+depth_coeff=(slider2*$pi)/200; //depth scaled from 0-100 to 0>half pi
+pan_coeff=(slider3*$pi)/200; //pan scaled from 0-100 to 0>half pi
+R_width_coeff=slider4/100;
+
+calculate_depth_coeffs(depth_coeff);
+calculate_pan_coeffs(pan_coeff);
+
+@sample
+
+//Width
+do_width(width_coeff);
+
+do_pan(pan_coeff);
+
+do_depth(depth_coeff);
+
+//Rear width
+rear_width(R_width_coeff);

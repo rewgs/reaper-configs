@@ -1,0 +1,29 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Channel Randomizer
+in_pin:none
+out_pin:none
+slider1:1<1,16,1>First Channel
+slider2:16<1,16,1>Last Channel
+
+
+
+@slider
+slider1 = min(max(slider1, 1), 16) |0;
+slider2 = min(max(slider2, slider1), 16) |0;
+range = (slider2-slider1) + 0.9999847412109375;
+lower = slider1 - 1;
+lowerN= lower + $x90;
+
+memset(0, $x90, 128);
+
+
+
+@block
+while(midirecv(o,a,b,c)) (
+ a > $x9F ? (
+  midisend(o, (a & $xF0) + rand(1)*range + lower, b, c);
+ ) : (
+  midisend(o, a < $x90 ? (b[0] - $x10) : (b[0]=rand(1)*range + lowerN), b, c);
+ );
+);

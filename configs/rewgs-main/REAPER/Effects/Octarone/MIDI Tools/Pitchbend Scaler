@@ -1,0 +1,39 @@
+// Written by octarone, licensed under GPL, see License.txt or visit <http://www.gnu.org/licenses/>
+
+desc: Pitchbend Scaler
+in_pin:none
+out_pin:none
+slider1:1<0,2,0.00001>Channel 1
+slider2:1<0,2,0.00001>Channel 2
+slider3:1<0,2,0.00001>Channel 3
+slider4:1<0,2,0.00001>Channel 4
+slider5:1<0,2,0.00001>Channel 5
+slider6:1<0,2,0.00001>Channel 6
+slider7:1<0,2,0.00001>Channel 7
+slider8:1<0,2,0.00001>Channel 8
+slider9:1<0,2,0.00001>Channel 9
+slider10:1<0,2,0.00001>Channel 10
+slider11:1<0,2,0.00001>Channel 11
+slider12:1<0,2,0.00001>Channel 12
+slider13:1<0,2,0.00001>Channel 13
+slider14:1<0,2,0.00001>Channel 14
+slider15:1<0,2,0.00001>Channel 15
+slider16:1<0,2,0.00001>Channel 16
+
+
+
+@slider
+// cache sliders into memory, because it's much faster...
+a = 1;  loop(16, a[-1] = slider(a); a += 1);
+
+
+
+@block
+while(midirecv(o,a,b,c)) (
+ abs(a-231.5) < 8 ? (
+  b = min(max((b + c*128 - 8192)*(a & $~4)[0] + 8192, 0), 16383);
+  midisend(o, a, b + (b & $x3F80));
+ ) : (
+  midisend(o, a, b, c);
+ );
+);

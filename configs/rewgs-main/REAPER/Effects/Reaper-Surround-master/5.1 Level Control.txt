@@ -1,0 +1,31 @@
+desc: 5.1 Level Control, 7.1 sides = rears, but control is half strength.
+
+slider1:100<0,200,1>L/R	Gain	(%)
+slider2:100<0,200,1>C	Gain	(%)
+slider3:100<0,200,1>LFE	Gain	(%)
+slider4:100<0,200,1>Sur	Gain	(%)
+
+@init
+
+@slider
+
+side_coeff=(100-(100-slider4)/2)/100
+
+@sample
+
+//LR
+spl0 *=(slider1/100); 
+spl1 *=(slider1/100);
+ 
+// C LFE
+spl2 *=(slider2/100);
+ 
+spl3 *=(slider3/100);
+
+// BL BR
+spl4 *=(slider4/100); 
+spl5 *=(slider4/100);
+
+// SL SR 1/2 strength
+spl6 *=(side_coeff); 
+spl7 *=(side_coeff); 

@@ -1,0 +1,7 @@
+ReaperDoc,##FILE-NAME##
+Tempo:,##TEMPO##
+Sample Rate:,="##SAMPLE-RATE##"
+
+Track #,Name,Volume,Pan,Mute/Solo,Effects,Sends,Receives
+<!-- TRACK-START -->##TRACK-NUM##,##TRACK-NAME##,##VOLUME##,##PAN##,##MUTE## ##SOLO##,"##FX-LIST##","##SEND-LIST##","##RCV-LIST##"
+<!-- TRACK-END -->

@@ -1,0 +1,27 @@
+C10018 "/Users/jonathankawchuk/Documents/Projects/In Progress/True Survivors/TS Grab Bag"
+F 116331__kwanba__hey.wav 221242 0 1670271574 0
+D s 44100 n 2 l 0:01.253 i 16
+F 30989__unclesigmund__hey.wav 198494 0 1670271585 0
+D s 44100 n 1 l 0:02.250 i 16
+F 496089__dastudiospr__male-hey.wav 103212 0 1670271578 0
+D s 44100 n 2 l 0:00.584 i 16
+F 546510__zein-hg__hey3.wav 541102 0 1670271558 0
+D s 48000 n 2 l 0:02.817 i 16
+F 57204__jace__men-shouting-hey.wav 456820 0 1670271589 0
+D t "Men shouting hey" a "Joel gerlach" y 2008-02-22 s 44100
+D n 2 l 0:01.294 i 32
+F 88401__justincase1021__hey-hey-a.wav 57844 0 1670271596 0
+D s 44100 n 2 l 0:00.327 i 16
+F "a24 lol.wav" 36338252 0 1670287326 0
+D s 96000 n 2 l 1:03.087 i 24
+F "Clara Stretch.wav" 897418232 0 1672704672 0
+D s 96000 n 2 l 19:28.513 i 32
+F "Fugue Machine: Fugue Machine Out (1).wav" 24036412 0 1669865218 0
+D s 48000 n 2 l 1:23.445 i 24
+F Marzan_1.mp3 3725760 0 1661207879 0
+D s 48000 n 2 l 1:33.120 i 320k
+F "Nakina Stretch.wav" 245547770 0 1669939722 0
+D s 48000 n 2 l 14:12.596 i 24
+F TTL_1m04_SynthArpAux-glued-01.wav 12160078 0 1672298071 0
+D y 2022-12-29 s 48000 n 2 r 3:05:50.698
+D l 0:42.219 i 24

@@ -1,0 +1,19 @@
+C10017 "/Users/jonathankawchuk/Documents/Projects/In Progress/This is Beth/TIB Recording/TIB_1m02_2_For Roland Smaller/media"
+F "2Beep-48K 24Bit.wav" 217214 0 1201582007 0
+D s 48000 n 1 l 0:01.502 i 24
+F "Fugue Coral Dip Listening Mixing [v1].mp3" 6144192 0 1619033772 0
+D s 48000 n 2 l 3:51.910 i 212k
+F "TIB_1m02_2_For Roland_freeze_Eb.wav" 89054216 0 1646338582 0
+D y 2022-03-03 s 48000 n 2 r 59:53.590
+D l 3:51.910 i 32
+F "TIB_1m02_2_For Roland_freeze_G.wav" 89054216 0 1646338582 0
+D y 2022-03-03 s 48000 n 2 r 59:53.590
+D l 3:51.910 i 32
+F "V7_This Is Beth_AudioOnly_220203_PICTURE LOCK.wav" 203466934 0 1643911562 0
+D y 2022-02-03 s 48000 n 2 l 17:30.466
+D i 16
+F "V7_This Is Beth_MusicOnly_220203_PICTURELOCK.wav" 203466934 0 1643911571 0
+D y 2022-02-03 s 48000 n 2 l 17:30.466
+D i 16
+F "V7_This Is Beth_Timecode02_220203_PICTURE LOCK.mp4" 2106022105 0 1643915256 0
+D s 48000 n 2 l 17:30.517

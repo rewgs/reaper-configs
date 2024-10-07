@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------------------
+ Installation of resources files for OSX:
+--------------------------------------------------------------------------------------------
+
+* Extract the Scripts and Data folders inside this zip to your REAPER resources folder. 
+  If you are not sure how to find the Resources folder, the best way is to run the command 
+  from REAPER. It's in the Options menu "Show REAPER resource path in explorer/finder..."
+ 
+* The script is now in the following subdirectory: 
+  "*REAPER_resources_path*/Scripts/HeDaScripts/HeDaScripts Manager"
+
+* Download unar (this utility is used to install the downloaded packages)
+  Download from http://unarchiver.c3.cx/commandline
+  command line utility and copy "unar" file to the "_resources" folder inside the script folder:
+  "*REAPER_resources_path*/Scripts/HeDaScripts/HeDaScripts Manager/_resources/unar"
+	
+* In REAPER, load the script:
+  Go to Actions, Show Actions list...  and click "Load" and select the file "HeDaScripts Manager.lua" 
+  Now you can run the action and the HeDaScripts Manager window appears and downloads the list of 
+  scripts available to install/upgrade. 
+
+* There is an included icon "HeDa_HSM.png" if you want to make a toolbar button in REAPER.
+	

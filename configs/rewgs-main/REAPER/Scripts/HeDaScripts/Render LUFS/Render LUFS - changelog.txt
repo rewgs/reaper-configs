@@ -1,0 +1,15 @@
+﻿---------------------------------------------------------------------------------------
+ Render LUFS - Changelog (What's new)     
+---------------------------------------------------------------------------------------
+
+* v1.0 (2019-04-07)
+  + support for render settings API (REAPER 5.974 needed) (no more need to change the setting to add into project)
+  + GUI for manual configuration of Parameter range.
+  + Support multiple parameters configurations per plugin.
+  # fix: bad behavior when ripple editing was on. 
+
+* v1.0pre2 (2017-12-15)
+  + Remove final rendered track
+  
+* v1.0pre1 (2017-11-21)
+  + Initial pre-release with GUI

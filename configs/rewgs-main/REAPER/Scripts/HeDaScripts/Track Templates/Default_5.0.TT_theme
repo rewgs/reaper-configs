@@ -1,0 +1,24 @@
+return {
+-- Table: {1}
+{
+   ["margin_items_v"]=3,
+   ["margin_items_h"]=3,
+   ["margin_icon_dir"]=15,
+   ["margin_icon_template"]=0,
+   ["button_opacity"]=0.1,
+   ["background_color_red"]=38,
+   ["background_color_green"]=38,
+   ["background_color_blue"]=38,
+   ["text_color_red"]=255,
+   ["text_color_green"]=255,
+   ["text_color_blue"]=255,
+   ["text_color2_red"]=255,
+   ["text_color2_green"]=255,
+   ["text_color2_blue"]=120,
+   ["font_size1"]="10",
+   ["font_size2"]="14",
+   ["font_size3"]="18",
+   ["font_size4"]="20",
+   ["button_opacity"]=0.5,
+},
+}

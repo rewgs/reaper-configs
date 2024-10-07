@@ -1,0 +1,77 @@
+/**
+ * ReaScript Name: Auto Record Mode
+ * Description: Sets Record Mode automatically depending on selection or time selection
+ * Instructions: 
+ * Author: HeDa
+ * Author URl: http://forum.cockos.com/member.php?u=47822
+ * Version: 0.1 beta
+ * Repository: 
+ * Repository URl: 
+ * File URl: 
+ * License: GPL v3
+ * Forum Thread:
+ * Forum Thread URl: http://forum.cockos.com/showthread.php?t=157636
+ * REAPER: 5.0
+ * Extensions: 
+ */
+ 
+/**
+ * Change log:
+ * v0.1 (2015-03-23)
+	+ REAPER 5 version that runs in background and toggle button support 
+
+*/
+
+///////////// OPTIONS //////////
+
+// time interval to check for mode. increase value to use less CPU, but less responsive.
+interval = 0.3;
+
+
+//////////////////////////////// End of Options
+
+
+
+
+
+// Don't modify below here 
+////////////////////////////////////////////////////////////////////////////////////////////// 
+
+
+function setrecordmode() (  
+	GetSet_LoopTimeRange(0, 0, start, end, 0);
+	start != end ? (
+		Main_OnCommand(40076, 0);
+	) : 
+		CountSelectedMediaItems(0) > 0 ? (
+			Main_OnCommand(40253, 0);
+		):(
+			Main_OnCommand(40252, 0);
+	);
+);
+
+//V5 >>>
+function exit() (
+get_action_context(#fn, sec, cmd);
+SetToggleCommandState(sec, cmd, 0);
+RefreshToolbar2(sec, cmd);
+);
+//V5 <<<
+
+function run () (
+	time_precise() - t1 > interval ? ( 
+		setrecordmode();
+		time_precise(t1);
+	);
+	runloop("run()");
+);
+
+//V5 >>>
+get_action_context(#fn, sec, cmd);
+state = GetToggleCommandStateEx(sec, cmd);
+SetToggleCommandState(sec, cmd, 1);
+RefreshToolbar2(sec, cmd);
+atexit("exit()");
+//V5 >>>
+
+run();

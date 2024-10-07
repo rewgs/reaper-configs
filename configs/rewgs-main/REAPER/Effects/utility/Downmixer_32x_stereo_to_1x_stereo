@@ -1,0 +1,193 @@
+/*******************************************************************************
+*  Copyright 2007 - 2011, Philip S. Considine                                  *
+*  This program is free software: you can redistribute it and/or modify        *
+*  it under the terms of the GNU General Public License as published by        *
+*  the Free Software Foundation, either version 3 of the License, or           *
+*  (at your option) any later version.                                         *
+*                                                                              *
+*  This program is distributed in the hope that it will be useful,             *
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of              *
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the                *
+*  GNU General Public License (http://www.gnu.org/licenses/)for more details.  *
+*                                                                              *
+*  This is a modified version of the original file "Mixer_8xS-1xS", modified by SonicAxiom *
+*  to be able to downmix 32 stereo channels of a multichannel audio file instead of 8. *
+*******************************************************************************/
+
+desc:downmix 32x stereo to 1x stereo
+
+slider1:-12<-142,20,0.1>Stereo 01
+slider2:-12<-142,20,0.1>Stereo 02
+slider3:-12<-142,20,0.1>Stereo 03
+slider4:-12<-142,20,0.1>Stereo 04
+slider5:-12<-142,20,0.1>Stereo 05
+slider6:-12<-142,20,0.1>Stereo 06
+slider7:-12<-142,20,0.1>Stereo 07
+slider8:-12<-142,20,0.1>Stereo 08
+slider9:-12<-142,20,0.1>Stereo 09
+slider10:-12<-142,20,0.1>Stereo 10
+slider11:-12<-142,20,0.1>Stereo 11
+slider12:-12<-142,20,0.1>Stereo 12
+slider13:-12<-142,20,0.1>Stereo 13
+slider14:-12<-142,20,0.1>Stereo 14
+slider15:-12<-142,20,0.1>Stereo 15
+slider16:-12<-142,20,0.1>Stereo 16
+slider17:-12<-142,20,0.1>Stereo 17
+slider18:-12<-142,20,0.1>Stereo 18
+slider19:-12<-142,20,0.1>Stereo 19
+slider20:-12<-142,20,0.1>Stereo 20
+slider21:-12<-142,20,0.1>Stereo 21
+slider22:-12<-142,20,0.1>Stereo 22
+slider23:-12<-142,20,0.1>Stereo 23
+slider24:-12<-142,20,0.1>Stereo 24
+slider25:-12<-142,20,0.1>Stereo 25
+slider26:-12<-142,20,0.1>Stereo 26
+slider27:-12<-142,20,0.1>Stereo 27
+slider28:-12<-142,20,0.1>Stereo 28
+slider29:-12<-142,20,0.1>Stereo 29
+slider30:-12<-142,20,0.1>Stereo 30
+slider31:-12<-142,20,0.1>Stereo 31
+slider32:-12<-142,20,0.1>Stereo 32
+
+///////////////////////////////////////////////////////////////////////////////
+@init
+gainMin = -142;
+gainMax = 20;
+
+///////////////////////////////////////////////////////////////////////////////
+@slider
+slider1 = min(max(slider1, gainMin), gainMax);
+slider2 = min(max(slider2, gainMin), gainMax);
+slider3 = min(max(slider3, gainMin), gainMax);
+slider4 = min(max(slider4, gainMin), gainMax);
+slider5 = min(max(slider5, gainMin), gainMax);
+slider6 = min(max(slider6, gainMin), gainMax);
+slider7 = min(max(slider7, gainMin), gainMax);
+slider8 = min(max(slider8, gainMin), gainMax);
+slider9 = min(max(slider9, gainMin), gainMax);
+slider10 = min(max(slider10, gainMin), gainMax);
+slider11 = min(max(slider11, gainMin), gainMax);
+slider12 = min(max(slider12, gainMin), gainMax);
+slider13 = min(max(slider13, gainMin), gainMax);
+slider14 = min(max(slider14, gainMin), gainMax);
+slider15 = min(max(slider15, gainMin), gainMax);
+slider16 = min(max(slider16, gainMin), gainMax);
+slider17 = min(max(slider17, gainMin), gainMax);
+slider18 = min(max(slider18, gainMin), gainMax);
+slider19 = min(max(slider19, gainMin), gainMax);
+slider20 = min(max(slider20, gainMin), gainMax);
+slider21 = min(max(slider21, gainMin), gainMax);
+slider22 = min(max(slider22, gainMin), gainMax);
+slider23 = min(max(slider23, gainMin), gainMax);
+slider24 = min(max(slider24, gainMin), gainMax);
+slider25 = min(max(slider25, gainMin), gainMax);
+slider26 = min(max(slider26, gainMin), gainMax);
+slider27 = min(max(slider27, gainMin), gainMax);
+slider28 = min(max(slider28, gainMin), gainMax);
+slider29 = min(max(slider29, gainMin), gainMax);
+slider30 = min(max(slider30, gainMin), gainMax);
+slider31 = min(max(slider31, gainMin), gainMax);
+slider32 = min(max(slider32, gainMin), gainMax);
+
+levelA = 2 ^ (slider1 / 6);
+levelB = 2 ^ (slider2 / 6);
+levelC = 2 ^ (slider3 / 6);
+levelD = 2 ^ (slider4 / 6);
+levelE = 2 ^ (slider5 / 6);
+levelF = 2 ^ (slider6 / 6);
+levelG = 2 ^ (slider7 / 6);
+levelH = 2 ^ (slider8 / 6);
+levelJ = 2 ^ (slider9 / 6);
+levelK = 2 ^ (slider10 / 6);
+levelL = 2 ^ (slider11 / 6);
+levelM = 2 ^ (slider12 / 6);
+levelN = 2 ^ (slider13 / 6);
+levelO = 2 ^ (slider14 / 6);
+levelP = 2 ^ (slider15 / 6);
+levelQ = 2 ^ (slider16 / 6);
+levelR = 2 ^ (slider17 / 6);
+levelS = 2 ^ (slider18 / 6);
+levelT = 2 ^ (slider19 / 6);
+levelU = 2 ^ (slider20 / 6);
+levelV = 2 ^ (slider21 / 6);
+levelW = 2 ^ (slider22 / 6);
+levelX = 2 ^ (slider23 / 6);
+levelY = 2 ^ (slider24 / 6);
+levelZ = 2 ^ (slider25 / 6);
+levelA2 = 2 ^ (slider26 / 6);
+levelB2 = 2 ^ (slider27 / 6);
+levelC2 = 2 ^ (slider28 / 6);
+levelD2 = 2 ^ (slider29 / 6);
+levelE2 = 2 ^ (slider30 / 6);
+levelF2 = 2 ^ (slider31 / 6);
+levelG2 = 2 ^ (slider32 / 6);
+
+///////////////////////////////////////////////////////////////////////////////
+@sample
+// Do the left mix
+spl0 =	(spl0 * levelA)	+ 
+		(spl2 * levelB) + 
+		(spl4 * levelC) + 
+		(spl6 * levelD) + 
+		(spl8 * levelE) + 
+		(spl10 * levelF) + 
+		(spl12 * levelG) + 
+		(spl14 * levelH) +
+		(spl16 * levelJ) +
+		(spl18 * levelK) +
+		(spl20 * levelL) +
+		(spl22 * levelM) +
+		(spl24 * levelN) +
+		(spl26 * levelO) +
+		(spl28 * levelP) +
+		(spl30 * levelQ) +
+		(spl32 * levelR) + 
+		(spl34 * levelS) + 
+		(spl36 * levelT) + 
+		(spl38 * levelU) + 
+		(spl40 * levelV) + 
+		(spl42 * levelW) + 
+		(spl44 * levelX) +
+		(spl46 * levelY) +
+		(spl48 * levelZ) +
+		(spl50 * levelA2) +
+		(spl52 * levelB2) +
+		(spl54 * levelC2) +
+		(spl56 * levelD2) +
+		(spl58 * levelE2) +
+		(spl60 * levelF2) +
+		(spl62 * levelG2);
+
+// Do the right mix
+spl1 = 	(spl1 * levelA)	+ 
+		(spl3 * levelB) + 
+		(spl5 * levelC) + 
+		(spl7 * levelD) + 
+		(spl9 * levelE) + 
+		(spl11 * levelF) + 
+		(spl13 * levelG) + 
+		(spl15 * levelH) +
+		(spl17 * levelJ) +
+		(spl19 * levelK) +
+		(spl21 * levelL) +
+		(spl23 * levelM) +
+		(spl25 * levelN) +
+		(spl27 * levelO) +
+		(spl29 * levelP) +
+		(spl31 * levelQ) +
+		(spl33 * levelR) + 
+		(spl35 * levelS) + 
+		(spl37 * levelT) + 
+		(spl39 * levelU) + 
+		(spl41 * levelV) + 
+		(spl43 * levelW) + 
+		(spl45 * levelX) +
+		(spl47 * levelY) +
+		(spl49 * levelZ) +
+		(spl51 * levelA2) +
+		(spl53 * levelB2) +
+		(spl55 * levelC2) +
+		(spl57 * levelD2) +
+		(spl59 * levelE2) +
+		(spl61 * levelF2) +
+		(spl63 * levelG2);

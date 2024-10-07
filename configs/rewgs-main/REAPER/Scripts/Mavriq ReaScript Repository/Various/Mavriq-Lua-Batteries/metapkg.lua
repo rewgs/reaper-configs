@@ -1,0 +1,28 @@
+-- @metapackage
+-- @description Mavriq Lua Batteries
+-- @version 0.1.0rc3
+-- @author Mavriq
+-- @about
+--   # Adds the missing "batteries" to lua in 'REAPER'
+--   Scripters have had difficulties using Lua modules with REAPER due to a variety of reasons. This project aims to fix that by making the most common and useful -- modules available in one package. It follows the approached used by the popular Lua Batteries package available on some platforms.
+-- @donation: https://www.paypal.com/paypalme/mavriqdev
+-- @links
+--   Forum Thread https://github.com/available_soon
+--   GitHub repository https://github.com/mavriq-dev/mavriq-lua-batteries
+-- @changelog
+--   v0.1.0rc3
+--    + Fix batteries_header for M1 (Thanks Cordilia)
+--   v0.1.0rc2
+--    + update various modules
+--    + add mac version
+--    - wxlua not working
+--    - rings not working
+--   v0.1.0rc1
+--    + initial release
+-- @provides
+--   /Various/Mavriq-Lua-Batteries/*.lua
+--   /Various/Mavriq-Lua-Batteries/lua/**/*
+--   /Various/Mavriq-Lua-Batteries/tests/**/*
+--   [win64] /Various/Mavriq-Lua-Batteries/bin/**/*.dll
+--   [darwin64] /Various/Mavriq-Lua-Batteries/bin/**/*.dylib
+--   [darwin-arm64] /Various/Mavriq-Lua-Batteries/bin/**/*.dylib

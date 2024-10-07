@@ -1,0 +1,19 @@
+C10017 "/Volumes/RIO PRODUCTION/Instruments/SOL_0.9_HQ/PluckedStrings/Harp/cluster"
+F Hp-cluster_hi-N-ff.wav 1433366 0 1415738568 0
+D s 44100 n 1 l 0:16.250 i 16
+F Hp-cluster_hi-N-mf.wav 1364638 0 1415738568 0
+D s 44100 n 1 l 0:15.471 i 16
+F Hp-cluster_hi-N-pp.wav 840034 0 1415738570 0
+D s 44100 n 1 l 0:09.523 i 16
+F Hp-cluster_lo-N-ff.wav 3066906 0 1415738570 0
+D s 44100 n 1 l 0:34.771 i 16
+F Hp-cluster_lo-N-mf.wav 2793414 0 1415738572 0
+D s 44100 n 1 l 0:31.670 i 16
+F Hp-cluster_lo-N-pp.wav 1953024 0 1415738572 0
+D s 44100 n 1 l 0:22.142 i 16
+F Hp-cluster_mid-N-ff.wav 2309732 0 1415738572 0
+D s 44100 n 1 l 0:26.186 i 16
+F Hp-cluster_mid-N-mf.wav 1804878 0 1415738572 0
+D s 44100 n 1 l 0:20.462 i 16
+F Hp-cluster_mid-N-pp.wav 1510016 0 1415738574 0
+D s 44100 n 1 l 0:17.119 i 16
